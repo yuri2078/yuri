@@ -1,0 +1,98 @@
+.top
+{
+    text-align: center;
+}
+.menu
+{
+    display: inline-flex;
+    width: 1000px;
+    height: 50px;
+    background-color: #66CCCC;
+    position: sticky;
+    top: 0px;
+}
+.menu li
+{
+    list-style: none;
+    float: left;
+    padding-right: 90px;
+    font-weight: 550;
+}
+.menu a:link
+{
+    text-decoration: none;
+    color: black;
+}
+.menu a:hover
+{
+    text-decoration: none;
+    color: red;
+}
+.menu a:visited
+{
+    color: black;
+    font-size: 30px;
+}
+
+.menu .start
+{
+    font-size: 23px;
+    line-height: 23px;
+    font-weight: 500;
+} 
+
+.banner
+{
+    padding-top: 16px;
+}
+
+.all
+{
+    width: 1000px;
+    margin: auto;
+}
+
+.all .picture1
+{
+    width: 1000px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+.all .picture1 img
+{
+    width: 240px;
+    height: 167px;
+    float: left;
+    margin-right: 10px;
+}
+
+.all .text div
+{
+    width: 250px;
+    float: left;
+    box-sizing: border-box;
+    padding: 20px 10px 20px 0px;
+}
+
+.all .picture2
+{
+    clear: both;
+}
+
+.all .picture2 img
+{
+    width: 240px;
+    height: 167px;
+    float: left;
+    margin-right: 10px;
+}
+
+footer
+{
+    width: 1000px;
+    clear: both;
+    background-color: #99CCFF;
+    text-align: center;
+    margin: auto;
+}

@@ -1,0 +1,68 @@
+header p
+{
+    border: 2px solid pink;
+    color: aquamarine;
+    font-size: 34px;
+}
+header p span
+{
+    border: 1px solid gray;
+    color: aqua;
+    transition-duration: 1.5s;
+}
+
+header p span:hover
+{
+    border: 2px solid pink;
+    color: red;
+    background-color: darkcyan;
+    font-size: 38px;
+    transition-duration: 1.5s; /* 设置过度的时间 */
+    transition-delay: 1s; /* 设置过度开始千的延迟时间*/
+    transition-property:color,font-size,backgrount-color;/*设置过渡的css属性名 */
+    transition-timing-function:ease-in; /* 设置过度的速度曲线 */
+}
+#hello1
+{
+    width: 200px;
+    height: 40px;
+    background-color: red;
+    transition-duration: 1.5s;
+}
+
+#hello1:hover
+{
+    transition-duration: 1.5s;
+    width: 60px;
+    height: 400px;
+    background-color: aqua;
+    transition-property: cubic-bezier(0.17,0.85,0.83,0.27); /* 自定义曲线 */
+}
+#hello2
+{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: aquamarine;
+    border: 2px solid black;
+    transition-duration: 1.5s;
+}
+#hello2:hover
+{
+    width: 500px;
+    height: 500px;
+    background-color: blueviolet;
+    transition-duration: 3s;
+    transform: rotate(1800deg); /* 旋转角度 */
+    transform: rotateX(); /* 沿着x轴旋转 */
+    transform: rotateY(); /* 沿着y轴旋转 */
+    transform: rotateZ(); /* 沿着z轴旋转 */
+}
+@keyframes hhh
+{
+    
+}
+div
+{
+    animation-name: hhh;
+}

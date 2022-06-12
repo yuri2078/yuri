@@ -1,0 +1,375 @@
+*
+{
+    /* 取消系统内外边距，定位更方便 */
+    margin: 0;
+    padding: 0;
+    /* 设置盒子宽度包括边距 */
+    box-sizing: border-box; 
+    font-family: 微软雅黑;
+    /* 设置圆角 */
+    border-radius:10px; 
+}
+
+body
+{
+    text-align: center;
+}
+
+/* 菜单动画 */
+@keyframes menu
+{
+    from{
+      height: 50px;
+    }
+    to{
+      height: 200px;
+    }
+}
+
+/* 标题界面 */
+body > h1
+{
+    color: brown;
+    margin: 20px;
+}
+
+/* 头部导航界面 */
+
+header ul li
+{
+    /*取消列表的样式  */
+    list-style:none;
+}
+
+header 
+{
+    /* 设置导航栏固定位置，顶栏 */
+    position: sticky;
+    top: 0;
+}
+
+/* 对整个菜单栏设置长度宽度 */
+#title
+{
+    width: 980px;
+    height: 50px;
+    background-color: pink;
+    /* 外边距auto 实现居中 */
+    margin: 7px auto;
+}
+
+#title ul li
+{
+    /* 对列表设置宽度 */
+    width: 196px;
+    /* 设置浮动向左，实现横向排列 */
+    float: left;
+    /* 行高设置为父元素一样，实现垂直居中对对齐 */
+    line-height: 50px;
+    position: sticky;
+    top: 0;
+}
+
+.menu
+{
+    width: 196px;
+    background-color: pink;
+    /* 设置绝对定位、默认隐藏 */
+    position: absolute;
+    overflow: hidden;
+    display: none;
+}
+
+#title ul li:hover ul 
+{
+    /* 引用动画效果 */
+    animation-name: menu;
+    animation-duration: 1s;
+    /* 设置二级菜单的显示 */
+    display: block;
+}
+
+.menu li:hover
+{
+    
+    background-color: #99ccff;
+}
+
+ /* 菜单超链接样式 */
+
+header a:link
+{
+    text-decoration:none;
+    color: #9933ff;
+}
+
+header a:visited
+{
+    text-decoration:none;
+    color: red;
+}
+
+header a:hover
+{
+    padding: 10px;
+    background-color: pink;
+    text-decoration:none;
+    color: black;
+    border-radius:15px;
+}
+
+
+/* 主界面 */
+
+
+/* 链接界面 */
+iframe
+{
+    transition-duration: 2s;
+    width: 980px;
+    height: 620px;
+    overflow: hidden;
+}
+
+/* banner 聚焦切换模块 */
+
+#banner
+{
+    width: 980px;
+    height: 680px;
+    background-color: aquamarine;
+    /* 设置相对位置，方便后面的东西定位 */
+    position: relative;
+    margin: auto;
+    /* 显示模式设置为弹性盒显示 */
+    display: flex;
+}
+
+/* 切换图样式 */
+#banner ul
+{
+    width: 980px;
+    list-style: none;
+    display: flex;
+    /* 对立面的内容从主轴线后面部分开始对齐 */
+    align-items: flex-end;
+}
+
+#banner ul li
+{
+    /* 将悬停时的触摸指针改成小手指,更有滑动的感觉 */
+    cursor: pointer;
+}
+
+#banner ul li img
+{
+    width: 196px;
+    height: 120px;
+    /* 指定边距更有立体感 */
+    padding: 4px;
+}
+
+/* 大图片样式 */
+#big-picture 
+{
+    width: 980px;
+    height: 520px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#big-picture img
+{
+    width: 100%;
+    height: 100%;
+}
+
+/* 图片上的方框 */
+#box-picture
+{
+    /* 设置方框移动的延迟 */
+    transition-duration: 0.5s;
+    width: 196px;
+    height: 120px;
+    border: 5px solid pink;
+    /* 对方框进行绝对定位 */
+    position: absolute;
+    left: 0;
+    top: 556px;
+    /* 防止屏幕检测当鼠标移动,然后不断闪烁 */
+    pointer-events: none;
+} 
+
+/* 方框上的小三角 */
+#box-picture::after
+{
+    content: "";
+    width: 30px;
+    height: 20px;
+    background-color: pink;
+    /* 画一个三角形 */
+    clip-path: polygon(0 100%,50% 0,100% 100%);
+    position: absolute;
+    left: 88px;
+    top: -24px;
+}
+
+/* 名人名言部分 */
+
+main h2
+{
+    font-size: 30px;
+    background-color: DarkTurquoise;
+    position: relative;
+    width: 980px;
+    padding: 10px;
+    margin: 3px auto;
+}
+
+/* 展示模块总大小 */
+#show
+{
+    display:flex;
+    width: 980px;
+    box-sizing: border-box;
+    background-color: DarkTurquoise;
+    padding: 10px 0 10px 0;
+    margin: auto;
+}
+
+/* 左边图片模块大小 */
+#show-left
+{
+    width: 25%;
+}
+
+/* 左边图片大小 */
+#show-left img
+{
+    width: 200px;
+    height: 140px;
+}
+
+/* 右边文字模块大小 */
+#show-right
+{
+    width: 73%;
+    border: 3px solid pink;
+}
+
+/* 文章样式 */
+article 
+{
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    text-align: left;
+    color: white;
+    padding: 20px;
+}
+
+
+
+/* 留言板 */
+
+/* 想对我说文字样式 */
+#message
+{
+    font-size: 40px;
+    color: #99ccff;
+    margin: 10px;
+}
+
+/* 留言板整体大小 */
+#message-board
+{
+    width: 980px;
+    height: 480px;
+    margin: 3px auto;
+    position: relative;
+    background-color: #99ccff;
+}
+
+/* 提示部分 */
+#tips
+{
+    width: 400px;
+    height: 50px;
+    position: absolute;
+    top: 400px;
+    left: 40px;
+    font-size: 30px;
+}
+
+/* 主要输入框 */
+#main-input
+{
+    width: 550px;
+    height: 300px;
+    padding: auto;
+    position:absolute;
+    left: 40px;
+    top: 20px;
+}
+
+/* 发送按钮 */
+#send
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 470px;
+    top: 400px;
+}
+
+/* 清除按钮 */
+#reset
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 540px;
+    top: 400px;
+}
+
+/* 历史记录模块 */
+#message-history
+{
+    width: 300px;
+    height: 430px;
+    background-color: rgb(84, 152, 219);
+    overflow: hidden;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+}
+
+#message-history p
+{
+    font-size: 30px;
+}
+
+#message-history li
+{
+    margin: 4px;
+    list-style: none;
+    /* 更改触摸指针样式为小手指 */
+    cursor: pointer;
+}
+
+#message-history li:hover
+{
+    color: red;
+}
+
+/* 版权信息 */
+footer #author
+{
+    width: 980px;
+    height: 80px;
+    margin: auto;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    background-color: MediumSlateBlue;
+}

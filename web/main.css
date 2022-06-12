@@ -1,0 +1,116 @@
+p{
+    font-family: 微软雅黑; /*字体*/
+    font-size: 24px; /*字体大小*/
+    color:red; /*字体颜色*/
+    text-align: center; /*剧中方式*/
+    margin: auto; /*字体外边距*/
+    line-height: 1。5em; /*设置行高*/
+}
+
+ul{
+    list-style-image: url(); /*设置表格的点点*/
+}
+
+#div1
+{
+    background: red; 
+    width: 50%; height: 30px; 
+    text-align: center; 
+    display: inline-block;/*设置两个块级元素一行连接 */
+}
+
+#div2
+{
+    background: blue; 
+    width: 50%; height: 30px; 
+    text-align: center; 
+    display: inline-block;
+}
+
+#div3
+{
+    background: red; 
+    width: 50%; height: 30px; 
+    text-align: center; 
+    float: left;
+    padding: 40px;/*设置内边距*/
+    box-sizing: border-box;
+    /* 设置的宽度不包括内边距宽度，所以设置内边距后，50%的宽度加上内边距就超过50了，所以需要设计盒子宽度包括内边距 */
+    /* clear: both; 清除所有浮动，还有左右浮动指定清除*/
+}
+
+
+#div4
+{
+    background: blue; 
+    width: 50%; height: 30px; 
+    text-align: center; 
+    float: right;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+#css大全 
+{
+    background-color: #FFF;  /*背景颜色 */
+    border: 1px solid #ff7202; /*设置边框 */
+    list-style-image: url(); /*设置表格的点点*/
+    font-family: 微软雅黑;  /*字体*/
+    font-size: 24px;     /*字体大小*/
+    color:red; /*前景色字体颜色*/
+    font-weight: 700; /* 400正常 700加粗 */
+    font-style: italic; /* 设置加粗 */
+    text-align: center; /*居中方式*/
+    margin: auto; /*字体外边距*/
+    padding: auto; /*内边距 */
+    line-height: 1/5em; /*设置行高*/
+    display: block;/*显示模式转换为块级 */
+    text-decoration: none; /*文本修饰 */
+    box-sizing: border-box; /*设置盒子大小包括边距 */
+    float: left; /* 设置浮动 */
+    clear: both; /* 清除浮动 */
+    background-image: url(../images/logo.png); /*设置背景图片 前面覆盖后面的图像*/
+    background-repeat: no-repeat; /* 重复方式 */
+    background-position: 10px 50px; /* 控制图像相对与元素的水平距离和垂直距离 */
+    background-size: 10%; /* 设置图像的尺寸为原大小10% */
+    background-attachment: local; /* 设置图像的滚动属性 */
+    background-origin: border-box; /* 设置图像从什么地方开始绘制 */
+    position: relative; /* 设置定位，相对定位 */ 
+    top: 20px;
+    right: auto;
+
+}
+
+div.hello
+{
+    width: 100%;
+    height: 500px;
+    background-image: url(../实验五-素材/images/container.png);
+}
+
+div.hello1
+{
+
+    width: 400px;
+    height: 500px;
+    background-color: blue;
+    float: left;
+    /* padding: 30px;
+    box-sizing: border-box; */
+}
+
+div.hello2
+{
+    width: 600px;
+    height: 400px;
+    float: right;
+    background-color: red;
+
+}
+
+div.heihei
+{
+    width: 100%;
+    height: 100%;
+    background-image: url(../实验五-素材/banner.jpg);
+} 

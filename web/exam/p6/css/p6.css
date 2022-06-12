@@ -1,0 +1,17 @@
+table
+{
+    width: 80%;
+    text-align: center;
+    border: 2px black solid;
+    border-collapse: collapse;
+    margin: auto;
+}
+table td
+{
+    border: 2px black solid;
+}
+
+thead
+{
+    background-color:aqua;
+}

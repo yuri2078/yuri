@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet"  type="text/css" href="css/p6.css"> 
+    <script src="js/data.js"></script>
+    <script>
+        var student = JSON.parse(obj);
+        var title_name = new Array(7);
+        for (var i = 0; i < 15; i++)
+        {
+            student[i].total = 0;
+            var t = 0;
+            for(var j in student[i])
+            {
+                title_name[t++] = "col-" + j;
+                if(j == "math" || j == "english" || j == "computer")
+                {
+                    student[i].total = student[i].total + student[i][j];
+                }
+            }
+        }
+        console.log(title_name);
+    </script>
+</head>
+<body>
+    <script>
+        var table = document.createElement("table");
+        var tr = document.createElement("tr");
+        var thead = document.createElement("thead");
+        var title = ["学号","姓名","性别","高等数学","大学英语","计算机基础","总分",];
+        var td = new Array(7);
+        for(var i=0;i<7;i++)
+        {
+            td[i] = document.createElement("td");
+            td[i].innerHTML = title[i];
+            td[i].setAttribute("id",title_name[i]);
+            td[i].setAttribute("onclick","on_click(this)");
+            tr.appendChild(td[i]);
+        }
+        thead.appendChild(tr);
+        thead.setAttribute("id","thead");
+        table.appendChild(thead);
+        document.body.appendChild(table);
+        var section=1;
+        function createTable(sortNumber)
+        {
+            for(var i=0;i<15;i++)
+            {
+                var tr = document.createElement("tr");
+                for(var j in student[sortNumber[i]])
+                {
+                    var td = document.createElement("td");
+                    td.innerHTML = student[sortNumber[i]][j];
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            document.body.appendChild(table);
+        }
+        var sortNumber = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+        createTable(sortNumber);
+        function on_click(obj)
+        {
+            var tr = document.getElementsByTagName("tr");
+            for(var i = 0;i<15;i++)
+            {
+                tr[1].parentElement.removeChild(tr[1]);
+            }
+            var date = Array(15);
+            for(var i = 0;i <15;i++)
+            {
+                for(var j in student[i])
+                {
+                    if("col-" + j == obj.id)
+                    {
+                        date[i]=student[i][j];
+                        break;
+                    }
+                }
+            }
+            for(var i=0;i<15;i++)
+            {
+                for(var j=i+1;j<15;j++)
+                {
+                    if((section == 1 && date[sortNumber[i]] > date[sortNumber[j]]) || (section == -1 && date[sortNumber[i]] < date[sortNumber[j]]))
+                    {
+                        t=sortNumber[i];
+                        sortNumber[i]=sortNumber[j];
+                        sortNumber[j]=t;
+                    }
+                }
+            }
+            section=-section;
+            createTable(sortNumber);
+        }
+    </script>
+</body>
+<script>
+</script>
+</html>

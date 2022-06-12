@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre
+        {
+            font-size: 30px;
+        }
+        p
+        {
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <p> pre 预格式化内容，通常会保留空格和回车，字符也是等宽大小</p>
+    <pre>
+                           《琵琶行---节选》
+                    大弦嘈嘈如急雨，小弦切切如私语。
+                    嘈嘈切切错杂弹，大珠小珠落玉盘。
+                    间关莺语花底滑，幽咽泉流冰下难。
+                    冰泉冷涩弦凝绝，凝绝不通声暂歇。
+    </pre>
+    <br>
+
+    <P>使用 code 元素包裹源代码,他不会保留空格，回车，所以代码多的时候一般和pre一起用</P>
+    <pre>
+        <code>
+            struct Snake //定义蛇蛇结构体
+            {
+                short int x; //横坐标
+                short int y; //纵坐标
+                struct Snake *next; //下一条蛇的地址
+            };
+        </code>   
+    </pre>
+    <br>
+
+    <p>用 var 定义程序的  <var>变量</var></p>
+    <p>用 kbd 包含用户的    <kbd>输入</kbd</p>
+    <p>用 samp 定义程序的   <samp>输出</samp></p>
+    <br>
+
+    <p>使用 q 元素添加较短的引用，浏览器会在旁边加引号</p>
+    <q>我的恋情宛如孤岛之花，不为人知的绽放，又不为人知的凋零。</q>
+
+    <p>引用一大段文本，一般用 blockquote 元素 </p>
+    <blockquote>
+        我讨厌岛村在我不知道的地方露出笑容！也讨厌你和其他的人牵手！我希望你只会牵我的手！只待在我的身边！祭典也是，我很想去啊！我希望岛村很开心的时候，笑的时候，我可以在你身边！我想要那样！我头好痛，好痛苦！我一直在想岛村的事情，感觉都要……发疯了……我也在等你打电话给我！你偶尔也主动开口嘛，主动跟我说话嘛，我不想总是我单方面找你，你多少也……你一点也不在意我吗？一点也不会吗？完全不会？我对你来说不重要吗？只是朋友吗？普通的朋友吗？我希望自己不是普通的朋友，就算比普通好一点也好，我不想成为普通的……朋友……喏，岛村，我该怎么办才好？喏。岛村，你有在听吗？求你听我说话。听到我的声音有什么想法吗？会有吗？你要说会感到放心，还是什么都好，拜托有点想法。我希望你可以有点想法，还是说我不该期待这种事？岛村！我就是要岛村啊
+    </blockquote>
+    <br><br>
+
+    <p>使用 cite 元素包裹书籍标题，名称之类的，默认事斜体</p>
+    <cite>安达与岛村</cite>
+
+    <p>使用 abbr 包含简称 配合title 可以表示含义 鼠标放上去就行</p>
+    <abbr title="girl love">gl</abbr> 是指女通讯录的意思
+    <br>
+
+    <p>使用 dfn 包含专业术语，比如HTML之类的</p>
+    <dfn> HTML </dfn>
+    <br>
+
+    <p> address 用于包含作者的信息，可以是邮件可以是 微信</p>
+    <address>qq : 2078170658</address>
+    <br>
+
+    <p>使用 ruby 包含需要注音的字 用 rt 注音 rp 表示不支持显示的内容</p>
+    <ruby>百<rt>bai</rt>合<rt>he</rt></ruby>
+    <br>
+
+    <p>使用 bdo 指定文本书写方向 配合dir 使用 默认ltr left to right</p>
+    <bdo dir="rtl"> 从右往左 </bdo>
+    <br>
+
+    <strong>strong 使文本加粗</strong>
+    <br>
+
+    <b>b 使文本加粗</b>
+    <br>
+
+    <p>使用 em 元素表示  <em>强调</em>  </p>
+    <br>
+
+    <i>使用 i 元素也可以倾斜，但是没有情调的语义</i>
+    <br>
+
+    <p>使用 <del> del 元素</del> 表示删除， 使用 <ins> ins 元素 </ins>表示新的 </p>
+    <br>
+
+    <s> s 元素也是删除线，但是通常表示不再正确的内容 </s>
+    <br>
+
+    <u> u 表示下划线，一般指拼写错误的单词，或者专有名词 </u>
+    <br>
+
+    <mark> mark 起到标记文本的作用 </mark>
+    <br>
+
+    <p> sub 定义 下标文本 2<sub>555</sub></p>
+    <p> sup 定义 上标文本 2 <sup>666</sup></p>
+
+    <small>使用 small 元素 使文本变小 </small>
+    <br>
+
+    <p>按钮练习</p>
+    <p>普通按钮</p>
+    <form>
+        <input type="button" value="点我">
+    </form>
+
+    <p>多选框</p>
+    <form>
+        <input type="checkbox" name="fruit" value="watermelon">西瓜<br>
+        <input type="checkbox" name="fruit" value="banana">香蕉<br>
+        <input type="checkbox" name="fruit" value="blueberry">蓝莓<br>
+    </form>
+
+    <p>选择颜色</p>
+    <form>
+        选择鱼油最喜欢的颜色: <input type="color" name="favcolor"><br>
+    </form>
+
+    <p>选择日期</p>
+    <form>
+        生日: <input type="date" name="bday">
+    </form>
+    <form>
+        生日 (日期和时间): <input type="datetime-local" name="bdaytime">
+    </form>
+
+
+    <p>输入电子邮件</p>
+    <form>
+        E-mail: <input type="email" name="usremail">
+    </form>
+
+    <p>上传文件</p>
+    <form>
+        选择一个文件: <input type="file" name="filedata">
+    </form>
+
+    <p>输入看不到的东西</p>
+    <form>
+        姓名: <input type="text" name="fname"><br>
+        <input type="hidden" name="country" value="Norway">
+        <p>注意隐藏字段鱼油是看不到滴。</p>
+    </form>
+
+    <p>图片</p>
+    <form>
+        <input type="image" src="../1.jpg" alt="Submit" width="64" height="64">
+    </form>
+
+    <p>选择年月</p>
+    <form>
+        生日 ( 月和年 ): <input type="month" name="bdaymonth">
+    </form>
+
+    <p>选择数字</p>
+    <form>
+        数量 (1-99之间): <input type="number" name="quantity" min="1" max="99">
+    </form>
+
+    <p>输入密码</p>
+    <form>
+        账号: <input type="text" name="userName"><br>
+        密码: <input type="password" name="pwd" maxlength="11"><br>
+    </form>
+
+    <p>单选按钮</p>
+    <form>
+        <input type="radio" name="gender" value="女"> 女<br>
+        <input type="radio" name="gender" value="男"> 男<br>
+    </form>
+
+    <p>输入范围</p>
+    <form>
+        范围(1-11): <input type="range" name="points" min="1" max="11">
+    </form>
+
+    <p>重置按钮</p>
+    <form>
+        姓名: <input type="text" name="email"><br>
+        地址: <input type="text" name="pin" maxlength="11"><br>
+        <input type="reset" value="重置">
+    </form>
+
+    <p>普通提交按钮</p>
+    <form action="demo/welcome.php" method="post">
+        名字：<input type="text" name="name"><br><br>
+        邮箱：<input  type="text" name="email"><br><br>
+        <input type="submit">
+    </form>
+
+    <p>输入普通文本</p>
+    <form action="demo/welcome.php" method="post">
+        兴趣：<input type="text" name="fun"><br><br>
+        爱好：<input  type="text" name="hobby"><br><br>
+        <input type="submit">
+    </form>
+
+    <p>选择时间</p>
+    <form>
+        选择时间: <input type="time" name="usr_time">
+    </form>
+
+    <p>选择链接</p>
+    <form>
+        添加鱼油的主页: <input type="url" name="userHomepage"><br>
+    </form>
+
+    <p>选择星期</p>
+    <form>
+        选择周: <input type="week" name="year_week">
+    </form>
+
+    
+</body>
+</html>

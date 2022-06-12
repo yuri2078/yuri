@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>动态生成表格</title>
+		<style type="text/css">
+			table,
+			thead,
+			tr,
+			th,
+			td{
+				border: 0;
+			}
+			
+			th {
+				width: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="" cellspacing="" cellpadding="">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>科目</th>
+					<th>成绩</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		
+		<script type="text/javascript">
+			// 使用对象储存的数据，列表
+			data = [
+				{name: "魏璎珞", subject: "数学", score: 100},
+				{name: "魏璎珞", subject: "数学", score: 100},
+				{name: "魏璎珞", subject: "数学", score: 100},
+				{name: "魏璎珞", subject: "数学", score: 100},
+				{name: "曹操", subject: "语文", score: 200},
+				{name: "曹植", subject: "政治", score: 100},
+				{name: "曹植", subject: "政治", score: 100},
+				{name: "曹植", subject: "政治", score: 100},
+				{name: "曹植", subject: "政治", score: 100},
+			]
+			
+			// 在tbody中创建tr，根据data的length创建
+			var tbody = document.querySelector("tbody");
+			for(var i = 0; i< data.length; i++){
+				// 1.创建tr
+				var tr = document.createElement("tr");
+				tbody.appendChild(tr);
+				// 2.创建tr内的td，循环一个tr内的所有td
+				for(var k in data[i]){
+					// 创建单元格
+					var td = document.createElement("td")
+					// 把对象的属性值复制给对象
+					td.innerHTML = data[i][k];
+					tr.appendChild(td);
+				}
+				// 3.创建删除单元格
+				var td = document.createElement("td");
+				td.innerHTML = "<a href='javascript:;'>删除</a>";
+				tr.appendChild(td);
+			}
+			
+			
+			// 处理删除逻辑
+			var a = document.querySelectorAll("a");
+			for(var i = 0; i < a.length; i++)
+            {
+				a[i].onclick = function (){
+					// 删除a所在的row node.removechild(child) 这个实在是诡异，removechild的调用主体是被删除目标的父级元素
+					tbody.removeChild(this.parentNode.parentNode)					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

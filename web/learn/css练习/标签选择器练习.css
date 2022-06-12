@@ -1,0 +1,190 @@
+/* 基本选择器，直接选择就行了 */
+h1
+{
+    font-size: 40px;
+    text-align: center;
+}
+
+p
+{
+    font-size: 30px;
+    text-align: center;
+}
+
+img
+{
+    position: relative;
+    left: 240px;
+    width: 50%;
+    height: 50%;
+}
+
+a
+{
+    text-align: center;
+    display: block;
+}
+
+/* 复合选择器  ---- 交集选择器*/ 
+
+span.绽放
+{
+    font-size: 40px;
+    color: burlywood;
+}
+
+span#岛村
+{
+    font-size: 40px;
+    color: aquamarine;
+}
+
+/* 复合选择器  ----并集选择器 */
+h1,p,span
+{
+    font-style: italic; 
+}
+
+/* 子元素选择器 ----包含所有子元素  */
+div span
+{
+
+    border: 2px solid black;
+}
+
+/* 子元素选择器 只能影响 直接包含的元素*/
+
+div > span
+{
+    font-size: 40px;
+}
+
+/* 相邻兄弟选择器 仅对 有相同父元素 且紧跟在他后面的原色 */
+/* 他们都有body这个父元素 且仅对 p后的h2 生效 */
+p + h2
+{
+    font-size: 40px;
+     color: aquamarine;
+    font-weight: 700;
+}
+
+/* 通用兄弟选择器 无需紧挨，在后面就行 */
+p ~ h2
+{
+    border: 2px solid gray;
+}
+
+/* 伪元素选择器 ------------------------------*/
+/* ::first-line 匹配文本块第一行内容 且进队块级元素生效，不对行内 元素生效*/
+/* ::first-letter 选中文本块的第一个字符 */
+main p.百合花::first-line
+{
+    font-size: 66px;
+    color: red;
+}
+
+
+/* 在元素后面插入文本 before是在前面 */
+p.执念::after
+{
+    content: "  百合花开";
+}
+
+
+/* 用户选择的文本 */
+::selection
+{
+    color: red;
+    background-color: green;
+}
+
+
+/* 伪类选择器----------------- */
+
+/* 动态伪类选择器 可以动态的根据状态选择东西 一般用于a标签 */
+/* :link 链接未浏览时的时候
+:visited 链接已经被访问过的时候
+:hover 鼠标悬停的时候
+:active 鼠标嗯下链接的那一刻 对不可以激活得元素一样有效
+:focus 当元素获得焦点的时候被选中 比如input */
+
+/* 以上几个有顺序要求！！！ */
+
+#悬停
+{
+    background-color: aqua;
+}
+#悬停:hover
+{
+    background-color: red;
+}
+
+.change
+{
+    width: 1000px;
+    height: 300px;
+}
+
+.change:active
+{
+    background-color: green;
+}
+
+input.输入内容:focus
+{
+    background-color: red;
+    color: aliceblue;
+}
+/* UI伪类选择器---------------- */
+/* :enabled 可用
+:disabled 禁用
+:checked 适用于单选多选 被选中时的状态
+:required 适用于必选的元素
+:optional 适用与可选的元素
+:default  设置默认元素样式
+:valid 用户输入合法的样式
+:invalid 用户输入不合法的样式
+:in-range 用户输入数值在范围内的样式
+:out-of-range 用户输入不在范围内的样式
+:read-only  只读的样式
+:read-write 可读可写的样式
+:indeterminate */
+
+input.ui:enabled
+{
+    background-color: greenyellow;
+    color: black;
+}
+
+/* 结构伪类选择器------------ */
+/* :root 总是匹配html标签
+:empty 总是匹配没有定义任何内容的元素
+:first-child 匹配第一个子元素 比如第一个作为子元素的p元素
+:last-child 匹配最后有ige子元素
+:only-child 父元素的唯一子元素将会被选中
+:only-of-type 输入父元素下的唯一子元素
+:first-of-type 和 :first-child 差不多
+:last-of-type 和 :last-child 差不都
+:nth-child(2) 只匹配第二个与子元素
+:nth-last-child(2) 只匹配倒数2个子元素
+:nth-of-type()
+:nth-last-of-type() */
+
+/* 其他伪类选择器--------- */
+/* :target 为局内锚点设置样式
+:lang() 为不同语言设置不同背景颜色
+:not() 否定选择器 */
+
+
+/* 属性选择器------------ */
+/* 加上^则选中以。。为开头的所有标签 
+加上div 则表示筛选div标签 
+加上$则选中以。。为结尾的所有标签
+加上*号则是选中 包含。。字符的标签
+加上~则选中 众多名字包含。。字符的标签
+加上-则选中 包好-符号的标签，且-符号前面是。。的标签 */
+div[class^="shuxing"]
+{
+    background-color: aliceblue;
+    font-size: 35px;
+}
