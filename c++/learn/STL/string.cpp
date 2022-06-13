@@ -25,8 +25,12 @@ int main()
     
     //通过成员函数连接
     str1.append("str2", 3); //把字符串前10个链接到str1 大于个数则报错 且只能是字符串，不能是string
-    str1.append(str1, 1, 10); //把字符串从第1开始到第10赋值给str1 可以是string 也可以是字符串
-    
+    str1.append(str1, 1, 10); //把字符串从第1开始 的10个赋值给str1 可以是string 也可以是字符串
+    std::cout << str1.find('e') << "\n";
+    std::string str;
+    std::cout << str1 << "\n";
+    str.append(str1,10, 2);
+    std::cout << str;
     //查找和替换
     // int find(const string& str, int pos = 0) const; //查找str第一次出现位置,从pos开始查找
     // int find(const char* s, int pos = 0) const; //查找s第一次出现位置,从pos开始查找
