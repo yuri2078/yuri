@@ -17,6 +17,7 @@ public:
     }
 };
 
+//返回布尔类型的二元运算的仿函数 为 二元谓词
 class MyCompare
 {
 public:
