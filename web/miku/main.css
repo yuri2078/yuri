@@ -54,6 +54,7 @@ ul{
 {
     background-color: #FFF;  /*背景颜色 */
     border: 1px solid #ff7202; /*设置边框 */
+    border-radius: 12px; /* 设置边框圆角 */
     list-style-image: url(); /*设置表格的点点*/
     font-family: 微软雅黑;  /*字体*/
     font-size: 24px;     /*字体大小*/
@@ -72,6 +73,7 @@ ul{
     background-image: url(../images/logo.png); /*设置背景图片 前面覆盖后面的图像*/
     background-repeat: no-repeat; /* 重复方式 */
     background-position: 10px 50px; /* 控制图像相对与元素的水平距离和垂直距离 */
+    background-position: center;/* 使背景 从中间展开 */
     background-size: 10%; /* 设置图像的尺寸为原大小10% */
     background-attachment: local; /* 设置图像的滚动属性 */
     background-origin: border-box; /* 设置图像从什么地方开始绘制 */
