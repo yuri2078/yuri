@@ -19,25 +19,22 @@ body
 
 .box
 {
-    width: 220px;
-    height: 320px;
+    width: 320px;
+    height: 380px;
     background-color:rgb(0, 70, 82,0.3);
     text-align: center;
     position: relative;
     margin: 0 40px;
     border-radius: 10px;
-    transition: 1.5s;
 }
 .num
 {
     font-size: 100px;
     position: absolute;
-    color: rgba(0, 0, 0, 0.6);
-    left: 70PX;
-    top: -20PX;
+    color: rgba(0, 0, 0, 0.3);
+    left: 120PX;
+    top: 0PX;
     font-weight: 900;
-    display: none;
-    transition: 1.5s;
 }
 
 .title
@@ -45,20 +42,18 @@ body
     font-size: 40px;
     position: absolute;
     font-weight:400;
-    top: 60px;
-    left: 20px;
+    top: 100px;
+    left: 40px;
     color: white;
-    display: none;
-    transition: 1.5s;
+
 }
 
 .article
 {
-    font-size: 20px;
+    font-size: 22px;
     position: absolute;
-    top: 120px;
-    display: none;
-    transition: 1.5s;
+    top: 160px;
+    margin: 0 8px;
 }
 
 .button
@@ -67,17 +62,16 @@ body
     height: 50px;
     background-color: white;
     position: absolute;
-    top: 260px;
-    left: 30px;
+    top: 310px;
+    left: 50px;
     border-radius: 35px;
-    display: none;
-    transition: 1.5s;
+
 }
 
 
 .box:hover .num, .box:hover .article, .box:hover .button, .box:hover .title
 {
-    transition: 1.5s;
+
     display: block;
     cursor: pointer;
 }
