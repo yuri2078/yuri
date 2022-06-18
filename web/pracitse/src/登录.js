@@ -15,7 +15,6 @@ button.click(() => {
 })
 
 let login = $('[type = "text"]');
-console.log(login.css("width"));
-
+console.log(login.pal);
 
 

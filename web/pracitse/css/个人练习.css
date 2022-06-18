@@ -18,20 +18,23 @@ body
 
 #picture
 {
-    width: 400px;
-    height: 250px;
+    width: 600px;
+    height: 450px;
     border-radius: 12px;
-    transition: 1s;
-    background-image: url(../images/11.jpg);
+    transition: all ease 2s;
+    background-image: url(../images/1.jpg);
     background-position: center;
     position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 #picture::after
 {
     content: "";
-    width: 420px;
-    height: 270px;
+    width: 620px;
+    height: 470px;
     background-color: aquamarine;
     position: absolute;
     z-index: -1;
@@ -42,17 +45,17 @@ body
 
 #picture:hover
 {
-    width: 600px;
-    height: 400px;
-    transition: 1s;
-    cursor: pointer;
+    width: 700px;
+    height: 600px;
+    transition:all ease 1s;
+    
 }
 
 #picture:hover::after
 {
     content: "";
-    width: 630px;
-    height: 430px;
+    width: 730px;
+    height: 630px;
     background-color: aliceblue;
     position: absolute;
     top: -15px;
@@ -60,3 +63,15 @@ body
     border-radius: -15px;
     z-index: -1;
 }
+
+#picture .circle
+{
+    width: 20px;
+    height: 20px;
+    background-color: greenyellow;
+    margin: 20px;
+    cursor: pointer;
+    transition: 1s;
+    border-radius: 10px;
+}
+
