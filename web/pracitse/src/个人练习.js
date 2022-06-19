@@ -20,8 +20,7 @@ $(circle[0]).css("background-color", "red");
 
 function time()
 {
-
-    
+ 
     let k = setInterval(() => {
         if (flag == 0)
         {
