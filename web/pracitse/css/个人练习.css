@@ -18,7 +18,7 @@ body
 
 #picture
 {
-    width: 600px;
+    width: 600px ;
     height: 450px;
     border-radius: 12px;
     transition: all ease 2s;
@@ -28,20 +28,10 @@ body
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    box-shadow: 0 0 10px 10px pink;
 }
 
-#picture::after
-{
-    content: "";
-    width: 620px;
-    height: 470px;
-    background-color: aquamarine;
-    position: absolute;
-    z-index: -1;
-    top: -10px;
-    left: -10px;
-    border-radius: 10px;
-}
+
 
 #picture:hover
 {
@@ -51,18 +41,6 @@ body
     
 }
 
-#picture:hover::after
-{
-    content: "";
-    width: 730px;
-    height: 630px;
-    background-color: aliceblue;
-    position: absolute;
-    top: -15px;
-    left: -15px;
-    border-radius: -15px;
-    z-index: -1;
-}
 
 #picture .circle
 {

@@ -38,7 +38,6 @@ print("更新建值")
 x = dict.fromkeys("yuri",520)
 x['y'] = 555 #通过key更新
 print("x  --- ",x)
-
 x.update(y=666,u = 777,r = 888, i = 999, l = 000)
 print("更新后的x   --- ",x) #更新的同时还可以增加key
 
@@ -58,3 +57,8 @@ print("还没更新的 items --- ",items) #保存所有的值
 
 x['y'] = 55555
 print("更新之后的 items --- ",items) #字典的值更新，这里也会更新
+
+y = x.copy() #拷贝
+print("y --- ",y)
+z = {values:keys for values,keys in y.items()} #通过推导式，推导z
+print("z --- ",z)

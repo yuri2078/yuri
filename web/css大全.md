@@ -424,3 +424,231 @@
 2. 语法 
 3. 属性值 
 
+
+
+## 边界
+
+###  border-radius
+
+1. 定义 属性是一个简写属性，用于设置四个 border-*-radius 属性。
+
+2. 语法 border-radius: 1-4 length|% / 1-4 length|%;
+
+3. 属性值 
+
+4. | 值     | 描述                     |
+   | ------ | ------------------------ |
+   | length | 定义圆角的形状。         |
+   | %      | 以百分比定义圆角的形状。 |
+
+###  box-shadow
+
+1. 定义 性向框添加一个或多个阴影。
+
+2. 语法 box-shadow: h-shadow v-shadow blur spread color inset;
+
+3. 属性值 
+
+4. | 值       | 描述                                 |
+   | -------- | ------------------------------------ |
+   | h-shadow | 必需。水平阴影的位置。允许负值。     |
+   | v-shadow | 必需。垂直阴影的位置。允许负值。     |
+   | blur     | 可选。模糊距离。                     |
+   | spread   | 可选。阴影的尺寸。                   |
+   | color    | 可选。阴影的颜色。                   |
+   | inset    | 可选。将外部阴影 (outset) 改为内部阴 |
+
+###  outline 
+
+1. 定义 （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用
+
+2. 语法 outline:outline-color|outline-style|outline-width|inherit;
+
+3. 属性值 
+
+4. | 值                                                           | 描述                                      |
+   | ------------------------------------------------------------ | ----------------------------------------- |
+   | [`outline-color`](https://man.ilovefishc.com/page/outline-color.html) | 规定边框的颜色。                          |
+   | [`outline-style`](https://man.ilovefishc.com/page/outline-style.html) | 规定边框的样式。                          |
+   | [`outline-width`](https://man.ilovefishc.com/page/outline-width.html) | 规定边框的宽度。                          |
+   | inherit                                                      | 规定应该从父元素继承 outline 属性的设置。 |
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+
+
+## 2d/3d
+
+###  transform
+
+1. 定义 属性应用于元素的2D或3D转换。
+
+2. 语法 transform: none|transform-functions;
+
+3. 属性值 
+
+4. | 值                                        | 说明                                    |
+   | ----------------------------------------- | --------------------------------------- |
+   | none                                      | 定义不进行转换。                        |
+   | matrix(n,n,n,n,n,n)                       | 定义 2D 转换，使用六个值的矩阵。        |
+   | matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n) | 定义 3D 转换，使用 16 个值的 4x4 矩阵。 |
+   | translate(x,y)                            | 定义 2D 转换。                          |
+   | translate3d(x,y,z)                        | 定义 3D 转换。                          |
+   | translateX(x)                             | 定义转换，只是用 X 轴的值。             |
+   | translateY(y)                             | 定义转换，只是用 Y 轴的值。             |
+   | translateZ(z)                             | 定义 3D 转换，只是用 Z 轴的值。         |
+   | scale(x[,y]?)                             | 定义 2D 缩放转换。                      |
+   | scale3d(x,y,z)                            | 定义 3D 缩放转换。                      |
+   | scaleX(x)                                 | 通过设置 X 轴的值来定义缩放转换。       |
+   | scaleY(y)                                 | 通过设置 Y 轴的值来定义缩放转换。       |
+   | scaleZ(z)                                 | 通过设置 Z 轴的值来定义 3D 缩放转换。   |
+   | rotate(angle)                             | 定义 2D 旋转，在参数中规定角度。        |
+   | rotate3d(x,y,z,angle)                     | 定义 3D 旋转。                          |
+   | rotateX(angle)                            | 定义沿着 X 轴的 3D 旋转。               |
+   | rotateY(angle)                            | 定义沿着 Y 轴的 3D 旋转。               |
+   | rotateZ(angle)                            | 定义沿着 Z 轴的 3D 旋转。               |
+   | skew(x-angle,y-angle)                     | 定义沿着 X 和 Y 轴的 2D 倾斜转换。      |
+   | skewX(angle)                              | 定义沿着 X 轴的 2D 倾斜转换。           |
+   | skewY(angle)                              | 定义沿着 Y 轴的 2D 倾斜转换。           |
+   | perspective(n)                            | 为 3D 转换元素定义透视视图。            |
+
+###   transform-Origin
+
+1. 定义 属性允许更改转换元素的位置。
+
+2. 语法 transform-origin: x-axis y-axis z-axis;
+
+3. 属性值 
+
+4. | 值     | 说明                                                         |
+   | ------ | ------------------------------------------------------------ |
+   | x-axis | 定义视图被置于 X 轴的何处。可能的值：left、center、right、length、% |
+   | y-axis | 定义视图被置于 Y 轴的何处。可能的值：top、center、bottom、length、% |
+   | z-axis | 定义视图被置于 Z 轴的何处。可能的值：length                  |
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+###  
+
+1. 定义 
+2. 语法 
+3. 属性值 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 杂项知识
+
+## css
+
+1. calc(100% + 10px) 裁剪函数
+1. filter: blur(2px); 模糊效果

@@ -1,0 +1,97 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-image: url(../images/clock_background.png);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#clock
+{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(23, 133, 344, 0.6);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px 8px pink;
+}
+
+#clock::after
+{
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: aliceblue;
+    position: absolute;
+    top: calc(50% - 7px) ;
+    left: calc(50% - 7px) ;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+
+#hour, #minute, #second
+{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+#hour
+{
+    width: 160px;
+    height: 160px;
+}
+
+#minute
+{
+    width: 190px;
+    height: 190px;
+}
+
+#second
+{
+    width: 230px;
+    height: 230px;
+}
+
+#hour::before, #minute::before, #second::before
+{
+    content: "";
+    transform-origin: bottom;
+    border-radius: 4px;
+    position: absolute;
+    height: 50%;
+}
+
+#hour::before
+{
+    width: 7px;
+    background-color: red;
+    z-index: 6;
+}
+
+#minute::before
+{
+    width: 4px;
+    background-color: greenyellow;
+    z-index: 7;
+}
+
+#second::before
+{
+    width: 2px;
+    background-color: black;
+    z-index: 8;
+}
