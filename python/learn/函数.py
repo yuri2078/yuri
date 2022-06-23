@@ -1,6 +1,3 @@
-
-import time
-
 def max(x,y = 9): #默认参数
     return x if x > y else y #返回值
 # def max(x,/,y ): #  /的左边不允许使用关键字参数
@@ -83,20 +80,46 @@ student(33.4)
 student(44)
 
 #使用装饰器 
-# test = x_1(test) 初始化阶段，不调用 test 后面的函数 此时 test = 内部的 inner 函数
-# 调用阶段 等于 x_1(test)()  因为会暂时保留外部变量，所以任然能够访问到原来的函数
-# 所以x_1 函数指挥执行一遍，后面都不会执行x_1
+#执行到有装饰器的函数时 他不管会不会调用，先进行初始化 从下往上开始 对每个装饰器进行执行 
+#此时 test = 三个装饰器中的inner 函数，而func原来时test函数，因为test = inner 所以 在调用inner
+# 的return 函数之后 func 指向的是inner 函数，所以inner return 的值就是新的func
+#调用 test 会直接进入inner 函数，然后开始执行，在执行到func 也就是传入的临时函数时，会跳过到下一个装饰器
+# 然后继续执行，直到再次调用func 函数，或者已经没有装饰器了为止
+#当没有装饰器了的时候，func 作为返回值开始一步一步返回，
+#func一开始指向 test， 因为 test = inner 所以后面每次inner return 的值都会作为新的func 返回到上一个装饰器
+#从后往前返回，直到结束程序
+#
 
 print("第一次执行 ---- \n\n")
 def x_1(func):
     def inner():
-        print("执行了fun1 -- inner")
-        func() + 1
-        print("fun 执行完毕")
+        print("执行了fun1 -- inner x = func ")
+        x = func()
+        print("x_1 : x --- ",x)
+        return x + 1
     print("执行了x——1")
     return inner
 
+def x_2(func):
+    def inner():
+        print("执行了fun2 -- inner x = func ")
+        x = func()
+        print("x_2 : x --- ",x)
+        return x + 2
+    print("执行了x——2")
+    return inner
+
+def x_3(func):
+    def inner():
+        print("执行了fun3 -- inner x = func ")
+        x = func()
+        print("x_3 : x --- ",x)
+        return x + 3
+    print("执行了x——3")
+    return inner
 @x_1
+@x_3
+@x_2
 def test():
     print("执行了test")
     return 2
@@ -107,3 +130,71 @@ print("\n\n第二次执行 ---- \n\n")
 
 print("test() ---",test())
  
+#匿名函数
+Max = lambda x,y : x if x > y else y
+print("Max (444,5)  -- ",Max(444,5))
+lock = list(map(lambda x : x + '-',"yuri"))
+print("lock (yuri) --- ",lock)
+
+
+#通过嵌套函数实现斐波那契额数列
+def fei():
+    x,y = 1,1
+    def bo():
+        nonlocal x,y
+        print(f"{x}",end=' ')
+        x , y  = y , x
+        y = x + y
+    return bo
+hello = fei()
+for i in range(10):
+    hello()
+
+print()
+
+#生成器 每次生成一个迭代器 ，不可以直接输出，需要遍历
+#执行到yield后返回yield的值，然后再次执行的时候才执行yield后面的值
+#他一次只生成一个数据 后续的数据，你不用，就不会生成
+
+def put ():
+    for i in range(11):
+        if i % 2 == 1:
+            print("前")
+            yield i #
+            print(f"后")
+k = put()
+print("put -- ",next(k)) #不会执行yield 后面的值，只有下次调用才会执行
+print("第二次执行")
+print("put -- ",next(k)) 
+
+#通过生成器 产生斐波那契数列
+def feibo():
+    x, y = 1,1
+    while(True):
+        yield x
+        x , y = y , x
+        y = x + y
+kk = feibo()
+for i in range(20):
+    print(next(kk),end=' ')
+
+#生成器表达式
+#她不像生成器，他会一次性生成所有的数据
+print("\n通过生成器表达式生成东西")
+print(list(i for i in range(10))) 
+
+
+#递归函数的调用 
+#告诉读者数据类型和返回类型
+#list[int] 整型列表
+def 递归打印(x:int) -> None:
+    """
+    功能：递归打印 1 - x
+    参数： - x 打印 1 - x 的值
+    """
+    if(x > 1):
+        递归打印(x-1)
+    print("x --- ",x)
+
+递归打印(10)
+print(help(递归打印))
