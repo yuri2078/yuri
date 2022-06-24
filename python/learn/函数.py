@@ -1,3 +1,6 @@
+import imp
+
+
 def max(x,y = 9): #默认参数
     return x if x > y else y #返回值
 # def max(x,/,y ): #  /的左边不允许使用关键字参数
@@ -198,3 +201,46 @@ def 递归打印(x:int) -> None:
 
 递归打印(10)
 print(help(递归打印))
+
+#高阶函数 函数作为一个函数的参数使用 
+def 计算平方大小(func,x):
+    x = [ func(i) for i in x]
+    return x
+
+def 平方(x):
+    return x ** 2
+
+print("输出1 -5 的平方")
+_  = 计算平方大小(平方,range(1,6))
+print(_)
+
+
+import functools #导入模块
+_ = functools.reduce(lambda x, y : x - y,range(10)) #计算1 - 2 - 3 - 4 .。。的值
+print(" _ 的值为 --- ",_)
+
+def test_2_func(func):
+    def inner():
+        x = 1
+    return inner
+
+
+@test_2_func
+def test_2():
+    return 2
+
+print("test 2 _ name --- ",test_2.__name__) #他的名字是innner 也就是装饰器内部函数的名字
+
+def test_3_func(func):
+    @functools.wraps(func) #用魔法打败魔法
+    def inner():
+        x = 1
+    return inner
+
+
+@test_3_func
+def test_3():
+    return 2
+
+print("test 3 _ name --- ",test_3.__name__) #他的名字是test_3
+
