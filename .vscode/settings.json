@@ -67,5 +67,8 @@
         "random": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
-    "C_Cpp.errorSquiggles": "Enabled", // 格式化时调整include的顺序（按字母排序）
+    "C_Cpp.errorSquiggles": "Enabled",
+    "qtConfigure.qtKitDir": "d:/QT/6.3.1/mingw_64",
+    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/test/test",
+   
 }

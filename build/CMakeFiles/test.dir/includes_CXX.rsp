@@ -1,0 +1,1 @@
+-IE:/vscode/build -IE:/vscode/QTproject/test/test -IE:/vscode/build/test_autogen/include -isystem D:/QT/6.3.1/mingw_64/include/QtCore -isystem D:/QT/6.3.1/mingw_64/include -isystem D:/QT/6.3.1/mingw_64/mkspecs/win32-g++ -isystem D:/QT/6.3.1/mingw_64/include/QtWidgets -isystem D:/QT/6.3.1/mingw_64/include/QtGui

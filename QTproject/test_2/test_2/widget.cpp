@@ -6,6 +6,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    ui->pushButton->setEnabled(false);
 }
 
 Widget::~Widget()
