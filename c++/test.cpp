@@ -3,7 +3,7 @@
 using std::cout;
 using std::endl;
 
-void dtos(int x)
+int dtos(int x)
 {
 	char temp[20];
 	int i = 0;
@@ -15,6 +15,7 @@ void dtos(int x)
 	}
 	temp[i] = 0;
 	cout << "temp == " << temp << endl;
+	return 22;
 }
 
 
@@ -24,7 +25,7 @@ int main()
 	int x = 666;
 	sprintf(str,"%d",x);
 	cout << str << endl;
-	
+	dtos(233);
 	dtos(4545);
 	
 	return 0;
