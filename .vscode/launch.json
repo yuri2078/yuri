@@ -78,7 +78,7 @@
             "environment": [
                 {
                     "name": "PATH",
-                    "value": "d:/QT/6.3.1/mingw_64/bin"
+                    "value": "c:/Qt/6.3.1/mingw_64/bin"
                 }
             ],
             "externalConsole": false,
