@@ -21,6 +21,8 @@ Widget::Widget(QWidget *parent) : QWidget(parent) //初始化窗口类
     setFixedSize(500, 500); //固定窗口大小
 
     connect(button_2, &QPushButton::clicked, this, &Widget::close); //点击关闭窗口
+
+    
 }
 
 
