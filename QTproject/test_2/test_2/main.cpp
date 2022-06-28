@@ -1,5 +1,4 @@
 #include "widget.h"
-
 #include <QApplication> //包含一个应用程序类
 
 //argc 命令行变量的数量
@@ -13,5 +12,6 @@ int main(int argc, char *argv[])
     w.show();
     //让引用程序对象，进入到消息循环
     //阻塞程序，此时他仍然会接受数据，但是只有按× 才会停止阻塞
+
     return a.exec();
 }

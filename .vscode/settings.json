@@ -64,11 +64,12 @@
         "functional": "cpp",
         "iterator": "cpp",
         "numeric": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "qwidget": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
     "qtConfigure.qtKitDir": "d:/QT/6.3.1/mingw_64",
-    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/test/test",
+    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/test_2/test_2",
    
 }

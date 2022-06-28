@@ -1,4 +1,0 @@
-E:/vscode/build/CMakeFiles/rebuild_cache.dir
-E:/vscode/build/CMakeFiles/test.dir
-E:/vscode/build/CMakeFiles/edit_cache.dir
-E:/vscode/build/CMakeFiles/test_autogen.dir

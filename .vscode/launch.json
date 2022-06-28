@@ -64,7 +64,8 @@
                     "ignoreFailures": false
                 }
             ],
-            "preLaunchTask": "Compile"
+            "preLaunchTask": "Compile",
+            "visualizerFile": "c:\\Users\\miku\\AppData\\Roaming\\Code\\User\\workspaceStorage\\64fe41dc6d4330e4697ddf15cdd2bdce\\tonka3000.qtvsctools\\qt.natvis.xml"
         },
         {
             "name": "QtBuild",
