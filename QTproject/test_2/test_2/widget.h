@@ -1,5 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
+#include "teacher.h"
 
 //如果没有头文件则则包含头文件
 #include <QWidget> //包含窗口类头文件
@@ -18,5 +19,6 @@ public:
 
 private:
     Ui::Widget *ui; //
+    Teacher *t1;
 };
 #endif // WIDGET_H

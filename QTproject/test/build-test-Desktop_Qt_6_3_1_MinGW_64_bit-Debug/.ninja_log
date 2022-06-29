@@ -23,3 +23,10 @@
 8	623	6781205645363192	E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/test_autogen/mocs_compilation.cpp	f9c4493fb4b66e84
 647	3295	6781205672082044	CMakeFiles/test.dir/mainwindow.cpp.obj	48ab294fbc695cf0
 3295	3687	6781205675982456	test.exe	684ef5fa27cc8062
+33	483	6781833770640782	test_autogen/timestamp	f9c4493fb4b66e84
+33	483	6781833770640782	test_autogen/mocs_compilation.cpp	f9c4493fb4b66e84
+33	483	6781833770640782	E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/test_autogen/timestamp	f9c4493fb4b66e84
+33	483	6781833770640782	E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/test_autogen/mocs_compilation.cpp	f9c4493fb4b66e84
+503	3361	6781833799440422	CMakeFiles/test.dir/main.cpp.obj	bad12b317c0d49e4
+507	3421	6781833800039458	CMakeFiles/test.dir/mainwindow.cpp.obj	48ab294fbc695cf0
+3422	3698	6781833802839689	test.exe	684ef5fa27cc8062

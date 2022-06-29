@@ -65,11 +65,25 @@
         "iterator": "cpp",
         "numeric": "cpp",
         "random": "cpp",
-        "qwidget": "cpp"
+        "qwidget": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "map": "cpp",
+        "ratio": "cpp",
+        "future": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "variant": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
     "qtConfigure.qtKitDir": "c:/Qt/6.3.1/mingw_64",
-    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/test_2/test_2",
+    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/QmainWindow/Qmainwindow",
    
 }

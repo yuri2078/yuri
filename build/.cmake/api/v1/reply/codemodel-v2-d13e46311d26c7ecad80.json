@@ -1,0 +1,69 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Qmainwindow",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Qmainwindow::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qmainwindow-Debug-a62d73cf5a468a3ebadb.json",
+					"name" : "Qmainwindow",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Qmainwindow_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Qmainwindow_autogen-Debug-0e150d8d2cecf2e24129.json",
+					"name" : "Qmainwindow_autogen",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/vscode/build",
+		"source" : "E:/vscode/QTproject/QmainWindow/Qmainwindow"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

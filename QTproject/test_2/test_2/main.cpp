@@ -1,6 +1,7 @@
 #include "widget.h"
 #include <QApplication> //包含一个应用程序类
 
+
 //argc 命令行变量的数量
 //argv 命令行变量的数组
 int main(int argc, char *argv[])

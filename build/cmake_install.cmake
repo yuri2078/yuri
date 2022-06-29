@@ -1,8 +1,8 @@
-# Install script for directory: E:/vscode/QTproject/test_2/test_2
+# Install script for directory: E:/vscode/QTproject/QmainWindow/Qmainwindow
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/test_2")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Qmainwindow")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

@@ -56,7 +56,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\test_2\test_2
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\QmainWindow\Qmainwindow
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -116,37 +116,61 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test_2
+# Target rules for targets named Qmainwindow
 
 # Build rule for target.
-test_2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_2
-.PHONY : test_2
+Qmainwindow: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qmainwindow
+.PHONY : Qmainwindow
 
 # fast build rule for target.
-test_2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/build
-.PHONY : test_2/fast
+Qmainwindow/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/build
+.PHONY : Qmainwindow/fast
 
 #=============================================================================
-# Target rules for targets named test_2_autogen
+# Target rules for targets named Qmainwindow_autogen
 
 # Build rule for target.
-test_2_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_2_autogen
-.PHONY : test_2_autogen
+Qmainwindow_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qmainwindow_autogen
+.PHONY : Qmainwindow_autogen
 
 # fast build rule for target.
-test_2_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2_autogen.dir\build.make CMakeFiles/test_2_autogen.dir/build
-.PHONY : test_2_autogen/fast
+Qmainwindow_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/build
+.PHONY : Qmainwindow_autogen/fast
+
+Qmainwindow_autogen/mocs_compilation.obj: Qmainwindow_autogen/mocs_compilation.cpp.obj
+.PHONY : Qmainwindow_autogen/mocs_compilation.obj
+
+# target to build an object file
+Qmainwindow_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj
+.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.obj
+
+Qmainwindow_autogen/mocs_compilation.i: Qmainwindow_autogen/mocs_compilation.cpp.i
+.PHONY : Qmainwindow_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+Qmainwindow_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.i
+.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.i
+
+Qmainwindow_autogen/mocs_compilation.s: Qmainwindow_autogen/mocs_compilation.cpp.s
+.PHONY : Qmainwindow_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+Qmainwindow_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.s
+.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -154,7 +178,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -162,56 +186,32 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-test_2_autogen/mocs_compilation.obj: test_2_autogen/mocs_compilation.cpp.obj
-.PHONY : test_2_autogen/mocs_compilation.obj
+mainwindow.obj: mainwindow.cpp.obj
+.PHONY : mainwindow.obj
 
 # target to build an object file
-test_2_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/test_2_autogen/mocs_compilation.cpp.obj
-.PHONY : test_2_autogen/mocs_compilation.cpp.obj
+mainwindow.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj
+.PHONY : mainwindow.cpp.obj
 
-test_2_autogen/mocs_compilation.i: test_2_autogen/mocs_compilation.cpp.i
-.PHONY : test_2_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-test_2_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/test_2_autogen/mocs_compilation.cpp.i
-.PHONY : test_2_autogen/mocs_compilation.cpp.i
-
-test_2_autogen/mocs_compilation.s: test_2_autogen/mocs_compilation.cpp.s
-.PHONY : test_2_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-test_2_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/test_2_autogen/mocs_compilation.cpp.s
-.PHONY : test_2_autogen/mocs_compilation.cpp.s
-
-widget.obj: widget.cpp.obj
-.PHONY : widget.obj
-
-# target to build an object file
-widget.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/widget.cpp.obj
-.PHONY : widget.cpp.obj
-
-widget.i: widget.cpp.i
-.PHONY : widget.i
+mainwindow.i: mainwindow.cpp.i
+.PHONY : mainwindow.i
 
 # target to preprocess a source file
-widget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/widget.cpp.i
-.PHONY : widget.cpp.i
+mainwindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.i
+.PHONY : mainwindow.cpp.i
 
-widget.s: widget.cpp.s
-.PHONY : widget.s
+mainwindow.s: mainwindow.cpp.s
+.PHONY : mainwindow.s
 
 # target to generate assembly for a file
-widget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_2.dir\build.make CMakeFiles/test_2.dir/widget.cpp.s
-.PHONY : widget.cpp.s
+mainwindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.s
+.PHONY : mainwindow.cpp.s
 
 # Help Target
 help:
@@ -221,17 +221,17 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... test_2_autogen
-	@echo ... test_2
+	@echo ... Qmainwindow_autogen
+	@echo ... Qmainwindow
+	@echo ... Qmainwindow_autogen/mocs_compilation.obj
+	@echo ... Qmainwindow_autogen/mocs_compilation.i
+	@echo ... Qmainwindow_autogen/mocs_compilation.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... test_2_autogen/mocs_compilation.obj
-	@echo ... test_2_autogen/mocs_compilation.i
-	@echo ... test_2_autogen/mocs_compilation.s
-	@echo ... widget.obj
-	@echo ... widget.i
-	@echo ... widget.s
+	@echo ... mainwindow.obj
+	@echo ... mainwindow.i
+	@echo ... mainwindow.s
 .PHONY : help
 
 
