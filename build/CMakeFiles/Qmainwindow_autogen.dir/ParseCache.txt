@@ -330,6 +330,6 @@ E:/vscode/QTproject/QmainWindow/Qmainwindow/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wctype.h
 E:/vscode/QTproject/QmainWindow/Qmainwindow/main.cpp
-E:/vscode/QTproject/QmainWindow/Qmainwindow/log.hpp
 E:/vscode/QTproject/QmainWindow/Qmainwindow/mainwindow.cpp
  uic:./ui_mainwindow.h
+E:/vscode/QTproject/QmainWindow/Qmainwindow/log.hpp

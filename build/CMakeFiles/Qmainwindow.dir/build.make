@@ -68,11 +68,19 @@ include CMakeFiles/Qmainwindow.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Qmainwindow.dir/flags.make
 
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp: E:/vscode/QTproject/QmainWindow/Qmainwindow/icon.qrc
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp: CMakeFiles/Qmainwindow_autogen.dir/AutoRcc_icon_EWIEGA46WW_Info.json
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp: E:/vscode/QTproject/QmainWindow/Qmainwindow/icon/icon-48.png
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp: E:/vscode/QTproject/QmainWindow/Qmainwindow/icon/icon-24.png
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp: C:/Qt/6.3.1/mingw_64/./bin/rcc.exe
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for icon.qrc"
+	C:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc E:/vscode/build/CMakeFiles/Qmainwindow_autogen.dir/AutoRcc_icon_EWIEGA46WW_Info.json Debug
+
 CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj: CMakeFiles/Qmainwindow.dir/flags.make
 CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj: CMakeFiles/Qmainwindow.dir/includes_CXX.rsp
 CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj: Qmainwindow_autogen/mocs_compilation.cpp
 CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj: CMakeFiles/Qmainwindow.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\mocs_compilation.cpp.obj -c E:\vscode\build\Qmainwindow_autogen\mocs_compilation.cpp
 
 CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.i: cmake_force
@@ -87,7 +95,7 @@ CMakeFiles/Qmainwindow.dir/main.cpp.obj: CMakeFiles/Qmainwindow.dir/flags.make
 CMakeFiles/Qmainwindow.dir/main.cpp.obj: CMakeFiles/Qmainwindow.dir/includes_CXX.rsp
 CMakeFiles/Qmainwindow.dir/main.cpp.obj: E:/vscode/QTproject/QmainWindow/Qmainwindow/main.cpp
 CMakeFiles/Qmainwindow.dir/main.cpp.obj: CMakeFiles/Qmainwindow.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Qmainwindow.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Qmainwindow.dir/main.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qmainwindow.dir/main.cpp.obj -MF CMakeFiles\Qmainwindow.dir\main.cpp.obj.d -o CMakeFiles\Qmainwindow.dir\main.cpp.obj -c E:\vscode\QTproject\QmainWindow\Qmainwindow\main.cpp
 
 CMakeFiles/Qmainwindow.dir/main.cpp.i: cmake_force
@@ -102,7 +110,7 @@ CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj: CMakeFiles/Qmainwindow.dir/flags.
 CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj: CMakeFiles/Qmainwindow.dir/includes_CXX.rsp
 CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj: E:/vscode/QTproject/QmainWindow/Qmainwindow/mainwindow.cpp
 CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj: CMakeFiles/Qmainwindow.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj -MF CMakeFiles\Qmainwindow.dir\mainwindow.cpp.obj.d -o CMakeFiles\Qmainwindow.dir\mainwindow.cpp.obj -c E:\vscode\QTproject\QmainWindow\Qmainwindow\mainwindow.cpp
 
 CMakeFiles/Qmainwindow.dir/mainwindow.cpp.i: cmake_force
@@ -113,11 +121,27 @@ CMakeFiles/Qmainwindow.dir/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Qmainwindow.dir/mainwindow.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\vscode\QTproject\QmainWindow\Qmainwindow\mainwindow.cpp -o CMakeFiles\Qmainwindow.dir\mainwindow.cpp.s
 
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj: CMakeFiles/Qmainwindow.dir/flags.make
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj: CMakeFiles/Qmainwindow.dir/includes_CXX.rsp
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj: CMakeFiles/Qmainwindow.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj -MF CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp.obj.d -o CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp.obj -c E:\vscode\build\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp
+
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\vscode\build\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp > CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp.i
+
+CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\vscode\build\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp -o CMakeFiles\Qmainwindow.dir\Qmainwindow_autogen\EWIEGA46WW\qrc_icon.cpp.s
+
 # Object files for target Qmainwindow
 Qmainwindow_OBJECTS = \
 "CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/Qmainwindow.dir/main.cpp.obj" \
-"CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj"
+"CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj" \
+"CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj"
 
 # External object files for target Qmainwindow
 Qmainwindow_EXTERNAL_OBJECTS =
@@ -125,6 +149,7 @@ Qmainwindow_EXTERNAL_OBJECTS =
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/main.cpp.obj
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj
+Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/build.make
 Qmainwindow.exe: C:/Qt/6.3.1/mingw_64/lib/libQt6Widgets.a
 Qmainwindow.exe: C:/Qt/6.3.1/mingw_64/lib/libQt6Gui.a
@@ -133,7 +158,7 @@ Qmainwindow.exe: C:/Qt/6.3.1/mingw_64/lib/libQt6EntryPoint.a
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/linklibs.rsp
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/objects1.rsp
 Qmainwindow.exe: CMakeFiles/Qmainwindow.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Qmainwindow.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Qmainwindow.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Qmainwindow.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -144,7 +169,7 @@ CMakeFiles/Qmainwindow.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles\Qmainwindow.dir\cmake_clean.cmake
 .PHONY : CMakeFiles/Qmainwindow.dir/clean
 
-CMakeFiles/Qmainwindow.dir/depend:
+CMakeFiles/Qmainwindow.dir/depend: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\vscode\QTproject\QmainWindow\Qmainwindow E:\vscode\QTproject\QmainWindow\Qmainwindow E:\vscode\build E:\vscode\build E:\vscode\build\CMakeFiles\Qmainwindow.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Qmainwindow.dir/depend
 

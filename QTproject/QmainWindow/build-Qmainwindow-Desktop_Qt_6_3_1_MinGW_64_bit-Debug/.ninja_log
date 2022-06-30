@@ -1,0 +1,9 @@
+# ninja log v5
+17	339	6782748573412846	Qmainwindow_autogen/timestamp	a92a6fe577f43cee
+1338	4350	6782736331860730	CMakeFiles/Qmainwindow.dir/main.cpp.obj	a9d9439d79f74ac9
+17	339	6782748573412846	Qmainwindow_autogen/mocs_compilation.cpp	a92a6fe577f43cee
+17	339	6782748573412846	E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qmainwindow_autogen/timestamp	a92a6fe577f43cee
+17	339	6782748573412846	E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qmainwindow_autogen/mocs_compilation.cpp	a92a6fe577f43cee
+1344	4287	6782736331170159	CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj	b585b0af5c84caf3
+3249	3561	6782748605572006	Qmainwindow.exe	b88da7a8a86462e8
+355	3248	6782748602499218	CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj	6f57f23ed6f9d5c

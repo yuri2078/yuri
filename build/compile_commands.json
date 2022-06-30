@@ -13,5 +13,10 @@
   "directory": "E:/vscode/build",
   "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/Qmainwindow.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Qmainwindow.dir\\mainwindow.cpp.obj -c E:\\vscode\\QTproject\\QmainWindow\\Qmainwindow\\mainwindow.cpp",
   "file": "E:/vscode/QTproject/QmainWindow/Qmainwindow/mainwindow.cpp"
+},
+{
+  "directory": "E:/vscode/build",
+  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/Qmainwindow.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\Qmainwindow.dir\\Qmainwindow_autogen\\EWIEGA46WW\\qrc_icon.cpp.obj -c E:\\vscode\\build\\Qmainwindow_autogen\\EWIEGA46WW\\qrc_icon.cpp",
+  "file": "E:/vscode/build/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp"
 }
 ]

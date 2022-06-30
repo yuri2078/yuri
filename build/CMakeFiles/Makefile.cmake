@@ -123,6 +123,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows.cmake"
   "C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake"
   "E:/vscode/QTproject/QmainWindow/Qmainwindow/CMakeLists.txt"
+  "E:/vscode/QTproject/QmainWindow/Qmainwindow/icon.qrc"
   "CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.21.1/CMakeRCCompiler.cmake"
   "CMakeFiles/3.21.1/CMakeSystem.cmake"
@@ -137,6 +138,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/Qmainwindow_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/Qmainwindow_autogen.dir/AutoRcc_icon_EWIEGA46WW_Info.json"
   ".qt/QtDeploySupport.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )

@@ -258,7 +258,8 @@
 		"C:/Qt/6.3.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake",
 		"C:/Qt/6.3.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake",
 		"C:/Qt/6.3.1/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake",
-		"C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeParseArguments.cmake"
+		"C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/CMakeParseArguments.cmake",
+		"E:/vscode/QTproject/QmainWindow/Qmainwindow/icon.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "E:/vscode/QTproject/QmainWindow/Qmainwindow",
 	"DEP_FILE" : "",

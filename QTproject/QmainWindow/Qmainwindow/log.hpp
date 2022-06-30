@@ -13,6 +13,7 @@ private:
 
 public:
     M_log &operator<<(const std::string &temp);
+    M_log &operator<<(const int &temp);
     M_log(QObject *parent);
     int clean();
 };
@@ -20,6 +21,7 @@ M_log::M_log(QObject *parent) : QObject(parent)
 {
 
 }
+
 M_log & M_log::operator << (const std::string &temp)
 {
     std::fstream fst;
@@ -38,6 +40,26 @@ M_log & M_log::operator << (const std::string &temp)
     fst.close();
     return *this;
 }
+
+M_log & M_log::operator << (const int &temp)
+{
+    std::fstream fst;
+    fst.open("E:/vscode/log.txt", std::ios::app);
+    time_t time_1 = time(NULL);
+    struct tm *t = localtime(&time_1);
+    if(my_time != time_1)
+    {
+        fst << "记录日志 : " << t->tm_year + 1900 << " 年 " << t->tm_mon << " 月 ";
+        fst << t->tm_mday << " 日 " << t->tm_hour << " 时 " << t->tm_min << " 分" << std::endl;
+    }
+    
+    fst << temp << std::endl;
+    my_time = time_1;
+
+    fst.close();
+    return *this;
+}
+
 
 int M_log::clean()
 {

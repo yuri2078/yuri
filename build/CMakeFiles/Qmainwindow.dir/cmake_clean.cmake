@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj"
+  "CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj.d"
   "CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/Qmainwindow.dir/main.cpp.obj"
@@ -11,6 +13,7 @@ file(REMOVE_RECURSE
   "Qmainwindow.exe"
   "Qmainwindow.exe.manifest"
   "Qmainwindow.pdb"
+  "Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp"
   "libQmainwindow.dll.a"
 )
 

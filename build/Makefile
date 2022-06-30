@@ -141,6 +141,30 @@ Qmainwindow_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/build
 .PHONY : Qmainwindow_autogen/fast
 
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj
+
+# target to build an object file
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
+
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i
+
+# target to preprocess a source file
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
+
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s
+
+# target to generate assembly for a file
+Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
+.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
+
 Qmainwindow_autogen/mocs_compilation.obj: Qmainwindow_autogen/mocs_compilation.cpp.obj
 .PHONY : Qmainwindow_autogen/mocs_compilation.obj
 
@@ -223,6 +247,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... Qmainwindow_autogen
 	@echo ... Qmainwindow
+	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj
+	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i
+	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s
 	@echo ... Qmainwindow_autogen/mocs_compilation.obj
 	@echo ... Qmainwindow_autogen/mocs_compilation.i
 	@echo ... Qmainwindow_autogen/mocs_compilation.s

@@ -1,0 +1,23 @@
+{
+	"BUILD_DIR" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qmainwindow_autogen",
+	"CMAKE_BINARY_DIR" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "E:/vscode/QTproject/QmainWindow/Qmainwindow",
+	"CMAKE_SOURCE_DIR" : "E:/vscode/QTproject/QmainWindow/Qmainwindow",
+	"INCLUDE_DIR" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qmainwindow_autogen/include",
+	"INPUTS" : 
+	[
+		"E:/vscode/QTproject/QmainWindow/Qmainwindow/icon/icon-48.png",
+		"E:/vscode/QTproject/QmainWindow/Qmainwindow/icon/icon-24.png"
+	],
+	"LOCK_FILE" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/Qmainwindow_autogen.dir/AutoRcc_icon_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "icon" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_icon.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.3.1/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "E:/vscode/QTproject/QmainWindow/build-Qmainwindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/Qmainwindow_autogen.dir/AutoRcc_icon_EWIEGA46WW_Used.txt",
+	"SOURCE" : "E:/vscode/QTproject/QmainWindow/Qmainwindow/icon.qrc",
+	"VERBOSITY" : 0
+}
