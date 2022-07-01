@@ -1,0 +1,5 @@
+E:/vscode/QTproject/loginWindow/build-loginWindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/loginWindow.dir
+E:/vscode/QTproject/loginWindow/build-loginWindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+E:/vscode/QTproject/loginWindow/build-loginWindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+E:/vscode/QTproject/loginWindow/build-loginWindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/loginWindow_autogen_timestamp_deps.dir
+E:/vscode/QTproject/loginWindow/build-loginWindow-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/loginWindow_autogen.dir

@@ -1,12 +1,8 @@
 #include <iostream>
 #include <stdarg.h> //包含头文件
-#include <stdio.h>
 using std::cout;
 using std::endl;
 using namespace std;
-
-#define LOG(temp,...) printf(temp,__VA_ARGS__)
-
 
 
 void fun_1(...)
@@ -20,8 +16,8 @@ void fun_1(...)
 void fun_2(const char *temp, ...)
 {
     //弊端 float -> double char->int short->int
-    va_list start;
-    va_start(start, temp); //让 start 指向 temp
+    va_list start; //初始化列表
+    va_start(start, temp); //初始化start 并且告诉他有几个变量，或从指定位置开始
     int arg_int = va_arg(start, int);
     float arg_float = va_arg(start, double); //报错，因为float 传参数的时候是按doube 传的
     double arg_double = va_arg(start, double);
@@ -33,12 +29,32 @@ void fun_2(const char *temp, ...)
     cout << "agr_char - " << arg_char << "  " << endl;
 }
 
+template <class T>
+void print(const T &temp)
+{
+    cout << temp << endl;
+}
+
+
+template <class T, class ... Args>
+//定义两个模版变量 每次将第一个给 T 剩下的给 args
+//这样每次解包递归时，解包的第一个总是给 T 直到解包只有最有一个
+void print(const T &temp, Args ...args)
+{
+    cout << temp << " ";
+    print(args ...);
+    //当参数只有一个的时候，调用重载的函数打印
+}
+
+
+
 int main()
 {
     fun_1(1, 2, 3, 43, 4);
     fun_2("hello", 1, 2.3f, 4.4, "wocao");
     cout << "少参数调用 --- \n";
     fun_2("yuri", "niubi");
-    LOG("hello", 555);
+    print("333", 3343, 43.3, 'c', "wjfsidfj", 4.4f);
     return 0;
+    
 }

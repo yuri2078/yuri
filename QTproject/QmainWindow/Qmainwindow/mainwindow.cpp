@@ -151,9 +151,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(my_input, &QAction::triggered, [this](){
         QLabel label;
         
-        char temp[100];
-        sprintf(temp, "您的年龄是: %d", QInputDialog::getInt(this, "年龄", "请输入你的年龄", 18));
-        m_log << temp; 
+        cout("您的年龄是: - ", QInputDialog::getText(this, "年龄", "请输入你的年龄").toStdString());
         });
     //其他对话框
     // QColorDialog 选择颜色 QColorDialog::Getcolor();
@@ -161,6 +159,7 @@ MainWindow::MainWindow(QWidget *parent)
     // QFontDialog 选择字体
     // QInputDialog 输入一个数据并且返回
     // QProgressDialog 输入操作过程
+    
 }
 
 MainWindow::~MainWindow()
