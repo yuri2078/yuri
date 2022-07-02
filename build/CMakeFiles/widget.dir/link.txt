@@ -1,0 +1,3 @@
+C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\widget.dir/objects.a
+C:\Qt\Tools\mingw1120_64\bin\ar.exe qc CMakeFiles\widget.dir/objects.a @CMakeFiles\widget.dir\objects1.rsp
+C:\Qt\Tools\mingw1120_64\bin\g++.exe -g -mwindows -Wl,--whole-archive CMakeFiles\widget.dir/objects.a -Wl,--no-whole-archive -o widget.exe -Wl,--out-implib,libwidget.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\widget.dir\linklibs.rsp

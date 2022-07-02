@@ -54,5 +54,15 @@ int main(int argc, char *argv[])
         std::cout << "key : " << start->first << "  value : " << start->second << std::endl;
     }
 
+    std::multimap<int, int>  map_3; //定义可重复的容器
+    for (int i = 0; i < 10;i++)
+    {
+        map_3.insert(std::make_pair(i, 333));
+        map_3.insert(std::make_pair(i, 666));
+    }
+
+    std::cout << "查找可重复容器 --- " << map_3.find(1)->second << std::endl;
+    std::cout << "统计 cout 1 --- " << map_3.count(1) << std::endl;
+    //可重复的容器没有at函数
     return 0;
 }

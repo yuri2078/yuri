@@ -12,6 +12,7 @@
 #include <qcolordialog.h>
 #include <qfiledialog.h>
 #include <qinputdialog.h>
+#include <qnetwork.h>
 #include "log.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -53,9 +54,9 @@ MainWindow::MainWindow(QWidget *parent)
     QPushButton *button_1 = new QPushButton("清除日志", this);
     tool->addWidget(button_1); //添加控件
 
-    connect(button_1, &QPushButton::clicked, this, []() {
-        m_log.clean();
-    });
+    connect(button_1, &QPushButton::clicked, this, []()
+            { logClean();
+     });
 
     //状态栏 只能有一个
     QStatusBar *statusbar = statusBar(); //新建状态栏
@@ -124,7 +125,7 @@ MainWindow::MainWindow(QWidget *parent)
         // 问题提示框 默认是模态对话框
         if(QMessageBox::Save == QMessageBox::question(this, "标题", "需要保存日志吗？",QMessageBox::Save | QMessageBox::Cancel, QMessageBox::Cancel))
         {
-            m_log << "由提问框发出的日志";
+            cout("由提问框发出的日志") ;
         }
         
          //设置按钮类型 和默认类型
@@ -139,12 +140,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(my_color, &QAction::triggered, [this]() {
         QColor color = QColorDialog::getColor(QColor(0,222,3,200));
-        m_log << color.red() << color.green() << color.blue();
+        cout("r - ", color.red(), " g - ", color.green(), " b - ", color.blue());
     });
 
     connect(my_file, &QAction::triggered, [this]() {
         QString str =  QFileDialog::getOpenFileName(this,"默认提示","E:\\vscode","(*.md)"); //后面默认路径 过滤文件
-        m_log << str.toStdString();
+        cout(str.toStdString());
         //返回值是路径
     });
 
@@ -152,6 +153,7 @@ MainWindow::MainWindow(QWidget *parent)
         QLabel label;
         
         cout("您的年龄是: - ", QInputDialog::getText(this, "年龄", "请输入你的年龄").toStdString());
+
         });
     //其他对话框
     // QColorDialog 选择颜色 QColorDialog::Getcolor();
@@ -159,6 +161,7 @@ MainWindow::MainWindow(QWidget *parent)
     // QFontDialog 选择字体
     // QInputDialog 输入一个数据并且返回
     // QProgressDialog 输入操作过程
+    
     
 }
 

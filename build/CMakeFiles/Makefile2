@@ -53,7 +53,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\QmainWindow\Qmainwindow
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\widget\widget
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = E:\vscode\build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Qmainwindow.dir/all
+all: CMakeFiles/widget.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,61 +70,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Qmainwindow.dir/clean
-clean: CMakeFiles/Qmainwindow_autogen.dir/clean
+clean: CMakeFiles/widget.dir/clean
+clean: CMakeFiles/widget_autogen.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Qmainwindow.dir
+# Target rules for target CMakeFiles/widget.dir
 
 # All Build rule for target.
-CMakeFiles/Qmainwindow.dir/all: CMakeFiles/Qmainwindow_autogen.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Qmainwindow"
-.PHONY : CMakeFiles/Qmainwindow.dir/all
+CMakeFiles/widget.dir/all: CMakeFiles/widget_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=1,2,3,4 "Built target widget"
+.PHONY : CMakeFiles/widget.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Qmainwindow.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Qmainwindow.dir/all
+CMakeFiles/widget.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/widget.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 0
-.PHONY : CMakeFiles/Qmainwindow.dir/rule
+.PHONY : CMakeFiles/widget.dir/rule
 
 # Convenience name for target.
-Qmainwindow: CMakeFiles/Qmainwindow.dir/rule
-.PHONY : Qmainwindow
+widget: CMakeFiles/widget.dir/rule
+.PHONY : widget
 
 # clean rule for target.
-CMakeFiles/Qmainwindow.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/clean
-.PHONY : CMakeFiles/Qmainwindow.dir/clean
+CMakeFiles/widget.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/clean
+.PHONY : CMakeFiles/widget.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Qmainwindow_autogen.dir
+# Target rules for target CMakeFiles/widget_autogen.dir
 
 # All Build rule for target.
-CMakeFiles/Qmainwindow_autogen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=7 "Built target Qmainwindow_autogen"
-.PHONY : CMakeFiles/Qmainwindow_autogen.dir/all
+CMakeFiles/widget_autogen.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget_autogen.dir\build.make CMakeFiles/widget_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget_autogen.dir\build.make CMakeFiles/widget_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=5 "Built target widget_autogen"
+.PHONY : CMakeFiles/widget_autogen.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Qmainwindow_autogen.dir/rule: cmake_check_build_system
+CMakeFiles/widget_autogen.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 1
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Qmainwindow_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/widget_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 0
-.PHONY : CMakeFiles/Qmainwindow_autogen.dir/rule
+.PHONY : CMakeFiles/widget_autogen.dir/rule
 
 # Convenience name for target.
-Qmainwindow_autogen: CMakeFiles/Qmainwindow_autogen.dir/rule
-.PHONY : Qmainwindow_autogen
+widget_autogen: CMakeFiles/widget_autogen.dir/rule
+.PHONY : widget_autogen
 
 # clean rule for target.
-CMakeFiles/Qmainwindow_autogen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/clean
-.PHONY : CMakeFiles/Qmainwindow_autogen.dir/clean
+CMakeFiles/widget_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget_autogen.dir\build.make CMakeFiles/widget_autogen.dir/clean
+.PHONY : CMakeFiles/widget_autogen.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

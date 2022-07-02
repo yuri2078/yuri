@@ -56,23 +56,13 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\QmainWindow\Qmainwindow
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\widget\widget
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	C:\Qt\Tools\CMake_64\bin\cmake-gui.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -83,6 +73,16 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	C:\Qt\Tools\CMake_64\bin\cmake-gui.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -116,85 +116,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Qmainwindow
+# Target rules for targets named widget
 
 # Build rule for target.
-Qmainwindow: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qmainwindow
-.PHONY : Qmainwindow
+widget: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 widget
+.PHONY : widget
 
 # fast build rule for target.
-Qmainwindow/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/build
-.PHONY : Qmainwindow/fast
+widget/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/build
+.PHONY : widget/fast
 
 #=============================================================================
-# Target rules for targets named Qmainwindow_autogen
+# Target rules for targets named widget_autogen
 
 # Build rule for target.
-Qmainwindow_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qmainwindow_autogen
-.PHONY : Qmainwindow_autogen
+widget_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 widget_autogen
+.PHONY : widget_autogen
 
 # fast build rule for target.
-Qmainwindow_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow_autogen.dir\build.make CMakeFiles/Qmainwindow_autogen.dir/build
-.PHONY : Qmainwindow_autogen/fast
-
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj
-
-# target to build an object file
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.obj
-
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i
-
-# target to preprocess a source file
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.i
-
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s: Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s
-
-# target to generate assembly for a file
-Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
-.PHONY : Qmainwindow_autogen/EWIEGA46WW/qrc_icon.cpp.s
-
-Qmainwindow_autogen/mocs_compilation.obj: Qmainwindow_autogen/mocs_compilation.cpp.obj
-.PHONY : Qmainwindow_autogen/mocs_compilation.obj
-
-# target to build an object file
-Qmainwindow_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.obj
-.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.obj
-
-Qmainwindow_autogen/mocs_compilation.i: Qmainwindow_autogen/mocs_compilation.cpp.i
-.PHONY : Qmainwindow_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-Qmainwindow_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.i
-.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.i
-
-Qmainwindow_autogen/mocs_compilation.s: Qmainwindow_autogen/mocs_compilation.cpp.s
-.PHONY : Qmainwindow_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-Qmainwindow_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/Qmainwindow_autogen/mocs_compilation.cpp.s
-.PHONY : Qmainwindow_autogen/mocs_compilation.cpp.s
+widget_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget_autogen.dir\build.make CMakeFiles/widget_autogen.dir/build
+.PHONY : widget_autogen/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -202,7 +154,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -210,32 +162,56 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-mainwindow.obj: mainwindow.cpp.obj
-.PHONY : mainwindow.obj
+widget.obj: widget.cpp.obj
+.PHONY : widget.obj
 
 # target to build an object file
-mainwindow.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.obj
-.PHONY : mainwindow.cpp.obj
+widget.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.obj
+.PHONY : widget.cpp.obj
 
-mainwindow.i: mainwindow.cpp.i
-.PHONY : mainwindow.i
+widget.i: widget.cpp.i
+.PHONY : widget.i
 
 # target to preprocess a source file
-mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.i
-.PHONY : mainwindow.cpp.i
+widget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.i
+.PHONY : widget.cpp.i
 
-mainwindow.s: mainwindow.cpp.s
-.PHONY : mainwindow.s
+widget.s: widget.cpp.s
+.PHONY : widget.s
 
 # target to generate assembly for a file
-mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qmainwindow.dir\build.make CMakeFiles/Qmainwindow.dir/mainwindow.cpp.s
-.PHONY : mainwindow.cpp.s
+widget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.s
+.PHONY : widget.cpp.s
+
+widget_autogen/mocs_compilation.obj: widget_autogen/mocs_compilation.cpp.obj
+.PHONY : widget_autogen/mocs_compilation.obj
+
+# target to build an object file
+widget_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.obj
+.PHONY : widget_autogen/mocs_compilation.cpp.obj
+
+widget_autogen/mocs_compilation.i: widget_autogen/mocs_compilation.cpp.i
+.PHONY : widget_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+widget_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.i
+.PHONY : widget_autogen/mocs_compilation.cpp.i
+
+widget_autogen/mocs_compilation.s: widget_autogen/mocs_compilation.cpp.s
+.PHONY : widget_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+widget_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.s
+.PHONY : widget_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -245,20 +221,17 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Qmainwindow_autogen
-	@echo ... Qmainwindow
-	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.obj
-	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.i
-	@echo ... Qmainwindow_autogen/EWIEGA46WW/qrc_icon.s
-	@echo ... Qmainwindow_autogen/mocs_compilation.obj
-	@echo ... Qmainwindow_autogen/mocs_compilation.i
-	@echo ... Qmainwindow_autogen/mocs_compilation.s
+	@echo ... widget_autogen
+	@echo ... widget
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... mainwindow.obj
-	@echo ... mainwindow.i
-	@echo ... mainwindow.s
+	@echo ... widget.obj
+	@echo ... widget.i
+	@echo ... widget.s
+	@echo ... widget_autogen/mocs_compilation.obj
+	@echo ... widget_autogen/mocs_compilation.i
+	@echo ... widget_autogen/mocs_compilation.s
 .PHONY : help
 
 

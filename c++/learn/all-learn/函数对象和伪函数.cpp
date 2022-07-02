@@ -8,6 +8,10 @@ public:
     {
         return x + y;
     }
+    void clean()
+    {
+
+    }
 };
 
 class Fish
@@ -40,6 +44,7 @@ public:
     {
         std::cout << s << "\n";
     }
+    
 };
 
 template <class T>
@@ -56,7 +61,6 @@ int main(void)
 
     Sum sum; //生成一个对象
     std::cout << "sum(10,20) == " << sum(10, 20) << "\n"; //通过对象直接访问函数
-
     Fish fish; //创建一条鱼
     //让他吃几次东西
     fish();

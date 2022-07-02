@@ -85,6 +85,6 @@
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
     "qtConfigure.qtKitDir": "c:/Qt/6.3.1/mingw_64",
-    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/QmainWindow/Qmainwindow",
+    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/widget/widget",
    
 }

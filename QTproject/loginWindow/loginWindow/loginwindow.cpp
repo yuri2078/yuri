@@ -7,6 +7,7 @@ loginWindow::loginWindow(QWidget *parent)
     , ui(new Ui::loginWindow)
 {
     ui->setupUi(this);
+    ui->checkBox->setChecked(true);
 }
 
 loginWindow::~loginWindow()

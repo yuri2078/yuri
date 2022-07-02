@@ -1,0 +1,1 @@
+-IE:/vscode/build -IE:/vscode/QTproject/widget/widget -IE:/vscode/build/widget_autogen/include -isystem C:/Qt/6.3.1/mingw_64/include/QtCore -isystem C:/Qt/6.3.1/mingw_64/include -isystem C:/Qt/6.3.1/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.3.1/mingw_64/include/QtWidgets -isystem C:/Qt/6.3.1/mingw_64/include/QtGui
