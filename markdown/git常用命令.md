@@ -7,6 +7,7 @@
     + ``` git config --global --unset http.proxy ``` 
     +  ``` git config --global --unset https.proxy ```
 
+
 ## 常用命令
 + ``` git add file-name ``` 添加指定文件
 + ``` git add . ``` 添加目录下所有文件
@@ -18,4 +19,14 @@
 + ``` git reset --hard commit_id ``` 回退到某个版本
 + ``` git push main ``` 推送到远程 main 分支
 
- 
+```
+git config --global http.sslVerify "false"
+git config --global --unset http.proxy
+git config --global --unset https.proxy 
+git add ..
+git commit -m "main"
+git push -u origin main
+
+```
+
+```
