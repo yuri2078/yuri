@@ -39,3 +39,4 @@ void logClean()
     fst.open("E:/vscode/log.txt", std::ios::out);
     fst.close();
 }
+

@@ -1,0 +1,5 @@
+E:/vscode/QTproject/otherWidget/build-otherWidget-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+E:/vscode/QTproject/otherWidget/build-otherWidget-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/otherWidget.dir
+E:/vscode/QTproject/otherWidget/build-otherWidget-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+E:/vscode/QTproject/otherWidget/build-otherWidget-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/otherWidget_autogen_timestamp_deps.dir
+E:/vscode/QTproject/otherWidget/build-otherWidget-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/otherWidget_autogen.dir

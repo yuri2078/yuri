@@ -1,17 +1,22 @@
 [
 {
   "directory": "E:/vscode/build",
-  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/widget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\widget.dir\\widget_autogen\\mocs_compilation.cpp.obj -c E:\\vscode\\build\\widget_autogen\\mocs_compilation.cpp",
-  "file": "E:/vscode/build/widget_autogen/mocs_compilation.cpp"
+  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/otherWidget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\otherWidget.dir\\otherWidget_autogen\\mocs_compilation.cpp.obj -c E:\\vscode\\build\\otherWidget_autogen\\mocs_compilation.cpp",
+  "file": "E:/vscode/build/otherWidget_autogen/mocs_compilation.cpp"
 },
 {
   "directory": "E:/vscode/build",
-  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/widget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\widget.dir\\main.cpp.obj -c E:\\vscode\\QTproject\\widget\\widget\\main.cpp",
-  "file": "E:/vscode/QTproject/widget/widget/main.cpp"
+  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/otherWidget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\otherWidget.dir\\main.cpp.obj -c E:\\vscode\\QTproject\\otherWidget\\otherWidget\\main.cpp",
+  "file": "E:/vscode/QTproject/otherWidget/otherWidget/main.cpp"
 },
 {
   "directory": "E:/vscode/build",
-  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/widget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\widget.dir\\widget.cpp.obj -c E:\\vscode\\QTproject\\widget\\widget\\widget.cpp",
-  "file": "E:/vscode/QTproject/widget/widget/widget.cpp"
+  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/otherWidget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\otherWidget.dir\\mainwindow.cpp.obj -c E:\\vscode\\QTproject\\otherWidget\\otherWidget\\mainwindow.cpp",
+  "file": "E:/vscode/QTproject/otherWidget/otherWidget/mainwindow.cpp"
+},
+{
+  "directory": "E:/vscode/build",
+  "command": "C:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64 @CMakeFiles/otherWidget.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\otherWidget.dir\\otherWidget_autogen\\EWIEGA46WW\\qrc_images.cpp.obj -c E:\\vscode\\build\\otherWidget_autogen\\EWIEGA46WW\\qrc_images.cpp",
+  "file": "E:/vscode/build/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp"
 }
 ]

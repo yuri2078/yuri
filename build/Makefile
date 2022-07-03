@@ -56,7 +56,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\widget\widget
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\otherWidget\otherWidget
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -116,37 +116,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named widget
+# Target rules for targets named otherWidget
 
 # Build rule for target.
-widget: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 widget
-.PHONY : widget
+otherWidget: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherWidget
+.PHONY : otherWidget
 
 # fast build rule for target.
-widget/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/build
-.PHONY : widget/fast
+otherWidget/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/build
+.PHONY : otherWidget/fast
 
 #=============================================================================
-# Target rules for targets named widget_autogen
+# Target rules for targets named otherWidget_autogen
 
 # Build rule for target.
-widget_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 widget_autogen
-.PHONY : widget_autogen
+otherWidget_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherWidget_autogen
+.PHONY : otherWidget_autogen
 
 # fast build rule for target.
-widget_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget_autogen.dir\build.make CMakeFiles/widget_autogen.dir/build
-.PHONY : widget_autogen/fast
+otherWidget_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget_autogen.dir\build.make CMakeFiles/otherWidget_autogen.dir/build
+.PHONY : otherWidget_autogen/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -154,7 +154,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -162,56 +162,80 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-widget.obj: widget.cpp.obj
-.PHONY : widget.obj
+mainwindow.obj: mainwindow.cpp.obj
+.PHONY : mainwindow.obj
 
 # target to build an object file
-widget.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.obj
-.PHONY : widget.cpp.obj
+mainwindow.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.obj
+.PHONY : mainwindow.cpp.obj
 
-widget.i: widget.cpp.i
-.PHONY : widget.i
+mainwindow.i: mainwindow.cpp.i
+.PHONY : mainwindow.i
 
 # target to preprocess a source file
-widget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.i
-.PHONY : widget.cpp.i
+mainwindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.i
+.PHONY : mainwindow.cpp.i
 
-widget.s: widget.cpp.s
-.PHONY : widget.s
+mainwindow.s: mainwindow.cpp.s
+.PHONY : mainwindow.s
 
 # target to generate assembly for a file
-widget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget.cpp.s
-.PHONY : widget.cpp.s
+mainwindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.s
+.PHONY : mainwindow.cpp.s
 
-widget_autogen/mocs_compilation.obj: widget_autogen/mocs_compilation.cpp.obj
-.PHONY : widget_autogen/mocs_compilation.obj
+otherWidget_autogen/EWIEGA46WW/qrc_images.obj: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.obj
 
 # target to build an object file
-widget_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.obj
-.PHONY : widget_autogen/mocs_compilation.cpp.obj
+otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
 
-widget_autogen/mocs_compilation.i: widget_autogen/mocs_compilation.cpp.i
-.PHONY : widget_autogen/mocs_compilation.i
+otherWidget_autogen/EWIEGA46WW/qrc_images.i: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.i
 
 # target to preprocess a source file
-widget_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.i
-.PHONY : widget_autogen/mocs_compilation.cpp.i
+otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
 
-widget_autogen/mocs_compilation.s: widget_autogen/mocs_compilation.cpp.s
-.PHONY : widget_autogen/mocs_compilation.s
+otherWidget_autogen/EWIEGA46WW/qrc_images.s: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.s
 
 # target to generate assembly for a file
-widget_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\widget.dir\build.make CMakeFiles/widget.dir/widget_autogen/mocs_compilation.cpp.s
-.PHONY : widget_autogen/mocs_compilation.cpp.s
+otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
+.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
+
+otherWidget_autogen/mocs_compilation.obj: otherWidget_autogen/mocs_compilation.cpp.obj
+.PHONY : otherWidget_autogen/mocs_compilation.obj
+
+# target to build an object file
+otherWidget_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.obj
+.PHONY : otherWidget_autogen/mocs_compilation.cpp.obj
+
+otherWidget_autogen/mocs_compilation.i: otherWidget_autogen/mocs_compilation.cpp.i
+.PHONY : otherWidget_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+otherWidget_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.i
+.PHONY : otherWidget_autogen/mocs_compilation.cpp.i
+
+otherWidget_autogen/mocs_compilation.s: otherWidget_autogen/mocs_compilation.cpp.s
+.PHONY : otherWidget_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+otherWidget_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.s
+.PHONY : otherWidget_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -221,17 +245,20 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... widget_autogen
-	@echo ... widget
+	@echo ... otherWidget_autogen
+	@echo ... otherWidget
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... widget.obj
-	@echo ... widget.i
-	@echo ... widget.s
-	@echo ... widget_autogen/mocs_compilation.obj
-	@echo ... widget_autogen/mocs_compilation.i
-	@echo ... widget_autogen/mocs_compilation.s
+	@echo ... mainwindow.obj
+	@echo ... mainwindow.i
+	@echo ... mainwindow.s
+	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.obj
+	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.i
+	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.s
+	@echo ... otherWidget_autogen/mocs_compilation.obj
+	@echo ... otherWidget_autogen/mocs_compilation.i
+	@echo ... otherWidget_autogen/mocs_compilation.s
 .PHONY : help
 
 
