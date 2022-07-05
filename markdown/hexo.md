@@ -17,7 +17,7 @@
 
 + 创建一个文件夹 并 右击 在git bash中打开 / win + R  cd 进去 
 
-+ 安装hexo npm i hexo-cli -g
++  npm i hexo-cli -g 安装hexo
 
 + hexo -v 查看是否成功安装 
 
@@ -63,6 +63,23 @@ deploy:
 
 + hexo g 生成静态文件
 + hexo d 提交到GitHub 随后访问 https://用户名.github.io 就可以访问了
+
+
+# 日常使用
++ hexo new page "categories" 添加分类功能 
+  + categories: - hello world 设置分类
++ hexo new page "tags" 添加标签功能
+  + tags: 可以多个
+  ```
+    - jQuery
+    - 表格
+    - 表单验证
+  ```
++ hexo new page "about" 添加关于界面
++ hexo new page "contact" 添加联系界面
++ npm i --save hexo-wordcount 安装 统计字数插件  
++ npm install hexo-deployer-git --save 解决git报错d
+ 
 
 
 
