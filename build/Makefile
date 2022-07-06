@@ -56,23 +56,13 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\otherWidget\otherWidget
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\Qevent\Qevent
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	C:\Qt\Tools\CMake_64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -83,6 +73,16 @@ edit_cache:
 # Special rule for the target edit_cache
 edit_cache/fast: edit_cache
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	C:\Qt\Tools\CMake_64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -116,37 +116,61 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named otherWidget
+# Target rules for targets named Qevent
 
 # Build rule for target.
-otherWidget: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherWidget
-.PHONY : otherWidget
+Qevent: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qevent
+.PHONY : Qevent
 
 # fast build rule for target.
-otherWidget/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/build
-.PHONY : otherWidget/fast
+Qevent/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/build
+.PHONY : Qevent/fast
 
 #=============================================================================
-# Target rules for targets named otherWidget_autogen
+# Target rules for targets named Qevent_autogen
 
 # Build rule for target.
-otherWidget_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherWidget_autogen
-.PHONY : otherWidget_autogen
+Qevent_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qevent_autogen
+.PHONY : Qevent_autogen
 
 # fast build rule for target.
-otherWidget_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget_autogen.dir\build.make CMakeFiles/otherWidget_autogen.dir/build
-.PHONY : otherWidget_autogen/fast
+Qevent_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent_autogen.dir\build.make CMakeFiles/Qevent_autogen.dir/build
+.PHONY : Qevent_autogen/fast
+
+Qevent_autogen/mocs_compilation.obj: Qevent_autogen/mocs_compilation.cpp.obj
+.PHONY : Qevent_autogen/mocs_compilation.obj
+
+# target to build an object file
+Qevent_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj
+.PHONY : Qevent_autogen/mocs_compilation.cpp.obj
+
+Qevent_autogen/mocs_compilation.i: Qevent_autogen/mocs_compilation.cpp.i
+.PHONY : Qevent_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+Qevent_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.i
+.PHONY : Qevent_autogen/mocs_compilation.cpp.i
+
+Qevent_autogen/mocs_compilation.s: Qevent_autogen/mocs_compilation.cpp.s
+.PHONY : Qevent_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+Qevent_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.s
+.PHONY : Qevent_autogen/mocs_compilation.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -154,7 +178,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -162,7 +186,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 mainwindow.obj: mainwindow.cpp.obj
@@ -170,7 +194,7 @@ mainwindow.obj: mainwindow.cpp.obj
 
 # target to build an object file
 mainwindow.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.obj
 .PHONY : mainwindow.cpp.obj
 
 mainwindow.i: mainwindow.cpp.i
@@ -178,7 +202,7 @@ mainwindow.i: mainwindow.cpp.i
 
 # target to preprocess a source file
 mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.i
 .PHONY : mainwindow.cpp.i
 
 mainwindow.s: mainwindow.cpp.s
@@ -186,56 +210,32 @@ mainwindow.s: mainwindow.cpp.s
 
 # target to generate assembly for a file
 mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
-otherWidget_autogen/EWIEGA46WW/qrc_images.obj: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.obj
+mylabel.obj: mylabel.cpp.obj
+.PHONY : mylabel.obj
 
 # target to build an object file
-otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.obj
+mylabel.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.obj
+.PHONY : mylabel.cpp.obj
 
-otherWidget_autogen/EWIEGA46WW/qrc_images.i: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.i
-
-# target to preprocess a source file
-otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.i
-
-otherWidget_autogen/EWIEGA46WW/qrc_images.s: otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.s
-
-# target to generate assembly for a file
-otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
-.PHONY : otherWidget_autogen/EWIEGA46WW/qrc_images.cpp.s
-
-otherWidget_autogen/mocs_compilation.obj: otherWidget_autogen/mocs_compilation.cpp.obj
-.PHONY : otherWidget_autogen/mocs_compilation.obj
-
-# target to build an object file
-otherWidget_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.obj
-.PHONY : otherWidget_autogen/mocs_compilation.cpp.obj
-
-otherWidget_autogen/mocs_compilation.i: otherWidget_autogen/mocs_compilation.cpp.i
-.PHONY : otherWidget_autogen/mocs_compilation.i
+mylabel.i: mylabel.cpp.i
+.PHONY : mylabel.i
 
 # target to preprocess a source file
-otherWidget_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.i
-.PHONY : otherWidget_autogen/mocs_compilation.cpp.i
+mylabel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.i
+.PHONY : mylabel.cpp.i
 
-otherWidget_autogen/mocs_compilation.s: otherWidget_autogen/mocs_compilation.cpp.s
-.PHONY : otherWidget_autogen/mocs_compilation.s
+mylabel.s: mylabel.cpp.s
+.PHONY : mylabel.s
 
 # target to generate assembly for a file
-otherWidget_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherWidget.dir\build.make CMakeFiles/otherWidget.dir/otherWidget_autogen/mocs_compilation.cpp.s
-.PHONY : otherWidget_autogen/mocs_compilation.cpp.s
+mylabel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.s
+.PHONY : mylabel.cpp.s
 
 # Help Target
 help:
@@ -245,20 +245,20 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... otherWidget_autogen
-	@echo ... otherWidget
+	@echo ... Qevent_autogen
+	@echo ... Qevent
+	@echo ... Qevent_autogen/mocs_compilation.obj
+	@echo ... Qevent_autogen/mocs_compilation.i
+	@echo ... Qevent_autogen/mocs_compilation.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
-	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.obj
-	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.i
-	@echo ... otherWidget_autogen/EWIEGA46WW/qrc_images.s
-	@echo ... otherWidget_autogen/mocs_compilation.obj
-	@echo ... otherWidget_autogen/mocs_compilation.i
-	@echo ... otherWidget_autogen/mocs_compilation.s
+	@echo ... mylabel.obj
+	@echo ... mylabel.i
+	@echo ... mylabel.s
 .PHONY : help
 
 

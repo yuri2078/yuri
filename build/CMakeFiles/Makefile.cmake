@@ -122,8 +122,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows-windres.cmake"
   "C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/Windows.cmake"
   "C:/Qt/Tools/CMake_64/share/cmake-3.21/Modules/Platform/WindowsPaths.cmake"
-  "E:/vscode/QTproject/otherWidget/otherWidget/CMakeLists.txt"
-  "E:/vscode/QTproject/otherWidget/otherWidget/images.qrc"
+  "E:/vscode/QTproject/Qevent/Qevent/CMakeLists.txt"
   "CMakeFiles/3.21.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.21.1/CMakeRCCompiler.cmake"
   "CMakeFiles/3.21.1/CMakeSystem.cmake"
@@ -137,14 +136,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/otherWidget_autogen.dir/AutogenInfo.json"
-  "CMakeFiles/otherWidget_autogen.dir/AutoRcc_images_EWIEGA46WW_Info.json"
+  "CMakeFiles/Qevent_autogen.dir/AutogenInfo.json"
   ".qt/QtDeploySupport.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/otherWidget.dir/DependInfo.cmake"
-  "CMakeFiles/otherWidget_autogen.dir/DependInfo.cmake"
+  "CMakeFiles/Qevent.dir/DependInfo.cmake"
+  "CMakeFiles/Qevent_autogen.dir/DependInfo.cmake"
   )

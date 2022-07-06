@@ -1,4 +1,4 @@
-E:/vscode/build/CMakeFiles/rebuild_cache.dir
-E:/vscode/build/CMakeFiles/otherWidget.dir
+E:/vscode/build/CMakeFiles/Qevent.dir
 E:/vscode/build/CMakeFiles/edit_cache.dir
-E:/vscode/build/CMakeFiles/otherWidget_autogen.dir
+E:/vscode/build/CMakeFiles/rebuild_cache.dir
+E:/vscode/build/CMakeFiles/Qevent_autogen.dir

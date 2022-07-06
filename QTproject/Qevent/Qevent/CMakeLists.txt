@@ -19,8 +19,8 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        my.h
-        my.cpp
+        myLabel.h
+        myLabel.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

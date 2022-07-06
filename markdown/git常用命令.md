@@ -19,6 +19,13 @@
 + ``` git reset --hard commit_id ``` 回退到某个版本
 + ``` git push main ``` 推送到远程 main 分支
 
+## 远程覆盖本地
++ ``` git fetch --all ```
++ ``` git reset --hard origin/main ```
++ ``` git pull ```
+
+
+
 ```
 git config --global http.sslVerify "false"
 git config --global --unset http.proxy

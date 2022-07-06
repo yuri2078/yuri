@@ -1,0 +1,23 @@
+# ninja log v5
+1746	5427	6788118774050329	CMakeFiles/Qevent.dir/main.cpp.obj	3f15ee6e746960fc
+1	1739	6788118733680102	Qevent_autogen/timestamp	753f65bf33767f31
+1	1739	6788118733680102	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/timestamp	753f65bf33767f31
+1	1739	6788118733680102	Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+1	1739	6788118733680102	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+1740	5523	6788118774992278	CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj	e9979a07da519a5a
+1750	5410	6788118773870166	CMakeFiles/Qevent.dir/mainwindow.cpp.obj	ed1123be94e27cc
+1743	5539	6788118775182451	CMakeFiles/Qevent.dir/mylabel.cpp.obj	1e5be969e0cabe46
+5540	5841	6788118778185160	Qevent.exe	ad3552b277b1bb8e
+3	771	6788130743423517	build.ninja	abfc72fa3cdc672e
+12	1192	6788130753418384	Qevent_autogen/timestamp	753f65bf33767f31
+12	1192	6788130753418384	Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+12	1192	6788130753418384	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/timestamp	753f65bf33767f31
+12	1192	6788130753418384	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+1197	4559	6788130790042437	CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj	e9979a07da519a5a
+21	1065	6788131920158478	Qevent_autogen/timestamp	753f65bf33767f31
+21	1065	6788131920158478	Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+21	1065	6788131920158478	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/timestamp	753f65bf33767f31
+21	1065	6788131920158478	E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/Qevent_autogen/mocs_compilation.cpp	753f65bf33767f31
+1069	3918	6788131951312945	CMakeFiles/Qevent.dir/mylabel.cpp.obj	1e5be969e0cabe46
+1066	3972	6788131951843422	CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj	e9979a07da519a5a
+1072	3974	6788131951853432	CMakeFiles/Qevent.dir/mainwindow.cpp.obj	ed1123be94e27cc

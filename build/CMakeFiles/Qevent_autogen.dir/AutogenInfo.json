@@ -272,9 +272,9 @@
 			null
 		],
 		[
-			"E:/vscode/QTproject/Qevent/Qevent/my.h",
+			"E:/vscode/QTproject/Qevent/Qevent/mylabel.h",
 			"MU",
-			"EWIEGA46WW/moc_my.cpp",
+			"EWIEGA46WW/moc_mylabel.cpp",
 			null
 		]
 	],
@@ -351,7 +351,7 @@
 	[
 		[ "E:/vscode/QTproject/Qevent/Qevent/main.cpp", "MU", null ],
 		[ "E:/vscode/QTproject/Qevent/Qevent/mainwindow.cpp", "MU", null ],
-		[ "E:/vscode/QTproject/Qevent/Qevent/my.cpp", "MU", null ]
+		[ "E:/vscode/QTproject/Qevent/Qevent/mylabel.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

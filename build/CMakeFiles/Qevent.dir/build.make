@@ -113,27 +113,27 @@ CMakeFiles/Qevent.dir/mainwindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Qevent.dir/mainwindow.cpp.s"
 	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\vscode\QTproject\Qevent\Qevent\mainwindow.cpp -o CMakeFiles\Qevent.dir\mainwindow.cpp.s
 
-CMakeFiles/Qevent.dir/my.cpp.obj: CMakeFiles/Qevent.dir/flags.make
-CMakeFiles/Qevent.dir/my.cpp.obj: CMakeFiles/Qevent.dir/includes_CXX.rsp
-CMakeFiles/Qevent.dir/my.cpp.obj: E:/vscode/QTproject/Qevent/Qevent/my.cpp
-CMakeFiles/Qevent.dir/my.cpp.obj: CMakeFiles/Qevent.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Qevent.dir/my.cpp.obj"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qevent.dir/my.cpp.obj -MF CMakeFiles\Qevent.dir\my.cpp.obj.d -o CMakeFiles\Qevent.dir\my.cpp.obj -c E:\vscode\QTproject\Qevent\Qevent\my.cpp
+CMakeFiles/Qevent.dir/mylabel.cpp.obj: CMakeFiles/Qevent.dir/flags.make
+CMakeFiles/Qevent.dir/mylabel.cpp.obj: CMakeFiles/Qevent.dir/includes_CXX.rsp
+CMakeFiles/Qevent.dir/mylabel.cpp.obj: E:/vscode/QTproject/Qevent/Qevent/mylabel.cpp
+CMakeFiles/Qevent.dir/mylabel.cpp.obj: CMakeFiles/Qevent.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\vscode\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Qevent.dir/mylabel.cpp.obj"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Qevent.dir/mylabel.cpp.obj -MF CMakeFiles\Qevent.dir\mylabel.cpp.obj.d -o CMakeFiles\Qevent.dir\mylabel.cpp.obj -c E:\vscode\QTproject\Qevent\Qevent\mylabel.cpp
 
-CMakeFiles/Qevent.dir/my.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Qevent.dir/my.cpp.i"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\vscode\QTproject\Qevent\Qevent\my.cpp > CMakeFiles\Qevent.dir\my.cpp.i
+CMakeFiles/Qevent.dir/mylabel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Qevent.dir/mylabel.cpp.i"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\vscode\QTproject\Qevent\Qevent\mylabel.cpp > CMakeFiles\Qevent.dir\mylabel.cpp.i
 
-CMakeFiles/Qevent.dir/my.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Qevent.dir/my.cpp.s"
-	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\vscode\QTproject\Qevent\Qevent\my.cpp -o CMakeFiles\Qevent.dir\my.cpp.s
+CMakeFiles/Qevent.dir/mylabel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Qevent.dir/mylabel.cpp.s"
+	C:\Qt\Tools\mingw1120_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\vscode\QTproject\Qevent\Qevent\mylabel.cpp -o CMakeFiles\Qevent.dir\mylabel.cpp.s
 
 # Object files for target Qevent
 Qevent_OBJECTS = \
 "CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj" \
 "CMakeFiles/Qevent.dir/main.cpp.obj" \
 "CMakeFiles/Qevent.dir/mainwindow.cpp.obj" \
-"CMakeFiles/Qevent.dir/my.cpp.obj"
+"CMakeFiles/Qevent.dir/mylabel.cpp.obj"
 
 # External object files for target Qevent
 Qevent_EXTERNAL_OBJECTS =
@@ -141,7 +141,7 @@ Qevent_EXTERNAL_OBJECTS =
 Qevent.exe: CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj
 Qevent.exe: CMakeFiles/Qevent.dir/main.cpp.obj
 Qevent.exe: CMakeFiles/Qevent.dir/mainwindow.cpp.obj
-Qevent.exe: CMakeFiles/Qevent.dir/my.cpp.obj
+Qevent.exe: CMakeFiles/Qevent.dir/mylabel.cpp.obj
 Qevent.exe: CMakeFiles/Qevent.dir/build.make
 Qevent.exe: C:/Qt/6.3.1/mingw_64/lib/libQt6Widgets.a
 Qevent.exe: C:/Qt/6.3.1/mingw_64/lib/libQt6Gui.a

@@ -322,4 +322,17 @@ CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.3.1/mingw_64/include/QtWidgets/qsizepolicy.h \
  C:/Qt/6.3.1/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.3.1/mingw_64/include/QtGui/qbitmap.h \
- C:/Qt/6.3.1/mingw_64/include/QtWidgets/qtabwidget.h
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qtabwidget.h \
+ E:\vscode\build\Qevent_autogen\EWIEGA46WW/moc_mylabel.cpp \
+ E:/vscode/QTproject/Qevent/Qevent/mylabel.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/QLabel \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qlabel.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qframe.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qpicture.h \
+ C:/Qt/6.3.1/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qtextdocument.h \
+ C:/Qt/6.3.1/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qtextcursor.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qtextformat.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qpen.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qtextoption.h

@@ -343,4 +343,15 @@ CMakeFiles/Qevent.dir/mainwindow.cpp.obj: \
  C:/Qt/6.3.1/mingw_64/include/QtWidgets/QStatusBar \
  C:/Qt/6.3.1/mingw_64/include/QtWidgets/qstatusbar.h \
  C:/Qt/6.3.1/mingw_64/include/QtWidgets/QWidget \
- C:/Qt/6.3.1/mingw_64/include/QtWidgets/qwidget.h
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qwidget.h \
+ E:/vscode/QTproject/Qevent/Qevent/mylabel.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/QLabel \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qlabel.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qframe.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qpicture.h \
+ C:/Qt/6.3.1/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.3.1/mingw_64/include/QtGui/qtextdocument.h \
+ C:/Qt/6.3.1/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/QPushButton \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qpushbutton.h \
+ C:/Qt/6.3.1/mingw_64/include/QtWidgets/qabstractbutton.h

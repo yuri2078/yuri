@@ -11,7 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/vscode/build/Qevent_autogen/mocs_compilation.cpp" "CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj" "gcc" "CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj.d"
   "E:/vscode/QTproject/Qevent/Qevent/main.cpp" "CMakeFiles/Qevent.dir/main.cpp.obj" "gcc" "CMakeFiles/Qevent.dir/main.cpp.obj.d"
   "E:/vscode/QTproject/Qevent/Qevent/mainwindow.cpp" "CMakeFiles/Qevent.dir/mainwindow.cpp.obj" "gcc" "CMakeFiles/Qevent.dir/mainwindow.cpp.obj.d"
-  "E:/vscode/QTproject/Qevent/Qevent/my.cpp" "CMakeFiles/Qevent.dir/my.cpp.obj" "gcc" "CMakeFiles/Qevent.dir/my.cpp.obj.d"
+  "E:/vscode/QTproject/Qevent/Qevent/mylabel.cpp" "CMakeFiles/Qevent.dir/mylabel.cpp.obj" "gcc" "CMakeFiles/Qevent.dir/mylabel.cpp.obj.d"
   )
 
 # Targets to which this target links.

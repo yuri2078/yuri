@@ -80,11 +80,12 @@
         "stop_token": "cpp",
         "thread": "cpp",
         "variant": "cpp",
-        "codecvt": "cpp"
+        "codecvt": "cpp",
+        "qlabel": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
     "qtConfigure.qtKitDir": "c:/Qt/6.3.1/mingw_64",
-    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/otherWidget/otherWidget",
+    "cmake.sourceDirectory": "${workspaceFolder}/QTproject/Qevent/Qevent",
    
 }
