@@ -19,6 +19,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        log.hpp
         myLabel.h
         myLabel.cpp
 )

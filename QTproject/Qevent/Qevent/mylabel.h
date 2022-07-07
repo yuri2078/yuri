@@ -22,6 +22,7 @@ public:
     virtual void mouseReleaseEvent(QMouseEvent *ev) override; //鼠标释放
     // virtual void paintEvent(QPaintEvent *) override;
     void clean_log();
+    bool event(QEvent *e); //拦截用户的事件
 
 signals:
 

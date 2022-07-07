@@ -17,8 +17,8 @@
    <widget class="myLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>250</y>
+      <x>200</x>
+      <y>80</y>
       <width>541</width>
       <height>181</height>
      </rect>
@@ -30,6 +30,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>340</y>
+      <width>54</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -37,7 +50,7 @@
      <x>0</x>
      <y>0</y>
      <width>1106</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

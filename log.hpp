@@ -1,3 +1,6 @@
+#ifndef LOG_H
+#define LOG_H
+
 #include <fstream>
 #include <string>
 #include <ctime>
@@ -33,10 +36,11 @@ void cout(const T &temp, Args ...args)
     fst.close();
 }
 
-void logClean()
+void cleanLog()
 {
     std::fstream fst;
     fst.open("E:/vscode/log.txt", std::ios::out);
     fst.close();
 }
 
+#endif

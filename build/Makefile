@@ -56,7 +56,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\Qevent\Qevent
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\otherDrice
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -116,61 +116,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Qevent
+# Target rules for targets named otherDrice
 
 # Build rule for target.
-Qevent: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qevent
-.PHONY : Qevent
+otherDrice: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherDrice
+.PHONY : otherDrice
 
 # fast build rule for target.
-Qevent/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/build
-.PHONY : Qevent/fast
+otherDrice/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/build
+.PHONY : otherDrice/fast
 
 #=============================================================================
-# Target rules for targets named Qevent_autogen
+# Target rules for targets named otherDrice_autogen
 
 # Build rule for target.
-Qevent_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qevent_autogen
-.PHONY : Qevent_autogen
+otherDrice_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 otherDrice_autogen
+.PHONY : otherDrice_autogen
 
 # fast build rule for target.
-Qevent_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent_autogen.dir\build.make CMakeFiles/Qevent_autogen.dir/build
-.PHONY : Qevent_autogen/fast
-
-Qevent_autogen/mocs_compilation.obj: Qevent_autogen/mocs_compilation.cpp.obj
-.PHONY : Qevent_autogen/mocs_compilation.obj
-
-# target to build an object file
-Qevent_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.obj
-.PHONY : Qevent_autogen/mocs_compilation.cpp.obj
-
-Qevent_autogen/mocs_compilation.i: Qevent_autogen/mocs_compilation.cpp.i
-.PHONY : Qevent_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-Qevent_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.i
-.PHONY : Qevent_autogen/mocs_compilation.cpp.i
-
-Qevent_autogen/mocs_compilation.s: Qevent_autogen/mocs_compilation.cpp.s
-.PHONY : Qevent_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-Qevent_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.s
-.PHONY : Qevent_autogen/mocs_compilation.cpp.s
+otherDrice_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice_autogen.dir\build.make CMakeFiles/otherDrice_autogen.dir/build
+.PHONY : otherDrice_autogen/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -178,7 +154,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -186,7 +162,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 mainwindow.obj: mainwindow.cpp.obj
@@ -194,7 +170,7 @@ mainwindow.obj: mainwindow.cpp.obj
 
 # target to build an object file
 mainwindow.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/mainwindow.cpp.obj
 .PHONY : mainwindow.cpp.obj
 
 mainwindow.i: mainwindow.cpp.i
@@ -202,7 +178,7 @@ mainwindow.i: mainwindow.cpp.i
 
 # target to preprocess a source file
 mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/mainwindow.cpp.i
 .PHONY : mainwindow.cpp.i
 
 mainwindow.s: mainwindow.cpp.s
@@ -210,32 +186,56 @@ mainwindow.s: mainwindow.cpp.s
 
 # target to generate assembly for a file
 mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
-mylabel.obj: mylabel.cpp.obj
-.PHONY : mylabel.obj
+otherDrice_autogen/EWIEGA46WW/qrc_image.obj: otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.obj
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.obj
 
 # target to build an object file
-mylabel.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.obj
-.PHONY : mylabel.cpp.obj
+otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.obj
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.obj
 
-mylabel.i: mylabel.cpp.i
-.PHONY : mylabel.i
+otherDrice_autogen/EWIEGA46WW/qrc_image.i: otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.i
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.i
 
 # target to preprocess a source file
-mylabel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.i
-.PHONY : mylabel.cpp.i
+otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.i
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.i
 
-mylabel.s: mylabel.cpp.s
-.PHONY : mylabel.s
+otherDrice_autogen/EWIEGA46WW/qrc_image.s: otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.s
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.s
 
 # target to generate assembly for a file
-mylabel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qevent.dir\build.make CMakeFiles/Qevent.dir/mylabel.cpp.s
-.PHONY : mylabel.cpp.s
+otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.s
+.PHONY : otherDrice_autogen/EWIEGA46WW/qrc_image.cpp.s
+
+otherDrice_autogen/mocs_compilation.obj: otherDrice_autogen/mocs_compilation.cpp.obj
+.PHONY : otherDrice_autogen/mocs_compilation.obj
+
+# target to build an object file
+otherDrice_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/mocs_compilation.cpp.obj
+.PHONY : otherDrice_autogen/mocs_compilation.cpp.obj
+
+otherDrice_autogen/mocs_compilation.i: otherDrice_autogen/mocs_compilation.cpp.i
+.PHONY : otherDrice_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+otherDrice_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/mocs_compilation.cpp.i
+.PHONY : otherDrice_autogen/mocs_compilation.cpp.i
+
+otherDrice_autogen/mocs_compilation.s: otherDrice_autogen/mocs_compilation.cpp.s
+.PHONY : otherDrice_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+otherDrice_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\otherDrice.dir\build.make CMakeFiles/otherDrice.dir/otherDrice_autogen/mocs_compilation.cpp.s
+.PHONY : otherDrice_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -245,20 +245,20 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Qevent_autogen
-	@echo ... Qevent
-	@echo ... Qevent_autogen/mocs_compilation.obj
-	@echo ... Qevent_autogen/mocs_compilation.i
-	@echo ... Qevent_autogen/mocs_compilation.s
+	@echo ... otherDrice_autogen
+	@echo ... otherDrice
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
-	@echo ... mylabel.obj
-	@echo ... mylabel.i
-	@echo ... mylabel.s
+	@echo ... otherDrice_autogen/EWIEGA46WW/qrc_image.obj
+	@echo ... otherDrice_autogen/EWIEGA46WW/qrc_image.i
+	@echo ... otherDrice_autogen/EWIEGA46WW/qrc_image.s
+	@echo ... otherDrice_autogen/mocs_compilation.obj
+	@echo ... otherDrice_autogen/mocs_compilation.i
+	@echo ... otherDrice_autogen/mocs_compilation.s
 .PHONY : help
 
 

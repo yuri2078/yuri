@@ -2,31 +2,17 @@
 #include <stdio.h>
 using std::cout;
 using std::endl;
-
-int dtos(int x)
+class Person
 {
-	char temp[20];
-	int i = 0;
-	while(x)
+public:
+	void test()
 	{
-		temp[i] = x % 10 + 48;
-		i++;
-		x = x / 10;
+		cout << "hello world " << endl;
 	}
-	temp[i] = 0;
-	cout << "temp == " << temp << endl;
-	return 22;
-}
-
+};
 
 int main()
 {
-	char str[100];
-	int x = 666;
-	sprintf(str,"%d",x);
-	cout << str << endl;
-	dtos(233);
-	dtos(4545);
-	
+	Person().test();
 	return 0;
 }
