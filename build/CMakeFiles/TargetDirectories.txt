@@ -1,4 +1,4 @@
-E:/vscode/build/CMakeFiles/otherDrice.dir
+E:/vscode/build/CMakeFiles/Qfile.dir
 E:/vscode/build/CMakeFiles/edit_cache.dir
 E:/vscode/build/CMakeFiles/rebuild_cache.dir
-E:/vscode/build/CMakeFiles/otherDrice_autogen.dir
+E:/vscode/build/CMakeFiles/Qfile_autogen.dir
