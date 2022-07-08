@@ -56,7 +56,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\Qfile
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\myQt
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -116,61 +116,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Qfile
+# Target rules for targets named myQt
 
 # Build rule for target.
-Qfile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qfile
-.PHONY : Qfile
+myQt: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 myQt
+.PHONY : myQt
 
 # fast build rule for target.
-Qfile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/build
-.PHONY : Qfile/fast
+myQt/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/build
+.PHONY : myQt/fast
 
 #=============================================================================
-# Target rules for targets named Qfile_autogen
+# Target rules for targets named myQt_autogen
 
 # Build rule for target.
-Qfile_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Qfile_autogen
-.PHONY : Qfile_autogen
+myQt_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 myQt_autogen
+.PHONY : myQt_autogen
 
 # fast build rule for target.
-Qfile_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile_autogen.dir\build.make CMakeFiles/Qfile_autogen.dir/build
-.PHONY : Qfile_autogen/fast
-
-Qfile_autogen/mocs_compilation.obj: Qfile_autogen/mocs_compilation.cpp.obj
-.PHONY : Qfile_autogen/mocs_compilation.obj
-
-# target to build an object file
-Qfile_autogen/mocs_compilation.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/Qfile_autogen/mocs_compilation.cpp.obj
-.PHONY : Qfile_autogen/mocs_compilation.cpp.obj
-
-Qfile_autogen/mocs_compilation.i: Qfile_autogen/mocs_compilation.cpp.i
-.PHONY : Qfile_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-Qfile_autogen/mocs_compilation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/Qfile_autogen/mocs_compilation.cpp.i
-.PHONY : Qfile_autogen/mocs_compilation.cpp.i
-
-Qfile_autogen/mocs_compilation.s: Qfile_autogen/mocs_compilation.cpp.s
-.PHONY : Qfile_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-Qfile_autogen/mocs_compilation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/Qfile_autogen/mocs_compilation.cpp.s
-.PHONY : Qfile_autogen/mocs_compilation.cpp.s
+myQt_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt_autogen.dir\build.make CMakeFiles/myQt_autogen.dir/build
+.PHONY : myQt_autogen/fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -178,7 +154,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -186,7 +162,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 mainwindow.obj: mainwindow.cpp.obj
@@ -194,7 +170,7 @@ mainwindow.obj: mainwindow.cpp.obj
 
 # target to build an object file
 mainwindow.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/mainwindow.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/mainwindow.cpp.obj
 .PHONY : mainwindow.cpp.obj
 
 mainwindow.i: mainwindow.cpp.i
@@ -202,7 +178,7 @@ mainwindow.i: mainwindow.cpp.i
 
 # target to preprocess a source file
 mainwindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/mainwindow.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/mainwindow.cpp.i
 .PHONY : mainwindow.cpp.i
 
 mainwindow.s: mainwindow.cpp.s
@@ -210,8 +186,56 @@ mainwindow.s: mainwindow.cpp.s
 
 # target to generate assembly for a file
 mainwindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/mainwindow.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
+
+myQt_autogen/EWIEGA46WW/qrc_images.obj: myQt_autogen/EWIEGA46WW/qrc_images.cpp.obj
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.obj
+
+# target to build an object file
+myQt_autogen/EWIEGA46WW/qrc_images.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/EWIEGA46WW/qrc_images.cpp.obj
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.cpp.obj
+
+myQt_autogen/EWIEGA46WW/qrc_images.i: myQt_autogen/EWIEGA46WW/qrc_images.cpp.i
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.i
+
+# target to preprocess a source file
+myQt_autogen/EWIEGA46WW/qrc_images.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/EWIEGA46WW/qrc_images.cpp.i
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.cpp.i
+
+myQt_autogen/EWIEGA46WW/qrc_images.s: myQt_autogen/EWIEGA46WW/qrc_images.cpp.s
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.s
+
+# target to generate assembly for a file
+myQt_autogen/EWIEGA46WW/qrc_images.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/EWIEGA46WW/qrc_images.cpp.s
+.PHONY : myQt_autogen/EWIEGA46WW/qrc_images.cpp.s
+
+myQt_autogen/mocs_compilation.obj: myQt_autogen/mocs_compilation.cpp.obj
+.PHONY : myQt_autogen/mocs_compilation.obj
+
+# target to build an object file
+myQt_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/mocs_compilation.cpp.obj
+.PHONY : myQt_autogen/mocs_compilation.cpp.obj
+
+myQt_autogen/mocs_compilation.i: myQt_autogen/mocs_compilation.cpp.i
+.PHONY : myQt_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+myQt_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/mocs_compilation.cpp.i
+.PHONY : myQt_autogen/mocs_compilation.cpp.i
+
+myQt_autogen/mocs_compilation.s: myQt_autogen/mocs_compilation.cpp.s
+.PHONY : myQt_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+myQt_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/myQt_autogen/mocs_compilation.cpp.s
+.PHONY : myQt_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -221,17 +245,20 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Qfile_autogen
-	@echo ... Qfile
-	@echo ... Qfile_autogen/mocs_compilation.obj
-	@echo ... Qfile_autogen/mocs_compilation.i
-	@echo ... Qfile_autogen/mocs_compilation.s
+	@echo ... myQt_autogen
+	@echo ... myQt
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
+	@echo ... myQt_autogen/EWIEGA46WW/qrc_images.obj
+	@echo ... myQt_autogen/EWIEGA46WW/qrc_images.i
+	@echo ... myQt_autogen/EWIEGA46WW/qrc_images.s
+	@echo ... myQt_autogen/mocs_compilation.obj
+	@echo ... myQt_autogen/mocs_compilation.i
+	@echo ... myQt_autogen/mocs_compilation.s
 .PHONY : help
 
 

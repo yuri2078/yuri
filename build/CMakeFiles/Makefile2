@@ -53,7 +53,7 @@ RM = C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\vscode\QTproject\Qfile
+CMAKE_SOURCE_DIR = E:\vscode\QTproject\myQt
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = E:\vscode\build
@@ -62,7 +62,7 @@ CMAKE_BINARY_DIR = E:\vscode\build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Qfile.dir/all
+all: CMakeFiles/myQt.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -70,61 +70,61 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Qfile.dir/clean
-clean: CMakeFiles/Qfile_autogen.dir/clean
+clean: CMakeFiles/myQt.dir/clean
+clean: CMakeFiles/myQt_autogen.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Qfile.dir
+# Target rules for target CMakeFiles/myQt.dir
 
 # All Build rule for target.
-CMakeFiles/Qfile.dir/all: CMakeFiles/Qfile_autogen.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=1,2,3,4 "Built target Qfile"
-.PHONY : CMakeFiles/Qfile.dir/all
+CMakeFiles/myQt.dir/all: CMakeFiles/myQt_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target myQt"
+.PHONY : CMakeFiles/myQt.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Qfile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Qfile.dir/all
+CMakeFiles/myQt.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/myQt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 0
-.PHONY : CMakeFiles/Qfile.dir/rule
+.PHONY : CMakeFiles/myQt.dir/rule
 
 # Convenience name for target.
-Qfile: CMakeFiles/Qfile.dir/rule
-.PHONY : Qfile
+myQt: CMakeFiles/myQt.dir/rule
+.PHONY : myQt
 
 # clean rule for target.
-CMakeFiles/Qfile.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile.dir\build.make CMakeFiles/Qfile.dir/clean
-.PHONY : CMakeFiles/Qfile.dir/clean
+CMakeFiles/myQt.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt.dir\build.make CMakeFiles/myQt.dir/clean
+.PHONY : CMakeFiles/myQt.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Qfile_autogen.dir
+# Target rules for target CMakeFiles/myQt_autogen.dir
 
 # All Build rule for target.
-CMakeFiles/Qfile_autogen.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile_autogen.dir\build.make CMakeFiles/Qfile_autogen.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile_autogen.dir\build.make CMakeFiles/Qfile_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=5 "Built target Qfile_autogen"
-.PHONY : CMakeFiles/Qfile_autogen.dir/all
+CMakeFiles/myQt_autogen.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt_autogen.dir\build.make CMakeFiles/myQt_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt_autogen.dir\build.make CMakeFiles/myQt_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\vscode\build\CMakeFiles --progress-num=7 "Built target myQt_autogen"
+.PHONY : CMakeFiles/myQt_autogen.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Qfile_autogen.dir/rule: cmake_check_build_system
+CMakeFiles/myQt_autogen.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 1
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Qfile_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/myQt_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\vscode\build\CMakeFiles 0
-.PHONY : CMakeFiles/Qfile_autogen.dir/rule
+.PHONY : CMakeFiles/myQt_autogen.dir/rule
 
 # Convenience name for target.
-Qfile_autogen: CMakeFiles/Qfile_autogen.dir/rule
-.PHONY : Qfile_autogen
+myQt_autogen: CMakeFiles/myQt_autogen.dir/rule
+.PHONY : myQt_autogen
 
 # clean rule for target.
-CMakeFiles/Qfile_autogen.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Qfile_autogen.dir\build.make CMakeFiles/Qfile_autogen.dir/clean
-.PHONY : CMakeFiles/Qfile_autogen.dir/clean
+CMakeFiles/myQt_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\myQt_autogen.dir\build.make CMakeFiles/myQt_autogen.dir/clean
+.PHONY : CMakeFiles/myQt_autogen.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

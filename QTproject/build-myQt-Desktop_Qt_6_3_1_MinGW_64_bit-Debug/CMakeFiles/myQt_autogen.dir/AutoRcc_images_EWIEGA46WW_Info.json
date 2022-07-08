@@ -1,0 +1,27 @@
+{
+	"BUILD_DIR" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/myQt_autogen",
+	"CMAKE_BINARY_DIR" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "E:/vscode/QTproject/myQt",
+	"CMAKE_SOURCE_DIR" : "E:/vscode/QTproject/myQt",
+	"INCLUDE_DIR" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/myQt_autogen/include",
+	"INPUTS" : 
+	[
+		"E:/vscode/QTproject/myQt/images/welcome.jpg",
+		"E:/vscode/QTproject/myQt/images/235.jpg",
+		"E:/vscode/QTproject/myQt/images/bullet.png",
+		"E:/vscode/QTproject/myQt/images/bullet-2.png",
+		"E:/vscode/QTproject/myQt/images/fly.png",
+		"E:/vscode/QTproject/myQt/images/start.jpg"
+	],
+	"LOCK_FILE" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/myQt_autogen.dir/AutoRcc_images_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "images" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_images.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.3.1/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/myQt_autogen.dir/AutoRcc_images_EWIEGA46WW_Used.txt",
+	"SOURCE" : "E:/vscode/QTproject/myQt/images.qrc",
+	"VERBOSITY" : 0
+}

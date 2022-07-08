@@ -1,0 +1,5 @@
+E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/myQt.dir
+E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/myQt_autogen_timestamp_deps.dir
+E:/vscode/QTproject/build-myQt-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/myQt_autogen.dir
