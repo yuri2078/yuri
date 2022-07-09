@@ -1,4 +1,0 @@
-E:/vscode/build/CMakeFiles/myQt.dir
-E:/vscode/build/CMakeFiles/edit_cache.dir
-E:/vscode/build/CMakeFiles/rebuild_cache.dir
-E:/vscode/build/CMakeFiles/myQt_autogen.dir
