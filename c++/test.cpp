@@ -13,7 +13,7 @@ public:
 
 int main()
 {
-	int i=0;
 	Person().test();
+	// getchar();
 	return 0;
 }
