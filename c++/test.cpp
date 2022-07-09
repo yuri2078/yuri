@@ -7,12 +7,13 @@ class Person
 public:
 	void test()
 	{
-		cout << "hello world " << endl;
+		cout << "你好，世界！" << endl;
 	}
 };
 
 int main()
 {
+	int i=0;
 	Person().test();
 	return 0;
 }
