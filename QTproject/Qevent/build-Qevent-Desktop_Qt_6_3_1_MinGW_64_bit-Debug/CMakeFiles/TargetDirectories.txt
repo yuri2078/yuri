@@ -1,5 +1,0 @@
-E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/Qevent.dir
-E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/Qevent_autogen_timestamp_deps.dir
-E:/vscode/QTproject/Qevent/build-Qevent-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/Qevent_autogen.dir

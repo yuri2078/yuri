@@ -1,5 +1,0 @@
-E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/test.dir
-E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/test_autogen_timestamp_deps.dir
-E:/vscode/QTproject/test/build-test-Desktop_Qt_6_3_1_MinGW_64_bit-Debug/CMakeFiles/test_autogen.dir
