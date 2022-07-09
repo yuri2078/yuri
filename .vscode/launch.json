@@ -1,89 +1,33 @@
-
 {
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Launch hello",
-            "request": "launch",
-            "mainClass": "hello",
-            "projectName": "vscode_59a0ce4"
-        },
-        {
-            "name": "Python: 当前文件",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch hellojava",
-            "request": "launch",
-            "mainClass": "hellojava",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch hello",
-            "request": "launch",
-            "mainClass": "hello",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch Hello",
-            "request": "launch",
-            "mainClass": "Hello",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "name": "(gdb) Launch",
+            "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "program": "输入程序名称，例如 ${workspaceFolder}/a.out",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
+            "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": true,
-            "internalConsoleOptions": "neverOpen",
+            "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "gdb.exe",
             "setupCommands": [
                 {
-                    "description": "Enable pretty-printing for gdb",
+                    "description": "为 gdb 启用整齐打印",
                     "text": "-enable-pretty-printing",
-                    "ignoreFailures": false
-                }
-            ],
-            "preLaunchTask": "Compile",
-            "visualizerFile": "c:\\Users\\miku\\AppData\\Roaming\\Code\\User\\workspaceStorage\\64fe41dc6d4330e4697ddf15cdd2bdce\\tonka3000.qtvsctools\\qt.natvis.xml"
-        },
-        {
-            "name": "QtBuild",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${command:cmake.launchTargetPath}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceRoot}",
-            "environment": [
+                    "ignoreFailures": true
+                },
                 {
-                    "name": "PATH",
-                    "value": "c:/Qt/6.3.1/mingw_64/bin"
+                    "description":  "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
                 }
-            ],
-            "externalConsole": false,
-            "miDebuggerPath": "d:/QT/Tools/mingw0_64/bin/gdb.exe",
-            "visualizerFile": "c:\\Users\\miku\\AppData\\Roaming\\Code\\User\\workspaceStorage\\64fe41dc6d4330e4697ddf15cdd2bdce\\tonka3000.qtvsctools\\qt.natvis.xml"
+            ]
         }
+
     ]
 }
