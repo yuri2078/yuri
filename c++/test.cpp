@@ -14,5 +14,6 @@ public:
 int main()
 {
 	Person().test();
+	cout << "我曹 ，太好了俄！\n";
 	return 0;
 }
