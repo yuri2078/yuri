@@ -15,3 +15,13 @@
 + sudo apt dist-upgrade 不知道是干啥的
 + gnome-session-properties  设置程序自己启动
 + ``` hello ```
+
+## 软件权限相关
+
++ ls -l .. 查看具有的属性
++ chmod +x ... 添加属性
+
+## 环境变量PATH
+
++ echo $PATH 查看环境变量path的内容
++ sudo vi /etc/environment PATH 用：隔开
