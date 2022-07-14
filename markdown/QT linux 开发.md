@@ -61,6 +61,7 @@
     }
 
     ```
+
 3 ``` qmake -project ``` 生成对应的pro文件
 
 4 ``` vim hello.pro ``` 编辑文件 在顶部添加 QT += widgets 需要什么添加什么
