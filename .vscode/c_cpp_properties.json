@@ -1,15 +1,13 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "qt",
             "includePath": [
-                "${workspaceFolder}/**"
+                "/home/yuri/rubbish/Qt/5.14.2/gcc_64/include/**",
+                "${workspaceRoot}/**"
             ],
-            "defines": [],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu17",
-            "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ],
     "version": 4

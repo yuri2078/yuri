@@ -84,6 +84,7 @@
         "qlabel": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
-    "C_Cpp.errorSquiggles": "Enabled"
+    "C_Cpp.errorSquiggles": "Enabled",
+    "qtConfigure.qtKitDir": "/home/yuri/rubbish/Qt/5.14.2/gcc_64"
    
 }

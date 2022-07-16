@@ -15,5 +15,6 @@ int main()
 {
 	Person().test();
 	cout << "我曹 ，太好了俄！\n";
+	cout << "哈哈哈，太厉害了ba " << endl;
 	return 0;
 }
