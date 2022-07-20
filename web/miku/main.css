@@ -17,6 +17,7 @@ ul{
     width: 50%; height: 30px; 
     text-align: center; 
     display: inline-block;/*设置两个块级元素一行连接 */
+    border-radius: 25px;
 }
 
 #div2
