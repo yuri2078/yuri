@@ -37,3 +37,7 @@ git commit -m "main"
 git push -u origin main
 
 ```
+
+## linux 常用修复命令
+
+1. 出现
