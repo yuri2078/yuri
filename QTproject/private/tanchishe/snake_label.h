@@ -12,7 +12,7 @@ public:
 
 public:
     snake_label(QWidget *parent, int pos_x, int pos_y, snake_label *front_snake = nullptr, snake_label *back_snake = nullptr);
-
+    snake_label(QWidget *parent);
     ~snake_label();
 };
 

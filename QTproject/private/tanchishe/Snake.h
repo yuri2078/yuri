@@ -2,27 +2,30 @@
 #define SNAKE_H
 
 #include <QDialog>
-#include "ui_Snake.h"
 #include <QLabel>
 #include <QPushButton>
 #include "snake_label.h"
 #include <QKeyEvent>
+#include <QTimer>
+#include <QVector>
+#include <QtGlobal>
+#include <QTime>
+#include <QDebug>
+#include <QMessageBox>
+#include <QAbstractButton>
 
 
 class Snake  :public QDialog
 {
 private:
-    Ui::Snake *ui;
-    snake_label *snake_1;
-    snake_label *snake_2;
-    snake_label *snake_3;
-    snake_label *snake_4;
-    snake_label *snake_5;
-    snake_label *snake_6;
+    QVector<snake_label *> snake;
 
     snake_label *head;
-    
-    snake_label *tial;
+    snake_label *food;
+
+    QTimer *time_gameStart;
+
+    bool have_food;
 
     int move_x;
     int move_y;
@@ -30,10 +33,15 @@ private:
 public:
     Snake(QWidget *parent = nullptr);
     ~Snake();
-    void keyPressEvent(QKeyEvent *ev);
+
+    void keyPressEvent(QKeyEvent *ev); //键盘接收
+    int gameOver(int pos_x, int pos_y); //判断游戏是否结束
+    void getScore(int pos_x, int pos_y); //判断是否吃到食物（分数）
+    void moveSnake(int pos_x, int pos_y); //移动蛇蛇
+    void gameOver_box(); //设置游戏结束弹出窗口
 
 public slots:
-    void snakeMove(void);
+    
 };
 
 #endif

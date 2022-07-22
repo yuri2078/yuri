@@ -1,14 +1,13 @@
 #include <QApplication>
 
-#include "Snake.h"
+#include "Welcome.h"
 
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
 
-    Snake snake;
-    snake.show();
-
+    Welcome welcome;
+    welcome.show();
 
     return app.exec();
 }

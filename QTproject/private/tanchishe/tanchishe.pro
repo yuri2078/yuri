@@ -14,6 +14,9 @@ INCLUDEPATH += .
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += Snake.h ui_Snake.h snake_label.h
-FORMS += Snake.ui
-SOURCES += main.cpp Snake.cpp snake_label.cpp
+HEADERS += Snake.h ui_Welcome.h snake_label.h Welcome.h
+FORMS += Welcome.ui
+SOURCES += main.cpp Snake.cpp snake_label.cpp Welcome.cpp
+
+RESOURCES += \
+    images.qrc

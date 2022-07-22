@@ -17,6 +17,15 @@ snake_label::snake_label(QWidget *parent, int pos_x, int pos_y,  snake_label *fr
     setFrameStyle(QFrame::Box | QFrame::Raised);
 }
 
+snake_label::snake_label(QWidget *parent) : QLabel(parent)
+{
+
+    setStyleSheet("background-color: rgb(87, 227, 137);");
+    resize(50, 50);
+    setFrameStyle(QFrame::Box | QFrame::Raised);
+    close();
+}
+
 snake_label::~snake_label()
 {
     
