@@ -15,7 +15,7 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += Snake.h ui_Welcome.h snake_label.h Welcome.h
-FORMS += Welcome.ui
+FORMS += Welcome.ui Snake.ui
 SOURCES += main.cpp Snake.cpp snake_label.cpp Welcome.cpp
 
 RESOURCES += \

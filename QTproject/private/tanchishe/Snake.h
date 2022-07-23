@@ -4,7 +4,6 @@
 #include <QDialog>
 #include <QLabel>
 #include <QPushButton>
-#include "snake_label.h"
 #include <QKeyEvent>
 #include <QTimer>
 #include <QVector>
@@ -14,6 +13,8 @@
 #include <QMessageBox>
 #include <QAbstractButton>
 
+#include "snake_label.h"
+#include "ui_Snake.h"
 
 class Snake  :public QDialog
 {
@@ -26,12 +27,17 @@ private:
     QTimer *time_gameStart;
 
     bool have_food;
+    bool key_onlick;
 
     int move_x;
     int move_y;
+    int score;
+    int spead;
+
+    Ui::Snake *ui;
 
 public:
-    Snake(QWidget *parent = nullptr);
+    Snake(QWidget *parent = nullptr, int spead = 300);
     ~Snake();
 
     void keyPressEvent(QKeyEvent *ev); //键盘接收

@@ -12,7 +12,7 @@ snake_label::snake_label(QWidget *parent, int pos_x, int pos_y,  snake_label *fr
     this->back_snake = back_snake;
     // this->label = new QLabel(parent);
     setStyleSheet("background-color: rgb(87, 227, 137);");
-    resize(50, 50);
+    resize(25, 25);
     move(pos_x, pos_y);
     setFrameStyle(QFrame::Box | QFrame::Raised);
 }
@@ -21,7 +21,7 @@ snake_label::snake_label(QWidget *parent) : QLabel(parent)
 {
 
     setStyleSheet("background-color: rgb(87, 227, 137);");
-    resize(50, 50);
+    resize(25, 25);
     setFrameStyle(QFrame::Box | QFrame::Raised);
     close();
 }

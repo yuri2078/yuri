@@ -1,13 +1,19 @@
 #include "Snake.h"
-#include "snake_label.h"
 
 
-Snake::Snake(QWidget *parent) : QDialog(parent)
+Snake::Snake(QWidget *parent , int spead) : QDialog(parent)
 {
     //界面ui初始化
 
-    resize(1000, 1000);
+    ui = new Ui::Snake;
+    ui->setupUi(this);
+    resize(1000, 800);
 
+    key_onlick = false;
+
+    this->spead = spead;
+
+    setFocusPolicy(Qt::StrongFocus); //设置控件焦点，防止接收不到方向键输入
 
     //设置默认移动方向 向右移动
     move_x = snake_label(this).width();
@@ -15,6 +21,7 @@ Snake::Snake(QWidget *parent) : QDialog(parent)
     
     //初始化食物
     have_food = true;
+    score = 0;
     food = new snake_label(this, 400, 400);
     food ->setStyleSheet("background-color: rgb(255, 100, 137);");
 
@@ -29,7 +36,7 @@ Snake::Snake(QWidget *parent) : QDialog(parent)
 
     //设置定时器
     time_gameStart = new QTimer(this);
-    time_gameStart->start(300);
+    time_gameStart->start(this->spead);
 
     //游戏开始 定时器
     connect(time_gameStart, &QTimer::timeout, [this]()
@@ -50,21 +57,57 @@ Snake::Snake(QWidget *parent) : QDialog(parent)
         }
 
         //移动蛇蛇
-        moveSnake(pos_x, pos_y);
+        if(this->key_onlick == false)
+        {
+            moveSnake(pos_x, pos_y);
+        }
+        else
+        {
+            this->key_onlick = false;
+        }
 
-        //判断是不是吃到了食物
-        getScore(pos_x, pos_y);
+        
 
         //初始化食物
         if(have_food == false)
         {
             qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
-            food->move((qrand() % this->width() / snake_label(this).width()) * snake_label(this).width(), (qrand() % this->height() / snake_label(this).height()) * snake_label(this).height());
+            food->move((qrand() % this->ui->widget->width() / snake_label(this).width()) * snake_label(this).width(), (qrand() % this->ui->widget->height() / snake_label(this).height()) * snake_label(this).height());
+            for (int i = 0; i < snake.length();i++)
+            {
+                if(snake[i]->x() == food->x() && snake[i]->y() == food->y())
+                {
+                    food->move((qrand() % this->ui->widget->width() / snake_label(this).width()) * snake_label(this).width(), (qrand() % this->ui->widget->height() / snake_label(this).height()) * snake_label(this).height());
+                    i = -1;
+                }
+            }
+                
             have_food = true;
         }
-
-
     });
+
+    //暂停
+    connect(ui->stop_button, &QPushButton::clicked, [this](){
+            static bool btn = true;
+            if(btn)
+            {
+                time_gameStart->stop();
+                ui->stop_button->setText("继续");
+                btn = false;
+            }
+            else
+            {
+                time_gameStart->start();
+                ui->stop_button->setText("暂停");
+                btn = true;
+            }
+            
+        });
+
+    //结束
+    connect(ui->over_button, &QPushButton::clicked, [this](){
+                this->close();
+            });
 }
 
 //控制蛇移动方向
@@ -76,21 +119,29 @@ void Snake::keyPressEvent(QKeyEvent *ev)
     case Qt::Key_S:
         move_x = 0;
         move_y = snake.back()->height();
+        key_onlick = true;
+        moveSnake(snake.back()->x() + move_x, snake.back()->y() + move_y);
         break;
     case Qt::Key_Up: //上
     case Qt::Key_W:
         move_x = 0;
         move_y = -snake.back()->height();
+        key_onlick = true;
+        moveSnake(snake.back()->x() + move_x, snake.back()->y() + move_y);
         break;
     case Qt::Key_Left: //左
     case Qt::Key_A: 
         move_x = -snake.back()->width();
         move_y = 0;
+        key_onlick = true;
+        moveSnake(snake.back()->x() + move_x, snake.back()->y() + move_y);
         break;
     case Qt::Key_Right: //右
     case Qt::Key_D:
         move_x = snake.back()->width();
         move_y = 0;
+        key_onlick = true;
+        moveSnake(snake.back()->x() + move_x, snake.back()->y() + move_y);
         break;
     default:
         break;
@@ -104,7 +155,7 @@ int Snake::gameOver(int pos_x, int pos_y)
     int over = 0; //初始化结果
 
     //判断是否出届
-    if (pos_x > this->width() || pos_x < 0 || pos_y > this->height() || pos_y < 0)
+    if (pos_x + snake_label(this).width() > this->ui->widget->width() || pos_x < 0 || pos_y + snake_label(this).height()> this->ui->widget->height() || pos_y < 0)
     {
         time_gameStart->stop();
         over = 1;
@@ -137,6 +188,9 @@ void Snake::getScore(int pos_x, int pos_y)
         snake.push_front(temp);
         temp->show();
         have_food = false;
+
+        score++;
+        this->ui->score->setText(QString::number(score));
     }
 }
 
@@ -153,12 +207,15 @@ void Snake::moveSnake(int pos_x, int pos_y)
     snake.back() = snake.front();
     //将蛇头改称原来的第二条蛇
     snake.front() = snake.front()->back_snake;
+
+    //判断是不是吃到了食物
+    getScore(pos_x, pos_y);
 }
 
 void Snake::gameOver_box()
 {
     QPushButton *ok = new QPushButton("确定", this);
-    QPushButton *cancle = new QPushButton("取消", this);
+    QPushButton *cancle = new QPushButton("不行，再来一把!", this);
     QMessageBox *over = new QMessageBox;
 
     over->setText("这么菜就别玩了!");
@@ -174,8 +231,11 @@ void Snake::gameOver_box()
         this->close();
     });
 
-    connect(cancle, &QPushButton::clicked, []() {
+    connect(cancle, &QPushButton::clicked, [this]() {
         qDebug() << "选择取消";
+        this->close();
+        Snake *newGame = new Snake(nullptr,this->spead);
+        newGame->show();
     });
 }
 

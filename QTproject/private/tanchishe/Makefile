@@ -258,7 +258,7 @@ TARGET        = tanchishe
 first: all
 ####### Build rules
 
-tanchishe: ui_Welcome.h $(OBJECTS)  
+tanchishe: ui_Welcome.h ui_Snake.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: tanchishe.pro ../../../../application/QT/5.14.2/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../application/QT/5.14.2/gcc_64/mkspecs/features/spec_pre.prf \
@@ -644,7 +644,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents ../../../../application/QT/5.14.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents Snake.h ui_Welcome.h snake_label.h Welcome.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp Snake.cpp snake_label.cpp Welcome.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Welcome.ui $(DISTDIR)/
+	$(COPY_FILE) --parents Welcome.ui Snake.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -800,16 +800,15 @@ moc_Welcome.cpp: Welcome.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qicon.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QWidget \
 		Snake.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
-		snake_label.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QKeyEvent \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QTimer \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qtimer.h \
@@ -822,11 +821,14 @@ moc_Welcome.cpp: Welcome.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QAbstractButton \
+		snake_label.h \
+		ui_Snake.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QPainter \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpainter.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qtextoption.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpen.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QImage \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QDesktopWidget \
 		moc_predefs.h \
 		../../../../application/QT/5.14.2/gcc_64/bin/moc
 	/home/yuri/application/QT/5.14.2/gcc_64/bin/moc $(DEFINES) --include /home/yuri/yuri/QTproject/private/tanchishe/moc_predefs.h -I/home/yuri/application/QT/5.14.2/gcc_64/mkspecs/linux-g++ -I/home/yuri/yuri/QTproject/private/tanchishe -I/home/yuri/yuri/QTproject/private/tanchishe -I/home/yuri/application/QT/5.14.2/gcc_64/include -I/home/yuri/application/QT/5.14.2/gcc_64/include/QtWidgets -I/home/yuri/application/QT/5.14.2/gcc_64/include/QtGui -I/home/yuri/application/QT/5.14.2/gcc_64/include/QtCore -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include Welcome.h -o moc_Welcome.cpp
@@ -835,12 +837,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_Welcome.h
+compiler_uic_make_all: ui_Welcome.h ui_Snake.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_Welcome.h
+	-$(DEL_FILE) ui_Welcome.h ui_Snake.h
 ui_Welcome.h: Welcome.ui \
 		../../../../application/QT/5.14.2/gcc_64/bin/uic
 	/home/yuri/application/QT/5.14.2/gcc_64/bin/uic Welcome.ui -o ui_Welcome.h
+
+ui_Snake.h: Snake.ui \
+		../../../../application/QT/5.14.2/gcc_64/bin/uic
+	/home/yuri/application/QT/5.14.2/gcc_64/bin/uic Snake.ui -o ui_Snake.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -967,16 +973,15 @@ main.o: main.cpp ../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QApp
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qdialog.h \
 		ui_Welcome.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QVariant \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qicon.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QWidget \
 		Snake.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
-		snake_label.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QKeyEvent \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QTimer \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qtimer.h \
@@ -989,11 +994,14 @@ main.o: main.cpp ../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QApp
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QAbstractButton \
+		snake_label.h \
+		ui_Snake.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QPainter \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpainter.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qtextoption.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpen.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QImage
+		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QImage \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QDesktopWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 Snake.o: Snake.cpp Snake.h \
@@ -1109,7 +1117,6 @@ Snake.o: Snake.cpp Snake.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qicon.h \
-		snake_label.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QKeyEvent \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QTimer \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qtimer.h \
@@ -1121,7 +1128,18 @@ Snake.o: Snake.cpp Snake.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QDebug \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QAbstractButton
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QAbstractButton \
+		snake_label.h \
+		ui_Snake.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QVariant \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QApplication \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qeventloop.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Snake.o Snake.cpp
 
 snake_label.o: snake_label.cpp snake_label.h \
@@ -1348,16 +1366,15 @@ Welcome.o: Welcome.cpp Welcome.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qguiapplication.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qicon.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QWidget \
 		Snake.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QLabel \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qframe.h \
-		snake_label.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QKeyEvent \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/QTimer \
 		../../../../application/QT/5.14.2/gcc_64/include/QtCore/qtimer.h \
@@ -1370,11 +1387,16 @@ Welcome.o: Welcome.cpp Welcome.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QAbstractButton \
+		snake_label.h \
+		ui_Snake.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QPainter \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpainter.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qtextoption.h \
 		../../../../application/QT/5.14.2/gcc_64/include/QtGui/qpen.h \
-		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QImage
+		../../../../application/QT/5.14.2/gcc_64/include/QtGui/QImage \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QDesktopWidget \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/QStyle \
+		../../../../application/QT/5.14.2/gcc_64/include/QtWidgets/qstyle.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Welcome.o Welcome.cpp
 
 qrc_images.o: qrc_images.cpp 
