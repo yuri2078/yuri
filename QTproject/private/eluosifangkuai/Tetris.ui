@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Tetris</class>
+ <widget class="QWidget" name="Tetris">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(214, 153, 198);</string>
+  </property>
+  <widget class="QWidget" name="main_widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>800</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(143, 240, 164);</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="start_button">
+   <property name="geometry">
+    <rect>
+     <x>900</x>
+     <y>600</y>
+     <width>211</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+	border:none;
+	border-radius: 20px;
+	background-color: rgb(35, 193, 238);
+}
+
+QPushButton:pressed
+{
+	font-size:35px;
+	background-color: rgb(20, 242, 242);
+}
+
+QPushButton:hover
+{
+	
+	font-size:32px;
+	
+	background-color: rgb(11, 230, 244);
+}</string>
+   </property>
+   <property name="text">
+    <string>开始游戏</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="stop_button">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>710</y>
+     <width>231</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+	border:none;
+	border-radius: 20px;
+	background-color: rgb(35, 193, 238);
+}
+
+QPushButton:pressed
+{
+	font-size:35px;
+	background-color: rgb(20, 242, 242);
+}
+
+QPushButton:hover
+{
+	
+	font-size:32px;
+	
+	background-color: rgb(11, 230, 244);
+}</string>
+   </property>
+   <property name="text">
+    <string>暂停</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="show_next" native="true">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>50</y>
+     <width>381</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(98, 160, 234);
+border-radius: 30px;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="tips_label">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>410</y>
+     <width>281</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="text">
+    <string>按 wsad 键移动  center 建旋转</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

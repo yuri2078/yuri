@@ -101,3 +101,9 @@
 2. designer ...ui 可以直接用设计师打开ui文件
 
 3. uic .ui -o ui_.h 转换ui文件为 h头文件
+
+## qt常用重载函数
+
+## qt常用事件
+
+1. `paintEvent(QPaintEvent *);` 绘图事件
