@@ -124,6 +124,11 @@ QPushButton:hover
      <height>281</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <stylestrategy>NoAntialias</stylestrategy>
+    </font>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgb(98, 160, 234);
 border-radius: 30px;</string>

@@ -107,3 +107,5 @@
 ## qt常用事件
 
 1. `paintEvent(QPaintEvent *);` 绘图事件
+
+2. `voidkeyPressEvent(QKeyEvent *ev)` 键盘按下事件

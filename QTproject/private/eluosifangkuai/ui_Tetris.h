@@ -91,14 +91,17 @@ public:
         show_next = new QWidget(Tetris);
         show_next->setObjectName(QString::fromUtf8("show_next"));
         show_next->setGeometry(QRect(810, 50, 381, 281));
+        QFont font1;
+        font1.setStyleStrategy(QFont::NoAntialias);
+        show_next->setFont(font1);
         show_next->setStyleSheet(QString::fromUtf8("background-color: rgb(98, 160, 234);\n"
 "border-radius: 30px;"));
         tips_label = new QLabel(Tetris);
         tips_label->setObjectName(QString::fromUtf8("tips_label"));
         tips_label->setGeometry(QRect(860, 410, 281, 151));
-        QFont font1;
-        font1.setPointSize(15);
-        tips_label->setFont(font1);
+        QFont font2;
+        font2.setPointSize(15);
+        tips_label->setFont(font2);
         tips_label->setFrameShape(QFrame::Box);
         tips_label->setFrameShadow(QFrame::Raised);
 
