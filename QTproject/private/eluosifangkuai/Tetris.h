@@ -7,6 +7,7 @@
 #include <QThread>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QTime>
 #include <QDebug>
 
 
@@ -14,19 +15,54 @@ class Tetris : public QDialog
 {
 private:
     int spead;
-    int row;
-    int col;
+    int row, previous_row;
+    int col, previous_col;
     int type;
-    int square_width[10];
-    int square_height[10];
     int all_height;
 
+    QString squareStyle;
+    QString mapStyle;
+    QString tempStyle;
+
+    int square_width[19] = {3,3,2,2,2,3,2,3,2,4,1,4,2,4,2,4,2,4,2};
+    int square_height[19] = {2,2,3,3,2,2,3,2,3,1,4,2,4,2,4,2,4,2,4};
+    // 梯    1     1 1 1  1         1
+    // 形  1 1 1     1    1 1     1 1 
+    // 形                 1         1
+
+    // 方  1 1
+    // 块  1 1
+
+    // 梯  1 1        1
+    // 子    1 1    1 1
+    // 一           1 
+
+    // 梯    1 1     1
+    // 子  1 1       1 1
+    // 二              1
+
+    // 直 1 1 1 1    1
+    // 线            1
+    // 直            1
+    // 线            1
+
+    // L  1               1  1      1 1 1 1        1
+    // L  1 1 1 1         1               1        1
+    // L                  1                        1
+    // L                  1                      1 1
+
+    // L        1         1        1 1 1 1       1 1
+    // L  1 1 1 1         1        1               1
+    // L                  1                        1
+    // L                  1  1                     1
+ 
     bool is_bottom;
-    bool is_touch;
 
     Ui::Tetris *ui;
     Square ***square;
     Square ***next;
+
+    QTimer *time_start;
 
 public:
     Tetris(QWidget *parent = nullptr, int spead = 300);
@@ -34,10 +70,12 @@ public:
     void keyPressEvent(QKeyEvent * ev);
     void setMap(void);
     void gameStart(void);
-    void printSquare(int type, bool isMap);
+    void printSquare(bool isMap);
     void checkPoint(void);
     bool checkSquare(void);
     void showNext(int type);
+    void checkScore(void);
+    void setSquareStyle(int pos_x, int pos_y, bool isMap);
 };
 
 #endif

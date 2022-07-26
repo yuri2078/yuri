@@ -9,16 +9,38 @@ Tetris::Tetris(QWidget *parent, int spead) : QDialog(parent)
 
     this->row = 0;
     this->col = 0;
-    this->type = 1;
+    this->type = 0;
     this->is_bottom = false;
-    this->is_touch = false;
     this->all_height = 0;
 
-    square_width[1] = 3;
-    square_height[1] = 2;
+    this->squareStyle = "background-color:red;";
+    this->mapStyle = "background-color:rgb(174, 198, 226);";
+    this->tempStyle;
 
     setMap();
+
     gameStart();
+
+    connect(ui->stop_button, &QPushButton::clicked, [this]() {
+        static bool is_clicked = true;
+        if(is_clicked)
+        {
+            is_clicked = false;
+            time_start->stop();
+            ui->stop_button->setText("继续");
+        }
+        else
+        {
+            is_clicked = true;
+            time_start->start();
+            ui->stop_button->setText("暂停");
+        }
+    });
+    connect(ui->start_button, &QPushButton::clicked, [this]() {
+        this->close();
+        Tetris *tetris = new Tetris;
+        tetris->show();
+    });
 }
 
 void Tetris::setMap(void)
@@ -50,76 +72,167 @@ void Tetris::setMap(void)
 
 void Tetris::gameStart(void)
 {
-    printSquare(this->type,false);
+    printSquare(false);
 
     showNext(1);
 
-    QTimer *time_start = new QTimer(this);
-    time_start->start(700);
+    time_start = new QTimer(this);
+    time_start->start(300);
 
     connect(time_start, &QTimer::timeout, [this]() {
         
         if(this->is_bottom)
         {
+            qDebug() << "停在 底部";
             this->row = 0;
             this->col = 0;
+            qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+            this->type = qrand() % 7;
+            checkScore();
             this->is_bottom = false;
-            this->all_height = this->square_height[this->type];
         }
-        printSquare(this->type, true);
+        printSquare(true);
         this->row = this->row + 1;
-        printSquare(this->type, false);
+        printSquare(false);
     });
 }
 
-void Tetris::printSquare(int type, bool isMap)
+void Tetris::printSquare(bool isMap)
 {
-    QString squareStyle = "background-color:red;";
-    QString mapStyle = "background-color:rgb(174, 198, 226);";
-    QString tempStyle;
     
-    tempStyle = isMap ? mapStyle : squareStyle;
-
+    qDebug() << "停在打印东西";
     checkPoint();
-    checkSquare();
+    if(checkSquare())
+    {
+        is_bottom = true;
+        row = row - 1;
+        isMap = false;
+    }
+
     switch (type)
     {
-    case 1:
+        case 0:
         {
             for (int i = 0; i < square_width[type];i++)
             {
-                square[this->row + 1][this->col + i]->setStyleSheet(tempStyle);
-                square[this->row + 1][this->col + i]->flag = is_bottom;
+                setSquareStyle(this->row + 1, this->col + i, isMap);
             }
-            square[this->row][this->col + 1]->setStyleSheet(tempStyle);
-            square[this->row][this->col + 1]->flag = is_bottom;
+            setSquareStyle(this->row, this->col + 1, isMap);
+            break;
+        }
+        case 1:
+        {
+            for (int i = 0; i < square_width[type];i++)
+            {
+                setSquareStyle(this->row, this->col + i, isMap);
+            }
+            setSquareStyle(this->row + 1, this->col + 1, isMap);
+            break;
+        }
+        case 2:
+        {
+            for (int i = 0; i < square_height[type];i++)
+            {
+                setSquareStyle(this->row + i, this->col, isMap);
+            }
+            setSquareStyle(this->row + 1, this->col + 1, isMap);
+            break;
+        }
+
+        case 3:
+        {
+            for (int i = 0; i < square_height[type];i++)
+            {
+                setSquareStyle(this->row + i, this->col + 1, isMap);
+            }
+            setSquareStyle(this->row + 1, this->col + 1, isMap);
             break;
         }
         
-    default:
-        break;
+        case 4:
+        {
+            for (int i = 0; i < square_height[type];i++)
+            {
+                for (int j = 0; j < square_width[type];j++)
+                {
+                    setSquareStyle(this->row + i, this->col + j, isMap);
+                }
+            }
+            break;
+        }
+
+        case 5:
+        {
+            for (int i = 0; i < square_height[type];i++)
+            {
+                for (int j = 0; j < square_height[type];j++)
+                {
+                    setSquareStyle(this->row + i, this->col + j + i, isMap);
+                }
+            }
+            break;
+        }
+
+        case 6:
+        {
+            for (int i = 0; i < square_width[type];i++)
+            {
+                for (int j = 0; j < square_width[type];j++)
+                {
+                    setSquareStyle(this->row + i + j, this->col + i, isMap);
+                }
+            }
+            break;
+        }
+
+        default:
+            break;
     }
 }
 
 bool Tetris::checkSquare(void)
 {
-    for (int i = 0; i < square_height[type];i++)
+    qDebug() << "停在 检查方块";
+
+    switch (type)
     {
-        for (int j = 0; j < square_width[type];j++)
+        case 0:
         {
-            if(square[row + i][col+j]->flag)
+            for (int i = 0; i < square_width[type];i++)
             {
-                is_touch = true;
-                is_bottom = true;
-                qDebug() << "发生碰撞";
-                this->row = this->row - 1;
-                qDebug() << "打印测试方格数量" << i << " -- " << j ;
+                if(square[this->row + 1][this->col + i]->flag)
+                {
+                    return true;
+                }
+            }
+            if(square[this->row][this->col + 1]->flag)
+            {
                 return true;
             }
-            
+            break;
         }
-    }
+        case 1:
+        {
+            for (int i = 0; i < square_width[type];i++)
+            {
+                if(square[this->row][this->col + i]->flag)
+                {
+                    return true;
+                }
+            }
+            if(square[this->row + 1][this->col + 1]->flag)
+            {
+                return true;
+            }
+            break;
+        }
+
     
+
+        default:
+            break;
+    }
+
     return false;
 }
 
@@ -127,35 +240,64 @@ void Tetris::keyPressEvent(QKeyEvent *ev)
 {
     if(is_bottom == false)
     {
+    qDebug() << "停在 设置键盘输入";
+
         switch (ev->key())
         {
-        case Qt::Key_Down: //下
-        case Qt::Key_S:
+            case Qt::Key_J:
             {
-                printSquare(this->type, true);
-                this->row = this->row + 1;
-                printSquare(this->type, false);
+                this->type = 2;
                 break;
             }
-            
-        case Qt::Key_Left: //左
-        case Qt::Key_A: 
-            {
-                printSquare(this->type, true);
-                this->col = this->col - 1;
-                printSquare(this->type, false);
+            case Qt::Key_Down: //下
+            case Qt::Key_S:
+                {
+                    printSquare(true);
+                    this->row = this->row + 1;
+                    printSquare(false);
+                    break;
+                }
+                
+            case Qt::Key_Left: //左
+            case Qt::Key_A: 
+                {
+                    this->col = this->col - 1;
+                    checkPoint();
+                    if (checkSquare() == false)
+                    {
+                        this->col = this->col + 1;
+                        printSquare(true);
+                        this->col = this->col - 1;
+                        printSquare(false);
+                    }
+                    else
+                    {
+                        this->col = this->col + 1;
+                    }
+                    
+                    break;
+                }
+            case Qt::Key_Right: //右
+            case Qt::Key_D:
+                {
+                    this->col = this->col + 1;
+                    checkPoint();
+                    if (checkSquare() == false)
+                    {
+                        this->col = this->col - 1;
+                        printSquare(true);
+                        this->col = this->col + 1;
+                        printSquare(false);
+                    }
+                    else
+                    {
+                        this->col = this->col + 1;
+                    }
+                    
+                    break;
+                }
+            default:
                 break;
-            }
-        case Qt::Key_Right: //右
-        case Qt::Key_D:
-            {
-                printSquare(this->type, true);
-                this->col = this->col + 1;
-                printSquare(this->type, false);
-                break;
-            }
-        default:
-            break;
         }
     }
     
@@ -185,16 +327,73 @@ void Tetris::showNext(int type)
 
 void Tetris::checkPoint(void)
 {
-    if(this->row + 2 >= ui->main_widget->height()/Square(this).height())
+    qDebug() << "停在 检查点";
+    if(this->row + square_height[type] == ui->main_widget->height()/Square(this).height())
     {
         this->is_bottom = true;
     }
 
-    this->col + 3 > ui->main_widget->width() / Square(this).width() ? this->col = this->col - 1 : 1;
+    this->col + square_width[type] > ui->main_widget->width() / Square(this).width() ? this->col = this->col - 1 : 1;
 
     this->row < 0 ? this->row = this->row + 1 : 1;
 
     this->col < 0 ? this->col = this->col + 1 : 1;
+}
+
+void Tetris::checkScore(void)
+{
+    // time_start->stop();
+    qDebug() << "停在 检查分数";
+    for (int i = ui->main_widget->height() / Square(this).height() - 1; i > 0; i--)
+    {
+        bool map = true;
+        bool score = true;
+        for (int j = 0; j < ui->main_widget->width() / Square(this).width(); j++)
+        {
+            if(square[i][j]->flag == false)
+            {
+                score = false;
+                break;
+            }
+            else
+            {
+                map = false;
+            }
+        }
+
+        if(map)
+        {
+            break;
+        }
+
+        if(score)
+        {
+            for (int k = i; k > 0;k--)
+            {
+                for (int j = 0; j < ui->main_widget->width() / Square(this).width(); j++)
+                {
+                    square[k][j]->setStyleSheet(square[k - 1][j]->styleSheet());
+                    square[k][j]->flag = square[k - 1][j]->flag;
+                }
+            }
+            i++;
+        }
+    }
+    
+    // time_start->start();
+}
+
+
+void Tetris::setSquareStyle(int pos_x, int pos_y, bool isMap)
+{
+    qDebug() << "停在 设置样式";
+    tempStyle = isMap ? mapStyle : squareStyle;
+
+    square[pos_x][pos_y]->setStyleSheet(tempStyle);
+    square[pos_x][pos_y]->flag = is_bottom;
+
+    qDebug() << "样式结束";
+
 }
 
 Tetris::~Tetris()
