@@ -8,9 +8,9 @@ Welcome::Welcome(QWidget *parent) :  QDialog(parent)
     ui->spinBox->setRange(100, 1000);
     ui->horizontalSlider->setValue(300);
     ui->spinBox->setValue(300);
-    tetris = new Tetris;
 
     connect(ui->start_button, &QPushButton::clicked, [this]() {
+        tetris = new Tetris(nullptr,ui->spinBox->value());
         this->tetris->show();
         this->close();
     });
@@ -30,7 +30,6 @@ Welcome::Welcome(QWidget *parent) :  QDialog(parent)
     connect(ui->spinBox, QOverload<int>::of(&QSpinBox::valueChanged), [this]() {
         ui->horizontalSlider->setValue(ui->spinBox->value());
     });
-
 
 }
 

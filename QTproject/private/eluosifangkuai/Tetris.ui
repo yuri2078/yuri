@@ -69,7 +69,7 @@ QPushButton:hover
 }</string>
    </property>
    <property name="text">
-    <string>开始游戏</string>
+    <string>重新开始</string>
    </property>
   </widget>
   <widget class="QPushButton" name="stop_button">
@@ -133,6 +133,24 @@ QPushButton:hover
     <string notr="true">background-color: rgb(98, 160, 234);
 border-radius: 30px;</string>
    </property>
+   <widget class="QLabel" name="score_label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>90</y>
+      <width>281</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>40</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>得分： 0  分</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="tips_label">
    <property name="geometry">
@@ -155,7 +173,10 @@ border-radius: 30px;</string>
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
-    <string>按 wsad 键移动  center 建旋转</string>
+    <string>按 sad 键移动  W 键旋转</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
  </widget>

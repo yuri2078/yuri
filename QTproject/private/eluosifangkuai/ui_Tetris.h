@@ -24,6 +24,7 @@ public:
     QPushButton *start_button;
     QPushButton *stop_button;
     QWidget *show_next;
+    QLabel *score_label;
     QLabel *tips_label;
 
     void setupUi(QWidget *Tetris)
@@ -96,14 +97,21 @@ public:
         show_next->setFont(font1);
         show_next->setStyleSheet(QString::fromUtf8("background-color: rgb(98, 160, 234);\n"
 "border-radius: 30px;"));
+        score_label = new QLabel(show_next);
+        score_label->setObjectName(QString::fromUtf8("score_label"));
+        score_label->setGeometry(QRect(50, 90, 281, 101));
+        QFont font2;
+        font2.setPointSize(40);
+        score_label->setFont(font2);
         tips_label = new QLabel(Tetris);
         tips_label->setObjectName(QString::fromUtf8("tips_label"));
         tips_label->setGeometry(QRect(860, 410, 281, 151));
-        QFont font2;
-        font2.setPointSize(15);
-        tips_label->setFont(font2);
+        QFont font3;
+        font3.setPointSize(15);
+        tips_label->setFont(font3);
         tips_label->setFrameShape(QFrame::Box);
         tips_label->setFrameShadow(QFrame::Raised);
+        tips_label->setAlignment(Qt::AlignCenter);
 
         retranslateUi(Tetris);
 
@@ -113,9 +121,10 @@ public:
     void retranslateUi(QWidget *Tetris)
     {
         Tetris->setWindowTitle(QCoreApplication::translate("Tetris", "Form", nullptr));
-        start_button->setText(QCoreApplication::translate("Tetris", "\345\274\200\345\247\213\346\270\270\346\210\217", nullptr));
+        start_button->setText(QCoreApplication::translate("Tetris", "\351\207\215\346\226\260\345\274\200\345\247\213", nullptr));
         stop_button->setText(QCoreApplication::translate("Tetris", "\346\232\202\345\201\234", nullptr));
-        tips_label->setText(QCoreApplication::translate("Tetris", "\346\214\211 wsad \351\224\256\347\247\273\345\212\250  center \345\273\272\346\227\213\350\275\254", nullptr));
+        score_label->setText(QCoreApplication::translate("Tetris", "\345\276\227\345\210\206\357\274\232 0  \345\210\206", nullptr));
+        tips_label->setText(QCoreApplication::translate("Tetris", "\346\214\211 sad \351\224\256\347\247\273\345\212\250  W \351\224\256\346\227\213\350\275\254", nullptr));
     } // retranslateUi
 
 };

@@ -9,16 +9,17 @@
 #include <QTimer>
 #include <QTime>
 #include <QDebug>
+#include <QMessageBox>
 
 
 class Tetris : public QDialog
 {
 private:
     int spead;
-    int row, previous_row;
-    int col, previous_col;
+    int row;
+    int col;
     int type;
-    int all_height;
+    int score;
 
     QString squareStyle;
     QString mapStyle;
@@ -60,7 +61,6 @@ private:
 
     Ui::Tetris *ui;
     Square ***square;
-    Square ***next;
 
     QTimer *time_start;
 
@@ -73,9 +73,9 @@ public:
     void printSquare(bool isMap);
     void checkPoint(void);
     bool checkSquare(void);
-    void showNext(int type);
     void checkScore(void);
     void setSquareStyle(int pos_x, int pos_y, bool isMap);
+    void gameOver(void);
 };
 
 #endif
