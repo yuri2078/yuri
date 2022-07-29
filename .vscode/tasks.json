@@ -1,86 +1,33 @@
 {
     "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "mkdir build",
-            "command": "if [ ! -e ./build ]; then\nmkdir build\nfi",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build"
-        },
-        {
-            "type": "shell",
-            "label": "mkdir build debug",
-            "command": "if [ ! -e ./build/debug ]; then\nmkdir ./build/debug\nfi",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "mkdir build"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "mkdir build release",
-            "command": "if [ ! -e ./build/release ]; then\nmkdir ./build/release\nfi",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "mkdir build"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "qmake build debug",
-            "command": "cd build/debug && /home/yuri/rubbish/Qt/5.14.2/gcc_64/bin/qmake ${workspaceFolder}/Test.pro \"CONFIG += debug\"",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "mkdir build debug"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "debug",
-            "command": "cd build/debug && /usr/bin/make",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "qmake build debug"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "qmake build release",
-            "command": "cd build/release && /home/yuri/rubbish/Qt/5.14.2/gcc_64/bin/qmake ${workspaceFolder}/Test.pro  \"CONFIG += release\"",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "mkdir build release"
-            ]
-        },
-        {
-            "type": "shell",
-            "label": "release",
-            "command": "cd build/release && /usr/bin/make",
-            "args": [],
-            "options": {},
-            "problemMatcher": [],
-            "group": "build",
-            "dependsOn": [
-                "qmake build release"
-            ]
+    "tasks": [{
+            "label": "compile",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
