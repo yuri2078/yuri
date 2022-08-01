@@ -41,3 +41,7 @@ git push -u origin main
 ## linux 常用修复命令
 
 1. 出现
+
+## githun 仓库密钥
+
+`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`

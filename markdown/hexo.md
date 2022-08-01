@@ -89,3 +89,11 @@ deploy:
 + hexo new page "contact" 添加联系界面
 + npm i --save hexo-wordcount 安装 统计字数插件  
 + npm install hexo-deployer-git --save 解决git报错d
+
+## 免费cdn
+
+1. 新建github仓库
+
+2. 发布reselss版本
+
+3. `https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径` 访问你的图片
