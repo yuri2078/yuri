@@ -14,6 +14,8 @@
 + sudo aptitude install packer 防止出现依赖不足
 + sudo apt dist-upgrade 不知道是干啥的
 + gnome-session-properties  设置程序自己启动
++ zip -r hh.zip hh 压缩文件
++ unzip hh.zip解压文件
 
 ## 软件权限相关
 
