@@ -7,34 +7,37 @@ class Solution
 {
 public:
     string convert(string s, int numRows) {
-        string newString[4] = {""};
-        for (int i = 0; i < s.length();i = i + 2 * numRows - 3)
-        {
-            newString[0] = newString[0] + s[i];
+        if (numRows == 1){
+            return s;
         }
+        string newString[numRows] = {""};
+        int j = 0;
+        bool flag = true;
+        for (int i = 0; i < s.length(); i++)
+        {
+            newString[j] = newString[j] + s[i];
+            flag ? j++ : j--;
+            if(j == numRows){
+                j = numRows - 2;
+                flag = false;
+            }
 
-        n-2+n-2
-        for (int i = 1; i < s.length();i = i + 2 * numRows - 3)
-        {
-            newString[0] = newString[0] + s[i];
+            if(j == -1){
+                j = 1;
+                flag = true;
+            }
         }
-
-        for (int i = 2; i < s.length();i = i + 2 * numRows - 3)
+        for (int i = 1; i < numRows;i++)
         {
-            newString[0] = newString[0] + s[i];
+            newString[0] = newString[0] + newString[i];
         }
-
-        for (int i = 3; i < s.length();i = i + 2 * numRows - 3)
-        {
-            newString[0] = newString[0] + s[i];
-        }
-        return s;
+        return newString[0];
     }
 };
 
 int main(void)
 {
-    cout << Solution().convert("PAYPALISHIRING", 3) << endl;
+    cout << Solution().convert("PAYPALISHIRING", 4) << endl;
 
     return 0;
 }

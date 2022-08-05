@@ -24,4 +24,12 @@
 
 8. set fileencoding 查看编码
 
-9 :1,$s/word1/word2/g 或 :%s/word1/word2/g 用world2 替换world1
+9. :1,$s/word1/word2/g 或 :%s/word1/word2/g 用world2 替换world1
+
+10. set nu显示行号
+
+## 快捷键
+
+1. ctrl n/p 自动补全
+
+2.
