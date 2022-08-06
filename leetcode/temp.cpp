@@ -1,43 +1,37 @@
 #include <string>
 #include <iostream>
+#include <exception>
 using namespace std;
 
+#include <cmath>
 
 class Solution
 {
 public:
-    string convert(string s, int numRows) {
-        if (numRows == 1){
-            return s;
-        }
-        string newString[numRows] = {""};
-        int j = 0;
-        bool flag = true;
-        for (int i = 0; i < s.length(); i++)
+    int reverse(int x) {
+        long long int s = 0;
+        while (x)
         {
-            newString[j] = newString[j] + s[i];
-            flag ? j++ : j--;
-            if(j == numRows){
-                j = numRows - 2;
-                flag = false;
-            }
+            s = s * 10 + x % 10;
+            x = x / 10;
+        }
 
-            if(j == -1){
-                j = 1;
-                flag = true;
-            }
-        }
-        for (int i = 1; i < numRows;i++)
-        {
-            newString[0] = newString[0] + newString[i];
-        }
-        return newString[0];
+        return (int)s == s ? s : 0;
     }
 };
 
 int main(void)
 {
-    cout << Solution().convert("PAYPALISHIRING", 4) << endl;
+    cout << Solution().reverse(122) << endl;
+
+    try
+    {
+        4 / 0;
+    }
+    catch(std::exception &e)
+    {
+        cout << "和和咯" << endl;
+    }
 
     return 0;
 }

@@ -47,6 +47,7 @@ int main()
 			cout << name[i][j].age << " ";
 		}
 		std::cout << std::endl;
+		
 	}
 	std::cout << "sizeof -- name " << sizeof(name[0][0]) << std::endl;
 	return 0;

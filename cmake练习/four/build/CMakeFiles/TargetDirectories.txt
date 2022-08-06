@@ -1,0 +1,3 @@
+/home/yuri/yuri/cmake练习/four/build/CMakeFiles/main.dir
+/home/yuri/yuri/cmake练习/four/build/CMakeFiles/edit_cache.dir
+/home/yuri/yuri/cmake练习/four/build/CMakeFiles/rebuild_cache.dir

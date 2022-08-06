@@ -141,4 +141,22 @@
 
         3. info break 查看断点
 
-        4. 
+## cmake实操
+
+1. sudo apt install camake 安装cmake
+
+2. 基本指令格式 指令(操作数一 操作数二) 指令的大小写无关
+
+    ```cmake
+        set(HELLO hello.cpp)
+        add_executable(hello main.cpp hello.cpp)
+        ADD_EXECUTABLE(hello main.cpp ${HELLO})
+    ```
+
+3. 变量使用${} 取值，但在IF语句中是和直接使用变量名
+
+4. 手动编写CMakeList.txt
+
+5. cmake PATH 生成makefile
+
+6. make 编译
