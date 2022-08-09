@@ -1,0 +1,15 @@
+/home/yuri/yuri/c#/learn/语法结构/bin/Debug/net6.0/语法结构
+/home/yuri/yuri/c#/learn/语法结构/bin/Debug/net6.0/语法结构.deps.json
+/home/yuri/yuri/c#/learn/语法结构/bin/Debug/net6.0/语法结构.runtimeconfig.json
+/home/yuri/yuri/c#/learn/语法结构/bin/Debug/net6.0/语法结构.dll
+/home/yuri/yuri/c#/learn/语法结构/bin/Debug/net6.0/语法结构.pdb
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.csproj.AssemblyReference.cache
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.GeneratedMSBuildEditorConfig.editorconfig
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.AssemblyInfoInputs.cache
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.AssemblyInfo.cs
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.csproj.CoreCompileInputs.cache
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.dll
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/refint/语法结构.dll
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.pdb
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/语法结构.genruntimeconfig.cache
+/home/yuri/yuri/c#/learn/语法结构/obj/Debug/net6.0/ref/语法结构.dll

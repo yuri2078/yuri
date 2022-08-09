@@ -1,0 +1,4 @@
+/home/yuri/yuri/test/qtTest/build/CMakeFiles/test.dir
+/home/yuri/yuri/test/qtTest/build/CMakeFiles/edit_cache.dir
+/home/yuri/yuri/test/qtTest/build/CMakeFiles/rebuild_cache.dir
+/home/yuri/yuri/test/qtTest/build/CMakeFiles/test_autogen.dir

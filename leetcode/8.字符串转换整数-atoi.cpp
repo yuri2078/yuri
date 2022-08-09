@@ -1,13 +1,11 @@
-#include <string>
-#include <iostream>
-#include <exception>
-using namespace std;
+/*
+ * @lc app=leetcode.cn id=8 lang=cpp
+ *
+ * [8] 字符串转换整数 (atoi)
+ */
 
-#include <cmath>
-#include <cctype>
-
-class Solution
-{
+// @lc code=start
+class Solution {
 public:
     int myAtoi(string s) {
         long long sum = 0;
@@ -24,16 +22,10 @@ public:
                     sum = sum * 10 + (s[i] - 48);
                     i++;
                 }
-                break;
             }
         }
-        long long int overFlow = f == 1 ? 2147483647 : -2147483648;
-        return (int)sum == sum ? sum * f : overFlow;
+        return (int)sum == sum ? sum * f: 2147483647;
     }
 };
+// @lc code=end
 
-int main(void)
-{
-    cout << Solution().myAtoi("words and 987") << endl;
-    return 0;
-}

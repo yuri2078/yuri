@@ -1,26 +1,23 @@
+
 {
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "C/C++",
+            "name": "QtBuild",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${command:cmake.launchTargetPath}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "preLaunchTask": "compile",
-            "setupCommands": [
+            "cwd": "${workspaceRoot}",
+            "environment": [
                 {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
+                    "name": "PATH",
+                    "value": "/home/yuri/application/QT/5.14.2/gcc_64/bin"
                 }
-            ]
+            ],
+            "externalConsole": false,
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }

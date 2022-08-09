@@ -10,3 +10,4 @@ target_link_libraries(main hello) #为他添加需要连接的共享库 相当�
 add_subdirectory(SRC) #向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置
 aux_source_directory(. src)#发现一个目录下所有的源代码文件并将列表存储在一个变量中
 set(CMAKE_BUILD_TYPE Debug) #设置构造类型
+add_definitions(-Wall -g) #添加编译选项
