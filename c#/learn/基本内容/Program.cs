@@ -42,11 +42,32 @@ namespace HelloWorldApplication //定义命名空间
             Console.WriteLine("{0}  ", i);
          }
 
-         
-         
-//其他
-         
+            int? nullable_int = null; //可空类型 在多余的基础上多了null类型
+            Console.WriteLine("nullable_int :{0}|", nullable_int); //啥都没有，不是空格
+            int? nullable_int_2 = new int?();
+            Console.WriteLine(nullable_int_2);
+            int x_6 = nullable_int ?? 666; //如果为null则返回后面那个值
 
-      }
+
+            //数组
+
+            int[] array = {1, 2,4,5}; //声明数组
+            int[][] array_tao;
+            int[,] array_2;
+            array_tao = new int[5][]; //定义桥套数组
+            array_tao[0] = array; //嵌套数组赋值
+            array = new int[10]; //实例化数组
+            array_2 = new int[10, 10]; //申请二维数组
+            array = new int[4] { 10, 20, 30, 40 }; //他的长度必须精确
+            // array = new int[5] { 10, 20, 30, 40 }; //他的长度必须精确 这里报错
+
+            int[] temp = array; //他们会指向同一个地方 统一块内存区域
+            Console.WriteLine(" array[0] : {0}", array[0]);
+            Console.WriteLine(" temp[0] : {0}", temp[0]);
+            array[0] = 6666;
+            Console.WriteLine(" array[0] : {0}", array[0]);
+            Console.WriteLine(" temp[0] : {0}", temp[0]);
+            
+        }
    }
 }
