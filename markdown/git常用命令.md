@@ -40,8 +40,10 @@ git push -u origin main
 
 ## linux 常用修复命令
 
-1. 出现
+1. 每次都要输入密码
 
-## githun 仓库密钥
+     ` git config --global credential.helper store `
 
-`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`
+## githun 仓库密钥 更新时间 8.15
+
+`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`

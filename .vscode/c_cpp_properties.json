@@ -3,7 +3,7 @@
         {
             "name": "qt",
             "includePath": [
-                "/home/yuri/application/QT/5.14.2/gcc_64/include/**",
+                // "/home/yuri/application/QT/5.14.2/gcc_64/include/**",
                 "${workspaceRoot}/**"
             ],
             "cStandard": "c17",
