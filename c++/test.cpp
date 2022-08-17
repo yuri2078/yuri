@@ -7,11 +7,13 @@ using std::endl;
 using std::string;
 using std::vector;
 
+
 class Solution
 {
 public:
-    string longestPalindrome(string s) {
-        string answer = "";
+	string longestPalindrome(string s)
+	{
+		string answer = "";
 		int max_len = 1;
 		vector<vector<bool>> dp(s.length(), vector<bool>(s.length()));
 		for (int len = 1; len <= s.length(); len++)
@@ -30,7 +32,6 @@ public:
 
 		return answer;
 	}
-
 };
 
 int main()

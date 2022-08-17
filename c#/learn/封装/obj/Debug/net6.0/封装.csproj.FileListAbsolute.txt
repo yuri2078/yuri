@@ -9,7 +9,7 @@
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/封装.AssemblyInfo.cs
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/封装.csproj.CoreCompileInputs.cache
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/封装.dll
-/home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/refint/封装.dll
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/封装.pdb
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/封装.genruntimeconfig.cache
 /home/yuri/yuri/c#/learn/封装/obj/Debug/net6.0/ref/封装.dll
+/home/yuri/yuri/c#/learn/封装/bin/Debug/net6.0/ref/封装.dll

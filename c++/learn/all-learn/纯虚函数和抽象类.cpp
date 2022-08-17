@@ -21,6 +21,7 @@ public:
         std::cout << "hello\n";
     }
 };
+
 void test()
 {
     // Base b1;  //报错，不可以实例化对象

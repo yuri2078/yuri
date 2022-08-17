@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "L5rvMSH8XK+T33GAFOPB0e4s5S9Jn+WQX2NUzcUaYX/g1gp161qHsRvySdkv+qyD9s11o05MNV4UiYSZ2gQnCA==",
+  "dgSpecHash": "egLs+giHm4UQw3WZpBt5ZNwFry2MJq7+sCuDvoy2JlUiBAvATaHh2d5E+b/v1FPRJv/pn7oZDLfZbWZYHUFTFQ==",
   "success": true,
   "projectFilePath": "/home/yuri/yuri/c#/learn/封装/封装.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/yuri/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.8/microsoft.aspnetcore.app.ref.6.0.8.nupkg.sha512"
+  ],
   "logs": []
 }
