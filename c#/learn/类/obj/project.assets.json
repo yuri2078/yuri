@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/yuri/yuri/c#/learn/基本内容/基本内容.csproj",
-      "projectName": "基本内容",
-      "projectPath": "/home/yuri/yuri/c#/learn/基本内容/基本内容.csproj",
+      "projectUniqueName": "/home/yuri/yuri/c#/learn/类/类.csproj",
+      "projectName": "类",
+      "projectPath": "/home/yuri/yuri/c#/learn/类/类.csproj",
       "packagesPath": "/home/yuri/.nuget/packages/",
-      "outputPath": "/home/yuri/yuri/c#/learn/基本内容/obj/",
+      "outputPath": "/home/yuri/yuri/c#/learn/类/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/yuri/.nuget/NuGet/NuGet.Config"

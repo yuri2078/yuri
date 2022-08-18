@@ -10,30 +10,32 @@ class Solution
 {
 public:
     int myAtoi(string s) {
-        long long sum = 0;
-        int f = 1;
-        for (long unsigned int i = 0; i < s.length(); i++)
+        int i = 0, f = 1;
+        long long int sum = 0;
+
+        while (i < s.length() && ' ' == s[i]){
+            i++;
+        }
+
+        if (i < s.length() && (s[i] == '-' || s[i] == '+'))
         {
-            if(isdigit(s[i]))
-            {
-                if(i > 1 && s[i - 1] == '-'){
-                    f = -1;
-                }
-                while (isdigit(s[i]) && i < s.length())
-                {
-                    sum = sum * 10 + (s[i] - 48);
-                    i++;
-                }
-                break;
+            f = s[i] == '-' ? -1 : 1;
+            i++;
+        }
+        while (i < s.length() && isdigit(s[i]))
+        {
+            sum = sum * 10 + (s[i++] - '0');
+            if((int)sum != sum){
+                return f == 1 ? INT32_MAX : INT32_MIN;
             }
         }
-        long long int overFlow = f == 1 ? 2147483647 : -2147483648;
-        return (int)sum == sum ? sum * f : overFlow;
+        return (int)sum * f;
     }
 };
 
 int main(void)
 {
-    cout << Solution().myAtoi("words and 987") << endl;
+    cout << Solution().myAtoi("-21474836460") << endl;
+    cout << INT32_MAX << endl;
     return 0;
 }

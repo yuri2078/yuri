@@ -87,6 +87,7 @@
     },
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
-    "qtConfigure.qtKitDir": "/home/yuri/application/QT/5.14.2/gcc_64"
-   
+    "qtConfigure.qtKitDir": "/home/yuri/application/QT/5.14.2/gcc_64",
+    "cmake.configureOnOpen": true,
+
 }

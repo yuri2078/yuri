@@ -9,7 +9,7 @@
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/基本内容.AssemblyInfo.cs
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/基本内容.csproj.CoreCompileInputs.cache
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/基本内容.dll
-/home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/refint/基本内容.dll
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/基本内容.pdb
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/基本内容.genruntimeconfig.cache
 /home/yuri/yuri/c#/learn/基本内容/obj/Debug/net6.0/ref/基本内容.dll
+/home/yuri/yuri/c#/learn/基本内容/bin/Debug/net6.0/ref/基本内容.dll

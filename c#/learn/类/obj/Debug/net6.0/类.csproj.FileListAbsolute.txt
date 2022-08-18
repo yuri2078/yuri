@@ -1,0 +1,15 @@
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/类
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/类.deps.json
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/类.runtimeconfig.json
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/类.dll
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/ref/类.dll
+/home/yuri/yuri/c#/learn/类/bin/Debug/net6.0/类.pdb
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.csproj.AssemblyReference.cache
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.GeneratedMSBuildEditorConfig.editorconfig
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.AssemblyInfoInputs.cache
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.AssemblyInfo.cs
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.csproj.CoreCompileInputs.cache
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.dll
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/ref/类.dll
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.pdb
+/home/yuri/yuri/c#/learn/类/obj/Debug/net6.0/类.genruntimeconfig.cache
