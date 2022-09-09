@@ -1,0 +1,4 @@
+/home/yuri/yuri/QTproject/loginWindow/CMakeFiles/loginWindow.dir
+/home/yuri/yuri/QTproject/loginWindow/CMakeFiles/edit_cache.dir
+/home/yuri/yuri/QTproject/loginWindow/CMakeFiles/rebuild_cache.dir
+/home/yuri/yuri/QTproject/loginWindow/CMakeFiles/loginWindow_autogen.dir

@@ -4,15 +4,15 @@ public class test
     public static void main(String[] args)
     {
         Scanner input = new Scanner(System.in);
-        System.out.println("ÇëÊäÈëÁ½¸öÊı : ");
+        System.out.println("è¯·è¾“å…¥ä¸¤ä¸ªæ•° : ");
         int x = input.nextInt();
         int y = input.nextInt();
-        System.out.printf("ËûÃÇµÄºÍÊÇ : %d \n",add(x,y));
+        System.out.printf("ä»–ä»¬çš„å’Œæ˜¯ : %d \n",add(x,y));
         input.close();
     }
 
     public static int add(int x, int y)
-    //addÕâ¾ÍÊÇÀàÃû int ±íÊ¾ÕâÊÇÒ»¸ö·µ»ØÖµÊÇÕûĞÍµÄÀà
+    //addè¿™å°±æ˜¯ç±»å int è¡¨ç¤ºè¿™æ˜¯ä¸€ä¸ªè¿”å›å€¼æ˜¯æ•´å‹çš„ç±»
     {
         return x + y;
     }

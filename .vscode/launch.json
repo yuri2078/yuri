@@ -2,6 +2,20 @@
 {
     "version": "0.2.0",
     "configurations": [
+    {
+        "type": "java",
+        "name": "Launch External Terminal",
+        "request": "launch",
+        "console": "externalTerminal",
+        "mainClass": ""
+    },
+        {
+            "type": "java",
+            "name": "Launch test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "yuri_5d503d4e"
+        },
         {
             "name": "QtBuild",
             "type": "cppdbg",
