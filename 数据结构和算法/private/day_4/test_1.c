@@ -15,7 +15,7 @@ int sqlistInsert(Sqlist *sqlist, int n)
 {
     //如果空间满了则重新申请空间
     if(sqlist->length == sqlist->size){
-        sqlist->slist = (ElemType *)realloc(sqlist->slist, sizeof(ElemType));
+        sqlist->slist = (ElemType *)realloc(sqlist->slist, (sqlist->size +1) * sizeof(ElemType));
     }
     
     //从尾部开始插入

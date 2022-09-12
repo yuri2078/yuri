@@ -50,6 +50,9 @@ int main(void)
     for (int i = 0; i < n;i++){
         scanf("%d", number + i);
     }
-    printf("%d\n",search_2(number, n));
+    malloc(8 * sizeof(int));
+    calloc(8, sizeof(int));
+    realloc(number, sizeof(int));
+    printf("%d\n", search_2(number, n));
     return 0;
 }
