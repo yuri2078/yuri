@@ -36,5 +36,8 @@ int main(int argc, char **argv)
       cout << *begin << " ";
     }
     cout << endl;
+
+    auto &hell = v1;
+    cout << "hello " << hell[0] << endl;
     return 0;
 }

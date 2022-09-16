@@ -83,7 +83,12 @@
         "thread": "cpp",
         "variant": "cpp",
         "codecvt": "cpp",
-        "qlabel": "cpp"
+        "qlabel": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "source_location": "cpp",
+        "cinttypes": "cpp",
+        "valarray": "cpp"
     },
     "java.dependency.syncWithFolderExplorer": true,
     "C_Cpp.errorSquiggles": "Enabled",
