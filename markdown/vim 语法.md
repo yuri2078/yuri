@@ -1,3 +1,18 @@
+---
+title: vim语法
+author: yuri2078
+avatar: 'https://cdn.jsdelivr.net/gh/yuri2078/images/img/custom/avatar.jpg'
+authorLink: 'https://2078.site'
+authorAbout: 一般过路人
+authorDesc: 一般过路人
+categories: 小记
+comments: true
+description: '我的爱宛如孤岛之花，不为人知的绽放,不为人知的凋零！'
+photos: 'https://cdn.jsdelivr.net/gh/yuri2078/images/headPictures/21.png'
+date: 2022-08-04 19:17:31
+tags: vim
+keywords:
+---
 # vim语法
 
 ## 常规用法
@@ -24,12 +39,4 @@
 
 8. set fileencoding 查看编码
 
-9. :1,$s/word1/word2/g 或 :%s/word1/word2/g 用world2 替换world1
-
-10. set nu显示行号
-
-## 快捷键
-
-1. ctrl n/p 自动补全
-
-2.
+9 :1,$s/word1/word2/g 或 :%s/word1/word2/g 用world2 替换world1

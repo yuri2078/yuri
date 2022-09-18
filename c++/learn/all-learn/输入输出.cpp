@@ -23,5 +23,6 @@ int main()
     cout << hex << 123 << endl;//以十六进制输出
     cout << dec << 123 << endl;//以十进制输出
     cout << oct << 123 << endl;//以八进制输出
+    char name[10];  //
     return 0;
 }
