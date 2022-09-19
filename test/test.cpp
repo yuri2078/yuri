@@ -29,26 +29,26 @@ Person::~Person()
 
 }
 
-
-
-int main()
-{
-	Person **name;
-	name = new Person *[10];
-	for (int i = 0; i < 10;i++)
+	int main()
 	{
-		name[i] = new Person [10];
-	}
-
-	for (int i = 0; i < 10;i++)
-	{
-		for (int j = 0; j < 10;j++)
+		Person **name;
+		name = new Person *[10];
+		for (int i = 0; i < 10; i++)
 		{
-			cout << name[i][j].age << " ";
+			name[i] = new Person[10];
 		}
-		std::cout << std::endl;
-		
+		while(1)
+		{
+		}
+
+			for (int i = 0; i < 10; i++)
+			{
+				for (int j = 0; j < 10; j++)
+				{
+					cout << name[i][j].age << " ";
+				}
+				std::cout << std::endl;
+			}
+		std::cout << "sizeof -- name " << sizeof(name[0][0]) << std::endl;
+		return 0;
 	}
-	std::cout << "sizeof -- name " << sizeof(name[0][0]) << std::endl;
-	return 0;
-}

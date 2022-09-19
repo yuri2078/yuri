@@ -7,6 +7,7 @@ struct students
     char name[20];
     float testo, testtw, testth;
 };
+
 int main()
 {
     char ch;
