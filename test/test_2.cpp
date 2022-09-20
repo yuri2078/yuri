@@ -20,11 +20,5 @@ int main(){
     }catch(const char* &e){
         cout<<e<<endl;
     }
-    {
-        {
-            
-        }
-    }
-
-    return 0;
+        return 0;
 }
