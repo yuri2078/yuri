@@ -26,6 +26,7 @@ int main(int argc, char **argv)
       v1.push_back(i);
     }
 
+    //自动识别迭代器类型
     for (auto begin = v1.begin(); begin != v1.end(); begin++)
     {
       cout << *begin << " ";

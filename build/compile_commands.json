@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/yuri/yuri/build",
+  "command": "/usr/bin/g++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I/home/yuri/yuri/build -I/home/yuri/yuri/QTproject/Qevent -I/home/yuri/yuri/build/Qevent_autogen/include -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui -g -fPIC -std=gnu++17 -o CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.o -c /home/yuri/yuri/build/Qevent_autogen/mocs_compilation.cpp",
+  "file": "/home/yuri/yuri/build/Qevent_autogen/mocs_compilation.cpp"
+}
+]

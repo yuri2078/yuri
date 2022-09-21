@@ -107,16 +107,6 @@ keywords:
   + 列表禁止缩窄定义 比如long  ->  int
 
 
-
-
-
-
-
-
-
-
-
-
 ## 常用函数补充
 
 - `#include <limits.h>` 保存各类型的最大值 INT_MAX
@@ -130,5 +120,154 @@ keywords:
      - 指针不为NULL 但是size为0  则空间会被释放 返回NULL
      - 空间不足 返回NULL原空间内容不变
 
+## 常见关键字补充
 
+### const 关键字
+
+```c++
+#include <iostream>
+
+int main(int argc, char const *argv[])
+{
+    int x = 666, b = 666;
+    int *p;
+
+    const int *point = &x; //const 在左边表示他指向的值不能修改
+    // *point = 666; //不能修改，报错
+    point = &b; //可以修改
+
+    int *const point_2 = &x;
+    *point_2 = 666;
+    // point_2 = &b; //不能修改，报错
+
+    const int temp = 666;
+
+    return 0;
+}
+```
+
+**总结：**
+
+1. const 加在类型的前面则表示后面的值不能修改 `const int *point = &x;`
+   1. 不能通过point 修改 x 的值
+   2. 可以修改point 指向的值
+2. const 加在类型的后面则表示这个变量不能修改`int *const point_2 = &x;`
+
+    1. 可以通过point_2 修改x的值
+    2. 不能修改point_2 指向的值
+3. 尽量加const 这样可以接受const的值，普通变量是不能接受const的值的
+
+### explicit 关键字
+
+ 一般用于构造函数/拷贝构造函数 加上之后就不能发生隐式类型转换，必须指明
+
+```c++
+    class Person
+    {
+        explicit Person(int x = 0, int y =1) //添加禁止隐式转换关键字
+        {
+
+        }
+    };
+    void test()
+    {
+        Person p1 = 3; //发生隐式类型转换
+        //程序处理 ： Person temp(3); p1 = temp; 
+        //未来避免发生不必要的错误，使用explicit关键字禁止 隐式类型转换
+
+        //加上explicit关键字后
+        // Person p1 = 3; 错误
+        // Person p1 = Person(3); 正确
+    }
+
+```
+
+**总结**
+
+1. 有的时候我们要求不能发生隐式转换 所以要加关键字
+
+### auto 关键字 
+
+自动识别数据类型
+
+```c++
+#include <iostream>
+#include <vector>
+
+using std::cout;
+using std::endl;
+using std::vector;
+
+class Student
+{
+
+private:
+  int age;
+
+public:
+  explicit Student()
+  {
+    age = 666;
+  }
+
+};
+
+int main(int argc, char **argv)
+{
+    vector<int> v1;
+    for(int i = 0; i < 10; i++){
+      v1.push_back(i);
+    }
+
+    //自动识别迭代器类型
+    for (auto begin = v1.begin(); begin != v1.end(); begin++)
+    {
+      cout << *begin << " ";
+    }
+    cout << endl;
+    for (vector<int>::iterator begin = v1.begin(); begin != v1.end(); begin++)
+    {
+      cout << *begin << " ";
+    }
+    cout << endl;
+
+    auto &hell = v1;
+    cout << "hello " << hell[0] << endl;
+    return 0;
+}
+
+```
+
+
+
+
+
+## 指针知识补充
+
+### 函数指针
+
+```c++
+#include <iostream>
+
+int max(int x, int y)
+{
+    return x > y ? x : y;
+}
+
+void test()
+{
+    std::cout << "void test \n";
+}
+
+int main(int argc, char const *argv[])
+{
+    int (*pf)(int, int); //定义函数指针
+    pf = max;
+    std::cout << "max -- " << pf(55, 66) << std::endl;
+    void (*pm)() = test; //定义函数指针
+    pm(); //调用函数指针
+    return 0;
+}
+
+```
 

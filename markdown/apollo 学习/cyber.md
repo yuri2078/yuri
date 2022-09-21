@@ -229,3 +229,135 @@
 
 6. cd 进 目录进行build就行了
 
+## protobuf 的基本使用方式 -- 使用protobuf进行c++ 开发
+
+**protocol buffers （ProtoBuf）是一种语言无关、平台无关、可扩展的序列化结构数据的方法，它可用于（数据）通信协议、数据存储等。**
+
+**Protocol Buffers 是一种灵活，高效，自动化机制的结构数据序列化方法－可类比 XML，但是比 XML 更小（3 ~ 10倍）、更快（20 ~ 100倍）、更为简单。**
+
+**json\xml都是基于文本格式，protobuf是二进制格式。**
+
+### 编写proto并且编译
+
+1. 新建demo_protobuf 文件夹
+
+2. 在文件夹里面新建student.proto 文件
+
+   ```protobuf
+   //proto文件主要由三部分组成
+   
+   //第一部分 proto 的版本号
+   syntax = "proto2";
+   
+   //声明包
+   
+   package apollo.cyber.demo_protobuf;
+   
+   //声明消息
+   //使用关键字message 就当class使用就行
+   //数据分为 字段规则 数据类型 名字 编号
+   
+   message Student {
+   
+       required string name = 1; //required -- 必须要的参数
+       optional int64 age = 2; //optional -- 可以省略的参数
+       optional double height = 3; 
+       repeated string books = 4; //repeated -- 可以输入多个数据
+   }
+   ```
+
+3. 编写build文件
+
+   ```cmake
+   package(default_visibility = ["//visibility:public"]) #使这个包的文件共享
+   
+   #把proto文档生成为lib文件
+   proto_library(
+       name = "student_proto",
+       srcs = ["student.proto"],
+   )
+   
+   #把已经有了的proto 文档编译成cc文档
+   cc_proto_library(
+       name = "student_cc",
+       deps = [":student_proto"],
+   )
+   ```
+
+4. 输入bazel build cyber/demo_protobuf/...既可以编译了
+
+5. 然后就可以看到cc文件了![](/home/yuri/yuri/markdown/apollo 学习/20220921_150249.png)
+
+### 用c++ 使用刚刚编译的proto文件
+
+**main.cc 源代码**
+
+```c++
+#include "cyber/demo_protobuf/test_01/student.pb.h"
+
+int main(int argc, char const *argv[])
+{
+    apollo::cyber::demo_protobuf::Student stu; //声明新的对象
+
+    //添加新的数据
+    stu.set_name("yuri"); 
+    stu.set_age(18);
+    stu.set_height(166);
+    stu.add_books("终将成为你，安达与岛村");
+
+    //打印数据
+
+    std::cout << "打印数据 ------- \n";
+    std::cout << "name : " << stu.name() << std::endl;
+    std::cout << "age : " << stu.age() << std::endl;
+    std::cout << "height : " << stu.height() << std::endl;
+    auto books = stu.books();
+    for(auto begin = books.begin(); begin != books.end();begin++){
+        std::cout << " " << *begin;
+    }
+    std::cout << "\n输出结束\n";
+    return 0;
+}
+
+```
+
+**build 文件**
+
+```cmake
+package(default_visibility = ["//visibility:public"]) #使这个包的文件共享
+
+#把proto文档生成为lib文件
+proto_library(
+    name = "student_proto",
+    srcs = ["student.proto"],
+)
+
+#把已经有了的proto 文档编译成cc文档
+cc_proto_library(
+    name = "student_cc",
+    deps = [":student_proto"],
+)
+
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    deps = [":student_cc"],
+)
+```
+
+输入bazel build ... 编译即可，然后执行就行
+
+![](/home/yuri/yuri/markdown/apollo 学习/20220921_152809.png)
+
+## cyber RT 通信机制
+
+### 话题通信
+
+
+
+### 服务通信
+
+### 参数
+
+### 组件
