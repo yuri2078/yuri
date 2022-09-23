@@ -1,9 +1,13 @@
 #include <iostream>
+#include <ostream>
+#include <string>
 
-int main(int argc, char const *argv[])
+using namespace std;
+
+int main()
 {
-    std::cout << "hello world" << std::endl;
+    int x;
+    cin >> x;
+    cout << x << endl;
     return 0;
 }
-
-
