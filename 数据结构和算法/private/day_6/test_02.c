@@ -66,8 +66,16 @@ int main()
         insertList(head,i+1,e);
     }
     //补充代码，实现若干个关键字值得查找
-    int pos;
-    scanf("%d", &pos);
-    while()
+    int pos, flag;
+    flag = scanf("%d", &e);
+    while (flag && flag != EOF)
+    {
+        if((pos = getIndex(head,e))){
+            printf("%d\n", pos);
+        }else{
+            printf("no\n");
+        }
+        flag = scanf("%d", &e);
+    }
     return 0;
 }
