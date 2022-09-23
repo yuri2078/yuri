@@ -48,20 +48,29 @@ vscode [配置各种编译环境](https://yuri2078.github.io/2021/12/11/vscode%E
     "code-runner.clearPreviousOutput": true, // 每次run code前清空属于code runner的终端消息，默认false
     "code-runner.ignoreSelection": true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
     "C_Cpp.clang_format_sortIncludes": true,
-    "java.dependency.syncWithFolderExplorer": true,
-    "C_Cpp.errorSquiggles": "Enabled",
-    "editor.cursorSmoothCaretAnimation": true,
-    "workbench.list.smoothScrolling": true,
-    "editor.smoothScrolling": true,
-    "terminal.integrated.smoothScrolling": true,
-    "C_Cpp.autocompleteAddParentheses": true,
-    "files.autoSave": "afterDelay",
-    "editor.fontSize": 16,
-    "editor.guides.bracketPairs": true,
-    "git.defaultCloneDirectory": "https://github.com/yuri2078/yuri",
-    "editor.fontFamily": "Fira Code",
-    "editor.fontWeight": "1",
-    "editor.fontLigatures": false,
+    {
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "vscode-icons",
+  "editor.cursorSmoothCaretAnimation": true,
+  "workbench.list.smoothScrolling": true,
+  "editor.smoothScrolling": true,
+  "terminal.integrated.smoothScrolling": true,
+  "C_Cpp.autocompleteAddParentheses": true,
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 17,
+  "editor.guides.bracketPairs": true,
+  "git.defaultCloneDirectory": "https://github.com/yuri2078/yuri",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontWeight": "1",
+  "editor.fontLigatures": false,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "backgroundCover.imagePath": "/home/yuri/Pictures/download/wallaven-4.png",
+  "editor.cursorBlinking": "smooth",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.suggest.preview": true,
+}
 }
 ```
 

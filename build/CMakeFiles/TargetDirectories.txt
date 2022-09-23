@@ -1,4 +1,0 @@
-/home/yuri/yuri/build/CMakeFiles/Qevent.dir
-/home/yuri/yuri/build/CMakeFiles/edit_cache.dir
-/home/yuri/yuri/build/CMakeFiles/rebuild_cache.dir
-/home/yuri/yuri/build/CMakeFiles/Qevent_autogen.dir

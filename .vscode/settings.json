@@ -28,4 +28,7 @@
     "editor.fontSize": 16,
     "editor.guides.bracketPairs": true,
     "git.defaultCloneDirectory": "https://github.com/yuri2078/yuri",
+    "files.associations": {
+        "iostream": "cpp"
+    },
 }

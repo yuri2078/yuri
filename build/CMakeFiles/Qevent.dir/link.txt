@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/Qevent.dir/Qevent_autogen/mocs_compilation.cpp.o -o Qevent  /usr/lib/libQt6Widgets.so.6.3.2 /usr/lib/libQt6Gui.so.6.3.2 /usr/lib/libQt6Core.so.6.3.2 /usr/lib/libGLX.so /usr/lib/libOpenGL.so 
