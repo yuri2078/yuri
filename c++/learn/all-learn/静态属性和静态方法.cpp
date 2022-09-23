@@ -30,7 +30,6 @@ int Pat::count = 0; //给count分配内容空间并初始化为0 必须在外面
 
 int main()
 {
-    
     Pat dog("dog");
     //dog.count = 1; 不可以声明类之后初始化，。要分配内存
     std::cout << "产生了dog，当前有" << Pat::Getcount() << "只动物\n";
