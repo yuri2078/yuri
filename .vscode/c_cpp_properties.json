@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "qt",
+            "name": "default",
             "includePath": [
                 "/usr/include/qt/**",
                 "${workspaceRoot}/**"

@@ -352,12 +352,267 @@ cc_binary(
 
 ## cyber RT 通信机制
 
+**c/c++实现**
+
 ### 话题通信
 
+1. 编写proto 文件也可以用之前的文件
 
+   ```protobuf
+   syntax = "proto2";
+   package apollo.cyber.demo_protobuf;
+   
+   message Student {
+   
+       required string name = 1; //required -- 必须要的参数
+       optional int64 age = 2; //optional -- 可以省略的参数
+       optional double height = 3; 
+       repeated string books = 4; //repeated -- 可以输入多个数据
+   }
+   ```
+
+2. 编写talker.cc 文件
+
+   ```c++
+   #include "cyber/cyber.h"
+   #include "cyber/demo_protobuf/test_01/student.pb.h"
+   
+   using apollo::cyber::demo_protobuf::Student;
+   using namespace apollo;
+   int main(int argc, char const *argv[])
+   {
+       
+       apollo::cyber::Init(argv[0]);
+       
+       auto talker_node = cyber::CreateNode("ergou"); //创建节点 名称为ergou
+       auto talker = talker_node->CreateWriter<Student>("chatter"); //创建监听者， 名称为chatter
+   
+       uint64_t sq = 0; //设置计数器
+   
+       cyber::Rate rate(0.5); //设置发送频率是每秒0.5次
+   
+       while(cyber::OK())
+       {
+           sq++;
+           AINFO << "发送第 " << sq << " 条数据\n"; //提示发送数据
+   
+           //写入数据
+           auto stu = std::make_shared<Student>();
+           stu->set_name("yuri");
+           stu->set_age(sq);
+           stu->set_height(170);
+           stu->add_books("终将成为你!");
+           stu->add_books("安达与岛村!");
+   
+           talker->Write(stu); //写入数据
+   
+           rate.Sleep(); //调用睡眠函数
+       }
+   
+       cyber::WaitForShutdown(); //设置结束后删除节点
+   
+       return 0;
+   }
+   
+   ```
+
+3. 编写listener.cc 文件
+
+   ```c++
+   #include "cyber/demo_protobuf/test_01/student.pb.h"
+   #include "cyber/cyber.h"
+   
+   using apollo::cyber::demo_protobuf::Student;
+   
+   void cp(const std::shared_ptr<Student> &stu)
+   {
+       AINFO << "----- 接收到数据 开始打印数据 -----";
+       AINFO << "name : " << stu->name();
+       AINFO << "age : " << stu->age();
+       for (auto begin = stu->books().begin(); begin != stu->books().end();begin++){
+         AINFO << "books : " << *begin;
+       }
+   }
+   
+   int main(int argc, char const *argv[])
+   {
+       apollo::cyber::Init(argv[0]);
+   
+       AINFO << "订阅方法创建";
+   
+       auto listener_node = apollo::cyber::CreateNode("curhui"); //创建监听节点
+       auto listener = listener_node->CreateReader<Student>("chatter", cp); //接受到数据会调用cp函数，这里的名字需要和talker对应
+   
+       apollo::cyber::WaitForShutdown(); //等待程序结束删除节点
+   
+       return 0;
+   }
+   ```
+
+4. 配置build文件
+
+   ```cmake
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
+   cc_binary(
+       name = "talker", #项目名字
+       srcs = ["talker.cc"], #项目文件
+       deps = [
+           "//cyber",
+           "//cyber/demo_protobuf/test_01:student_cc"
+       ], #固定写法
+   )
+   
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
+   cc_binary(
+       name = "listener",
+       srcs = ["listener.cc"],
+       deps = [
+           "//cyber",
+           "//cyber/demo_protobuf/test_01:student_cc"
+       ], 
+   )
+   ```
+
+5. 分开终端分别运行talker和listener程序![](/home/yuri/Pictures/截图/20220924_185616.png)
 
 ### 服务通信
 
-### 参数
+1. 编写proto文件 需要两个message 一个用来接收，一个用来发送
 
-### 组件
+   ```protobuf
+   syntax = "proto2";
+   
+   package apollo.cyber.demo_cpp;
+   
+   //用来发送数据，需要提供连个参数，用来相加
+   message Request {
+       required int32 num_1 = 1;
+       required int32 num_2 = 2;
+   }
+   
+   //接收数据，只用一个参数，用来存储他们的和就行了
+   message Response {
+       required int64 sum = 1;
+   }
+   ```
+
+   
+
+2. 编写server.cc 用来处理数据
+
+   ```c++
+   #include "cyber/cyber.h"
+   #include "cyber/demo_cpp/reques/request.pb.h"
+   
+   using apollo::cyber::demo_cpp::Request;
+   using apollo::cyber::demo_cpp::Response;
+   
+   void cp(const std::shared_ptr<Request> &request, const std::shared_ptr<Response> &response)
+   {
+       //设置数据
+       int32_t num_1 = request->num_1();
+       int32_t num_2 = request->num_2();
+   
+       AINFO << "客户端请求的数据是 : num_1 " << num_1 << " num_2 " << num_2;
+       
+       //设置需要传送出去的参数
+       response->set_sum(num_1 + num_2); //设置sum的数数据
+   }
+   
+   int main(int argc, char const *argv[])
+   {
+     apollo::cyber::Init(argv[0]);
+   
+     AINFO << "服务端程序启动";
+   
+     auto server_node = apollo::cyber::CreateNode("addints");
+     auto server = server_node->CreateService<Request, Response>("addints",cp); //设置接收到数据时的处理函数
+   
+     apollo::cyber::WaitForShutdown();
+   
+     return 0;
+   }
+   
+   ```
+
+3. 编写client.cc 用来发送数据
+
+   ```c++
+   #include "cyber/cyber.h"
+   #include "cyber/demo_cpp/reques/request.pb.h"
+   
+   using apollo::cyber::demo_cpp::Request;
+   using apollo::cyber::demo_cpp::Response;
+   
+   int main(int argc, char const *argv[])
+   {
+       apollo::cyber::Init(argv[0]);
+       AINFO << "客户端启动捏";
+   
+       auto client_node = apollo::cyber::CreateNode("client"); //建立通信节点
+       auto client = client_node->CreateClient<Request,Response>("addints"); //设置客户机
+   
+       //防止出现没有参数的情况
+       if(argc != 3)
+       {
+           AINFO << "请输入三个参数";
+           return 1;
+       }
+   
+       //新建接收数据对象
+       auto request = std::make_shared<Request>();
+       request->set_num_1(atoll(argv[1]));
+       request->set_num_2(atoll(argv[2]));
+   
+       AINFO << "发送数据 num_1 " << request->num_1() << " num_2 "
+               << request->num_2();
+               
+       auto response = client->SendRequest(request); //发送数据，并且把返回的数据赋值给response
+       AINFO << "处理结果为 : " << response->sum(); //打印数据
+   
+       apollo::cyber::WaitForShutdown();
+   
+       return 0;
+   }
+   ```
+
+   
+
+4. 编写build 文件
+
+   ```cmake
+   package(default_visibility = ["//visibility:public"])
+   
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library
+   proto_library(
+       name = "request_proto",
+       srcs = ["request.proto"],
+   )
+   
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library
+   cc_proto_library(
+       name = "request_cc",
+       deps = [":request_proto"],
+   )
+   
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
+   cc_binary(
+       name = "server",
+       srcs = ["server.cc"],
+       deps = [
+           "//cyber",
+           "//cyber/demo_cpp/reques:request_cc"
+       ],
+   )
+   
+   cc_binary(
+       name = "client",
+       srcs = ["client.cc"],
+       deps = [
+           "//cyber",
+           "//cyber/demo_cpp/reques:request_cc"
+       ],
+   )
+   ```
+
+5. 携带参数运行数据![](/home/yuri/Pictures/截图/20220924_202105.png)
