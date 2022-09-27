@@ -90,8 +90,10 @@ void unique_ptr()
 /*
 1、他可以copy
 2、可以计数 赋值一次 计数器加一，销毁一次计数器减一
-
+3、unique_ptr 可以传递给shard_ptr 但是shard不能传递给unique_ptr
 */
+
+
 void shared_ptr()
 {
     std::shared_ptr<int> int_1 = std::make_shared<int>(100);
@@ -105,6 +107,7 @@ void shared_ptr()
     std::cout << "(2 cout = " << int_2.use_count() << std::endl; //这里不变，因为原来的删除，所以减一变成0了
     //在函数里面调用的时候会加一，出来之后又会不变
 }
+
 
 int main(int argc, char const *argv[])
 {
