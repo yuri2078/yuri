@@ -108,6 +108,16 @@ void shared_ptr()
     //在函数里面调用的时候会加一，出来之后又会不变
 }
 
+void weak_ptr()
+{
+    //没有所有权
+    //不能解引用和使用箭头函数
+    //一般用于标识别的对象信息，用shard和unique会释放掉内存
+    auto p = std::make_shared<Person>();
+    std::weak_ptr<Person> weak_p(p);
+    // p->name; 错误无法调用
+    
+}
 
 int main(int argc, char const *argv[])
 {
