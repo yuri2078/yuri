@@ -36,6 +36,7 @@ public: //公共的类成员，大家都可以访问
     unsigned int add; //给车车加油
     Car(); //构造函数
     Car(Car &);//定义拷贝构造函数
+    Car(const Car &&c); //定义移动构造函数
     Car(int y);
     ~Car(); //析构函数
     void run(void);
@@ -82,6 +83,12 @@ void Car::addOil(void)
     oil = oil + add;
 }
 
+Car::Car(const Car &&c)
+{
+    this->oil = c.oil;
+    this->baohu = c.baohu;
+    std::cout << "调用移动构造函数\n";
+} //定义移动构造函数
 int main()
 {
     //Car car(6);
@@ -94,5 +101,7 @@ int main()
         car.addOil();
     }
     std::cout << "你的爱车没有油辣！";
+
+    Car hello(std::move(car));
     return 0;
 }

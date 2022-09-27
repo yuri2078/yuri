@@ -119,10 +119,11 @@ keywords:
      - 指针为NULL 且size不为0 作用和malloc类似 返回新的地址
      - 指针不为NULL 但是size为0  则空间会被释放 返回NULL
      - 空间不足 返回NULL原空间内容不变
+- `atol` 将字符串转换成long类型 同理的还有`atoll` `atoi` `atof`之类的
 
 ## 常见关键字补充
 
-### const 关键字
+### **const** **关键字**
 
 ```c++
 #include <iostream>
@@ -238,7 +239,14 @@ int main(int argc, char **argv)
 
 ```
 
+### && 左值引用
 
+```c++
+int && i = 888;
+std::move(i);
+```
+
+ 
 
 
 
@@ -271,3 +279,12 @@ int main(int argc, char const *argv[])
 
 ```
 
+### 智能指针
+
+
+
+## std命名空间应用补充
+
+### std::move()
+
+将类型转换为左值，默认调用移动构造函数.
