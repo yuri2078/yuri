@@ -616,3 +616,152 @@ cc_binary(
    ```
 
 5. 携带参数运行数据![](/home/yuri/Pictures/截图/20220924_202105.png)
+
+### 参数
+
+用于共享一些数据，比如车身的最大速度， 长度宽度之类的。最大的特点 ：  共享
+
+1. 编写server端
+
+   ```c++
+   #include "cyber/cyber.h"
+   #include "cyber/parameter/parameter.h"
+   #include "cyber/parameter/parameter_server.h"
+   
+   using apollo::cyber::ParameterServer;
+   using apollo::cyber::Parameter;
+   
+   int main(int argc, char const *argv[])
+   {
+       apollo::cyber::Init(argv[0]);
+       AINFO << "服务端启动\n";
+   
+       std::shared_ptr<apollo::cyber::Node> server_node = apollo::cyber::CreateNode("param"); //创建节点
+       std::shared_ptr<ParameterServer> server = std::make_shared<ParameterServer>(server_node); //创建话题
+   
+       //设置参数
+       server->SetParameter(Parameter("age", 18));
+       server->SetParameter(Parameter("yuri", "yes"));
+   	
+       //打印参数
+       Parameter *parame_1 = new Parameter;
+       server->GetParameter("age", parame_1);
+       AINFO << parame_1->Name() << " age is " << parame_1->AsInt64() << std::endl;
+       server->GetParameter("yuri", parame_1);
+       AINFO << parame_1->Name() << " yuri is " << parame_1->AsString() << std::endl;
+   
+       AINFO << "获取所有参数 ----- \n";
+       std::vector<Parameter> parameter;
+       server->ListParameters(&parameter);
+       for (auto begin = parameter.begin(); begin != parameter.end();begin++)
+       {
+           AINFO << "打印 name :" << begin->Name() << "type name : " << begin->TypeName() << std::endl;
+           AINFO << "打印所有参数 " << begin->DebugString(); //以字符串形式打印所有参数
+       }
+   
+       apollo::cyber::WaitForShutdown();
+       delete parame_1;
+       return 0;
+   }
+   
+   ```
+
+2. 编写 client端
+
+   ```c++
+   #include "cyber/cyber.h"
+   #include "cyber/parameter/parameter.h"
+   #include "cyber/parameter/parameter_client.h"
+   
+   using apollo::cyber::ParameterClient;
+   using apollo::cyber::Parameter;
+   
+   int main(int argc, char const *argv[])
+   {
+       apollo::cyber::Init(argv[0]);
+       AINFO << "服务方式启动\n";
+   
+       std::shared_ptr<apollo::cyber::Node> client_node = apollo::cyber::CreateNode("param_client"); //创建节点
+       std::shared_ptr<ParameterClient> client = std::make_shared<ParameterClient>(client_node,"param"); //创建话题
+   
+   
+       Parameter *parame_1 = new Parameter;
+       client->GetParameter("age", parame_1); //添加数据
+       AINFO << parame_1->Name() << " age is " << parame_1->AsInt64() << std::endl; //打印数据
+       client->GetParameter("yuri", parame_1);
+       AINFO << parame_1->Name() << " yuri is " << parame_1->AsString() << std::endl;
+   
+       AINFO << "获取所有参数 ----- \n";
+       std::vector<Parameter> parameter;
+       client->ListParameters(&parameter);
+       for (auto begin = parameter.begin(); begin != parameter.end();begin++)
+       {
+         AINFO << "打印 name :" << begin->Name()
+               << "type name : " << begin->TypeName() << std::endl;
+       }
+   
+       apollo::cyber::WaitForShutdown();
+       delete parame_1;
+       return 0;
+   }
+   ```
+
+3. build 文件
+
+   ```cmake
+   # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
+   cc_binary(
+       name = "para_server",
+       srcs = ["para_server.cc"],
+       deps = [
+           "//cyber",
+           "//cyber/parameter"
+       ],
+   )
+   
+   cc_binary(
+       name = "para_client",
+       srcs = ["para_client.cc"],
+       deps = [
+           "//cyber",
+           "//cyber/parameter"
+       ],
+   )
+   ```
+
+4. 运行截图![](/home/yuri/Pictures/截图/20220928_154835.png)
+
+   
+
+### 组件
+
+
+
+## cyber RT 常用api
+
+### cyber 下的函数
+
+包含在apollo::cyber命名空间下
+
+#### CreateNode 函数
+
+ ```c++
+ //函数原型 : 
+ std::unique_ptr<Node> CreateNode(const std::string& node_name,const std::string& name_space = "")
+ //一般使用
+ auto talker_node = cyber::CreateNode("ergou"); 
+ ```
+
+### Node 下函数
+
+```c++
+auto talker = talker_node->CreateWriter<Student>("chatter");  //创建发布者
+auto listener = listener_node->CreateReader<Student>("chatter", cp);  //创建监听者
+//当监听到 chatter发送东西的时候，调用cp函数进行处理，cp函数需要传入 数据
+auto client = client_node->CreateClient<Request,Response>("addints"); //设置客户机
+auto server = server_node->CreateService<Request, Response>("addints",cp); //设置接收到数据时的处理函数
+std::shared_ptr<ParameterServer> server = std::make_shared<ParameterServer>(server_node); //创建服务端
+std::shared_ptr<ParameterClient> client = std::make_shared<ParameterClient>(client_node,"param"); //创建客户端，需要传入服务端节点号
+```
+
+###    
