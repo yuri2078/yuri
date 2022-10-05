@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 
 class Person
 {
@@ -75,7 +76,7 @@ void unique_ptr()
     
     //创建方式3 使用std::make 创建
 
-    std::unique_ptr u_p_3 =  std::make_unique<Person>("yuri is yes");
+    std::unique_ptr<Person> u_p_3 =  std::make_unique<Person>("yuri is yes");
 
     std::cout << "u_p_2.get() : " << u_p_2.get() << std::endl; //打印地址
     //打印的是指针指向的地址，而不是& 打印指针的地址

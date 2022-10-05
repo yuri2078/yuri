@@ -1,15 +1,18 @@
 #include <iostream>
+#include <ostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
 
 template <class T>
 class SqStack
 {
 private:
-    T *top;
-    T *base;
+    T *top; //顶部指针，指向堆栈的顶部
+    T *base; //底部指针，指向栈底
     int size;
 public:
     SqStack(int size)
@@ -83,6 +86,9 @@ int main(int argc, const char **argv)
 {
 
     SqStack<int> s1(3);
+    vector<int> v1(100);
+    cout << "sizeo is : " << v1.size() << endl;
+
     s1.showSqStack();
 
     return 0;

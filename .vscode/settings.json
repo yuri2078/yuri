@@ -79,5 +79,5 @@
         "--compile-commands-dir=build"
     ],
 
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
+    "editor.fontFamily": "'Fira Code', 'monospace', monospace",
 }
