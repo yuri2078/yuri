@@ -1,0 +1,19 @@
+module_config {
+
+    module_library : "/apollo/bazel-bin/cyber/demo_cpp/components_2/my_components_2.so"
+
+    components {
+
+        class_name : "My_components_2"
+
+        config {
+            name : "My_components_2"
+            readers {
+                channel : "front_radar" 
+            }
+            readers {
+                channel : "back_radar" 
+            }
+        }
+    }
+}

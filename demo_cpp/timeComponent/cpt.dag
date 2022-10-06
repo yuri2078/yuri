@@ -1,0 +1,14 @@
+module_config {
+
+    module_library : "/apollo/bazel-bin/cyber/demo_cpp/timeComponent/timeComponent.so"
+
+    timer_components {
+
+        class_name : "My_TimeComponent"
+
+        config {
+            name : "timeComponent"
+            interval : 10
+        }
+    }
+}

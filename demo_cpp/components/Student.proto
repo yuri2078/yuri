@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package apollo.cyber.demo_cpp;
+
+message Student {
+    required string name = 1;
+    required int64 age = 2;
+    repeated string loves = 3;
+}

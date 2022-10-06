@@ -1,0 +1,16 @@
+module_config {
+
+    module_library : "/apollo/bazel-bin/cyber/demo_cpp/components/my_components.so"
+
+    components {
+
+        class_name : "my_components"
+
+        config {
+            name : "my_components"
+            readers {
+                channel : "chatter" 
+            }
+        }
+    }
+}

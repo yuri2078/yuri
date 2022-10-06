@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package apollo.cyber.demo_cpp;
+
+//用来发送数据，需要提供连个参数，用来相加
+message Request {
+    required int32 num_1 = 1;
+    required int32 num_2 = 2;
+}
+
+//接收数据，只用一个参数，用来存储他们的和就行了
+message Response {
+    required int64 sum = 1;
+}

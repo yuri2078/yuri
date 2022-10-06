@@ -1,0 +1,7 @@
+<cyber> 
+    <module>
+        <name> my moudle</name> <!--模块名字-->
+        <dag_conf>/apollo/cyber/demo_cpp/timeComponent/cpt.dag</dag_conf> <!-- dag 目录位置-->
+        <process_name> my_cpt </process_name>
+    </module>
+</cyber>

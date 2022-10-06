@@ -2,7 +2,7 @@
     "files.autoSave": "afterDelay", //设置自动保存
     "files.defaultLanguage": "c++", // ctrl+N新建文件后默认的语言
     "editor.formatOnSave": true, //设置保存时格式化代码
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
     "editor.suggest.snippetsPreventQuickSuggestions": false, // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
     "editor.acceptSuggestionOnEnter": "off", // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense
@@ -20,7 +20,6 @@
     "code-runner.clearPreviousOutput": true, // 每次run code前清空属于code runner的终端消息，默认false
     "code-runner.ignoreSelection": true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
 
-    "C_Cpp.clang_format_sortIncludes": true, //设置自动补全头文件
     "C_Cpp.errorSquiggles": "Enabled",
 
     //设置光标丝滑显示
@@ -54,8 +53,6 @@
         "--completion-style=bundled",
         // 跨文件重命名变量
         "--cross-file-rename",
-        // 允许补充头文件
-        "--header-insertion=iwyu",
         // 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
         "--header-insertion-decorators",
         // 在后台自动分析文件(基于 complie_commands，我们用CMake生成)

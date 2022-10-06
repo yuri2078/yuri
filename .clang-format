@@ -225,7 +225,7 @@ SpaceBeforeParens: ControlStatements
 # 不要确保指针限定符周围有空格，而是使用 PointerAlignment
 SpaceAroundPointerQualifiers: Default
 # 在基于范围的for循环冒号之前添加空格
-SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeRangeBasedForLoopColon: false
 # {}中间不添加空格
 SpaceInEmptyBlock: false
 # 在空的圆括号中添加空格
@@ -262,7 +262,7 @@ StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION
 # tab宽度
-TabWidth:        8
+TabWidth:        4
 # 使用\n换行
 UseCRLF:         false
 # 使用tab字符：ForIndentation——仅将制表符用于缩进

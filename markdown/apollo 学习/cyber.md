@@ -82,7 +82,8 @@
 
 6. 新建BUILD 文件 输入cc 补全
 
-7. ```cmake
+7. 编辑build文件
+    ```cmake
    # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
    cc_binary(
        name = "hello",
@@ -1292,6 +1293,8 @@ bool My_TimeComponent::Proc()
 
 #### 编写dag文件
 
+interval 表示每秒钟执行多少次proc函数
+
 ```bash
 module_config {
 
@@ -1356,6 +1359,150 @@ install (
 ![](/home/yuri/Pictures/截图/20221005_192251.png)
 
 ### 开发工具CyberRecord 
+
+> 介绍： 用工具提高开发效率
+>
+> CyberRecord 用来持久化存储数据，不用一直放在内存当中。可以将他写入到磁盘文件中
+>
+> 学完之后我们就可以对数据进行 延迟、反复使用，也可以对数据进行二次处理
+
+#### 编写wirter文件
+
+这里的proto文件我选择用前面的，也可以用自己重新生成的
+
+```c++
+#include "cyber/cyber.h"
+#include "cyber/demo_protobuf/test_01/student.pb.h"
+#include "cyber/record/record_writer.h"
+
+using apollo::cyber::demo_protobuf::Student;
+using apollo::cyber::record::RecordWriter;
+
+int main(int argc, char const *argv[])
+{
+	apollo::cyber::Init(argv[0]);
+	AINFO << "写信息初始化成功!";
+
+	RecordWriter record_wiriter;
+	//设置每个文件达到多少kb后新建另外一个文件
+	record_wiriter.SetSizeOfFileSegmentation(0);
+	//设置每到多少秒钟之后新建另外一个文件
+	record_wiriter.SetIntervalOfFileSegmentation(0); 
+	//需要写入的文件，文件必须不存在，否则保存捏
+	record_wiriter.Open("/apollo/cyber/demo_cpp/tools/mytest.record"); 
+	//获得文件名字
+	AINFO << "file : " << record_wiriter.GetFile(); 
+
+	//新建话题名称是record
+	std::string channel = "record"; 
+	//第一个是发布话题的名字，第二个是数据类型，第三个参数是消息描述
+	record_wiriter.WriteChannel(channel, "apollo.cyber.demo_protobuf.Student","test for record");
+
+    for (size_t i = 0; i < 20; i++)
+    {
+		//先给消息添加内容
+		auto stu = std::make_shared<Student>();
+		stu->set_age(18);
+		stu->set_name("yuri");
+		stu->set_height(i);
+		stu->add_books("yuri");
+		stu->add_books("终将成为你!");
+		stu->add_books("安达与岛村！");
+
+		std::string contant;
+		//将消息转化成字符串存进去
+		stu->SerializeToString(&contant);
+		//写入文件内容，写入序号，以及写入话题
+		record_wiriter.WriteMessage(channel,*stu,i);
+	}
+
+	//关闭文件
+	record_wiriter.Close();
+
+	return 0;
+}
+
+```
+
+#### 编写reader文件
+
+```c++
+#include "cyber/record/record_reader.h"
+#include "cyber/record/record_message.h"
+#include "cyber/cyber.h"
+
+using apollo::cyber::record::RecordMessage;
+using apollo::cyber::record::RecordReader;
+
+int main(int argc, char const *argv[])
+{
+	apollo::cyber::Init(argv[0]);
+    AINFO << "初始化成功！ 正在读取文件---";
+
+	//建立reader需要添加读取的文件目录
+	RecordReader record_reader("/apollo/cyber/demo_cpp/tools/mytest.record");
+
+	//设置话题
+	std::string channel = "record";
+
+	//读取文件中对应话题的内容
+	size_t msg_number =  record_reader.GetMessageNumber(channel); //消息条数
+	std::string msg_type =  record_reader.GetMessageType(channel); //消息类型
+	std::string msg_desc = record_reader.GetProtoDesc(channel); //消息描述
+
+	AINFO << "信息获取成功!";
+	AINFO << "总共获取到了 " << msg_number << " 条信息!";
+	AINFO << "信息类型 : " << msg_type;
+	AINFO << "信息描述 : " << msg_desc;
+
+	//创建整合读取消息的对象
+	RecordMessage recore_message;
+    for (size_t i = 0; i < msg_number; i++)
+    {   
+		//读取消息，并且存放起来
+		if(record_reader.ReadMessage(&recore_message))
+        {
+			AINFO << "第 " << i << " 条信息！  "
+			      << "  hannel_name : " << recore_message.channel_name //话题名字
+			      << "  contant : " << recore_message.content //具体存入的消息内容
+                  << "  time :" << recore_message.time; //写入消息时的序号
+        }else{
+			AINFO << "获取信息失败!";
+		}
+	}
+
+	return 0;
+}
+
+```
+
+#### 编写build文件
+
+```cmake
+# https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
+cc_binary(
+    name = "record_writer",
+    srcs = ["record_writer.cc"],
+    deps = [
+        "//cyber/demo_protobuf/test_01:student_cc",
+        "//cyber"
+    ],
+)
+
+cc_binary(
+    name = "record_reader",
+    srcs = ["record_reader.cc"],
+    deps = [
+        "//cyber"
+    ],
+)
+```
+
+#### 执行
+
+先执行writer文件写入文件，然后再执行reader文件读取文件内容
+
+![](/home/yuri/Pictures/截图/20221006_203356.png)
 
 ## cyber RT 常用api
 
