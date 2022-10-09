@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	RecordReader record_reader("/apollo/cyber/demo_cpp/tools/mytest.record");
 
 	//设置话题
-	std::string channel = "record";
+	std::string channel = "chatter";
 
 	//读取文件中对应话题的内容
 	size_t msg_number =  record_reader.GetMessageNumber(channel); //消息条数

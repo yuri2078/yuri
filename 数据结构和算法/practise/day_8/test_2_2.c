@@ -13,7 +13,6 @@ typedef struct Queue {
 int initQueue(Queue *q) {
     q->baze = (ElemType*)calloc(20, sizeof(ElemType));
     if (!q->baze) {
-        printf("数据初始化失败捏\n");
         return 0;
     }
     q->real = 0; //设置将要存储的位置
@@ -24,7 +23,6 @@ int initQueue(Queue *q) {
 
 int enQueue(Queue* q, ElemType e) {
     if ((q->real + 1) % q->maxSize == q->front) {
-        printf("队列空间已经满捏！,已经自动扩容捏,扩容大小 10\n");
         q->baze =realloc(q->baze,(q->maxSize + 10) * sizeof(ElemType));
         if(!q->baze){
             printf("扩容失败！\n");
@@ -38,7 +36,6 @@ int enQueue(Queue* q, ElemType e) {
 
 ElemType deQueue(Queue* q) {
     if (q->front == q->real) {
-        printf("队列为空，无法出去捏!\n");
         return 0;
     }
     return q->baze[(q->front++) % q->maxSize]; //返回出列的值
@@ -62,7 +59,6 @@ typedef struct SqStack{
 int initSqStack(SqStack* sq) {
     sq->base = (ElemType *)calloc(20, sizeof(ElemType)); //设置初始容量为20
     if (!sq->base) {
-        printf("初始化失败捏\n");
         return 0; 
     }
     sq->top = sq->base; //设置堆栈顶部指针
@@ -73,7 +69,6 @@ int initSqStack(SqStack* sq) {
 //入栈函数，返回是否入栈成功
 int pushSqStack(SqStack* sq, ElemType e) {
     if (sq->top - sq->base == sq->maxSize) {
-        printf("容量不足已经自动扩容，扩容为10\n");
 	    sq->base = realloc(sq->base, (sq->maxSize + 10) * sizeof(ElemType));
 	    sq->top = sq->base + sq->maxSize;
 	    sq->maxSize += 10; //最大元素个数自动加10
@@ -94,7 +89,6 @@ ElemType popSqStack(SqStack* sq) {
     if (sq->top != sq->base) { 
         return *(--sq->top); //如果不是空栈就返回栈顶值
     }
-    printf("没有东西，返回错误!\n");
     return 0;
 }
 

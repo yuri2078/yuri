@@ -1,3 +1,20 @@
+---
+title: cyber RT 开发教程
+author: yuri2078
+avatar: 'https://cdn.jsdelivr.net/gh/yuri2078/images/img/custom/avatar.jpg'
+authorLink: 'https://2078.site'
+authorAbout: 一般过路人
+authorDesc: 一般过路人
+categories: 教程
+comments: true
+description: 我的爱宛如孤岛之花，不为人知的绽放，不为人知的凋零！
+photos: 'https://cdn.jsdelivr.net/gh/yuri2078/images/headPictures/6.png'
+date: 2022-9-17 18:32:01.587
+tags:
+    - apollo
+keywords:
+---
+
 # apollo Cyber c++ 实现
 
 **使用vscode 环境**
@@ -18,9 +35,9 @@
 
 ### 新建文件
 
-1. 在vscode中打开docker容器 选择 attach visual studio code![](/home/yuri/yuri/markdown/apollo 学习/20220918_132150.png)
+1. 在vscode中打开docker容器 选择 attach visual studio code![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_132150.png)
 
-2. 在新的vscode中打开容器 选择打开文件夹 选择apollo 目录就行了![](/home/yuri/yuri/markdown/apollo 学习/20220918_132655.png)
+2. 在新的vscode中打开容器 选择打开文件夹 选择apollo 目录就行了![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_132655.png)
 
 3. 在Cyber 文件夹中新建 demo_cpp 文件夹 用来存放以后的cpp代码
 
@@ -41,7 +58,7 @@
 
 5. 在个更目录下新建BUILD文件， 输入cc后 自动补全选择cc_binary，删除不要的第三个空的补全，并把具体内容补全
 
-   ![](/home/yuri/yuri/markdown/apollo 学习/20220918_133854.png)
+   ![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_133854.png)
 
    ```basic
    # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
@@ -54,17 +71,17 @@
 
 ### 开始构建项目
 
-1. 终端运行 `bazel build cyber/demo_cpp/...` 构建项目下所有文件，终端出现以下内容就是成功![](/home/yuri/yuri/markdown/apollo 学习/20220918_134900.png)
+1. 终端运行 `bazel build cyber/demo_cpp/...` 构建项目下所有文件，终端出现以下内容就是成功![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_134900.png)
 
 2. 修改cyber /setup.bash 文件  ---- `export GLOG_alsologtostderr=1  #把这里改成 1 原来是0` 大概35行左右
 
-   ![](/home/yuri/yuri/markdown/apollo 学习/20220918_135251.png)
+   ![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_135251.png)
 
 3. 查看bazel-bin/cyber/文件夹下面是不是有一个demo_cpp文件夹，里面有一个hellowrold文件 直接执行就行了
 
 4. 输入`source cyber/setup.bash `命令 令配置立即生效
 
-5. 输入`./bazel-bin/cyber/demo_cpp/helloworld `执行程序 终端输出如图就是成功![](/home/yuri/yuri/markdown/apollo 学习/20220918_135958.png)
+5. 输入`./bazel-bin/cyber/demo_cpp/helloworld `执行程序 终端输出如图就是成功![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220918_135958.png)
 
    
 
@@ -91,17 +108,17 @@
    )
    ```
 
-8. 文件基本目录![](/home/yuri/yuri/markdown/apollo 学习/20220920_183831.png)
+8. 文件基本目录![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220920_183831.png)
 
 9. 新建终端 cd 进 pro1_helloworld 工程目录就行
 
 10. 输入 `bazel build demo_pkt/...`然后编译成功会生成一些文件夹
 
-11. ![](/home/yuri/yuri/markdown/apollo 学习/20220920_184524.png)
+11. ![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220920_184524.png)
 
-12. ![](/home/yuri/yuri/markdown/apollo 学习/20220920_184533.png)
+12. ![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220920_184533.png)
 
-13. 然后进入bazel-bin/demo_pkt/目录运行 hello就行了![](/home/yuri/yuri/markdown/apollo 学习/20220920_184908.png)
+13. 然后进入bazel-bin/demo_pkt/目录运行 hello就行了![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220920_184908.png)
 
 ### bazel 其余编译方法补全
 
@@ -233,7 +250,7 @@ cc_binary(
 
 2. 在被调用的包里添加指定调用包`*visibility* = ["//other_lib:__pkg__"] ` 指定根目录下的文件夹
 
-文件基本目录结构![](/home/yuri/yuri/markdown/apollo 学习/20220920_203052.png)
+文件基本目录结构![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220920_203052.png)
 
 #### 构建
 
@@ -302,7 +319,7 @@ cc_proto_library(
 
 输入bazel build cyber/demo_protobuf/...既可以编译了
 
-然后就可以看到cc文件了![](/home/yuri/yuri/markdown/apollo 学习/20220921_150249.png)
+然后就可以看到cc文件了![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220921_150249.png)
 
 ### 用c++ 使用刚刚编译的proto文件
 
@@ -366,7 +383,7 @@ cc_binary(
 
 输入bazel build ... 编译即可，然后执行就行
 
-![](/home/yuri/yuri/markdown/apollo 学习/20220921_152809.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220921_152809.png)
 
 ## cyber RT 通信机制
 
@@ -499,7 +516,7 @@ cc_binary(
 
 #### 运行
 
-分开终端分别运行talker和listener程序![](/home/yuri/Pictures/截图/20220924_185616.png)
+分开终端分别运行talker和listener程序![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220924_185616.png)
 
 ### 服务通信
 
@@ -653,7 +670,7 @@ cc_binary(
 
 #### 运行
 
-携带参数运行数据![](/home/yuri/Pictures/截图/20220924_202105.png)
+携带参数运行数据![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220924_202105.png)
 
 ### 参数
 
@@ -767,7 +784,7 @@ cc_binary(
 )
 ```
 
-#### 运行![](/home/yuri/Pictures/截图/20220928_154835.png)
+#### 运行![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20220928_154835.png)
 
 
 
@@ -1008,7 +1025,7 @@ install (
 3. 上面随便选一种方式运行就行，然后运行talker 文件就行了。 打开终端就可以看到效果了
 4. 如果使用cyber_launch start运行，除了Ctrl c 还可以使用 cyber_launch  stop 命令结合
 
-![](/home/yuri/Pictures/截图/20221004_194439.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221004_194439.png)
 
 
 
@@ -1221,9 +1238,9 @@ module_config {
 
 然后输入cyber_channel echo 话题名字，查看话题内容
 
-![](/home/yuri/Pictures/截图/20221005_120723.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221005_120723.png)
 
-![](/home/yuri/Pictures/截图/20221005_120703.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221005_120703.png)
 
 
 
@@ -1356,7 +1373,7 @@ install (
 
 #### 执行
 
-![](/home/yuri/Pictures/截图/20221005_192251.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221005_192251.png)
 
 ### 开发工具CyberRecord 
 
@@ -1502,9 +1519,314 @@ cc_binary(
 
 先执行writer文件写入文件，然后再执行reader文件读取文件内容
 
-![](/home/yuri/Pictures/截图/20221006_203356.png)
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221006_203356.png)
 
-## cyber RT 常用api
+## cyber RT 常用命令
+
+> 应用场景： 提高我们的开发效率。检测节点是否运行正常。判断节点信息发送频率是否符合预期。
+>
+> 可以使用命令cyber_pp  -h(help) 或者 cyber_pp 命令 -h
+
+```
+roleid           5214286195303063771 角色ID
+hostname         in-dev-docker 主机
+processid        44769 进程号
+nodename         ergou 节点名字
+msgtype          apollo.cyber.demo_protobuf.Student 发送信息的类型
+```
+
+
+
+#### cyber_node
+
+> 查询关于节点相关的信息
+
+```
+cyber_node list 查看所有节点
+cyber_node info ergou 查看ergou的详细信息
+cyber_node info -a 查看所有节点信息
+```
+
+![](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo/20221007_135438.png)
+
+#### cyber_channel
+
+> 查询关于话题相关的信息
+
+```
+cyber_channel list      显示所有正在运行的话题
+cyber_channel info      显示某个话题的具体信息
+cyber_channel echo      将话题的信息打印到屏幕上
+cyber_channel hz        显示话题信息发布的频率
+cyber_channel bw        显示话题信息发布的带宽
+cyber_channel type      显示话题信息类型
+```
+
+#### cyber_service
+
+> 查询关于服务相关的信息
+
+```
+cyber_service list      列出所有正在运行的服务
+cyber_service info      打印相关服务的信息
+```
+
+
+
+#### cyber_launch
+
+> 关于launch文件相关的信息
+
+```
+cyber_launch start ...launch 启动launch文件
+cyber_launch stop  ...launch 关闭launch文件
+```
+
+
+
+#### cyber_monitor
+
+> 综合类的信息。更灵活的小时话题的相关信息
+
+```
+cyber_monitor 直接进去 按 q或者 esc 退出 ---- 默认显示所有话题的发布数据的频率
+Option:
+   -h print help info
+   -c 指定一个话题
+   q | Q | Esc -- 退出
+   Backspace -- 返回上一步
+   h | H -- 输出提示信息
+
+Common Commands for Topology and Channel Message:
+   PgDn | d -- 下一页
+   PgUp | u -- 上一页
+
+   Up Arrow -- move up one line
+   Down Arrow -- move down one line
+   Right Arrow -- enter the selected Channel or Repeated Datum
+   Left Arrow -- go back to the upper level
+
+   Enter -- 进入指定话题信息显示
+   a | A -- the same with Left Arrow key
+   d | D -- the same with Right Arrow key
+   w | W -- the same with Up Arrow key
+   s | S -- the same with Down Arrow key
+
+Commands for Topology message: 消息显示相关问题
+   f | F -- 显示消息发布帧率
+   t | T --	显示消息发布类型
+
+   Space -- 关闭或打开消息
+
+Commands for Channel:
+   i | I -- 显示话题读写相关信息
+   b | B -- 显示消息内容
+
+Commands for Channel Repeated Datum:
+   n | N -- 重复字段下一个元素 比如多个books
+   m | M -- 重复字段上一个元素
+   , -- enable|disable to show all repeated items
+```
+
+
+
+#### cyber_record
+
+> 实现消息的录制和重放
+
+```
+info    显示一个已经存在的Record 的文件的信息
+play    回放一个Record文件 play -f 文件 回放文件
+record  录制一个Record文件 record -a -o 文件 录制为文件
+split   分割一个Record文件
+recover 复制Record文件 recover -f 文件 -o 文件2 复制文件1命名为文件2
+
+record_file:    cyber/demo_cpp/tools/mytest.record
+version:        1.0 版本号
+duration:       0.000000 Seconds 录制时间
+begin_time:     1970-01-01-08:00:00 开始时间
+end_time:       1970-01-01-08:00:00
+size:           3802 Bytes (3.712891 KB) 录制大小
+is_complete:    true 是否已经结束
+message_number: 20 录制的消息个数
+channel_number: 1 话题个数
+channel_info:   
+                record     话题名称                                             20 messages: apollo.cyber.demo_protobuf.Student 消息类型
+
+
+```
+
+### 常用api
+
+常用api上面都有介绍，下面介绍不怎么用的
+
+api查询链接 ：  [apolloCyberRT](https://cyber-rt.readthedocs.io/en/latest/CyberRT_API_for_Developers.html#timer)
+
+#### time 时间api
+
+```c++
+#include "cyber/cyber.h"
+
+using apollo::cyber::Time;
+
+int main(int argc, char const *argv[])
+{
+	Time t_1; //默认构造函数，获取默认时间 1970.1.1.8：00：000
+	Time t_2(6666); //整形构造函数，获取默认时间加上 6666ns
+	Time t_3(120.0); //double构造函数，获取默认时间加上 120s
+
+	AINFO << "t_1 : " << t_1;
+	AINFO << "t_2 : " << t_2;
+	AINFO << "t_3 : " << t_3;
+	AINFO << "t_2(s) : " << t_2.ToSecond(); //转换成秒
+	AINFO << "t_2(ns) : " << t_2.ToNanosecond(); //转换成纳秒
+	AINFO << "t_2(ms) : " << t_2.ToMicrosecond(); //转换成微秒
+	AINFO << "t_3(s) : " << t_3.ToSecond();
+
+	//获取最大或者最小时间
+	//默认添加的是ns 而ns是long long 类型，所有默认最大值是 2^64 - 1
+
+	AINFO << "max time (s) " << Time::MAX.ToSecond(); //最大时间
+	AINFO << "min time (s) " << Time::MIN.ToSecond(); //最小时间
+	AINFO << "t_1 is zeor ? " << t_1.IsZero(); //判断是不是0
+	AINFO << "t_2 is zeor ? " << t_2.IsZero(); //只有当时间为默认时间时，才会是0
+
+
+	AINFO << "现在时间 : " << Time::Now(); //返回现在时间
+	Time::SleepUntil(Time(Time::Now().ToSecond() + 10));  //休眠 直到 --- 设置的时间
+	AINFO << "现在时间 : " << Time::Now();
+
+	AINFO << "系统已经运行了 : " << Time::MonoTime().ToSecond(); //返回系统开机运行的时间，这里返回docker容器启动的时间
+
+	return 0;
+}
+
+```
+
+#### duration 持续时间api
+
+```c++
+#include "cyber/cyber.h"
+#include "cyber/time/duration.h"
+
+using apollo::cyber::Duration;
+using apollo::cyber::Time;
+
+int main(int argc, char const *argv[])
+{
+	Duration d_1(5.0); //创建5s的持续时间
+    //别的东西基本和time 相同
+	Time t_1(10.0);
+	Time t_2(5.0);
+
+	Duration d_2(5 + 1000); //创建5s 加上 1000ns 的持续时间
+
+	AINFO << "d_1 time : " << d_1;
+	AINFO << "d_2 time : " << d_2;
+	AINFO << "t_1 time : " << t_1;
+	AINFO << "d_2 time : " << t_2;
+
+	AINFO << "现在时间是： " << Time::Now();
+	d_1.Sleep(); //休眠5s
+	AINFO << "现在时间是： " << Time::Now();
+
+	AINFO << "t_1(10.0) + d_1(5.0) : " << t_1 + d_1;  //结果就是10 - 5 
+	AINFO << "t_1(10.0) - d_1(5.0) : " << t_1 - d_1;
+	AINFO << " d_1 == d_2 ? " << (d_1 == d_2);
+
+	return 0;
+}
+```
+
+#### rate 休眠api
+
+```c++
+#include "cyber/cyber.h"
+#include "cyber/time/rate.h"
+
+using apollo::cyber::Rate;
+
+int main(int argc, char const *argv[])
+{
+	Rate r_1(2.0); //使用double类型会将发布频率设置为 2.0，也就是休眠时间 1/2.0 也就是0.5s
+	Rate r_2((uint64_t)1000000000); //直接设置休眠时间为多少ns
+	apollo::cyber::Duration d_1(5.0);
+	Rate r_3(d_1); //直接设置持续时间
+
+	AINFO << "r_1 休眠前时间 " << apollo::cyber::Time::Now();
+	r_1.Sleep(); //启动休眠
+	AINFO << "r_1 休眠后时间 " << apollo::cyber::Time::Now();
+	AINFO << "";
+	AINFO << "r_2 休眠前时间 " << apollo::cyber::Time::Now();
+	r_2.Sleep();
+	AINFO << "r_2 休眠后时间 " << apollo::cyber::Time::Now();
+	AINFO << "";
+	AINFO << "r_3 休眠前时间 " << apollo::cyber::Time::Now();
+	r_3.Sleep();
+	AINFO << "r_3 休眠后时间 " << apollo::cyber::Time::Now();
+	return 0;
+}
+```
+
+#### timer 定时api
+
+```c++
+#include "cyber/cyber.h"
+#include "cyber/timer/timer.h"
+
+using apollo::cyber::Timer;
+int i = 0;
+
+void cp(){
+    AINFO << "定时器执行中!  " << ++i;
+}
+
+int main(int argc, char const *argv[])
+{
+	Timer t_1(1000,cp,false);
+    //参数 1 设置循环频率 1000就是1000ms 执行1次
+    //参数 cp 就是设置循环逻辑
+    //参数 3 是否只执行1次
+
+	t_1.Start(); //开启定时器
+
+	sleep(3); //先休眠3s
+
+	t_1.Stop();
+
+	AINFO << "函数停止!";
+	return 0;
+}
+```
+
+#### log 日志api
+
+```c++
+#include "cyber/cyber.h"
+
+int main(int argc, char const *argv[])
+{
+	apollo::cyber::Init(argv[0]); //初始化日志文件， 默认参数用于文件名，argv0 是文件名
+
+	AINFO << "AINFO 一般信息";
+	ADEBUG << "ADEBUG 调试信息"; //仅仅在调试模式输出
+	AWARN << "AWARN 警告信息";
+	AFATAL << "AFATAL 严重警告信息";
+	return 0;
+}
+
+```
+
+**cyber/setup.bash** 日志文件设置
+
+```bash
+export GLOG_log_dir="${APOLLO_ROOT_DIR}/data/log" #设置日志目录
+export GLOG_alsologtostderr=1  #设置是否在终端中显示
+export GLOG_colorlogtostderr=1 #设置不同级别信息是否用不同颜色打印
+export GLOG_minloglevel=0 #设置打印哪种级别日志，参数0-3 0：全部，1 ： 一般以上 2： 只打印warn和fatal 3:只打印fatal
+```
+
+
 
 ### cyber 下的函数
 

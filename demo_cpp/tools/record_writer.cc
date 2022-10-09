@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 	AINFO << "file : " << record_wiriter.GetFile(); 
 
 	//新建话题名称是record
-	std::string channel = "record"; 
+	std::string channel = "chatter"; 
 	//第一个是发布话题的名字，第二个是数据类型，第三个参数是消息描述
 	record_wiriter.WriteChannel(channel, "apollo.cyber.demo_protobuf.Student","test for record");
 
@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
     {
 		//先给消息添加内容
 		auto stu = std::make_shared<Student>();
-		stu->set_age(18);
+		stu->set_age(i);
 		stu->set_name("yuri");
 		stu->set_height(i);
 		stu->add_books("yuri");
@@ -40,7 +40,7 @@ int main(int argc, char const *argv[])
 		//将消息转化成字符串存进去
 		stu->SerializeToString(&contant);
 		//写入文件内容，写入序号，以及写入话题
-		record_wiriter.WriteMessage(channel,*stu,i);
+		record_wiriter.WriteMessage(channel,contant,1000 + i);
 	}
 
 	//关闭文件
