@@ -17,6 +17,10 @@ keywords:
 
 # apollo Cyber c++ 实现
 
+> 前言： 本文基于赵老师的视频：[CyberRT教程](https://www.bilibili.com/video/BV16U4y1U75F/?spm_id_from=333.999.0.0) ，文中所有东西都是基于arch + vscode  1.72
+>
+> 建议： 使用前先去cyber/setup.bash 将export GLOG_alsologtostderr=0  这句话修改成1，因为后续的所有内容均在终端中输出，需要将这个日志设置改为1
+
 **使用vscode 环境**
 
 ## vscode 插件

@@ -1,12 +1,15 @@
+#include <exception>
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <exception>
 using namespace std;
 
-int main(int argc, char const *argv[])
+int main()
 {
-    {
-        
-    }
+	cout << "hello world\n";
+	for (int i = 0; i < 10; i++) {
+		cout << "hello world\n";
+		
+	}
+	return 0;
 }

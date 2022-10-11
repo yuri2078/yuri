@@ -33,12 +33,13 @@
 
     //设置彩虹括号成对显示
     "editor.guides.bracketPairs": true, 
-    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
 
     //设置禁用c/c++ 代码提示和自动补全功能
     "C_Cpp.intelliSenseEngineFallback": "Disabled",
     "C_Cpp.intelliSenseEngine": "Disabled",
     "C_Cpp.autocomplete": "Disabled", 
+    "clangd.path": "/usr/bin/clangd",
 
     // Clangd 运行参数(在终端/命令行输入 clangd --help-list-hidden 可查看更多)
     "clangd.arguments": [

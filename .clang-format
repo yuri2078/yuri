@@ -1,7 +1,8 @@
 ---
 # 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
 Language:        Cpp
-# BasedOnStyle:  LLVM
+# BasedOnStyle:  Google
+# BasedOnStyle:  Microsoft
 # 访问说明符(public、private等)的偏移
 AccessModifierOffset: -4
 # 开括号(开圆括号、开尖括号、开方括号)后的对齐: Align, DontAlign, AlwaysBreak(总是在开括号后换行)
@@ -75,7 +76,7 @@ BreakBeforeBinaryOperators: None
 # 在concept前换行
 BreakBeforeConceptDeclarations: true
 # 在大括号前换行: Attach(始终将大括号附加到周围的上下文)
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Linux
 # 继承列表样式
 BreakInheritanceList: AfterComma
 # 在三元运算符前换行
@@ -264,7 +265,7 @@ StatementMacros:
 # tab宽度
 TabWidth:        4
 # 使用\n换行
-UseCRLF:         false
+UseCRLF:         true
 # 使用tab字符：ForIndentation——仅将制表符用于缩进
 UseTab:          ForIndentation
 # 对空格敏感的宏定义
@@ -275,4 +276,3 @@ WhitespaceSensitiveMacros:
   - NS_SWIFT_NAME
   - CF_SWIFT_NAME
 ...
-

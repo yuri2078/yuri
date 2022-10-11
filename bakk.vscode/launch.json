@@ -3,48 +3,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "Launch hello",
-            "request": "launch",
-            "mainClass": "hello",
-            "projectName": "vscode_59a0ce4"
-        },
-        {
-            "name": "Python: 当前文件",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
-            "type": "java",
-            "name": "Launch test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch hellojava",
-            "request": "launch",
-            "mainClass": "hellojava",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch hello",
-            "request": "launch",
-            "mainClass": "hello",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
-            "type": "java",
-            "name": "Launch Hello",
-            "request": "launch",
-            "mainClass": "Hello",
-            "projectName": "vscode-c_dd810438"
-        },
-        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
@@ -64,26 +22,7 @@
                     "ignoreFailures": false
                 }
             ],
-            "preLaunchTask": "Compile",
-            "visualizerFile": "c:\\Users\\miku\\AppData\\Roaming\\Code\\User\\workspaceStorage\\64fe41dc6d4330e4697ddf15cdd2bdce\\tonka3000.qtvsctools\\qt.natvis.xml"
-        },
-        {
-            "name": "QtBuild",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${command:cmake.launchTargetPath}",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceRoot}",
-            "environment": [
-                {
-                    "name": "PATH",
-                    "value": "c:/Qt/6.3.1/mingw_64/bin"
-                }
-            ],
-            "externalConsole": false,
-            "miDebuggerPath": "d:/QT/Tools/mingw0_64/bin/gdb.exe",
-            "visualizerFile": "c:\\Users\\miku\\AppData\\Roaming\\Code\\User\\workspaceStorage\\64fe41dc6d4330e4697ddf15cdd2bdce\\tonka3000.qtvsctools\\qt.natvis.xml"
+            "preLaunchTask": "Compile"
         }
     ]
 }
