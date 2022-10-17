@@ -1,18 +1,13 @@
 
 #include <iostream>
-#include <ctime>
 #include <ostream>
+#include <string>
+#include <unordered_map>
+#include <utility>
 using namespace std;
 int main()
 {
-	time_t start, stop;
-	
-	start = time(NULL);
-	for (int i = 0; i < 1000000; i++) {
-		
-        cout << i;
-	}
-	cout << endl;
-	stop = time(NULL);
-	cout << stop - start << endl;
+	string s = "iijfj";
+	cout << s.find('f') << s.rfind('f') << endl;
+	return 0;
 }
