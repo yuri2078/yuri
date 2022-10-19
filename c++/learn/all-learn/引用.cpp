@@ -14,7 +14,8 @@ void printValue(const int &a) //加上const防止形参误操作
 
 int main()
 {
-    int a = 66;
+	int a = 66;
+	
     int &b = a; //定义别名是必须初始化，且不可以改变
     // int c = 666; b = c; 这就是赋值操作，而不是更改b的指向的操作
     std::cout << "a = " << a << std::endl;
