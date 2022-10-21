@@ -12,6 +12,8 @@ void printValue(const int &a) //加上const防止形参误操作
     std::cout << "a = " << a << std::endl;
 }
 
+
+
 int main()
 {
 	int a = 66;
@@ -30,6 +32,7 @@ int main()
     std::cout << "e = " << e << std::endl;
     //e = 666; 报错，这是只读的不可以修改
     int f = 31;
-    printValue(f);
+	printValue(f);
+	
     return 0;
 }

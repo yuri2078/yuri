@@ -1,13 +1,9 @@
-
 #include <iostream>
-#include <ostream>
-#include <string>
-#include <unordered_map>
-#include <utility>
 using namespace std;
-int main()
+
+int main(int argc, const char *argv[])
 {
-	string s = "iijfj";
-	cout << s.find('f') << s.rfind('f') << endl;
+	
+	cout << "Hello world" << endl;
 	return 0;
 }
