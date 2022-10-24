@@ -72,8 +72,7 @@ void getNext(SqString* t, int next[])
 		else {
             j = next[j];
         }
-    }
-	
+	}
 }
 
 int main()

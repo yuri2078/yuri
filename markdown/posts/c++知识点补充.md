@@ -45,11 +45,12 @@ keywords:
 1. 当传递类或者结构体这种数据量大的数据时一般选择 引用传递
 2. 传递数组时 智能选择指针
 3. 当传递普通数据类型的变量是 选择值传递
-4. 传递
 
+### 数组的初始化
 
-
-
++ `int array[10] { 1, 2, 3, 4 }`c11可以忽略等于号
++ `int array[10] {}`c11可以直接用空括号初始化0
++ 列表禁止缩窄定义 比如long  ->  int
 
 ## 未完成的事情
 
@@ -63,76 +64,154 @@ keywords:
   + thread_local
   + mutable 使用这个可以修改常量函数里的变量
 
-## 知识点补充
+## 类和对象
 
-### 类和对象
+### 类的基本结构
 
-+ explicit 一般用于构造函数/拷贝构造函数 加上之后就不能发生隐式类型转换，必须指明
+```c++
+class Person : public Animal //继承自Animal 类
+{
+private: //访问权限
+    int x; //数据成员
+   
+public:
+    Person() = default; //默认构造函数，不写系统会自动生成
+    Person(int x); //重载的构造函数
+    explicit Person(int x, int y, int z = 0); //禁止发生隐式抓换构造函数
+    Person(const Person &p); //拷贝构造函数 当需要拷贝的时候调用
+    Person(const Person &&p); //移动构造函数 当需要移动数据完成构造的时候调用
+    ~Person() = default; //析构函数，不加default默认会生成一个，他没有参数
+    void printPerson(); //普通成员函数
+    virtual void test(); //虚函数
+    virtual void test_1() = 0; //纯虚函数，如果不重写，他的子类或者他本身无法生成对象
+    int getX() const; //禁止修改数据成员，隐含 const 修饰 this指针。
+};
+```
 
-    ```cpp
-        class Person
+
+
+### **explicit**  关键字
+
+一般用于构造函数/拷贝构造函数 加上之后就不能发生隐式类型转换，必须指明
+
+```cpp
+    class Person
+    {
+        explicit Person(int x = 0, int y =1) //添加禁止隐式转换关键字
         {
-            explicit Person(int x = 0, int y =1) //添加禁止隐式转换关键字
-            {
 
-            }
-        };
+        }
+    };
+    void test()
+    {
+        Person p1 = 3; //发生隐式类型转换
+        //程序处理 ： Person temp(3); p1 = temp; 
+        //未来避免发生不必要的错误，使用explicit关键字禁止 隐式类型转换
+
+        //加上explicit关键字后
+        // Person p1 = 3; 错误
+        // Person p1 = Person(3); 正确
+    }
+
+```
+
+### 匿名对象
+
+调用成员函数 直接生成匿名对象，调用函数
+
+```cpp
+    class Person
+    {
+    public:
         void test()
         {
-            Person p1 = 3; //发生隐式类型转换
-            //程序处理 ： Person temp(3); p1 = temp; 
-            //未来避免发生不必要的错误，使用explicit关键字禁止 隐式类型转换
-
-            //加上explicit关键字后
-            // Person p1 = 3; 错误
-            // Person p1 = Person(3); 正确
+            cout << "hello world " << endl;
         }
+    };
 
-  ```
+    int main()
+    {
+        Person().test();
+        return 0;
+    }
 
-+ 匿名对象调用成员函数 直接生成匿名对象，调用函数
+```
 
-    ```cpp
-        class Person
-        {
-        public:
-            void test()
-            {
-                cout << "hello world " << endl;
-            }
-        };
+### **default** 关键字
 
-        int main()
-        {
-            Person().test();
-            return 0;
-        }
+生成一个默认的构造函数或者析构函数
 
-    ```
+```c++
+class Person
+{
+    //生成默认构造函数，该函数不可重新定义
+  	Person() = default; 
+};
+```
 
-+ 类型转换
 
-  + ``` QMouseEvent *mouse_1 = static_cast<QMouseEvent*> (e); ```
-  
-+ 数组的初始化
 
-  + `int array[10] { 1, 2, 3, 4 }`c11可以忽略等于号
-  + `int array[10] {}`c11可以直接用空括号初始化0
-  + 列表禁止缩窄定义 比如long  ->  int
+### **noexcept**  关键字
+
+告诉编译器该函数 默认是安全的不会弹出错误
+
+```c++
+void test() noexcept;
+void test() noexcept(true); //等同于上面那个
+void test(); //不加关键字默认是可能弹出错误
+void test() noexcept(false); //等同于上面那个
+
+//函数 声明/定义 有一个有noexcept关键字，其他所有 声明/定义 都要有关键字
+```
+
+### override 关键字
+
+表示对一个virtual 函数进行重写
+
+```c++
+class Animal{
+    virtual void eat(){
+        std::cout << "Animal is eating\n";
+    }
+};
+
+class Person : public Animal{
+    void eat() override{ //对虚函数进行重写
+        std::cout << "Person is eating\n";
+    }
+};
+```
+
+### **final** 关键字
+
+```c++
+//表示该类禁止被继承
+class Person final : public Animal{
+    virtual void eat() final; //表示该函数禁止被子类重写
+}
+```
+
+
 
 
 ## 常用函数补充
 
-- `#include <limits.h>` 保存各类型的最大值 INT_MAX
-- `#include <stdlib.h>` 常用申请内存函数
-  1. `int *num = (int *)malloc(8 * sizeof(int));` //分配内存但是不重置为0 失败返回NULL
-  2. `int *num = (int *)calloc(8, sizeof(int)); `//分配n 个size内存 并置为0 失败返回 NULL
-  3. `num = realloc(num, 9 * sizeof(int)); `重新分配内存可大可小
-     - 后面空间小于 原有空间则释放多余地址
-     - 后面空间大于 原有空间则查看后面连续地址是否有剩余 没有则把旧数据拷贝到新地址且返回新地址
-     - 指针为NULL 且size不为0 作用和malloc类似 返回新的地址
-     - 指针不为NULL 但是size为0  则空间会被释放 返回NULL
-     - 空间不足 返回NULL原空间内容不变
+### `#include <limits.h>` 
+
+保存各类型的最大值 INT_MAX
+
+### `#include <stdlib.h>` 
+
+常用申请内存函数
+
+1. `int *num = (int *)malloc(8 * sizeof(int));` //分配内存但是不重置为0 失败返回NULL
+2. `int *num = (int *)calloc(8, sizeof(int)); `//分配n 个size内存 并置为0 失败返回 NULL
+3. `num = realloc(num, 9 * sizeof(int)); `重新分配内存可大可小
+   - 后面空间小于 原有空间则释放多余地址
+   - 后面空间大于 原有空间则查看后面连续地址是否有剩余 没有则把旧数据拷贝到新地址且返回新地址
+   - 指针为NULL 且size不为0 作用和malloc类似 返回新的地址
+   - 指针不为NULL 但是size为0  则空间会被释放 返回NULL
+   - 空间不足 返回NULL原空间内容不变
 
 ## 常见关键字补充
 
@@ -170,35 +249,6 @@ int main(int argc, char const *argv[])
     1. 可以通过point_2 修改x的值
     2. 不能修改point_2 指向的值
 3. 尽量加const 这样可以接受const的值，普通变量是不能接受const的值的
-
-### explicit 关键字
-
- 一般用于构造函数/拷贝构造函数 加上之后就不能发生隐式类型转换，必须指明
-
-```c++
-    class Person
-    {
-        explicit Person(int x = 0, int y =1) //添加禁止隐式转换关键字
-        {
-
-        }
-    };
-    void test()
-    {
-        Person p1 = 3; //发生隐式类型转换
-        //程序处理 ： Person temp(3); p1 = temp; 
-        //未来避免发生不必要的错误，使用explicit关键字禁止 隐式类型转换
-
-        //加上explicit关键字后
-        // Person p1 = 3; 错误
-        // Person p1 = Person(3); 正确
-    }
-
-```
-
-**总结**
-
-1. 有的时候我们要求不能发生隐式转换 所以要加关键字
 
 ### auto 关键字 
 
@@ -251,6 +301,31 @@ int main(int argc, char **argv)
 }
 
 ```
+
+### && 右值引用符号
+
+
+
+## 宏定义知识点补充
+
+1. `#`号 转化成字符串
+
+   ```c++
+   #define STR(s) #s //将s转化成字符串
+   STR(sss) //结果 "sss"
+   ```
+
+   
+
+2. `##` 连接前后两个 
+
+   ```c++
+   #define CAT(a,b) a##e##b //CAT(2,10) 结果2e10 也就是 2的十次方
+   ```
+
+   
+
+3. 
 
 
 

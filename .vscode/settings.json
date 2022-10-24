@@ -11,8 +11,8 @@
     "code-runner.executorMap": {
         // "c": "cd $dir && gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c11 -fexec-charset=GBK && &'$dir$fileNameWithoutExt'",
         // "cpp": "cd $dir && g++ '$fileName' -o '$fileNameWithoutExt.exe' -Wall -g -O2 -static-libgcc -std=c++17 -fexec-charset=GBK && &'$dir$fileNameWithoutExt'"
-        "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -g  -static-libgcc -std=c11  && $dir$fileNameWithoutExt",
-        "cpp": "cd $dir && clang++ $fileName -o $fileNameWithoutExt -Wall -g  -static-libgcc -std=c++20  && $dir$fileNameWithoutExt",
+        "c": "cd $dir && clang $fileName -o $fileNameWithoutExt -Wall -g   -std=c11  && $dir$fileNameWithoutExt",
+        "cpp": "cd $dir && clang++ $fileName -o $fileNameWithoutExt -Wall -g   -std=c++20  && $dir$fileNameWithoutExt",
         "csharp": "cd $dir && dotnet run"
     }, // 右键run code时运行的命令；未注释的仅适用于PowerShell（Win10默认），文件名中有空格也可以编译运行；注释掉的适用于cmd（win7默认），PS和bash也能用，但文件名中有空格时无法运行
     "code-runner.saveFileBeforeRun": true, // run code前保存
@@ -39,10 +39,10 @@
     // 输出窗口
     "[Log]": {
         // 字体大小
-        "editor.fontSize": 15
+        "editor.fontSize": 17
     },
     // CodeLens的字体系列: Fira Code Retina
-    "editor.codeLensFontFamily": "Fira Code",
+    "editor.codeLensFontFamily": "Fira Code Medium",
     // 字体系列: Fira Code Retina
     //   "editor.fontFamily": "Fira Code Retina",
     // 启用连字体
