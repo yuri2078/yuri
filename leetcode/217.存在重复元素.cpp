@@ -4,7 +4,7 @@
  * [217] 存在重复元素
  */
 #include <iostream>
-#include <utility>
+#include <unordered_set>
 #include <vector>
 #include <map>
 using namespace std;
@@ -12,13 +12,13 @@ using namespace std;
 class Solution {
 public:
 	bool containsDuplicate(vector<int>& nums) {
-		map<int, int> m_1;
+		unordered_set<int> set;
 		for (int x : nums) {
-			if (m_1.find(x) != m_1.end()) {
+			if (set.find(x) != set.end()) {
 				return true;
 			}
-			m_1.insert(make_pair(x,6));
-        }
+			set.insert(x);
+		}
 		
         return false;
     }
