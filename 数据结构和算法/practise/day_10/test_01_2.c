@@ -39,63 +39,60 @@ int strAssign(SqString* s, char* str)
     s->length = i;
     return OK;
 }
-//模式匹配KMP算法
-int indexKMP(SqString* s, SqString* t, int next[])
+int indexKMP(SqString* s, SqString* t,  int next[])
 {
 	if (t->length == 0) {
 		return 0;
 	}
-	for (int i = 0, j = 0; i < s->length; i++) {
-		if (s->data[i] == t->data[j]) {
+	int i = 0, j = 0;
+	while (i < s->length && j < t->length) {
+		if (j == -1 || s->data[i] == t->data[j]) {
+			i++;
 			j++;
-        }else if (next[j]) {
-			j = next[j];
-			i--;
-        }else {
+		}else {
             j = next[j];
-		}
-
-		if (!t->data[j]) {
-			int k = i - j + 1;
-			while (s->data[k + t->length]) {
-				s->data[k] = s->data[k + t->length];
-				k++;
-			}
-			s->data[k] = 0;
-			s->length -= t->length;
-			indexKMP(s, t, next);
-			return i - j + 2;
         }
+	}
+	if (j >= t->length) {
+		int k = i - j;
+		while (s->data[k + t->length]) {
+			s->data[k] = s->data[k + t->length];
+			k++;
+		}
+		s->data[k] = 0;
+		s->length -= t->length;
+		indexKMP(s, t, next);
+		return i - t->length + 1;
     }
-	return -1;
+	return 0;
 }
 //求取模式串next值
 void getNext(SqString* t, int next[])
 {
-	next[0] = 0;
-	for (int i = 1; i < t->length; i++) {
-		if (t->data[i] == t->data[next[i - 1]]) {
-			next[i] = next[i - 1] + 1;
-        }else {
-			int j = next[i - 1] - 1;
-			while (j >= 0 && t->data[j] != t->data[i]) {
-                j--;
-			}
-			next[i] = j + 1;
+	int i = 0, j = -1;
+	next[0] = -1;
+	while (i < t->length) {
+		if (j == -1 || t->data[i] == t->data[j]) {
+			i++;
+			j++;
+			next[i] = j;
+		}
+		else {
+            j = next[j];
         }
 	}
 }
 
-// int my_gets(char* str)
-// {
-// 	char ch;
-// 	int i = 0;
-// 	while ((ch = getchar()) != '\n') {
-// 		str[i++] = ch;
-// 	}
-// 	str[i] = 0;
-// 	return i;
-// }
+int my_gets(char* str)
+{
+	char ch;
+	int i = 0;
+	while ((ch = getchar()) != '\n') {
+		str[i++] = ch;
+	}
+	str[i] = 0;
+	return i;
+}
 
 int main()
 {
@@ -106,8 +103,10 @@ int main()
 
 	char* str = (char*)calloc(INITSIZE, sizeof(char));
 	gets(str);
+	// my_gets(str);
 	strAssign(&s, str);
 	gets(str);
+	// my_gets(str);
 	strAssign(&t, str);
 	int* next = (int*)calloc(t.length, sizeof(int));
 	getNext(&t, next);
