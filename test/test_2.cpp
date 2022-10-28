@@ -1,9 +1,15 @@
 #include <iostream>
 #include <ostream>
-#include <type_traits>
+#include <string>
+#include <unordered_map>
 
 int main(int argc, const char *argv[])
 {
-	std::cout << std::is_same<char, char>::value << std::endl;
+
+	std::string s = "wocao";
+	if (s[5] == 0) {
+		std::cout << "yuri is yes\n";
+		
+	}
 	return 0;
 }

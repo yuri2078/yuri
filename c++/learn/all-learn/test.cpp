@@ -1,20 +1,16 @@
 #include <iostream>
-#include <string>
-using std::cout;
-using std::string;
 
-class Test
-{
+typedef struct Date{
 public:
-    Test & operator<<(const string &temp)
-    {
-        cout << temp << " ";
-        return *this;
-    }
-};
+	int year;
+	int month;
+	int day;
+}Date;
 
-int main(int argc, char **argv)
+
+
+int main(int argc, const char *argv[])
 {
-    Test() << "牛逼";
+	Date date = {66,66,66};
     return 0;
 }
