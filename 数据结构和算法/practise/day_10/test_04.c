@@ -20,6 +20,7 @@ void stringCheck(char* s, char* t)
 	//设置flag标识是否开启万能匹配
 	int flag = 0;
 
+	
 	//当s指向结尾，而t没到结尾且没有*通配符时结束循环
 	while (*s || *t) {
 		//当*s = *t 或者 遇到通配符？时，继续比较
@@ -39,7 +40,7 @@ void stringCheck(char* s, char* t)
 			}
 
 			//如果到最后也没找到，直接推出循环判断是否匹配成功
-			if (!*t) {
+			if (!*t && *s != '*') {
 				break;
 			}
 			//如果找到了则将下一个地址存储起来，匹配失败则从这里重新开始

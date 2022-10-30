@@ -10,7 +10,7 @@
                 "-Wall",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension.out}" //设置生成的可执行文件名字
+                "${fileDirname}/${fileBasenameNoExtension}.out" //设置生成的可执行文件名字
             ],
             "options": {
                 "cwd": "${fileDirname}"
