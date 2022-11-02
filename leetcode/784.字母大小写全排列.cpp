@@ -15,13 +15,26 @@ class Solution {
 public:
     vector<string> letterCasePermutation(string s) {
 		vector<string> ans; // 返回答案
-		string special = s; // 定义全是大写字母的体术字符
 		const int size = s.size();
 		for (int i = 0; i < size; i++) {
+			if (isAlpha(s[i])) {
+				if (s[i] >= 'a') {
+					ans.push_back(s);
+					s[i] -= 32;
+					ans.push_back(s);
+				} else {
+					ans.push_back(s);
+					s[i] += 32;
+					ans.push_back(s);
+				}
+			}
 		}
-	
+		sort(ans.begin(), ans.end());
 		return ans;
-    }
+	}
+	bool isAlpha(char ch){
+		return ('a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z');
+	}
 };
 // @lc code=end
 
