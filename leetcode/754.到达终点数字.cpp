@@ -22,15 +22,12 @@ public:
 			ans += k;
 			k++;
 		}
+		
 		if ((ans - target) % 2 == 0) {
 			return k - 1;
 		}
 
-		if (target % 2 == 0 && (ans - k) % 2 == 0 || (ans + k - target) % 2 == 0) {
-			return k;
-		} else {
-			return k + 1;
-        }
+		return (ans + k - target) % 2 == 0 || (ans - k - target) % 2 == 0 ? k : k + 1;
     }
 };
 
