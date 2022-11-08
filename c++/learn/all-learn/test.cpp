@@ -1,16 +1,16 @@
 #include <iostream>
+#include <unordered_set>
 
-typedef struct Date{
-public:
-	int year;
-	int month;
-	int day;
-}Date;
+using namespace std;
 
-
-
-int main(int argc, const char *argv[])
+int main()
 {
-	Date date = {66,66,66};
+	unordered_set<int> set;
+	set.insert(5);
+	set.insert(6);
+	for (auto s : set) {
+        cout << s << "  ";
+	}
+	cout << endl;
     return 0;
 }
