@@ -19,8 +19,9 @@ void outFile(std::fstream &fst,const T &t, Args ...args)
     outFile(fst, args...);
 }
 
-template <class T, class ...Args>
-void cout(const T &temp, Args ...args)
+
+template <class T, class... Args>
+void cout(const T&& temp, Args... args)
 {
     std::fstream fst;
     fst.open("E:/vscode/log.txt", std::ios::app);

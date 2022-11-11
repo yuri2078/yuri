@@ -1,15 +1,32 @@
 #include <iostream>
-#include <ostream>
-#include <string>
-#include <unordered_map>
+#include <memory>
 
-int main(int argc, const char *argv[])
+using namespace std;
+
+class Person
 {
+private:
+    string name;
 
-	std::string s = "wocao";
-	if (s[5] == 0) {
-		std::cout << "yuri is yes\n";
-		
-	}
-	return 0;
+public:
+	Person(string name)
+	{
+		this->name = name;
+		cout << name << "类创建\n";
+    }
+	~Person()
+	{
+		cout << name << "类析构\n";
+    }
+};
+
+
+int main()
+{
+	unique_ptr<Person> p;
+	p = make_unique<Person>("1");
+	cout << "666\n";
+	p = make_unique<Person>("2");
+	cout << "555\n";
+    return 0;
 }
