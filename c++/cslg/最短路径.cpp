@@ -1,66 +1,49 @@
-#include <cstdint>
 #include <iostream>
-#include <vector>
 
-using namespace std;
-
-int cost(const vector<int> &p1,const vector<int> &p2 ){
-	int x_1 = abs(p1[0] - p2[0]);
-	int x_2 = abs(p1[1] - p2[1]);
-	return x_1 > x_2 ? x_2 : x_1;
-}
-
-void getValue(vector<vector<int>>& v, vector<vector<int>>& marix)
-{
-	const int size = v.size();
-	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++) {
-			marix[i][j] = marix[j][i] = cost(v[i], v[j]);
+#define int long long
+const int N=2e5+5,M=N<<2;
+int n,m,s,h[N],en,dis[N];
+struct point{int i,x,y;}a[N]; //存点坐标
+struct node{ //松弛操作中的节点
+    int x,v;
+    inline bool operator < (const node &nt) const {
+        return v>nt.v;
+    }
+};
+struct edge{int n,v,w;}e[M]; //前向星边表
+void add(int x,int y,int z){e[++en]=(edge){h[x],y,z};h[x]=en;} //加边
+void dij(int s){ //dij模板
+    priority_queue<node> q;
+    memset(dis,66,sizeof dis);
+    q.push((node){s,0});
+    dis[s]=0;
+    while(!q.empty()){
+        node x=q.top();
+        q.pop();
+        if(x.v!=dis[x.x]) continue; //一个dij懒惰操作，省去了visit[]数组
+        for(int i=h[x.x];i;i=e[i].n){
+            int y=e[i].v;
+            if(dis[x.x]+e[i].w<dis[y]){
+                dis[y]=dis[x.x]+e[i].w;
+                q.push((node){y,dis[y]});
+            }
         }
     }
 }
-
-int result(vector <vector<int>> & v)
-{
-	const int size = v.size();
-	if (size == 1) {
-		return 0;
-    }
-	vector<vector<int>> marix(size, vector<int>(size));
-	// getValue(v, marix);
-	// vector<int> map(size, 1);
-	// map[0] = 0;
-	// int k = 0;
-	// int len = 0;
-	// while (k != size - 1) {
-		
-	// 	int min = -1;
-	// 	for (int i = 0; i < size; i++) {
-	// 		if (map[i] && (min == -1 || marix[k][i] < marix[k][min])) {
-	// 			min = i;
-	// 		}
-	// 	}
-	// 	map[min] = 0;
-	// 	len += marix[k][min];
-	// 	for (int i = 0; i < size; i++) {
-	// 		if (map[i] && (len + marix[min][i] < marix[0][i])) {
-	// 			marix[0][i] = len + marix[min][i];
-    //         }
-	// 	}
-	// 	k = min;
-		
-	// }
-	return marix[0][size - 1];
-}
-
-int main()
-{
-    int n;
-    cin >> n;
-    vector<vector<int>> point(n, vector<int> (2));
-    for (int i = 0; i < n;i++){
-        cin >> point[i][0] >> point[i][1];
-	}
-	cout << result(point) << endl;
-    return 0;
+inline bool cmpx(const point &x,const point &y){return x.x==y.x?x.y<y.y:x.x<y.x;}
+inline bool cmpy(const point &x,const point &y){return x.y==y.y?x.x<y.x:x.y<y.y;}
+signed main(){
+    read(n);
+    for(int i=1;i<=n;i++)
+        a[i].i=i,read(a[i].x),read(a[i].y);
+    sort(a+1,a+1+n,cmpx); //按横坐标排
+    for(int i=2;i<=n;i++)
+        add(a[i-1].i,a[i].i,a[i].x-a[i-1].x), //前后节点建双向边
+        add(a[i].i,a[i-1].i,a[i].x-a[i-1].x);
+    sort(a+1,a+1+n,cmpy); //按纵坐标排
+    for(int i=2;i<=n;i++)
+        add(a[i-1].i,a[i].i,a[i].y-a[i-1].y),
+        add(a[i].i,a[i-1].i,a[i].y-a[i-1].y);
+    dij(1);
+    printf("%lld",dis[n]);
 }
