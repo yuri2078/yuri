@@ -27,32 +27,35 @@ void createTree(Tree* tree, int *array, int size, int k)
 }
 
 // 二叉树前序遍历
+// 遍历顺序 中 左 右
 void preorderTraversal(Tree* tree)
 {
 	if (tree) {
-		printf("%d ", tree->e);
-		preorderTraversal(tree->left);
-		preorderTraversal(tree->right);
+		printf("%d ", tree->e); // 上来直接处理根节点数据
+		preorderTraversal(tree->left); // 递归处理左子树 数据， 只有当左边数据遍历完成才会进行右边数据处理
+		preorderTraversal(tree->right);// 递归处理右子树 数据
 	}
 }
 
 // 二叉树中序遍历
+// 遍历顺序 左 中 右
 void inorderTraversal(Tree* tree)
 {
 	if (tree) {
-		inorderTraversal(tree->left);
+		inorderTraversal(tree->left);  // 递归处理左子树 数据， 只有当左边数据遍历完成才会打印 中间节点数据然后进行右边子树的遍历
 		printf("%d ", tree->e);
 		inorderTraversal(tree->right);
 	}
 }
 
 // 二叉树后序遍历
+// 遍历顺序 左 右 中
 void postorderTraversal(Tree* tree)
 {
 	if (tree) {
-		postorderTraversal(tree->left);
-		postorderTraversal(tree->right);
-		printf("%d ", tree->e);
+		postorderTraversal(tree->left); // 递归处理左子树 数据， 
+		postorderTraversal(tree->right); // 递归处理左子树 数据
+		printf("%d ", tree->e); // 只有当左右子树遍历结束才会打印数据 ，百
 	}
 }
 
