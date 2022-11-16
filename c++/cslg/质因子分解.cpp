@@ -1,58 +1,48 @@
 #include <iostream>
-#include <map>
-#include <vector>
-#include <list>
+#include <cmath>
+
+typedef long long int lint;
+
 using namespace std;
 
-void fun(int x, list<long long int>& number)
+lint gys(lint a, lint b)
 {
-	int t = 2;
-	while (x && t <= x) {
-		if (x % t == 0) {
-			while (x % t == 0) {
-				number.push_back(t);
-				x /= t;
-			}
+	while (a != b) {
+		if (a - b > 0) {
+			a -= b;
 		} else {
-			t++;
+			b -= a;
 		}
 	}
-	// cout << endl;
+	return a;
 }
 
-vector<int> intersect(list<long long int>& nums1, list<long long int>& nums2)
+void primeFactorization(lint num)
 {
-	vector<int> nums3;
-	multimap<int, int> m_1;
-	if (nums1.size() > nums2.size()) {
-		return intersect(nums2,nums1);
+	if (num == 1) {
+		cout << 1 << endl;
+		return;
 	}
-	for (int x: nums2) {
-		m_1.insert(make_pair(x, 6));
-	}
-	for (int x: nums1) {
-		if (m_1.find(x) != m_1.end()) {
-			nums3.push_back(x);
-			m_1.erase(m_1.find(x));
+	int up = (lint)sqrt(num) + 1;
+	for (lint i = 2; i < up; ++i) {
+		while (num % i == 0) {
+			num /= i;
+			cout << i << " ";
 		}
 	}
+	//若最后剩余数不为1，则为最后一个质因数
+	if (num != 1) {
+		cout << num;
+	}
 
-	return nums3;
+	cout << endl;
 }
+
+
 int main()
 {
-	long long int x_1 , x_2;
-	cin >> x_1 >> x_2;
-	list<long long int> v_1, v_2;
-	fun(x_1, v_1);
-	fun(x_2, v_2);
-	vector<int> num = intersect(v_1, v_2);
-	for (int x: num) {
-		cout << x << " ";
-	}
-	if (num.size() == 0) {
-		cout << 1;
-	}
-	cout << endl;
+	lint x = 0, y = 0;
+	cin >> x >> y;
+	primeFactorization(gys(x, y));
 	return 0;
 }

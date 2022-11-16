@@ -1,45 +1,27 @@
+
 #include <iostream>
+#include <ctime>
+#include <vector>
+using namespace std;
 
-template <typename T>
-int add(T a, T b)
-{
-	return a + b;
-}
 
-template <typename T,typename... Args>
-int add(T a, T b, Args... args)
-{
-	return add(a + b, args...);
-}
 
-bool result(char ch, bool b_1, bool b_2)
+int main()
 {
-    switch (ch) {
-    case '|':
-        return b_1 || b_2;
-    case '&':
-        return b_1 && b_2;
-    }
-    return true;
-}
+	clock_t start, end;
 
-template <class... Args>
-bool result(char ch, bool b_1, bool b_2, Args... args)
-{
-    switch (ch) {
-    case '|':
-        return result(ch, b_1 || b_2, args...);
-    case '&':
-        return result(ch, b_1 && b_2, args...);
+	start = clock();
+	vector<int> v(2);
+	for (int i = 0; i < 1000000000; i++) {
+		v.push_back(i);
 	}
-	return true;
-}
 
-
-
-int main(int argc, const char **argv)
-{
-	std::cout << add(4, 5, 6, 7, 8) << std::endl;
-	std::cout << result('&',true,true,false,true) << std::endl;
+	end = clock();
+	cout << start << endl;
+	
+	cout << end << endl;
+	cout << (end - start) << "   ms\n";
+	cout << (end - start) / CLOCKS_PER_SEC  << " s\n";
+	cout << CLOCKS_PER_SEC << endl;
     return 0;
 }

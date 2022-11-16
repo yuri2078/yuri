@@ -5,155 +5,156 @@
 #ifndef LOG_YURI_H
 #define LOG_YURI_H
 
+
+#include <bits/types/clock_t.h>
 #include <fstream>
+#include <iostream>
+#include <string>
 #include <vector>
 #include <memory>
+#include <ctime>
+
+// class MyIterator : public std::iterator<std::random_access_iterator_tag, T t>
 
 namespace yuri
 {
+class Yuri
+{
+private:
+	bool is_single;
+	std::string in_file;
+	std::string out_file;
+	unsigned int col;
+	unsigned int row;
+	std::unique_ptr<std::vector<std::vector<int>>> data;
+	std::unique_ptr<std::vector<int>> data_single;
 
+public:
+	Yuri()
+	{
+		is_single = false;
+		this->in_file = "in.txt";
+		this->out_file = "out.txt";
+		this->col = 0;
+		this->row = 0;
+		data = nullptr;
+		data_single = nullptr;
+	}
 
-using std::make_unique;
-using std::unique_ptr;
-using std::vector;
+	~Yuri() = default;
 
-template <typename... Args> void log(Args&&... args);
+	std::vector<std::vector<int>>& getData()
+	{
+		std::fstream fst;
+		checkFile(fst, in_file, std::ios::in);
+		fst >> row >> col;
+		data = std::make_unique<std::vector<std::vector<int>>>(
+			row, std::vector<int>(col));
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
+				fst >> (*data)[i][j];
+			}
+		}
+		fst.close();
+		return (*data);
+	}
 
-void log(vector<int> &v);
+	std::vector<int>& getData(bool)
+	{
+		this->is_single = true;
+		this->row = 1;
+		std::fstream fst;
+		checkFile(fst, in_file, std::ios::in);
+		fst >> col;
+		data_single = std::make_unique<std::vector<int>>(col);
+		for (int i = 0; i < col; i++) {
+			fst >> (*data_single)[i];
+		}
+		fst.close();
+		return (*data_single);
+	}
 
-template <typename T> void outFile(std::fstream& fst, T&& value);
+	void outData()
+	{
+		std::fstream fst;
+		checkFile(fst, out_file, std::ios::app);
+		if (is_single && data_single) {
+			for (int x: (*data_single)) {
+				fst << x << " ";
+			}
+			fst << "\n";
+		} else if (data) {
+			for (auto v: (*data)) {
+				for (int x: v) {
+					fst << x << " ";
+				}
+				fst << "\n";
+			}
+		}
+		fst.close();
+	}
 
+	template <typename T>
+	Yuri& operator<< (T value)
+	{
+		std::fstream fst;
+		checkFile(fst, out_file, std::ios::app);
+		fst << value;
+		fst.close();
+		return *this;
+	}
 
-template <typename T, typename... Args>
-void outFile(std::fstream& fst, T&& value, Args&&... args);
+	void checkFile(std::fstream& fst, std::string& load, std::ios_base::openmode __mode)
+	{
+		fst.open(load, __mode);
+		if (!fst.is_open()) {
+			// 打开失败则新建一个
+			if (__mode == std::ios::in) {
+				std::cout << "\n\n文件读取 打开错误! 错误位置 " << load << std::endl;
+				std::exit(2);
+			}
+			fst.open(load, std::ios::out);
+			if (!fst.is_open()) {
+				std::cout << "\n\n文件打开错误! 错误位置 " << load << std::endl;
+				std::exit(3);
+			}
+		}
+	}
+	void cleanLog()
+	{
+		std::fstream fst;
+		fst.open(out_file, std::ios::out);
+		fst.close();
+	}
 
-inline void getData();
+	template <typename T, typename ...Args>
+	static clock_t used_time(T cp(Args ...), Args ...args)
+	{
+		clock_t start, end;
+		start = clock();
+		cp(args...);
+		end = clock();
+		return end - start;
+	}
 
-//     存储数据类
+	std::string setOutFile(std::string&& out)
+	{
+		this->out_file = out;
+		return this->out_file;
+	}
 
-    class Data {
-    private:
-        int row = 0;
-	    int col = 0;
-	    unique_ptr<vector<vector<int>>> data = nullptr;
-	    
-    public:
-	    Data() = default;
-	    ~Data() = default;
-	    
-	    Data(std::fstream& fst)
-	    {
-		    fst >> row >> col;
-		    data = make_unique<vector<vector<int>>>(row, vector<int>(col));
-		    for (int i = 0; i < row; i++) {
-			    for (int j = 0; j < col; j++) {
-				    fst >> (*data)[i][j];
-                }
-            }
-	    }
-	    Data(int row, int col)
-	    {
-		    this->row = row;
-		    this->col = col;
-		    data = make_unique<vector<vector<int>>>(row, vector<int>(col));
-	    }
-
-	    vector<vector<int>>& getData()
-	    {
-		    std::fstream fst;
-		    fst.open("in.txt", std::ios::in);
-		    fst >> row >> col;
-		    data = make_unique<vector<vector<int>>>(row, vector<int>(col));
-		    for (int i = 0; i < row; i++) {
-			    for (int j = 0; j < col; j++) {
-				    fst >> (*data)[i][j];
-                }
-		    }
-		    fst.close();
-		    return *data;
-	    }
-
-	    vector<vector<int>>& getData(int row, int col)
-	    {
-		    this->row = row;
-		    this->col = col;
-		    data = make_unique<vector<vector<int>>>(row, vector<int>(col));
-		    return *data;
-	    }
-
-	    vector<vector<int>>& getData(int row, int col, int k)
-	    {
-		    this->row = row;
-		    this->col = col;
-		    data = make_unique<vector<vector<int>>>(row, vector<int>(col,k));
-		    return *data;
-        }
-
-	    void outData()
-	    {
-		    row = data->size();
-		    col = (*data)[0].size();
-		    std::fstream fst;
-            fst.open("./out.txt", std::ios::app);
-            if (!fst.is_open()) {
-                fst.open("./out.txt", std::ios::out);
-            }
-		    for (int i = 0; i < row; i++) {
-			    for (int j = 0; j < col; j++) {
-				    fst << (*data)[i][j] << " ";
-			    }
-			    fst << "\n";
-		    }
-		    fst.close();
-        }
-    };
-
-
-    //     写入数据
-    template<typename T>
-    void outFile(std::fstream &fst, T &&value) {
-        fst << value << std::endl;
-        fst.close();
-    }
-
-    template<typename T, typename ...Args>
-    void outFile(std::fstream &fst, T &&value, Args &&...args) {
-        fst << value << " ";
-        outFile(fst, args...);
-    }
-
-    //     接受数据
-    template<typename ...Args>
-    void log(Args &&...args) {
-        std::fstream fst;
-        fst.open("./out.txt", std::ios::app);
-        if (!fst.is_open()) {
-            fst.open("./out.txt", std::ios::out);
-        }
-        outFile(fst, args...);
-    }
-
-    inline void log(vector<int>& v)
-    {
-	    std::fstream fst;
-        fst.open("./out.txt", std::ios::app);
-        if (!fst.is_open()) {
-            fst.open("./out.txt", std::ios::out);
-        }
-	    for (int x: v) {
-		    fst << x << " ";
-	    }
-	    fst << "\n";
-    }
-
-    inline void clear_log()
-    {
-	    std::fstream fst;
-	    fst.open("./out.txt", std::ios::out);
-	    fst.close();
-    }
-
+	std::string setInFile(std::string&& out)
+	{
+		this->out_file = out;
+		return this->out_file;
+	}
+	
+};
 }
+
+
+
+
 
 
 #endif //LOG_YURI_H

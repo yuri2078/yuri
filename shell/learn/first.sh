@@ -5,4 +5,5 @@ for file in *.c; do
 done
 ALL_FILE=$(ls -S $DIR)
 echo "$ALL_FILE"
+
 exit 0
