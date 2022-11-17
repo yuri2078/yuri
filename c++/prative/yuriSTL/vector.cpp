@@ -109,7 +109,7 @@ public:
         return *(begin + k);
 	}
 
-	value_type& at(int k)
+	value_type& at(const int k)
 	{
         if (k >= end - begin) {
 			std::cout << "错误!超出数据范围\n";
@@ -118,12 +118,34 @@ public:
         return *(begin + k);
 	}
 
+	value_type& front()
+	{
+		if (empty()) {
+			std::cout << "当前元素为空\n";
+			exit(3);
+		}
+		return *begin;
+	}
+
+	value_type& back()
+	{
+		if (empty()) {
+			std::cout << "当前元素为空\n";
+			exit(3);
+		}
+		return *(end - 1);
+	}
+
+	bool empty(){
+		return end == begin;
+	}
+
 	void operator=(vector<value_type> &v)
 	{
 		std::cout << "= 号重造函数\n";
         begin = static_cast<value_type*>(::operator new(v.max_size() * sizeof(value_type)));
         if (begin == nullptr) {
-			std::cout << "分配失败捏\n";
+			std::cout << "分配失败捏\n" << "\033[31mhello\033[0m";
 			exit(1);
 		}
 		end = begin + v.size();
@@ -138,25 +160,9 @@ public:
 int main()
 {
 	vector<int> vec;
-	for (int i = 0; i < 20; i++) {
-		vec.push_back(i);
-	}
-	vec.push_back(66);
-	vector<int> v(std::move(vec));
-	std::cout << vec[1] << std::endl;
-	// vector<int>* v = new vector<int>;
-	// *v = vec;
-	vector<vector<int>> vv;
-	vv.push_back(v);
-	vv[0][1] = 555;
-	vv.push_back(v);
-	vv.push_back(v);
-	for (int j = 0; j < vv.size(); j++) {
-		for (int i = 0; i < vv[j].size(); i++) {
-			std::cout << vv[j][i] << " ";
-		}
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;
+	vec.push_back(44);
+	vec.push_back(4444);
+	std::cout << vec.front() << std::endl;
+	std::cout << vec.back() << std::endl;
     return 0;
 }

@@ -1,3 +1,0 @@
-namespace yuri {
-    int x;
-}

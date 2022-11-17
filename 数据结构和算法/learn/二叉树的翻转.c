@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Tree Tree;
-
-struct Tree {
+// typedef struct Tree Tree;
+typedef struct Tree{
 	int val;
-	Tree* left;
-	Tree* right;
-};
+	struct Tree* left;
+	struct Tree* right;
+}Tree;
 
 // 顺序存储二叉树 转 链式存储 满二叉树
 
@@ -32,35 +31,17 @@ void preorderTraversal(Tree* tree)
 {
 	if (tree) {
 		printf("%d ", tree->val); // 上来直接处理根节点数据
-		preorderTraversal(
-		    tree->left); // 递归处理左子树 数据，
-		                 // 只有当左边数据遍历完成才会进行右边数据处理
+		preorderTraversal(tree->left); // 递归处理左子树 数据，
+		// 只有当左边数据遍历完成才会进行右边数据处理
 		preorderTraversal(tree->right); // 递归处理右子树 数据
 	}
 }
 
-// 二叉树中序遍历
-// 遍历顺序 左 中 右
-void inorderTraversal(Tree* tree)
+void inverseTree(Tree* tree)
 {
 	if (tree) {
-		inorderTraversal(
-		    tree->left); // 递归处理左子树 数据， 只有当左边数据遍历完成才会打印
-		                 // 中间节点数据然后进行右边子树的遍历
-		printf("%d ", tree->val);
-		inorderTraversal(tree->right);
-	}
-}
-
-// 二叉树后序遍历
-// 遍历顺序 左 右 中
-void postorderTraversal(Tree* tree)
-{
-	if (tree) {
-		postorderTraversal(tree->left);  // 递归处理左子树 数据，
-		postorderTraversal(tree->right); // 递归处理左子树 数据
-		printf("%d ", tree->val); // 只有当左右子树遍历结束才会打印数据 ，百
-	}
+		
+    }
 }
 
 int main(int argc, const char* argv[])
@@ -70,10 +51,6 @@ int main(int argc, const char* argv[])
 	tree.val = array[0];
 	createTree(&tree, array, 4, 0);
 	preorderTraversal(&tree);
-	putchar('\n');
-	inorderTraversal(&tree);
-	putchar('\n');
-	postorderTraversal(&tree);
-	putchar('\n');
+
 	return 0;
 }
