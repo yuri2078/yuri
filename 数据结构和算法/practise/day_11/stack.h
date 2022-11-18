@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 
+
 typedef struct Tree {
     char val;
     struct Tree* left;
@@ -19,6 +20,8 @@ typedef struct SqStack{
     ElemType* top;
     int maxSize;
 } SqStack;
+
+int initSqStack(SqStack* sq);
 
 //初始化堆栈
 int initSqStack(SqStack* sq) {

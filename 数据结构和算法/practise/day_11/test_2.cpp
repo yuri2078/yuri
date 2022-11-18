@@ -2,26 +2,24 @@
 #include <iostream>
 
 typedef struct Tree{
-	int val;
+	char val;
 	Tree* left;
 	Tree* right;
 }Tree;
 
-
-// 顺序存储二叉树 转 链式存储 满二叉树
-
-void createTree(Tree* tree, int *array, int size, int k)
+void createTree(Tree** tree)
 {
-	tree->left = new Tree;
-	tree->right = new Tree;
-
-	tree->left->val = array[k * 2 + 1];
-	tree->right->val = array[k * 2 + 2];
-	// printf("size : %d k : %d head : %d left : %d right : %d\n",6 - size, k,array[k],  array[k * 2 + 1], array[k * 2 + 2]);
-	if (size > 2) {
-		createTree(tree->left, array, size - 1, k * 2 + 1);
-		createTree(tree->right, array, size - 1, k * 2 + 2);
+	char ch = getchar(); // 获取数据
+	getchar(); // 吃掉多余的回车
+	if (ch == '#') {
+		*tree = NULL; // 当他为# 则将自己变成null
+		return; // 直接返回不用申请空间
+	} else {
+		*tree = (Tree*)calloc(1, sizeof(Tree)); // 不是# 就要存储，需要申请空间
+		(*tree)->val = ch; // 存储数据
+		createTree(&(*tree)->left); // 继续存储左节点
 	}
+	createTree(&(*tree)->right); // 当左节点处理完毕，处理右节点
 }
 
 // 二叉树前序遍历
@@ -53,7 +51,7 @@ void preorderTraversal(Tree* tree)
 			// 如果获取到了 就说明遇到需要处理的节点了
 			sk.pop(); // 先弹出null
 			tree = sk.top(); // 获取null前面需要处理的数据
-			std::cout << tree->val << " "; // 存储数据
+			std::cout << tree->val; // 存储数据
 			sk.pop(); // 处理完数据直接弹出
 		}
 	}
@@ -88,7 +86,7 @@ void inorderTraversal(Tree* tree)
 			// 如果获取到了 就说明遇到需要处理的节点了
 			sk.pop(); // 先弹出null
 			tree = sk.top(); // 获取null前面需要处理的数据
-			std::cout << tree->val << " "; // 存储数据
+			std::cout << tree->val; // 存储数据
 			sk.pop(); // 处理完数据直接弹出
 		}
 	}
@@ -123,7 +121,7 @@ void postorderTraversal(Tree* tree)
 			// 如果获取到了 就说明遇到需要处理的节点了
 			sk.pop(); // 先弹出null
 			tree = sk.top(); // 获取null前面需要处理的数据
-			std::cout << tree->val << " "; // 存储数据
+			std::cout << tree->val; // 存储数据
 			sk.pop(); // 处理完数据直接弹出
 		}
 	}
@@ -132,12 +130,10 @@ void postorderTraversal(Tree* tree)
 
 int main(int argc, const char *argv[])
 {
-	Tree tree;
-	int array[20] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-	tree.val = array[0];
-	createTree(&tree, array, 4, 0);
-	preorderTraversal(&tree);
-	inorderTraversal(&tree);
-	postorderTraversal(&tree);
+	Tree *tree;
+	createTree(&tree);
+	preorderTraversal(tree);
+	inorderTraversal(tree);
+	postorderTraversal(tree);
     return 0;
 }

@@ -4,3 +4,4 @@ del a.out /q /s
 del *.o /q /s
 del *.class /q /s
 del *.exe /q /s
+alias rmout='find . -name "*.out"  | xargs rm -f'

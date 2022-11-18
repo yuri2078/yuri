@@ -19,6 +19,7 @@ void createTree(Tree** tree)
 		(*tree)->val = ch; // 存储数据
 		createTree(&(*tree)->left); // 继续存储左节点
 	}
+	
 	createTree(&(*tree)->right); // 当左节点处理完毕，处理右节点
 }
 
