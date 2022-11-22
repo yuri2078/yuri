@@ -96,6 +96,7 @@ public:
     const int size(){
         return end - begin;
     }
+	
     const int max_size(){
         return tail - begin;
     }

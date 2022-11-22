@@ -23,31 +23,44 @@ struct TreeNode {
 
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    // int maxDepth(TreeNode* root) {
+	// 	int ans = 0;
+	// 	if (root == nullptr) {
+	// 		return ans;
+	// 	}
+		
+	// 	queue<TreeNode*> que;
+	// 	que.push(root);
+	// 	while (!que.empty()) {
+	// 		const int size = que.size();
+	// 		for (int i = 0; i < size; i++) {
+	// 			TreeNode* node = que.front();
+	// 			que.pop();
+	// 			if (node->left) {
+	// 				que.push(node->left);
+	// 			}
+	// 			if (node->right) {
+	// 				que.push(node->right);
+    //             }
+	// 		}
+	// 		ans++;
+    //     }
+
+	// 	return ans;
+	// }
+
+	int maxDepth(TreeNode* root)
+	{
 		int ans = 0;
 		if (root == nullptr) {
-			return ans;
+			return 1;
 		}
-		
-		queue<TreeNode*> que;
-		que.push(root);
-		while (!que.empty()) {
-			const int size = que.size();
-			for (int i = 0; i < size; i++) {
-				TreeNode* node = que.front();
-				que.pop();
-				if (node->left) {
-					que.push(node->left);
-				}
-				if (node->right) {
-					que.push(node->right);
-                }
-			}
-			ans++;
-        }
+		if (root->right == nullptr && root->left == nullptr) {
+			return 0;
+		}
 
-		return ans;
-    }
+		return max(maxDepth(root->left) + 1, maxDepth(root->right) + 1);
+	}
 };
 // @lc code=end
 
