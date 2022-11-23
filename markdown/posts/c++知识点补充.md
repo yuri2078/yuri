@@ -213,6 +213,26 @@ class Person final : public Animal{
    - 指针不为NULL 但是size为0  则空间会被释放 返回NULL
    - 空间不足 返回NULL原空间内容不变
 
+### `#include <limits>`
+
+> std::numeric_limits [类模板](https://so.csdn.net/so/search?q=类模板&spm=1001.2101.3001.7020)来获取类型的最大值和最小值等
+
+```c++
+#include <iostream>
+#include <limits>
+
+int main(int argc, char *argv[]) {
+    std::cout << "long long max" << std::numeric_limits<long long>::max() << std::endl; // 获取long long最大值
+    std::cout << "long long min" << std::numeric_limits<long long>::min() << std::endl;
+    
+    std::cout << "int max" << std::numeric_limits<long long>::max() << std::endl;
+    std::cout << "int min" << std::numeric_limits<long long>::min() << std::endl;
+}
+
+```
+
+
+
 ## 常见关键字补充
 
 ### const 关键字

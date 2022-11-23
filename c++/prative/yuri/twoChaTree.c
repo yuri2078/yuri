@@ -14,18 +14,23 @@ int fun_2(int deeth)
 		return 2;
 	}
 
-	return ;
+	return 1;
 }
 
 void drawTree(int deeth)
 {
 	printf("                    ________________( A )________________\n");
 	printf("                   /                                     \\\n");
-	printf("          ______( B )______                       ______( C )______\n");
-	printf("         /                 \\                     /                 \\\n");
-    printf("    __( D )__           __( E )__           __( F )__           __( G )__ \n");
-	printf("   /         \\         /         \\         /         \\         /         \\\n");
-    printf("( H )       ( I )   ( J )       ( K )   ( L )       ( M )   ( N )       ( O ) \n");
+	printf("          ______( B )______                       ______( C "
+	       ")______\n");
+	printf("         /                 \\                     /                "
+	       " \\\n");
+	printf("    __( D )__           __( E )__           __( F )__           "
+	       "__( G )__ \n");
+	printf("   /         \\         /         \\         /         \\         "
+	       "/         \\\n");
+	printf("( H )       ( I )   ( J )       ( K )   ( L )       ( M )   ( N )  "
+	       "     ( O ) \n");
 	for (int i = 0; i < fun_1(3); i++) {
 		printf("-");
 	}
@@ -38,7 +43,7 @@ void drawTree(int deeth)
 	for (int i = 0; i < fun_1(1); i++) {
 		printf("-");
 	}
-    printf("$$\n");
+	printf("$$\n");
 }
 
 int main(void)

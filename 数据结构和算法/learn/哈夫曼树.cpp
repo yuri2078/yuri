@@ -52,8 +52,6 @@ Tree* createTree(vector<Tree*>& v)
 	if (v.size() == 0) {
 		return nullptr;
     }
-
-	
 	// 当只有一个节点时，这就是根节点
 	while (v.size() != 1) {
 		// 先将权值进行排序 （从大到小）
@@ -85,9 +83,7 @@ int depth(Tree* tree)
 // 层序遍历结果
 void lecvelOrder(Tree* tree)
 {
-	int level = depth(tree);
 	std::queue<Tree*> queue;
-	std::cout << "                ";
 	queue.push(tree); // 先将根节点入队
 	while (!queue.empty()) {
 		int size = queue.size(); // 队列里有几个成员 就说明 当前层有 多少个节点
@@ -108,17 +104,46 @@ void lecvelOrder(Tree* tree)
 	}
 }
 
+// 打印哈夫曼树编码
+void house(Tree* tree, vector<int> val)
+{
+	// 当遇到叶子节点开始打印数据
+	if (tree->left == tree->right && tree->right == nullptr) {
+		cout << tree->val << "  :  ";
+		// 遍历存储好的编码
+		for (int x : val) {
+			cout << x << " ";
+		}
+		cout << endl;
+	} else {
+		// 当有左孩子的时候
+		if (tree->left) {
+			// 先给左子数的容器传入一个 0
+			val.push_back(0);
+			house(tree->left, val); // 带着有 0 的容器递归调用函数
+			val.pop_back(); // 弹出出刚刚传入的0
+		}
+		if (tree->right) {
+			// 先给右子数的容器传入一个 1
+			val.push_back(1);
+			house(tree->right, val); // 带着有 1 的容器递归调用函数
+			val.pop_back();// 弹出出刚刚传入的1
+		}
+	}
+}
 
         
 int main()
 {
 	vector<Tree*> v;
+	vector<int> val;
 	v.push_back(new Tree(2));
 	v.push_back(new Tree(3));
 	v.push_back(new Tree(6));
 	v.push_back(new Tree(8));
 	v.push_back(new Tree(9));
-
-	lecvelOrder(createTree(v));
+	Tree * tree = createTree(v);
+	lecvelOrder(tree);
+	house(tree,val);
     return 0;
 }

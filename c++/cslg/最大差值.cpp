@@ -1,41 +1,32 @@
 #include <algorithm>
+#include <cstdio>
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
+#define MIN(x,y) x > y ? y : x
+
 int main()
 {
-    int n, k;
-    std::cin >> n >> k;
-    std::vector<int> number(n, 0);
-    for (int i = 0; i < n; i++){
-        std::cin >> number[i];
+	int k, n;
+	cin >> n >> k;
+	vector<int> number(n);
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &number[i]);
+	}
+	sort(number.begin(), number.end());
+	if (k == n - 1) {
+		cout << number[0] << endl;
+		return 0;
     }
-
-    std::sort(number.begin(), number.end());
-    int start = 0, end = n - 1;
-    int min = number[end] - number[start];
-    for (int i = 0; i < n; i++)
-    {
-        std::cout << number[i] << "  ";
+	int max_val = number[n - 1] - number[0];
+	const int size = number.size() - 1;
+	for (int i = 0; i <= k; i++) {
+		for (int j = 0; j <= k - i; j++) {
+			max_val = MIN(max_val, number[size - j] - number[i]);
+		}
     }
-
-    std::cout << std::endl; 
-
-    for (int i = 0; i < k; i++)
-    {
-        std::cout << number[end - 1] - number[start] << " -- " << number[end] - number[start + 1] << "  " << std::endl;
-        if ((start < end - 1) && ((number[end - 1] - number[start]) < min) && ((number[end] - number[start + 1]) >= (number[end - 1] - number[start])))
-        {
-            min = number[end - 1] - number[start];
-            end--;
-        }
-        else if ((start < end - 1) && ((number[end] - number[start + 1]) < min) && ((number[end - 1] - number[start]) >= (number[end] - number[start + 1])))
-        {
-            min = number[end] - number[start + 1];
-            start++;
-        }
-    }
-
-    std::cout << min << std::endl;
-    return 0;
+	cout << max_val << endl;
+	return 0;
 }
