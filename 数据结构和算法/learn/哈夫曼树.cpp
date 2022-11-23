@@ -107,6 +107,9 @@ void lecvelOrder(Tree* tree)
 // 打印哈夫曼树编码
 void house(Tree* tree, vector<int> val)
 {
+	if (tree == nullptr) {
+		return;
+	}
 	// 当遇到叶子节点开始打印数据
 	if (tree->left == tree->right && tree->right == nullptr) {
 		cout << tree->val << "  :  ";
@@ -116,19 +119,15 @@ void house(Tree* tree, vector<int> val)
 		}
 		cout << endl;
 	} else {
-		// 当有左孩子的时候
-		if (tree->left) {
-			// 先给左子数的容器传入一个 0
-			val.push_back(0);
-			house(tree->left, val); // 带着有 0 的容器递归调用函数
-			val.pop_back(); // 弹出出刚刚传入的0
-		}
-		if (tree->right) {
-			// 先给右子数的容器传入一个 1
-			val.push_back(1);
-			house(tree->right, val); // 带着有 1 的容器递归调用函数
-			val.pop_back();// 弹出出刚刚传入的1
-		}
+		// 先给左子数的容器传入一个 0
+		val.push_back(0);
+		house(tree->left, val); // 带着有 0 的容器递归调用函数
+		val.pop_back(); // 弹出出刚刚传入的0
+		
+		// 先给右子数的容器传入一个 1
+		val.push_back(1);
+		house(tree->right, val); // 带着有 1 的容器递归调用函数
+		val.pop_back();// 弹出出刚刚传入的1
 	}
 }
 
