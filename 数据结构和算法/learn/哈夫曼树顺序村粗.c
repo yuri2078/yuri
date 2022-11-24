@@ -105,4 +105,3 @@ int main(void)
 	createHuffmanCode(huffmantree, n);
     return 0;
 }
-
