@@ -28,6 +28,9 @@ void createTree(Tree* tree, int* array, int size, int k)
 
 void lecvelOrder(Tree* tree)
 {
+	if (tree == nullptr) {
+		return;
+	}
 	std::queue<Tree*> queue;
 	queue.push(tree); // 先将根节点入队
 	while (!queue.empty()) {

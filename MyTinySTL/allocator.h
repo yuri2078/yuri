@@ -84,7 +84,7 @@ void allocator<T>::construct(T* ptr, const T& value)
 }
 
 template <class T>
- void allocator<T>::construct(T* ptr, T&& value)
+void allocator<T>::construct(T* ptr, T&& value)
 {
   mystl::construct(ptr, mystl::move(value));
 }
