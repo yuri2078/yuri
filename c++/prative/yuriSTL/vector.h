@@ -1,16 +1,17 @@
+#include "allocator.h"
 #include <iostream>
-#include <new>
-#include <string>
-#include <memory>
 
-template <typename value_type>
+template <typename T>
 class vector
 {
+public:
+	typedef T value_type;
+	
 private:
 	value_type* begin;
 	value_type* end;
 	value_type* tail;
-	
+	yuriSTL::allocator<T> alloc;
 
 public:
 	vector() noexcept
@@ -159,42 +160,3 @@ public:
 		}
 	}
 };
-
-class Person
-{
-public:
-	int age;
-
-public:
-	Person()
-	{
-		std::cout << "调用普通构造函数\n";
-		age = 555;
-	} 
-
-	Person(Person &p) noexcept
-	{
-		this->age = 555;
-		std::cout << "调用拷贝构造函数\n";
-	}
-	Person& operator=(Person& p)
-	{
-		std::cout << "调用等号构造\n";
-		this->age = p.age;
-		return *this;
-	}
-
-	~Person()
-	{
-		std::cout << "析构\n";
-		age = 0;
-	};
-};
-
-using std::string;
-
-int main()
-{
-	vector<typename value_type>
-    return 0;
-}

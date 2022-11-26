@@ -1,9 +1,13 @@
 #ifndef ALLOCATOR_H
 #define ALLOCATOR_H
 
-#include <utility>
+#include "base.h" // 包含一下常用的函数 如 move forward
 namespace yuriSTL {
 
+
+/*
+该类实现了 容器内存的创建 分配 初始化操作
+*/
 template <typename T>
 class allocator
 {
@@ -12,7 +16,7 @@ public:
 	typedef T* pointer; // 基础数据指针
 	typedef const T* const_pointer; // const 指针
 	typedef const T& const_reference; // const 引用
-	typedef __SIZE_TYPE__ size_type;  // 数量类型
+
 
 private:
 	size_type max_size = 0;
@@ -56,13 +60,16 @@ public:
 // 构造初始化空间的函数
 	template <typename... Args>
 	static void construct(pointer ptr, Args&& ...args){
-		::new(ptr) value_type(std::forward<Args>(args)...);
+		::new(ptr) value_type(yuriSTL::forward<Args>(args)...);
 	}
 
-// 删除空间
-	void destroy(pointer ptr)
-	{
-		ptr->~value_type();
+// 析构类
+	void destroy(pointer ptr){
+		yuriSTL::destroy(ptr);
+	}
+
+	void destroy(pointer ptr, size_type size){
+		yuriSTL::destroy(ptr, size);
 	}
 
 };
