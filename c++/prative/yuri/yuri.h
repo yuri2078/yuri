@@ -6,7 +6,6 @@
 #define LOG_YURI_H
 
 
-#include <bits/types/clock_t.h>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -128,7 +127,7 @@ public:
 	}
 
 	template <typename T, typename ...Args>
-	static clock_t used_time(T cp(Args ...), Args ...args)
+	static clock_t used_time(T cp, Args ...args)
 	{
 		clock_t start, end;
 		start = clock();
@@ -148,12 +147,25 @@ public:
 		this->out_file = out;
 		return this->out_file;
 	}
-	
 };
-}
 
+class Aerror
+{
+public:
+	Aerror() = default;
+	~Aerror() = default;
 
+	template <typename T>
+	Aerror& operator<<(T &&s)
+	{
+		std::cout << "\e[31m" << s << "\e[0m";
+		return *this;
+	}
 
+	// 日志类
+};
+
+} // namespace yuri
 
 
 

@@ -4,9 +4,8 @@
 #include "base.h" // 包含一下常用的函数 如 move forward
 namespace yuriSTL {
 
-
 /*
-该类实现了 容器内存的创建 分配 初始化操作
+	该类实现了 容器内存的创建 分配 初始化操作
 */
 template <typename T>
 class allocator
@@ -27,7 +26,7 @@ public:
 
 // 分配初始化空间函数
 	// 默认分配一个存储空间
-	static pointer allocate() {
+	static pointer allocate() noexcept {
 		return static_cast<pointer>(::operator new(sizeof(value_type)));
 	}
 
@@ -43,9 +42,11 @@ public:
 // 销毁空间函数
 	static void deallocate(pointer ptr)
 	{
+		// 如果他是nullptr 就不同调用delete
 		if (ptr == nullptr) {
 			return;
 		}
+		// 前面申请的空间都必须用 operator delete删除
 		::operator delete(ptr);
     }
 
@@ -59,16 +60,19 @@ public:
 
 // 构造初始化空间的函数
 	template <typename... Args>
-	static void construct(pointer ptr, Args&& ...args){
+	static void construct(pointer ptr, Args&&... args)
+	{
+		// 构造类的时候可能有多个参数，这些参数可能是左值，可能是右值，所以我们需要完美转发
+		// 完美转发需要配合万能引用使用，所以Args 必须是 &&
 		::new(ptr) value_type(yuriSTL::forward<Args>(args)...);
 	}
 
-// 析构类
-	void destroy(pointer ptr){
+// 调用类的析构函数
+	static void destroy(pointer ptr){
 		yuriSTL::destroy(ptr);
 	}
 
-	void destroy(pointer ptr, size_type size){
+	static void destroy(pointer ptr, size_type size){
 		yuriSTL::destroy(ptr, size);
 	}
 
