@@ -80,6 +80,11 @@ struct is_type {
 };
 
 template <>
+struct is_type<bool> {
+	typedef __true_type __type;
+};
+
+template <>
 struct is_type<int> {
 	typedef __true_type __type;
 };

@@ -1,6 +1,7 @@
 #ifndef BASE_H
 #define BASE_H
 
+
 #include "type_traits.h"
 #include <iostream>
 /*
@@ -58,19 +59,18 @@ constexpr T&& forward(typename remove_reference<T>::__type&& val) noexcept
 
 // 是简单类型什么都不用做
 template <typename T>
-void destroy__(T* ptr, size_type size, __true_type)
+void destroy__(T* start, T* end, __true_type)
 {
 	
 }
 
 // 不是简单类型调用析构函数
 template <typename T>
-void destroy__(T* ptr, size_type size, __false_type)
+void destroy__(T* start, T* end, __false_type)
 {
 	// 循环调用析构函数
-	for (int i = 0; i < size; i++) {
-		ptr->~T();
-		ptr++;
+	for (; start != end; start++) {
+		start->~T();
 	}
 }
 
@@ -82,12 +82,12 @@ void destroy(T* ptr) {
 
 // 析构n个数据
 template <typename T>
-void destroy(T* ptr, size_type size)
+void destroy(T* start, T* end)
 {
 	// 判断是不是基础类型
 	typename is_type<T>::__type type;
 	// 通过另一个函数完成最终析构
-	destroy__(ptr, size, type);
+	destroy__(start, end, type);
 }
 
 // 打印日志函数，红色字体

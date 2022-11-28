@@ -40,7 +40,7 @@ public:
 	}
 
 // 销毁空间函数
-	static void deallocate(pointer ptr)
+	static void deallocate(pointer ptr) noexcept
 	{
 		// 如果他是nullptr 就不同调用delete
 		if (ptr == nullptr) {
@@ -50,7 +50,7 @@ public:
 		::operator delete(ptr);
     }
 
-	static void deallocate(pointer ptr, size_type size)
+	static void deallocate(pointer ptr, size_type size) noexcept
 	{
 		if (ptr == nullptr) {
 			return;
@@ -60,7 +60,7 @@ public:
 
 // 构造初始化空间的函数
 	template <typename... Args>
-	static void construct(pointer ptr, Args&&... args)
+	static void construct(pointer ptr, Args&&... args) noexcept
 	{
 		// 构造类的时候可能有多个参数，这些参数可能是左值，可能是右值，所以我们需要完美转发
 		// 完美转发需要配合万能引用使用，所以Args 必须是 &&
@@ -68,12 +68,13 @@ public:
 	}
 
 // 调用类的析构函数
-	static void destroy(pointer ptr){
+	static void destroy(pointer ptr) noexcept{
 		yuriSTL::destroy(ptr);
 	}
 
-	static void destroy(pointer ptr, size_type size){
-		yuriSTL::destroy(ptr, size);
+	// 通过迭代器析构对象
+	static void destroy(pointer start, pointer end) noexcept{
+		yuriSTL::destroy(start, end);
 	}
 
 };

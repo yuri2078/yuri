@@ -1,44 +1,76 @@
+#include "vector.h"
 #include <iostream>
-#include "allocator.h"
-#include "base.h"
-#include <vector>
+#include <string>
+#include <algorithm>
+#include <utility>
 using namespace std;
-
 class Person
 {
-private:
+
 public:
 	int age;
+	string name;
 	Person()
 	{
-		age = 6666;
-		std::cout << "默认构造函数\n";
-	}
-	Person(int x)
-	{
-		age = x;
-		std::cout << "默认构造函数(x)\n";
-	}
-	Person(Person &p)
-	{
-		age = p.age;
-		std::cout << "拷贝构造函数\n";
+		cout << "默认构造函数\n";
+		age = 0;
+		name = "default";
 	}
 
-	Person(Person &&p)
+	Person(int age)
 	{
-		age = p.age;
-		std::cout << "移动构造函数\n";
+		cout << "默认构造函数\n";
+		this->age = age;
+		name = "default-age";
 	}
+
+	Person(string&& name, int age)
+	{
+		cout << "默认构造函数\n";
+		this->age = age;
+		this->name = name;
+	}
+
+	Person(Person& p)
+	{
+		cout << "拷贝构造函数\n";
+		this->age = p.age;
+		this->name = p.name;
+	}
+
+	Person(Person&& p) noexcept
+	{
+		cout << "移动构造函数\n";
+		this->age = p.age;
+		this->name = p.name;
+	}
+
+	Person& operator=(Person& p)
+	{
+		cout << "= 号构造函数\n";
+		this->age = p.age;
+		this->name = p.name;
+		return *this;
+	}
+
 	~Person()
 	{
-		std::cout << "调用析构函数" << age << "  \n";
-    };
+		cout << this->name << " 被析构啦 "
+		     << "age : " << this->age << endl;
+	}
 };
-
 
 int main()
 {
+	Person p;
+	yuriSTL::vector<Person> vec;
+	vec.push_back(p);
+	vec.push_back(p);
+	vec.push_back(p);
+	vec.push_back(p);
+	vec.push_back(p);
+	cout << "  ---- \n";
+	vec.at(11);
 	
-    return 0;
+	return 0;
 }
