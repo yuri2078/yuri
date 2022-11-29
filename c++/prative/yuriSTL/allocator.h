@@ -17,9 +17,6 @@ public:
 	typedef const T& const_reference; // const 引用
 
 
-private:
-	size_type max_size = 0;
-
 public:
 	allocator() = default;
 	~allocator() = default;
