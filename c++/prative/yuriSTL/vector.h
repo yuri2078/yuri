@@ -24,15 +24,14 @@ private:
 public:
 	vector() noexcept
 	{
-		begin_ = alloc.allocate(); // 默认分一块内存
+		begin_ = alloc.allocate(16); // 默认分一块内存
         if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
 		// 更细指针位置
-		end_ = begin_ + 1; 
-		tail_ = begin_ + 1;
-		alloc.construct(begin_); // 初始化内存
+		end_ = begin_; 
+		tail_ = begin_ + 16;
 	}
 	
 	// 拷贝构造函数

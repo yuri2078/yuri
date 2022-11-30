@@ -69,10 +69,8 @@ void delGraph(Graph* graph)
 {
 	for (int i = 0; i < graph->vexnum; i++) {
 		free(graph->G[i]);
-		graph->G[i] = NULL;
 	}
 	free(graph->G);
-	graph->G = NULL;
 }
 
 
@@ -81,12 +79,12 @@ void dfs(Graph* graph, int v, int *visited)
 {
 	// 通过递归调用函数打印
 	visited[v] = 1;
+	// 先打印结点信息
+	printf("%d 节点 -> ", v);
 	// 默认从小的结点开始遍历
 	for (int i = 0; i < graph->vexnum; i++) {
 		// 当出现和起始结点相连并且没有被遍历过的结点时
 		if (graph->G[v][i] == 1 && visited[i] == 0) {
-			// 先打印结点信息
-			printf("%d 节点 -> %d 节点    ", v + 1, i + 1);
 			visited[i] = 1; // 将他设置为已经访问过了
 			dfs(graph, i, visited); // 递归调用函数访问后续被相连且没被访问过的结点
 		}
