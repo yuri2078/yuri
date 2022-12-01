@@ -73,10 +73,16 @@ public:
 		return (*data_single);
 	}
 
-	void outData()
+
+	void outData(bool clean_ = false)
 	{
 		std::fstream fst;
-		checkFile(fst, out_file, std::ios::app);
+		if (clean_) {
+			checkFile(fst, out_file, std::ios::out);
+		} else {
+			checkFile(fst, out_file, std::ios::app);
+		}
+		
 		if (is_single && data_single) {
 			for (int x: (*data_single)) {
 				fst << x << " ";

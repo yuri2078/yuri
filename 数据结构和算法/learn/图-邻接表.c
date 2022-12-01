@@ -84,7 +84,9 @@ void dfs(Graph* graph, int v, int* visited)
 		head = head->next;
 	}
 	printf("\n");
+	
 }
+
 
 // 删除图生成的空间
 void delGraph(Graph** graph, int **visited)
