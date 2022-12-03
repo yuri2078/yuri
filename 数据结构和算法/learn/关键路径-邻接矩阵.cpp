@@ -4,6 +4,9 @@
 #include <algorithm>
 using namespace std;
 
+// 基于关键活动识别关键路径的方法
+// 我们认为事件中最早开始和最晚开始的事件是关键路径（关键活动）
+// 这是基于邻接矩阵 和 关键活动 的关键路径算法
 class Graph
 {
 private:

@@ -133,7 +133,7 @@ public:
 	}
 
 	template <typename T, typename ...Args>
-	static clock_t used_time(T cp, Args ...args)
+	static clock_t used_time(T cp, Args&&...args)
 	{
 		clock_t start, end;
 		start = clock();

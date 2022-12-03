@@ -4,7 +4,11 @@ using namespace std;
 
 typedef struct EdgeNode {
 	int adjvex; // 结点序号
-	struct EdgeNode* next = nullptr; // 保存下一个结点
+	struct EdgeNode* next; // 保存下一个结点
+	EdgeNode() {
+		adjvex = 0;
+		next = nullptr;
+	}
 } EdgeNode;
 
 typedef struct VNode {
@@ -37,7 +41,7 @@ public:
 		yuri.outData(true);       // 打印边的信息
 	}
 
-	// 创建邻接表
+	// 创建邻接表- 逆序存储
 	void createGraph()
 	{
 		int x, y;
@@ -55,6 +59,21 @@ public:
 			node->next = graph[y].link;
 			node->adjvex = x;
 			graph[y].link = node;
+
+			/* 顺序存储
+			EdgeNode* node = new EdgeNode;
+			node->next = nullptr;
+			node->adjvex = y;
+			if (graph[x].link == nullptr) {
+			    graph[x].link = node;
+			} else {
+			    EdgeNode* head = graph[x].link;
+			    while (head->next) {
+			        head = head->next;
+			    }
+			    head->next = node;
+			}
+			*/
 		}
 	}
 
