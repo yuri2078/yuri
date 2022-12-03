@@ -3,13 +3,13 @@
 using namespace std;
 
 typedef struct EdgeNode {
-	int adjvex;
-	struct EdgeNode* next = nullptr;
+	int adjvex; // 结点序号
+	struct EdgeNode* next = nullptr; // 保存下一个结点
 } EdgeNode;
 
 typedef struct VNode {
-	char data;
-	EdgeNode* link = nullptr;
+	char data; // 结点信息
+	EdgeNode* link = nullptr; // 邻接表
 } VNode;
 
 class Graph
@@ -18,7 +18,7 @@ private:
 	int vexnum;          // 节点个数
 	int arcnum;          // 边的个数
 	vector<int> visited; // 用来报错是否访问过节点
-	vector<VNode> graph;
+	vector<VNode> graph; // 存储邻接表
 	vector<vector<int>> arcInfo; // 用来保存 边的信息 0 ： 起点 1 ： 终点 2 ： 权重
 	yuri::Yuri yuri; // 读取文件对象
 
@@ -32,6 +32,8 @@ public:
 		graph = vector<VNode>(vexnum);
 		arcInfo = yuri.getData(); // 读取边的信息
 		arcnum = arcInfo.size();  // 设置边的数量
+
+		createGraph(); // 构造邻接表
 		yuri.outData(true);       // 打印边的信息
 	}
 
@@ -131,6 +133,7 @@ public:
 		cout << "\nbfs 结束:\n\n";
 	}
 
+	// 析构邻接表
 	~Graph()
 	{
 		for (int i = 0; i < vexnum; i++) {
@@ -147,7 +150,6 @@ public:
 int main()
 {
 	Graph graph;
-	graph.createGraph();
 	graph.printGraph();
 	graph.dfs(0);
 	graph.bfs();

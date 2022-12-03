@@ -28,6 +28,8 @@ public:
 
 		arcInfo = yuri.getData(); // 读取边的信息
 		arcnum = arcInfo.size(); // 设置边的数量
+
+		createGraph(); // 构造邻接矩阵
 		yuri.outData(true); // 打印边的信息
 	}
 
@@ -199,7 +201,6 @@ public:
 int main()
 {
 	Graph graph;
-	graph.createGraph();
 	graph.printGraph();
 	graph.MiniSpanTree_Kruskal();
 	graph.MiniSpanTree_Prim();

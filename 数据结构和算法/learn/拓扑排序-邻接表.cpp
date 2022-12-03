@@ -4,15 +4,15 @@
 using namespace std;
 
 typedef struct EdgeNode {
-	int adjvex;
-	int weight;
+	int adjvex; // 结点序号
+	int weight; // 起点结点 到该结点的权重
 	struct EdgeNode* next = nullptr;
 } EdgeNode;
 
 typedef struct VNode {
-	char data;
-	int in;
-	EdgeNode* link = nullptr;
+	char data; // 结点信息
+	int in; // 结点入度
+	EdgeNode* link = nullptr; // 邻接表
 } VNode;
 
 class Graph
@@ -20,8 +20,9 @@ class Graph
 private:
 	int vexnum;          // 节点个数
 	int arcnum;          // 边的个数
+	vector<int> topSort; // 拓扑排序结果
 	vector<int> visited; // 用来报错是否访问过节点
-	vector<VNode> graph;
+	vector<VNode> graph; //存储邻接表
 	vector<vector<int>> arcInfo; // 用来保存 边的信息 0 ： 起点 1 ： 终点 2 ： 权重
 	yuri::Yuri yuri; // 读取文件对象
 
@@ -35,6 +36,7 @@ public:
 		graph = vector<VNode>(vexnum);
 		arcInfo = yuri.getData(); // 读取边的信息
 		arcnum = arcInfo.size();  // 设置边的数量
+		createGraph(); // 构造邻接表
 		yuri.outData(true);       // 打印边的信息
 	}
 
@@ -63,6 +65,7 @@ public:
 	{
 		cout << "\n打印邻接表 --- \n\n";
 		for (int i = 0; i < vexnum; i++) {
+			cout << endl << i << " 结点入度 : " << graph[i].in << " --- \n";
 			EdgeNode* head = graph[i].link;
 			while (head) {
 				cout << "( " << i << " -> " << head->adjvex << " ) -> 权重  " << head->weight << endl;
@@ -72,69 +75,40 @@ public:
 		cout << "\n邻接表打印结束 --- \n\n";
 	}
 
-	// 初始化visited数组
-	void initVisited()
+	void GetTopSort()
 	{
-		const int size = visited.size();
-		for (int i = 0; i < size; i++) {
-			visited[i] = 0;
-		}
-	}
-
-	// 深度优先算法
-	// 从一个节点开始，找到和他相连的节点 进行遍历
-	// 将找到的节点作为新的节点 重复操作
-	void dfs(int k)
-	{
-		visited[k] = 1;
-		cout << "结点 " << k << " -> ";
-		EdgeNode* head = graph[k].link;
-		while (head) {
-			if (visited[head->adjvex] == 0) {
-				dfs(head->adjvex);
-			}
-			head = head->next;
-        }
-	}
-
-	// 广度优先算法
-	// 从初始节点开始遍历 将初始节点添加进队列当中
-	// 然后遍历队列里仅有的元素，不算后续添加的元素
-	// 将他们未遍历且相连的节点添加进去
-	void bfs()
-	{
-		cout << "\n\nbfs 开始:\n\n";
-		initVisited();
 		queue<int> que;
-		que.push(0); // 先把初始节点添加进去
-		visited[0] = 1; // 先把初始节点设置为已经访问过了
-		while (!que.empty()) {
-			const int size = que.size();
-			// 循环添加数据
-			for (int i = 0; i < size; i++) {
-				int k = que.front(); // 获取队头
-				que.pop(); // 弹出队头
-				cout << "节点 " << k << " -> ";
-				// 循环添加未访问的元素
-				EdgeNode* head = graph[k].link;
-				while (head) {
-					if (visited[head->adjvex] == 0) {
-						que.push(head->adjvex);
-						visited[head->adjvex] = 1;
-					}
-					head = head->next;
-                }
+		// 先将所有入度为 0 的结点添加进去
+		for (int i = 0; i < vexnum; i++) {
+			if (graph[i].in == 0) {
+				que.push(i);
 			}
-			// 打印回车更加的美观
-			cout << "\n";
 		}
-		cout << "\nbfs 结束:\n\n";
-	}
 
-	void topSort()
-	{
-		
-    }
+		while (!que.empty()) {
+			int k = que.front(); // 获取队头
+			que.pop(); // 弹出队头
+			topSort.push_back(k); // 将队头添加进拓扑排序数组
+
+			// 删除以该节点为起点的弧
+			EdgeNode* head = graph[k].link;
+			while (head) {
+				graph[head->adjvex].in--; // 将所有以该节点为弧的结点入度减一
+
+				// 如果入度为 0 就添加进去
+				if (graph[head->adjvex].in == 0) {
+					que.push(head->adjvex);
+				}
+				head = head->next;
+			}
+		}
+
+		cout << "拓扑排序 --- \n\n";
+		for (int x: topSort) {
+			cout << "节点 -> " << x << "  ";
+		}
+		cout << "\n\n拓扑排序结束 --- \n";
+	}
 
 	~Graph()
 	{
@@ -152,9 +126,7 @@ public:
 int main()
 {
 	Graph graph;
-	graph.createGraph();
 	graph.printGraph();
-	graph.dfs(0);
-	graph.bfs();
+	graph.GetTopSort();
 	return 0;
 }
