@@ -16,11 +16,13 @@ typedef struct EdgeNode {
 } EdgeNode;
 
 typedef struct VNode {
+	int weight;
 	char data;      // 结点信息
 	int in;         // 结点入度
 	EdgeNode* link; // 邻接表
 	VNode()
 	{
+		weight = 0;
 		data = 'a';
 		in = 0;
 		link = nullptr;
@@ -136,8 +138,10 @@ public:
 	}
 
 	// 求出路径然后求出各条路径的权值总和，在根据总和最大输出关键路近
+	// 一条路径权值最大的路径就是关键路径
 	void Critical_path()
 	{
+		int max_weight = 0;
 		GetTopSort(); // 先获取拓扑排序结果
 
 		// 先建立第一条路近，该路径只有最后一个结点
@@ -149,7 +153,10 @@ public:
 		int len = 1; // 路径个数
 		// 一共需要循环添加所有结点
 		for (int i = vexnum - 2; i >= 0; i--) {
-			int k = topSort[i]; // 倒序获取拓扑排序结果
+			// 倒序获取拓扑排序结果
+			// 后续插入的而结点都是以这个点为起点
+			int k = topSort[i]; 
+		
 			EdgeNode* head = graph[k].link;
 			// 查找与该结点相连的另一个结点
 			while (head) {
@@ -175,9 +182,18 @@ public:
 							if (begin->adjvex == head->adjvex) {
 								EdgeNode* node = new EdgeNode;
 								node->adjvex = k;
-								node->weight = begin->weight;
-								node->next = begin;
+								node->weight = head->weight; // head 保存的才是真正的权值
 								path[len++].link = node;
+								// 将后续结点全部添加到新路径头后面
+								while (begin) {
+									EdgeNode* back = new EdgeNode;
+									back->adjvex = begin->adjvex;
+									back->weight = begin->weight;
+									node->next = back;
+									node = node->next;
+									begin = begin->next;
+								}
+								break;
 							}
 							begin = begin->next;
 						}
@@ -191,13 +207,30 @@ public:
 		for (int i = 0; i < len; i++) {
 			EdgeNode* head = path[i].link;
 			while (head) {
+				path[i].weight += head->weight; // 计算所有路径权重和
 				cout << "结点 -> " << head->adjvex << "  ";
 				head = head->next;
 			}
-			cout << endl;
+			max_weight = max(max_weight, path[i].weight); // 查找最大权值
+			cout << "   weight  :  " << path[i].weight << endl;
+		}
+
+		cout << "\n关键路径 : ---- " << "  weigth : " <<  max_weight << "\n\n";
+		for (int i = 0; i < len; i++) {
+			// 打印权值和最大权值相等的路径
+			if (max_weight != path[i].weight) {
+				continue;
+			}
+			EdgeNode* head = path[i].link;
+			while (head) {
+				cout << "结点 -> " << head->adjvex << "  ";
+				head = head->next;
+			}
+			cout << "   weight  :  " << path[i].weight << endl;
 		}
 	}
 
+	// 析构函数，释放申请的内存
 	~Graph()
 	{
 		for (int i = 0; i < vexnum; i++) {
@@ -207,7 +240,15 @@ public:
 				head = head->next;
 				delete temp;
 			}
-		
+		}
+
+		for (int i = 0; i < vexnum; i++) {
+			EdgeNode* head = path[i].link;
+			while (head) {
+				EdgeNode* temp = head;
+				head = head->next;
+				delete temp;
+			}
 		}
 	}
 };
@@ -215,6 +256,7 @@ public:
 int main()
 {
 	Graph graph;
+	graph.printGraph();
 	graph.Critical_path();
 	return 0;
 }
