@@ -18,6 +18,18 @@ keywords:
 
 # 配置 apollo 教程
 
+> 前言 ： 这是一整套的搭建教程，如果仅仅是需要看代码，直接本地克隆代码就行
+>
+> 如果需要实机使用apollo 工具进行开发，获取调试之类的才需要完整构建
+>
+> 这个教程是基于虚拟机，如果需要wsl 请看官方教程，以及如果你仅仅想轻量化使用pnc 可以考虑edu 版本
+
+## apollo 官方教程
+
+[edu 版本安装](https://apollo.baidu.com/community/article/82)
+
+[WSL2 win子系统安装](https://apollo.baidu.com/community/article/83)
+
 ## 安装虚拟机
 
 1. 下载虚拟机
@@ -28,11 +40,13 @@ keywords:
 
 2. 激活虚拟机 `https://zhuanlan.zhihu.com/p/386892372`
 
-## 安装 ubantu 22.04
+## 安装 ubuntu 22.04 
+
+> 官方推荐使用 ubuntu 18.04 这是以 22.04举列子，一样的
 
 1. 下载镜像 `https://releases.ubuntu.com/22.04/ubuntu-22.04.1-desktop-amd64.iso`官网链接
 
-2. 打开 VMware 安装 ubantu
+2. 打开 VMware 安装 ubuntu
 
    1. 新建虚拟机 选择以典型安装 然后下一步
    2. 选择第二个 （以镜像文件安装） 选择刚下载的 ubantu 22.04 镜像 然后下一步
@@ -64,7 +78,7 @@ keywords:
 
 ### 开始跑命令
 
-1. 浏览器打开`https://pan.2078.site/#s/8gg0nwCQ`下载 docker.sh
+1. 浏览器打开`https://www.aliyundrive.com/s/sceFvPeJgmt`下载 docker.sh
 
 2. 下载完成后 ctrl + alt + t 打开终端
 
@@ -110,6 +124,14 @@ keywords:
    cd apollo
    bash docker/scripts/dev_into.sh
    sudo bash apollo.sh build
+   
+   # 之用输入上面三个命令就行
+   
+   # 明确自己需要的东西，如果只要cyber 最后一句就是 
+   sudo bash apollo.sh build cyber # 只要cyber
+   sudo bash apollo.sh build dreamview # 只要dreamview
+   sudo bash apollo.sh build planning # 只要预测模块
+   sudo bash apollo.sh build_dbg # 以dbug 模式构建
    #开始build 好的配置大概build 半小时， 差的四五个小时
    #不要让屏幕熄灭，ubantu默认5分钟锁屏，可以去设置- 电源 里面改成永不熄灭，还有自己的电脑最好也搞一下
    ```
