@@ -29,7 +29,8 @@
 + ``` git reset --hard origin/main ```
 + ``` git pull ```
 
-``` git config --global http.sslVerify "false"
+```bash
+git config --global http.sslVerify "false"
 git config --global --unset http.proxy
 git config --global --unset https.proxy 
 git add ..
@@ -44,6 +45,6 @@ git push -u origin main
 
      ` git config --global credential.helper store `
 
-## githun 仓库密钥 更新时间 8.15
+## githun 仓库密钥 更新时间 12.8
 
-`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`
+`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`
