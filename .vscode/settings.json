@@ -35,11 +35,11 @@
     "C_Cpp.intelliSenseEngine": "disabled",
     "C_Cpp.autocomplete": "disabled",
     "clangd.path": "/usr/bin/clangd",
-    "editor.fontFamily": "'Fira Code Medium', 'monospace', monospace",
+    "editor.fontFamily": "'Fira Code Medium'",
     // 输出窗口
     "[Log]": {
         // 字体大小
-        "editor.fontSize": 17
+        "editor.fontSize": 16
     },
     // CodeLens的字体系列: Fira Code Retina
     "editor.codeLensFontFamily": "Fira Code Medium",
@@ -48,9 +48,9 @@
     // 启用连字体
     // "editor.fontLigatures": true,
     // 字体大小
-    "editor.fontSize": 17,
+    "editor.fontSize": 18,
     // 集成终端字体大小
-    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontSize": 16,
     "clangd.arguments": [
         "--all-scopes-completion", // 全局补全(补全建议会给出在当前作用域不可见的索引,插入后自动补充作用域标识符),例如在main()中直接写cout,即使没有`#include <iostream>`,也会给出`std::cout`的建议,配合"--header-insertion=iwyu",还可自动插入缺失的头文件
         "--background-index", // 后台分析并保存索引文件

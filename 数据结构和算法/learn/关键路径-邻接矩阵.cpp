@@ -132,7 +132,7 @@ public:
 		}
 
 		for (int i = 0; i < vexnum; i++) {
-			cout << i << " 结点最早开始时间: " << v_e[i] << "  最迟开始时间 : " << v_l[i] << endl;
+			cout << i  << " 结点最早开始时间: " << v_e[i] << "  最迟开始时间 : " << v_l[i] << endl;
 		}
 
 		cout << endl;

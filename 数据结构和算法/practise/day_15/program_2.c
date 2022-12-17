@@ -3,35 +3,42 @@
 #define MAX 1000
 void insertSort(int list[], int n)
 {
-	int i, j;
-	for (i = 2; i <= n; i++) {
-		list[0] = list[i];
-		j = i - 1;
-		while (j > 0 && list[0] < list[j]) {
-			list[j + 1] = list[j];
-			--j;
+	for (int i = 1; i < n; i++) {
+		int k = i - 1;
+		int x = list[i];
+		while (k >= 0 && x < list[k]) {
+			list[k + 1] = list[k];
+			k--;
 		}
-		list[j + 1] = list[0];
+		list[k + 1] = x;
 	}
 }
-int shellInert(int list[], int dk, int n);
 
 void shellSort(int list[], int n, int dk[], int t)
 {
-	int i, k;
-	for (k = 0; k < t; k++)
-		shellInsert(list, dk[k], n);
+	for (int i = 0; i < t; i++) {
+		for (int j = dk[i]; j < n; j++) {
+			int k = j - dk[i];
+			int x = list[j];
+			while (k >= 0 && x < list[k]) {
+				list[k + dk[i]] = list[k];
+				k = k - dk[i];
+			}
+			list[k + dk[i]] = x;
+		}
+	}
 }
 void shellInsert(int list[], int dk, int n)
 {
-	int i, j;
-	for (i = dk + 1; i <= n; ++i)
-		if (list[i] < list[i - dk]) {
-			list[0] = list[i];
-			for (j = i - dk; j > 0 && list[0] < list[j]; j -= dk)
-				list[j + dk] = list[j];
-			list[j + dk] = list[0];
+	for (int j = dk; j < n; j++) {
+		int k = j - dk;
+		int x = list[j];
+		while (k >= 0 && x < list[k]) {
+			list[k + dk] = list[k];
+			k = k - dk;
 		}
+		list[k + dk] = x;
+	}
 }
 void printList(int list[], int n)
 {
@@ -53,6 +60,7 @@ int main()
 	printf("insertSort:\n");
 	insertSort(a, n);
 	printList(a, n);
+
 	scanf("%d", &n);
 	for (i = 0; i < n; i++) {
 		scanf("%d", &a[i]);
