@@ -45,6 +45,6 @@ git push -u origin main
 
      ` git config --global credential.helper store `
 
-## githun 仓库密钥 更新时间 12.8
+## githun 仓库密钥 更新时间 12.18
 
-`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`
+`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`

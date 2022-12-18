@@ -50,7 +50,7 @@
     // 字体大小
     "editor.fontSize": 18,
     // 集成终端字体大小
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontSize": 14,
     "clangd.arguments": [
         "--all-scopes-completion", // 全局补全(补全建议会给出在当前作用域不可见的索引,插入后自动补充作用域标识符),例如在main()中直接写cout,即使没有`#include <iostream>`,也会给出`std::cout`的建议,配合"--header-insertion=iwyu",还可自动插入缺失的头文件
         "--background-index", // 后台分析并保存索引文件
