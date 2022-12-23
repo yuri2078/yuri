@@ -70,7 +70,6 @@ void shellSort(std::vector<int>& data)
 int main()
 {
 	std::vector<int>& data = init.getData(true);
-	// insetrSort(data);
 	shellSort(data);
 	return 0;
 }

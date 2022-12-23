@@ -47,4 +47,4 @@ git push -u origin main
 
 ## githun 仓库密钥 更新时间 12.18
 
-`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`
+`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`

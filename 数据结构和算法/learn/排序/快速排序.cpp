@@ -7,7 +7,7 @@ int quickSort_check(std::vector<int>& data, int start, int end)
 {
 	init << "进行 " << start << " ---- " << end << " 的快速排序\n";
 	init.outData();
-	int key = data[start], val = end - 1;
+	int key = data[start], val = end;
 	while (start != end) {
 		if (data[val] < key) {
 			data[start] = data[val];

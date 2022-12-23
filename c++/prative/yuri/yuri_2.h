@@ -17,9 +17,28 @@
 
 namespace yuri
 {
+
+class Aerror
+{
+public:
+	Aerror() = default;
+	~Aerror() = default;
+
+	template <typename T>
+	Aerror& operator<<(T &&s)
+	{
+		std::cout << "\e[31m" << s << "\e[0m";
+		return *this;
+	}
+
+	// 日志类
+};
+
+
 class Yuri
 {
 private:
+	Aerror error;
 	bool is_single;
 	std::string in_file;
 	std::string out_file;
@@ -28,6 +47,23 @@ private:
 	std::unique_ptr<std::vector<std::vector<int>>> data;
 	std::unique_ptr<std::vector<int>> data_single;
 
+	// 检查文件类型设置为私有
+	void checkFile(std::fstream& fst, std::string& load, std::ios_base::openmode __mode)
+	{
+		fst.open(load, __mode);
+		if (!fst.is_open()) {
+			// 打开失败则新建一个
+			if (__mode == std::ios::in) {
+				std::cout << "\n\n文件读取 打开错误! 错误位置 " << load << std::endl;
+				std::exit(2);
+			}
+			fst.open(load, std::ios::out);
+			if (!fst.is_open()) {
+				std::cout << "\n\n文件打开错误! 错误位置 " << load << std::endl;
+				std::exit(3);
+			}
+		}
+	}
 public:
 	Yuri()
 	{
@@ -109,22 +145,7 @@ public:
 		return *this;
 	}
 
-	void checkFile(std::fstream& fst, std::string& load, std::ios_base::openmode __mode)
-	{
-		fst.open(load, __mode);
-		if (!fst.is_open()) {
-			// 打开失败则新建一个
-			if (__mode == std::ios::in) {
-				std::cout << "\n\n文件读取 打开错误! 错误位置 " << load << std::endl;
-				std::exit(2);
-			}
-			fst.open(load, std::ios::out);
-			if (!fst.is_open()) {
-				std::cout << "\n\n文件打开错误! 错误位置 " << load << std::endl;
-				std::exit(3);
-			}
-		}
-	}
+	
 	void cleanLog()
 	{
 		std::fstream fst;
@@ -153,23 +174,25 @@ public:
 		this->out_file = out;
 		return this->out_file;
 	}
-};
 
-class Aerror
-{
-public:
-	Aerror() = default;
-	~Aerror() = default;
-
-	template <typename T>
-	Aerror& operator<<(T &&s)
+	// 返回最大的下标(仅限一维数组)
+	int getMaxVal()
 	{
-		std::cout << "\e[31m" << s << "\e[0m";
-		return *this;
+		if (is_single == false) {
+			error << "错误捏，不是一维数组\n";
+			return -1;
+		}
+		int max_val = -1, size = this->data_single->size();
+		for (int i = 0; i < size; i++) {
+			if ((max_val = -1) || (*data_single)[i] < (*data_single)[max_val]) {
+				max_val = i;
+			}
+		}
+		return max_val;
 	}
-
-	// 日志类
 };
+
+
 
 } // namespace yuri
 

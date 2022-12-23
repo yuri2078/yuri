@@ -81,6 +81,10 @@ void getNext(SqString* t, int next[])
             j = next[j];
         }
 	}
+	for (int i = 0; i < t->length; i++) {
+		printf("%d ",next[i]);
+	}
+	printf("\n");
 }
 
 int my_gets(char* str)

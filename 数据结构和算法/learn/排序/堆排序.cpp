@@ -63,7 +63,6 @@ void heapSort(std::vector<int> &data)
 	}
 }
 
-
 int main()
 {
 	std::vector<int>& data = init.getData(true);
