@@ -26,7 +26,7 @@ private:
 public:
 	Graph()
 	{
-		vexnum = 9; // 设置节点数
+		vexnum = 6; // 设置节点数
 
 		// 初始化数组
 		G = vector<vector<int>>(vexnum, vector<int>(vexnum));

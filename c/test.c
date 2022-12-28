@@ -1,22 +1,50 @@
+#include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
-int main(void)
+#define MAX 20
+
+typedef struct BTNode {
+	char data;
+	struct BTNode* lchild;
+	struct BTNode* rchild;
+} * BiTree;
+
+void createBiTree(BiTree* t)
 {
-	for (int i = -2; i <= 2; i++) {
-		for (int j = 0; j < abs(i); j++) {
-			printf(" ");
-		}
-		int j;
-		for (j = 0; j < 3 - abs(i); j++) {
-			printf("%c",'A' + j);
-		}
-		
-		j = j - 2;
-		while(j >= 0) {
-			printf("%c", 'A' + j);
-			j--;
-		}
-		printf("\n");
+	char s;
+	BiTree q;
+	s = getchar();
+	getchar();
+	if (s == '#') {
+		*t = NULL;
+		return;
 	}
+	q = (BiTree)malloc(sizeof(struct BTNode));
+	if (q == NULL) {
+		return;
+	}
+	q->data = s;
+	*t = q;
+	createBiTree(&q->lchild);
+	createBiTree(&q->rchild);
+}
+int depth(BiTree t)
+{
+	if (t == NULL) {
+		return 0;
+	} else {
+		int depth_l = depth(t->lchild);
+		int depth_r = depth(t->rchild);
+		return 1 + (depth_l > depth_r ? depth_l : depth_r);
+	}
+	char answer_3[] = "head(tail(head(tail(LS))))";
+
+}
+
+int main()
+{
+	BiTree t = NULL;
+	createBiTree(&t);
+	printf("%d\n", depth(t));
 	return 0;
 }
