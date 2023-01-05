@@ -30,6 +30,8 @@ keywords:
 
 [WSL2 win子系统安装](https://apollo.baidu.com/community/article/83)
 
+[官方文档](https://apollo.baidu.com/community/Apollo-Homepage-Document/Apollo_Doc_CN_8_0?doc=%2F%25E5%25AE%2589%25E8%25A3%2585%25E8%25AF%25B4%25E6%2598%258E%2F%25E6%25BA%2590%25E7%25A0%2581%25E5%25AE%2589%25E8%25A3%2585)
+
 ## 安装虚拟机
 
 1. 下载虚拟机
@@ -63,9 +65,82 @@ keywords:
 
 3. 开机之后一路右上角 skip down 就行，不同具体设置![20220915_163732](https://cdn.jsdelivr.net/gh/yuri2078/images/apollo//20220915_163732.png)
 
+## 安装英伟达驱动
+
+> 需要使用感知模块并且有显卡的需要安装一下英伟达显卡驱动  ----- 以下教程来自官方文档
+
+1. 安装必要软件包
+
+   ```bash
+   sudo apt-get update
+   sudo apt-add-repository multiverse
+   sudo apt-get update
+   sudo apt-get install nvidia-driver-455
+   ```
+
+   
+
+2. 输入 `nvidia-smi`来校验 NVIDIA GPU 驱动是否在正常运行（可能需要在安装后重启系统以使驱动生效）
+
+   ```
+   Prompt> nvidia-smi
+   Mon Jan 25 15:51:08 2021
+   +-----------------------------------------------------------------------------+
+   | NVIDIA-SMI 460.27.04    Driver Version: 460.27.04    CUDA Version: 11.2     |
+   |-------------------------------+----------------------+----------------------+
+   | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+   | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+   |                               |                      |               MIG M. |
+   |===============================+======================+======================|
+   |   0  GeForce RTX 3090    On   | 00000000:65:00.0  On |                  N/A |
+   | 32%   29C    P8    18W / 350W |    682MiB / 24234MiB |      7%      Default |
+   |                               |                      |                  N/A |
+   +-------------------------------+----------------------+----------------------+
+   
+   +-----------------------------------------------------------------------------+
+   | Processes:                                                                  |
+   |  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+   |        ID   ID                                                   Usage      |
+   |=============================================================================|
+   |    0   N/A  N/A      1286      G   /usr/lib/xorg/Xorg                 40MiB |
+   |    0   N/A  N/A      1517      G   /usr/bin/gnome-shell              120MiB |
+   |    0   N/A  N/A      1899      G   /usr/lib/xorg/Xorg                342MiB |
+   |    0   N/A  N/A      2037      G   /usr/bin/gnome-shell               69MiB |
+   |    0   N/A  N/A      4148      G   ...gAAAAAAAAA --shared-files      105MiB |
+   +-----------------------------------------------------------------------------+
+   ```
+
+   
+
+3. 为了在容器内获得 GPU 支持，在安装完 docker 后需要安装 NVIDIA Container Toolkit。 运行以下命令安装 NVIDIA Container Toolkit：
+
+   
+
+   ```bash
+   distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+   curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+   curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+   sudo apt-get -y update
+   sudo apt-get install -y nvidia-docker2
+   ```
+
+   安装完成后，重启 Docker 以使改动生效。
+
+   ```bash
+   sudo systemctl restart docker
+   ```
+
+   安装完毕后，可以在**APOLLO容器内**输入`nvidia-smi`来校验 NVIDIA GPU 在容器内是否能正常运行（详见1）。
+
+
+
 ## 开始配置 apollo
 
 ### 准备秘钥
+
+> 如果能够使用github 版本就不用搞这个直接 git clone https://github.com/ApolloAuto/apollo.git 就行，如果提示没有git 就执行 sudo apt install git就行
+>
+> 如果看不懂上面在说什么就直接无视这句话就行
 
 1. 注册 gitte `https://gitee.com/`
 2. 点击右上角加号 -> 新建仓库
@@ -76,17 +151,52 @@ keywords:
 7. 输入`cat ~/.ssh/id_ed25519.pub` 然后复制输出的 ssh -ed ...... 添加到公钥
 8. 填写完成之后终端 输入`ssh -T git@gitee.com`按提示回复 yes 然后看到他输出 Hi **Anonymous**就行了
 
+### 更换国内源
+
+1. 打开终端输入 `sudo vim /etc/docker/daemon.json`
+
+2. 然后按 `i` 进入插入模式
+
+3. 复制下面的语句`ctrl shift + v` 复制进去
+
+   ```json
+   {
+       "registry-mirrors": [
+           "http://hub-mirror.c.163.com",
+           "https://docker.mirrors.ustc.edu.cn",
+           "https://registry.docker-cn.com"
+       ]
+   }
+   ```
+
+4. 按`ESC`键后输入 ` :wq!`保存并退出
+
+5. 输入`service docker restart`重新加载docker
+
+6. 输入 `docker info` 末尾出现类似的就是成功了
+
+   ```bash
+    Insecure Registries:
+     127.0.0.0/8
+    Registry Mirrors:
+     http://hub-mirror.c.163.com/
+     https://docker.mirrors.ustc.edu.cn/
+     https://registry.docker-cn.com/
+    Live Restore Enabled: false
+   
+   ```
+
 ### 开始跑命令
 
-1. 浏览器打开`https://www.aliyundrive.com/s/sceFvPeJgmt`下载 docker.sh
+1. 浏览器打开`https://wwho.lanzoue.com/ioHPm0jsee5g`下载 docker.txt
 
 2. 下载完成后 ctrl + alt + t 打开终端
 
 3. cd Download 目录
 
-4. 输入 ls 查看是否有一个 docker.sh
+4. 输入 ls 查看是否有一个 docker.txt
 
-5. 输入 bash docker.sh 开始跑命令
+5. 输入 bash docker.txt 开始跑命令
 
 6. 然后他会提示你输入 root 密码， 注意这里输入密码不会有提示，直接输入之后回车就行，看不到输入内容
 
