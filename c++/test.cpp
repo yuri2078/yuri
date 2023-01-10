@@ -10,9 +10,6 @@ int main(int argc, char const* argv[])
 		std::cout << set[i] << "  ";
 	}
 
-	for (int i = 0; i < 100; i++) {
-		std::cout << i << " ";
-	}
 	std::cout << std::endl;
 	return 0;
 }

@@ -35,7 +35,7 @@
     "C_Cpp.intelliSenseEngine": "disabled",
     "C_Cpp.autocomplete": "disabled",
     "clangd.path": "/usr/bin/clangd",
-    "editor.fontFamily": "'Fira Code Medium'",
+    "editor.fontFamily": "Fira Code Medium",
     // 输出窗口
     "[Log]": {
         // 字体大小
