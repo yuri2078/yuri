@@ -4,12 +4,10 @@
 
 #include "allocator.h" 
 #include "base.h"
-#include <stdexcept>
 namespace yuriSTL {
 
-
-template <typename T>
-class vector
+template <typename T, typename allocator = yuriSTL::allocator<T>>
+class vector final
 {
 public:
 	typedef T value_type;
@@ -19,19 +17,51 @@ private:
 	value_type* begin_; // 内存开始
 	value_type* end_; // 最后一个元素的下一个位置
 	value_type* tail_; // 内存块的最后一块地址
-	yuriSTL::allocator<T> alloc; // 新建分配内存的工具
+	allocator alloc; // 新建分配内存的工具
+	
+	// 申请更大空间函数，默认为原来最大空间的两倍
+	void relloc()
+	{
+		log("扩容!");
+		// 保存原来的元素个数
+		const int size = this->size();
+		// 申请两倍的空间
+		value_type* new_begin = alloc.allocate(this->size() * 2);
+		if (new_begin == nullptr) {
+			yuriSTL::log("重新分配内存失败!");
+			exit(1);
+		}
+		// 设置他新的end 和 tail 指针
+		value_type* new_end = new_begin + size;
+		value_type* new_tail = new_begin + size * 2;
+
+		// 循环调用移动构造函数进行构造
+		for (int i = 0; i < size; i++) {
+			alloc.construct(new_begin + i, yuriSTL::move(*(begin_ + i)));
+		}
+
+		// 将原来的内存调用析构函数进行析构 并对原内存i进行删除
+		alloc.destroy(this->begin_, this->end_);
+		alloc.deallocate(this->begin_);
+
+		// 更新指针
+		begin_ = new_begin;
+		end_ = new_end;
+		tail_ = new_tail;
+    }
 
 public:
 	vector() noexcept
 	{
-		begin_ = alloc.allocate(16); // 默认分一块内存
-        if (begin_ == nullptr) {
+		begin_ = alloc.allocate(); // 默认分一块内存
+		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+
 		// 更细指针位置
 		end_ = begin_; 
-		tail_ = begin_ + 16;
+		tail_ = begin_ + 1;
 	}
 	
 	// 拷贝构造函数
@@ -39,7 +69,7 @@ public:
 	{
 		// 新建一块和他一样大的内存
         begin_ = alloc.allocate(v.max_size());
-        if (begin_ == nullptr) {
+		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
@@ -67,8 +97,34 @@ public:
 		v.tail_ = nullptr;
 	}
 
+	explicit vector(const size_type n)
+	{
+		begin_ = alloc.allocate(n);
+		if (begin_ == nullptr) {
+			yuriSTL::log("内存分配失败捏!");
+			exit(1);
+		}
+		end_ = begin_;
+		tail_ = begin_ + n;
+	}
+
+	vector(const size_type n, value_type &&val)
+	{
+		begin_ = alloc.allocate(n);
+		if (begin_ == nullptr) {
+			yuriSTL::log("内存分配失败捏!");
+			exit(1);
+		}
+		end_ = begin_ + n;
+		tail_ = begin_ + n;
+		for (int i = 0; i < n; i++) {
+			alloc.construct(begin_ + i, val);
+		}
+	}
+
+
 	// 析构函数
-	~vector()
+	~vector() 
 	{
 		// 调用函数对类进行析构
 		alloc.destroy(begin_, end_);
@@ -86,7 +142,8 @@ public:
 	{
 		if (end_ == tail_) {
 			relloc();
-        }
+		}
+		
 		alloc.construct(end_++, value);
 	}
 
@@ -100,35 +157,7 @@ public:
 		alloc.construct(end_++, yuriSTL::forward<value_type>(value));
 	}
 
-	// 申请更大空间函数，默认为原来最大空间的两倍
-	void relloc()
-	{
-		// 保存原来的元素个数
-		const int size = this->size();
-		// 申请两倍的空间
-		value_type* new_begin = alloc.allocate(this->size() * 2);
-		if (new_begin == nullptr) {
-			yuriSTL::log("重新分配内存失败!");
-			exit(1);
-		}
-		// 设置他新的end 和 tail 指针
-		value_type* new_end = new_begin + size;
-		value_type* new_tail = new_begin + size * 2;
-
-		// 循环调用移动构造函数进行构造
-		for (int i = 0; i < size; i++) {
-			alloc.construct(new_begin + i, yuriSTL::move(*(begin_ + i)));
-		}
-
-		// 将原来的内存调用析构函数进行析构 并对原内存i进行删除
-		alloc.destroy(this->begin_, this->end_);
-		alloc.deallocate(this->begin_);
-
-		// 更新指针
-		begin_ = new_begin;
-		end_ = new_end;
-		tail_ = new_tail;
-    }
+	
 
 	// 返回当前元素个数
     const int size(){
@@ -181,19 +210,15 @@ public:
 	}
 
 	// 返回开始 迭代器
-	iterator begin() const{
-		return this->begin_;
-	}
+	iterator begin() const { return this->begin_; }
 
 	// 返回末尾迭代器
-	iterator end() const{
-		return this->end_;
-	}
+	iterator end() const { return this->end_; }
 
 	// 判断容器是否为空
-	bool empty(){
-		return end_ == begin_;
-	}
+	bool empty() { return end_ == begin_; }
+
+	iterator data() { return begin_; }
 
 	// 重载等号
 	void operator=(vector<value_type> &v)

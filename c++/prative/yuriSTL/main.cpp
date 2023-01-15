@@ -62,15 +62,12 @@ public:
 
 int main()
 {
-	Person p;
-	yuriSTL::vector<Person> vec;
-	vec.push_back(p);
-	vec.push_back(p);
-	vec.push_back(p);
-	vec.push_back(p);
-	vec.push_back(p);
-	cout << "  ---- \n";
-	vec.at(11);
+	yuriSTL::vector<int> vec(20, 666);
+	vec.push_back(55);
+	for (int x: vec) {
+		cout << x << " ";
+	}
+	cout << endl;
 	
 	return 0;
 }

@@ -29,13 +29,13 @@ move 函数 实现转换为右值引用 错误写法！
 
 // move 函数 实现转换为右值引用
 template <typename T>
-constexpr typename remove_reference<T>::__type&& move(T &&val) noexcept{
-	return static_cast<typename remove_reference<T>::__type &&>(val);
+constexpr typename yuriSTL::remove_reference<T>::__type&& move(T &&val) noexcept{
+	return static_cast<typename yuriSTL::remove_reference<T>::__type &&>(val);
 }
 
 // 完美转发 : 左值转发
 template <typename T>
-constexpr T&& forward(typename remove_reference<T>::__type& val) noexcept{
+constexpr T&& forward(typename yuriSTL::remove_reference<T>::__type& val) noexcept{
 	return static_cast<T&&>(val);
 }
 
@@ -49,10 +49,10 @@ constexpr T&& forward(typename remove_reference<T>::__type& val) noexcept{
 
 // 完美转发 ： 右值转发
 template <typename T>
-constexpr T&& forward(typename remove_reference<T>::__type&& val) noexcept
+constexpr T&& forward(typename yuriSTL::remove_reference<T>::__type&& val) noexcept
 {
 	// 静态断言 如果传入的是个左值就报错
-	static_assert(!is_lvalue_reference<T>().value, "ni bu neng yong forward jiang yi ge zuo zhi zhuan huan cheng you zhi");
+	static_assert(!yuriSTL::is_lvalue_reference<T>().value, "ni bu neng yong forward jiang yi ge zuo zhi zhuan huan cheng you zhi");
 	return static_cast<T&&>(val);
 }
 
@@ -85,7 +85,7 @@ template <typename T>
 void destroy(T* start, T* end)
 {
 	// 判断是不是基础类型
-	typename is_type<T>::__type type;
+	typename yuriSTL::is_type<T>::__type type;
 	// 通过另一个函数完成最终析构
 	destroy__(start, end, type);
 }
