@@ -38,25 +38,25 @@ struct remove_reference<T&&> {
 // b不是左值引用value 为false
 template <typename T>
 struct is_lvalue_reference {
-	public: bool value = false;
+	bool value = false;
 };
 
 // 是左值引用value 为true
 template <typename T>
 struct is_lvalue_reference<T&> {
-	public: bool value = true;
+	bool value = true;
 };
 
 // b不是右值引用value 为false
 template <typename T>
 struct is_rvalue_reference {
-	public: bool value = false;
+	bool value = false;
 };
 
 // 是左值引用value 为true
 template <typename T>
 struct is_rvalue_reference<T&&> {
-	public: bool value = true;
+	bool value = true;
 };
 
 // 判断是不是基础类型

@@ -21,14 +21,11 @@ public:
 	allocator() = default;
 	~allocator() = default;
 
-// 分配初始化空间函数
-	// 默认分配一个存储空间
-	static pointer allocate() noexcept {
-		return static_cast<pointer>(::operator new(sizeof(value_type)));
-	}
+	// 分配初始化空间函数
+	
 
 	// 分配size个空间
-	static pointer allocate(size_type size)
+	static pointer allocate(size_type size) noexcept
 	{
 		if (size == 0) {
 			return nullptr;
@@ -65,14 +62,15 @@ public:
 	}
 
 // 调用类的析构函数
-	static void destroy(pointer ptr) noexcept{
+	static void destroy(pointer ptr) noexcept {
 		yuriSTL::destroy(ptr);
 	}
-
+	
 	// 通过迭代器析构对象
-	static void destroy(pointer start, pointer end) noexcept{
+	static void destroy(pointer start, pointer end) noexcept {
 		yuriSTL::destroy(start, end);
 	}
+
 
 };
 

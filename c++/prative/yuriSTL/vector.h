@@ -6,7 +6,7 @@
 #include "base.h"
 namespace yuriSTL {
 
-template <typename T, typename allocator = yuriSTL::allocator<T>>
+template <typename T>
 class vector final
 {
 public:
@@ -17,7 +17,7 @@ private:
 	value_type* begin_; // 内存开始
 	value_type* end_; // 最后一个元素的下一个位置
 	value_type* tail_; // 内存块的最后一块地址
-	allocator alloc; // 新建分配内存的工具
+	allocator<T> alloc; // 新建分配内存的工具
 	
 	// 申请更大空间函数，默认为原来最大空间的两倍
 	void relloc()
@@ -39,7 +39,6 @@ private:
 		for (int i = 0; i < size; i++) {
 			alloc.construct(new_begin + i, yuriSTL::move(*(begin_ + i)));
 		}
-
 		// 将原来的内存调用析构函数进行析构 并对原内存i进行删除
 		alloc.destroy(this->begin_, this->end_);
 		alloc.deallocate(this->begin_);
@@ -53,7 +52,7 @@ private:
 public:
 	vector() noexcept
 	{
-		begin_ = alloc.allocate(); // 默认分一块内存
+		begin_ = alloc.allocate(16); // 默认分一块内存
 		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
@@ -61,7 +60,7 @@ public:
 
 		// 更细指针位置
 		end_ = begin_; 
-		tail_ = begin_ + 1;
+		tail_ = begin_ + 16;
 	}
 	
 	// 拷贝构造函数

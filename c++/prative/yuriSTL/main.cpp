@@ -62,7 +62,7 @@ public:
 
 int main()
 {
-	yuriSTL::vector<int> vec(20, 666);
+	yuriSTL::vector<int> vec;
 	vec.push_back(55);
 	for (int x: vec) {
 		cout << x << " ";
