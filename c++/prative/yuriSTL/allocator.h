@@ -13,16 +13,10 @@ class allocator
 public:
 	typedef T value_type; // 基础数据类型
 	typedef T* pointer; // 基础数据指针
-	typedef const T* const_pointer; // const 指针
-	typedef const T& const_reference; // const 引用
-
 
 public:
 	allocator() = default;
 	~allocator() = default;
-
-	// 分配初始化空间函数
-	
 
 	// 分配size个空间
 	static pointer allocate(size_type size) noexcept
@@ -70,7 +64,6 @@ public:
 	static void destroy(pointer start, pointer end) noexcept {
 		yuriSTL::destroy(start, end);
 	}
-
 
 };
 

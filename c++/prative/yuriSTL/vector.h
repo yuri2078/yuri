@@ -10,11 +10,11 @@ template <typename T>
 class vector final
 {
 public:
-	typedef T value_type;
-	typedef T* iterator;
+	typedef T value_type; // 数据类型别名
+	typedef T* iterator; // 指针类型 / 迭代器
 	
 private:
-	value_type* begin_; // 内存开始
+	value_type* begin_; // 指向一块内存的起始地址
 	value_type* end_; // 最后一个元素的下一个位置
 	value_type* tail_; // 内存块的最后一块地址
 	allocator<T> alloc; // 新建分配内存的工具
@@ -52,22 +52,24 @@ private:
 public:
 	vector() noexcept
 	{
-		begin_ = alloc.allocate(16); // 默认分一块内存
+		// 申请内存
+		begin_ = alloc.allocate(16); 
+		// 异常返回
 		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
-
-		// 更细指针位置
-		end_ = begin_; 
-		tail_ = begin_ + 16;
+		// 更新指针位置
+		end_ = begin_; // 没有元素，此时end = begin
+		tail_ = begin_ + 16; 
 	}
 	
 	// 拷贝构造函数
-	vector(vector<value_type> &v) noexcept
+	vector(const vector<value_type> &v) noexcept
 	{
 		// 新建一块和他一样大的内存
-        begin_ = alloc.allocate(v.max_size());
+		begin_ = alloc.allocate(v.max_size());
+		// 异常返回
 		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
@@ -85,7 +87,7 @@ public:
 	// 移动构造函数
 	vector(vector<value_type> &&v) noexcept
 	{
-		// 将源地址 复制过来
+		// 移动资源
 		begin_ = v.begin_;
 		end_ = v.end_;
 		tail_ = v.tail_;
@@ -96,26 +98,35 @@ public:
 		v.tail_ = nullptr;
 	}
 
+	// 使用n个对象初始化
 	explicit vector(const size_type n)
 	{
+		// 申请空间
 		begin_ = alloc.allocate(n);
+		// 异常返回
 		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+		// 更新指针
 		end_ = begin_;
 		tail_ = begin_ + n;
 	}
 
+	// 初始化n个元素
 	vector(const size_type n, value_type &&val)
 	{
+		// 申请空间
 		begin_ = alloc.allocate(n);
+		// 异常返回
 		if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+		// 更新指针
 		end_ = begin_ + n;
 		tail_ = begin_ + n;
+		// 初始化元素
 		for (int i = 0; i < n; i++) {
 			alloc.construct(begin_ + i, val);
 		}
@@ -128,8 +139,9 @@ public:
 		// 调用函数对类进行析构
 		alloc.destroy(begin_, end_);
 		// 删除掉申请的内存
-		alloc.deallocate(begin_);
-
+		if (begin_) {
+			alloc.deallocate(begin_);
+		}
 		// 将他们设置为nullptr 防止被重新利用
 		begin_ = nullptr;
 		end_ = nullptr;
