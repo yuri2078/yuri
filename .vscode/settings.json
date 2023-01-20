@@ -41,7 +41,6 @@
         // 字体大小
         "editor.fontSize": 16
     },
-    
     // CodeLens的字体系列: Fira Code Retina
     "editor.codeLensFontFamily": "Fira Code Medium",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font ",
@@ -75,6 +74,7 @@
         "--ranking-model=decision_forest", // 建议的排序方案：hueristics (启发式), decision_forest (决策树)
         "-j=12" // 同时开启的任务数量
     ],
+    "commentTranslate.source": "Google",
     // // Clangd 找不到编译数据库(例如 compile_flags.json 文件)时采用的设置,缺陷是不能直接索引同一项目的不同文件,只能分析系统头文件、当前文件和include的文件
     // // "clangd.fallbackFlags": [
     // //     "-pedantic",

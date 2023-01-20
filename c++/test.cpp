@@ -1,9 +1,10 @@
 #include <iostream>
-#include <memory>
+#include <vector>
 using namespace std;
 int main()
 {
-	int* p = nullptr;
-	::operator delete(p);
+	vector<int> vec;
+	cout << vec.at(1);
+	
 	return 0;
 }

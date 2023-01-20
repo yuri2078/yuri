@@ -11,9 +11,12 @@ class vector final
 {
 public:
 	typedef T value_type; // 数据类型别名
-	typedef T* iterator; // 指针类型 / 迭代器
-	
+	typedef T* iterator;  // 指针类型 / 迭代器
+	typedef T& reference; // 引用 只接受左值引用
+	typedef const T& const_reference ; // 引用 接受左值也接受右值
+
 private:
+	friend std::ostream& operator<<(std::ostream& cout, const_reference vec);
 	value_type* begin_; // 指向一块内存的起始地址
 	value_type* end_; // 最后一个元素的下一个位置
 	value_type* tail_; // 内存块的最后一块地址
@@ -26,7 +29,7 @@ private:
 		// 保存原来的元素个数
 		const int size = this->size();
 		// 申请两倍的空间
-		value_type* new_begin = alloc.allocate(this->size() * 2);
+		value_type* new_begin = alloc.allocate(size * 2);
 		if (new_begin == nullptr) {
 			yuriSTL::log("重新分配内存失败!");
 			exit(1);
@@ -37,7 +40,7 @@ private:
 
 		// 循环调用移动构造函数进行构造
 		for (int i = 0; i < size; i++) {
-			alloc.construct(new_begin + i, yuriSTL::move(*(begin_ + i)));
+			alloc.construct(new_begin + i, move(*(begin_ + i)));
 		}
 		// 将原来的内存调用析构函数进行析构 并对原内存i进行删除
 		alloc.destroy(this->begin_, this->end_);
@@ -65,7 +68,7 @@ public:
 	}
 	
 	// 拷贝构造函数
-	vector(const vector<value_type> &v) noexcept
+	vector(vector<value_type> &v) noexcept
 	{
 		// 新建一块和他一样大的内存
 		begin_ = alloc.allocate(v.max_size());
@@ -114,7 +117,7 @@ public:
 	}
 
 	// 初始化n个元素
-	vector(const size_type n, value_type &&val)
+	vector(const size_type n, const_reference val)
 	{
 		// 申请空间
 		begin_ = alloc.allocate(n);
@@ -139,9 +142,7 @@ public:
 		// 调用函数对类进行析构
 		alloc.destroy(begin_, end_);
 		// 删除掉申请的内存
-		if (begin_) {
-			alloc.deallocate(begin_);
-		}
+		alloc.deallocate(begin_);
 		// 将他们设置为nullptr 防止被重新利用
 		begin_ = nullptr;
 		end_ = nullptr;
@@ -149,39 +150,40 @@ public:
 	}
 
 	// 从尾部插入元素 左值
-	void push_back(value_type& value)
+	// 使用const & 既可以接受左值也可以接受右值
+	void push_back(const_reference val)
 	{
+		// 判断空间是不是满了
 		if (end_ == tail_) {
 			relloc();
 		}
-		
-		alloc.construct(end_++, value);
+		// 插入，并更新指针
+		alloc.construct(end_++, val);
 	}
 
 	// 从尾部插入元素 右值
-	void push_back(value_type&& value)
+	void push_back(value_type&& val)
 	{
+		// 判断空间是不是满了
 		if (end_ == tail_) {
-			relloc();
+			relloc(); // 如果空间满了则重新分配空间默认 大小 X 2
 		}
-		// 通过完美转发  传递参数
-		alloc.construct(end_++, yuriSTL::forward<value_type>(value));
+		// 通过完美转发传递参数
+		alloc.construct(end_++, yuriSTL::forward<value_type>(val));
 	}
 
-	
-
 	// 返回当前元素个数
-    const int size(){
+    const int size() {
         return end_ - begin_;
     }
 
 	// 返回最大元素个数
-    const int max_size(){
+    const int max_size() {
         return tail_ - begin_;
     }
 
 	// 重载[] 返回对应下标元素
-	value_type& operator[](int k)
+	reference operator[](int k)
 	{
         if (k >= end_ - begin_) {
 			yuriSTL::log("错误！超出内存范围!");
@@ -191,17 +193,17 @@ public:
 	}
 
 	// 返回对应元素个数
-	value_type& at(const int k)
+	reference at(const int k)
 	{
-        if (k >= end_ - begin_) {
+		if (k >= end_ - begin_) {
 			yuriSTL::log("错误！超出内存范围!");
 			exit(2);
-        }
+		}
         return *(begin_ + k);
 	}
 
 	// 返回首部元素
-	value_type& front() 
+	reference front() 
 	{
 		if (empty()) {
 			yuriSTL::log("当前元素为空!");
@@ -211,7 +213,7 @@ public:
 	}
 
 	// 返回末尾元素
-	value_type& back()
+	reference back()
 	{
 		if (empty()) {
 			yuriSTL::log("当前元素为空!");
@@ -221,32 +223,54 @@ public:
 	}
 
 	// 返回开始 迭代器
-	iterator begin() const { return this->begin_; }
+	iterator begin() noexcept { return begin_; }
 
 	// 返回末尾迭代器
-	iterator end() const { return this->end_; }
+	iterator end() noexcept { return end_; }
 
 	// 判断容器是否为空
-	bool empty() { return end_ == begin_; }
+	const bool empty() { return end_ == begin_; }
 
-	iterator data() { return begin_; }
+	iterator data() noexcept { return begin_; }
 
 	// 重载等号
-	void operator=(vector<value_type> &v)
+	reference operator=(const vector<value_type> &v)
 	{
-        begin_ = alloc.allocate(v.max_size());
+		// 调用函数对之前的数据进行析构
+		alloc.destroy(begin_, end_);
+		// 删除掉之前申请的内存
+		alloc.deallocate(begin_);
+		// 重新申请内存
+		begin_ = alloc.allocate(v.max_size());
+		// 判断是否异常
         if (begin_ == nullptr) {
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+		// 更新指针
 		end_ = begin_ + v.size();
 		tail_ = begin_ + v.max_size();
+		// 完成初始化操作
 		for (int i = 0; i < v.size(); i++) {
 			*(begin_ + i) = *(v.begin_ + i);
 		}
+
+		return *this;
 	}
 };
 
-}  // namespace yuriSTL 
+// 重载输出，方便打印
+template <typename T>
+std::ostream& operator<<(std::ostream& cout, const vector<T>& vec)
+{
+	const int size = vec.size();
+	for (int i = 0; i < size; i++) {
+		cout << vec[i] << " ";
+	}
+	cout << std::endl;
+	return cout;
+}
+
+} // namespace yuriSTL
 
 #endif

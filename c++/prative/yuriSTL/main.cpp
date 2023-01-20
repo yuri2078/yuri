@@ -31,7 +31,7 @@ public:
 		this->name = name;
 	}
 
-	Person(Person& p)
+	Person(const Person& p)
 	{
 		cout << "拷贝构造函数\n";
 		this->age = p.age;
@@ -45,7 +45,7 @@ public:
 		this->name = p.name;
 	}
 
-	Person& operator=(Person& p)
+	Person& operator=(const Person& p)
 	{
 		cout << "= 号构造函数\n";
 		this->age = p.age;
@@ -58,16 +58,20 @@ public:
 		cout << this->name << " 被析构啦 "
 		     << "age : " << this->age << endl;
 	}
+
+	
 };
+
+ostream& operator<<(ostream& cout, Person &p)
+{
+	cout << "age -> " << p.age << endl;
+	return cout;
+}
 
 int main()
 {
-	yuriSTL::vector<int> vec;
-	vec.push_back(55);
-	for (int x: vec) {
-		cout << x << " ";
-	}
-	cout << endl;
-	
+	Person p;
+	yuriSTL::vector<Person> vec(20,p);
+	yuriSTL::vector<Person> vv(vec);
 	return 0;
 }
