@@ -5,13 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch 基础语法",
+            "request": "launch",
+            "mainClass": "learn.基础语法",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Launch hello_world",
+            "request": "launch",
+            "mainClass": "learn.hello_world",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             "args": [],
             "cwd": "${fileDirname}",
-            "preLaunchTask": "cppbuild" //设置调试前执行的任务
+            "preLaunchTask": "cppbuild"
         }
     ]
 }
