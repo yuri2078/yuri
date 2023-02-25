@@ -111,8 +111,11 @@ public:
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+		for (int i = 0; i < n; i++) {
+			alloc.construct(begin_ + i);
+		}
 		// 更新指针
-		end_ = begin_;
+		end_ = begin_ + n;
 		tail_ = begin_ + n;
 	}
 
@@ -261,7 +264,7 @@ public:
 
 // 重载输出，方便打印
 template <typename T>
-std::ostream& operator<<(std::ostream& cout, const vector<T>& vec)
+std::ostream& operator<<(std::ostream& cout, vector<T>& vec)
 {
 	const int size = vec.size();
 	for (int i = 0; i < size; i++) {
