@@ -27,6 +27,10 @@ public:
 		return static_cast<pointer>(::operator new(size * sizeof(value_type)));
 	}
 
+	static pointer allocate() noexcept {
+		return static_cast<pointer>(::operator new(sizeof(value_type)));
+	}
+
 // 销毁空间函数
 	static void deallocate(pointer ptr) noexcept
 	{
@@ -38,7 +42,7 @@ public:
 		::operator delete(ptr);
     }
 
-	static void deallocate(pointer ptr, size_type size) noexcept
+	static void deallocate(pointer ptr, [[maybe_unused]] size_type size) noexcept
 	{
 		if (ptr == nullptr) {
 			return;

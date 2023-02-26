@@ -1,4 +1,5 @@
 #include "vector.h"
+#include "list.h"
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -70,8 +71,9 @@ ostream& operator<<(ostream& cout, Person &p)
 
 int main()
 {
-	Person p;
-	yuriSTL::vector<Person> vec(20,p);
-	yuriSTL::vector<Person> vv(vec);
+	yuriSTL::list<int> list;
+    list.push_back(5);
+    list.showAllValue();
+	
 	return 0;
 }

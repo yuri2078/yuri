@@ -59,7 +59,7 @@ constexpr T&& forward(typename remove_reference<T>::__type&& val) noexcept
 
 // 是简单类型什么都不用做
 template <typename T>
-void destroy__(T* start, T* end, __true_type)
+void destroy__([[maybe_unused]] T* start, [[maybe_unused]] T* end, __true_type)
 {
 	
 }

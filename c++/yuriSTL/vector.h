@@ -111,6 +111,7 @@ public:
 			yuriSTL::log("内存分配失败捏!");
 			exit(1);
 		}
+		// 初始化内容
 		for (int i = 0; i < n; i++) {
 			alloc.construct(begin_ + i);
 		}

@@ -21,7 +21,7 @@ namespace yuriSTL {
 // 传入 int && 生成第三个 T -> int
 template <typename T>
 struct remove_reference {
-	typedef T __type;
+	typedef T _type;
 };
 
 template <typename T>
