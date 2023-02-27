@@ -71,8 +71,11 @@ ostream& operator<<(ostream& cout, Person &p)
 
 int main()
 {
-	yuriSTL::list<int> list;
-    list.push_back(5);
+	yuriSTL::list<Person> list;
+	Person p,pp(666);
+	list.push_back(p);
+	list.push_back(std::move(p));
+	list.push_front(pp);
     list.showAllValue();
 	
 	return 0;
