@@ -76,7 +76,7 @@ int main()
 	list.push_back(p);
 	list.push_back(std::move(p));
 	list.push_front(pp);
-    list.showAllValue();
-	
+	list.push_front(std::move(pp));
+	list.showAllValue();
 	return 0;
 }

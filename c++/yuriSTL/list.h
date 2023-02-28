@@ -52,7 +52,7 @@ public:
 	}
 
     // 左值尾部插入
-	void push_back(reference value) noexcept
+	void push_back(const_reference value) noexcept
 	{
 		// 申请数据空间并初始化
 		tail->data_ = alloc_value.allocate();
@@ -78,13 +78,30 @@ public:
 	}
 
 	// 左值头部插入
-	void push_front(reference value) noexcept
+	void push_front(const_reference value) noexcept
 	{
-		size++; // 个数加一
+		// 个数加一
+		size++; 
 		// 新建新节点、数据 并进行初始化
 		node<T>* node = alloc_node.allocate();
 		node->data_ = alloc_value.allocate();
+		// 左值初始化函数调用
 		alloc_value.construct(node->data_, value);
+		// 更新节点
+		head->front_ = node;
+		node->next_ = head;
+		head = node;
+	}
+
+	// 右值头部插入
+	void push_front(rvalue_reference value) noexcept {
+		// 个数加一
+		size++;
+		// 新建新节点、数据 并进行初始化
+		node<T>* node = alloc_node.allocate();
+		node->data_ = alloc_value.allocate();
+		// 右值move函数调用
+		alloc_value.construct(node->data_, move(value));
 		// 更新节点
 		head->front_ = node;
 		node->next_ = head;
