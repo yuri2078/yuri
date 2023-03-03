@@ -1,0 +1,8116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="./首页_files/common.css">
+	<script type="text/javascript" src="./首页_files/artDialog.min.js.下载"></script><style type="text/css">.ui_title_icon,.ui_content,.ui_dialog_icon,.ui_btns span{display:inline-block;*zoom:1;*display:inline}.ui_dialog{visibility:hidden;text-align:left;position:absolute;top:0;left:-99999em;_overflow:hidden}.ui_dialog table{border:0;margin:0;border-collapse:collapse}.ui_dialog td{padding:0}.ui_title_icon{vertical-align:middle}.ui_title_text{overflow:hidden;cursor:default;-moz-user-select:none;user-select:none}.ui_close{display:block;position:absolute;outline:none}.ui_content_wrap{text-align:center}.ui_content{margin:10px;text-align:left}.ui_dialog_icon{vertical-align:middle}.ui_content.ui_iframe{margin:0;*padding:0;display:block;height:100%}.ui_iframe iframe{visibility:hidden;width:100%;height:100%;border:none;overflow:auto}.ui_bottom{position:relative}.ui_resize{position:absolute;right:0;bottom:0;z-index:1;cursor:nw-resize;_font-size:0}.ui_btns{text-align:right;white-space:nowrap}.ui_btns span{margin:5px 10px}.ui_btns button{cursor:pointer}.ui_overlay{visibility:hidden;position:absolute;top:0;left:0;width:100%;height:100%;filter:alpha(opacity=0);opacity:0;_overflow:hidden}.ui_overlay div{height:100%}* html .ui_ie6_select_mask{width:99999em;height:99999em;position:absolute;top:0;left:0;z-index:-1}.ui_move .ui_title_text{cursor:move}html>body .ui_dialog_wrap.ui_fixed .ui_dialog{position:fixed}* html .ui_dialog_wrap.ui_fixed .ui_dialog{fixed:true}* html.ui_ie6_fixed{background:url(*) fixed}* html.ui_ie6_fixed body{height:100%}* html .ui_dialog_wrap.ui_fixed{width:100%;height:100%;position:absolute;left:expression(documentElement.scrollLeft+documentElement.clientWidth-this.offsetWidth);top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight)}html.ui_page_lock>body{overflow:hidden}* html.ui_page_lock{overflow:hidden}* html.ui_page_lock select,* html.ui_page_lock .ui_ie6_select_mask{visibility:hidden}html.ui_page_lock>body .ui_dialog_wrap.ui_lock{width:100%;height:100%;position:fixed;top:0;left:0}* html body{margin:0}@media all and (-webkit-min-device-pixel-ratio:10000),not all and (-webkit-min-device-pixel-ratio:0){.ui_content_wrap,.r0d0,.r0d2,.r2d2,.r2d0{display:block}}</style>
+	<link rel="stylesheet" type="text/css" href="./首页_files/chrome.css">
+	<link rel="stylesheet" type="text/css" href="./首页_files/layui.css">
+	<link rel="stylesheet" type="text/css" href="./首页_files/layoutxs.css">
+	<link rel="stylesheet" href="./首页_files/newNav.css">
+	<title>首页</title>
+<style>
+	.sx{
+		display: inline-block;
+		width: 80%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+</style><style>
+	.black_overlay{
+		display: none;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		z-index:1001;
+		-moz-opacity: 0.8;
+		opacity:.80;
+		filter: alpha(opacity=88);
+	}
+	.white_content {
+		display: none;
+		position: absolute;
+		top: 25%;
+		left: 25%;
+		width: 55%;
+		height: 55%;
+		padding: 20px;
+		border: 10px solid white;
+		background-color: white;
+		z-index:1002;
+		overflow: auto;
+	}
+</style><link id="layuicss-laydate" rel="stylesheet" href="./首页_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./首页_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="./首页_files/code.css" media="all"></head>
+
+
+
+
+<body>
+<div id="light" class="white_content">
+	<div align="center">
+		<p align="center" style="font-size: 22px;color: black"><b>学业预警结果通知</b></p>
+		<br><br><br><br>
+		<p align="center" style="font-size: 15px;color: black"></p>
+		<br><br><br><br><br><br><br><br><br><br>
+		<p id="s" style="font-size: 16px;color: red;"></p>
+	</div>
+</div>
+<div id="fade" class="black_overlay"></div>
+
+<div class="top">
+	<div>
+		<img style="width: 7rem" src="./首页_files/logo.png" alt="">
+		<span class="it"></span>
+		<span class="nav-close">
+            <img id="navClose" src="./首页_files/navClose.png" alt="">
+			<input type="hidden" id="nav-kg" value="0">
+          </span>
+	</div>
+	<div>
+				<span class="inputbox">
+					<img src="./首页_files/searchq.png" alt="" class="" style="position: absolute;margin-left: 165px;margin-top: 7px;">
+				<input name="findMenu" id="findMenu" type="text" class="input" placeholder="" style="color: #9798B5;">
+				<div class="search menuCodeUrl" style="width: 200px; max-height: 500px; z-index: 999; position: absolute; display: none; flex-direction: column; height: 0px;">
+					<ul style="width: 200px;overflow:auto;display: flex;flex-direction: column;height: 346px;margin-top: 7px;cursor: pointer" class="searchul menuCodeUrl" id="searchul"></ul>
+				</div>
+			</span>
+		<span style="display:none">语言：</span>
+		<select onchange="languageqh(this)" style="width: 70px;display:none">
+			<option value="0">中文</option>
+			<option value="1">英文</option>
+		</select>
+		<ul>
+			<li class="message over" data-code="PTWH" data-url="/ggly/xxtz_query" data-name="消息通知" onclick="showMenuErji_menu(this)">
+				<span class="over-span">消息通知</span>
+			</li>
+			<li class="update over" data-code="PTWH" data-url="/grsz/grsz_xgmm" data-name="修改密码" onclick="showMenuErji_menu(this)">
+				<span class="over-span">修改密码</span>
+			</li>
+			<li class="exit over" onclick="tcdl()">
+				<span class="over-span" style="left: -40%">注销</span>
+			</li>
+			<li class="user"></li>
+			<li>
+				<span>王枫</span>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="layui-tab" lay-allowclose="true">
+	<ul class="layui-tab-title">
+		<li class="tabarrow">
+			<img src="./首页_files/left_1.png" alt="left" class="">
+		<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+
+		<li class="tabarrow tabarrowright">
+			<img src="./首页_files/right_1.png" alt="right" class="">
+		<i class="layui-icon layui-unselect layui-tab-close">ဆ</i></li>
+
+		<li data-index="0" frameindex="0" data-code="GRZX" data-sjcode="*" onclick="showTag(&#39;GRZX&#39;,&#39;*&#39;, &#39;0&#39;, this)" class="layui-this"><span class="sx">个人中心</span>
+			<i class="layui-icon layui-unselect layui-tab-close current" data-index="0" frameindex="0" disabled="disabled">
+			</i>
+		</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show">
+
+		</div>
+	</div>
+</div>
+<div class="box-content">
+        <span>
+          <span class="welcome"><span> 强智科技教务系统欢迎<br>您！</span></span>
+          <div class="edu-aside">
+            <!-- end -->
+            <section class="edu-sideMenu">
+				<ul id="accordion" class="accordion">
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-xitongguanli"></i>
+									<span class="sx">我的桌面</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">公告留言</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','已收公告','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_YSGG" data-url="/ggly/ysgg_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="已收公告" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_YSGG" data-url="/ggly/ysgg_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_GGLY_YSGG">
+																		 <span class="sx">已收公告</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','已收留言','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_YSLY" data-url="/ggly/ysly_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="已收留言" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_YSLY" data-url="/ggly/ysly_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_GGLY_YSLY">
+																		 <span class="sx">已收留言</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','消息通知','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_XXTZ" data-url="/ggly/xxtz_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="消息通知" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GGLY" data-sjcode="NEW_XSD_WDZM_GGLY_XXTZ" data-url="/ggly/xxtz_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_GGLY_XXTZ">
+																		 <span class="sx">消息通知</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">个人信息</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','修改个人信息','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GRXX" data-sjcode="NEW_XSD_WDZM_GRXX_XGGRXX" data-url="/grsz/grsz_xggrxx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="修改个人信息" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GRXX" data-sjcode="NEW_XSD_WDZM_GRXX_XGGRXX" data-url="/grsz/grsz_xggrxx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_GRXX_XGGRXX">
+																		 <span class="sx">修改个人信息</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','修改密码','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GRXX" data-sjcode="NEW_XSD_WDZM_GRXX_XGMM" data-url="/grsz/grsz_xgmm"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="修改密码" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_GRXX" data-sjcode="NEW_XSD_WDZM_GRXX_XGMM" data-url="/grsz/grsz_xgmm">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_GRXX_XGMM">
+																		 <span class="sx">修改密码</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">在线问答</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','在线问答','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_ZXWD" data-sjcode="NEW_XSD_WDZM_ZXWD_ZXWD" data-url="/zxwd/zxwd_opt"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="在线问答" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_ZXWD" data-sjcode="NEW_XSD_WDZM_ZXWD_ZXWD" data-url="/zxwd/zxwd_opt">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_ZXWD_ZXWD">
+																		 <span class="sx">在线问答</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">教学周历</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教学周历查看','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_JXZL" data-sjcode="NEW_XSD_WDZM_JXZL_JXZLCK" data-url="/jxzl/jxzl_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教学周历查看" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_JXZL" data-sjcode="NEW_XSD_WDZM_JXZL_JXZLCK" data-url="/jxzl/jxzl_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_JXZL_JXZLCK">
+																		 <span class="sx">教学周历查看</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">文档管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','文档内容管理','3')"  data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_WDGL" data-sjcode="NEW_XSD_WDZM_WDGL_WDNRGL" data-url="/wdgl/wdnr_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="文档内容管理" data-code="NEW_XSD_WDZM" data-yjcode="NEW_XSD_WDZM" data-ejcode="NEW_XSD_WDZM_WDGL" data-sjcode="NEW_XSD_WDZM_WDGL_WDNRGL" data-url="/wdgl/wdnr_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_WDZM_WDGL_WDNRGL">
+																		 <span class="sx">文档内容管理</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-chengjiguanli"></i>
+									<span class="sx">学籍成绩</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">学籍管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学籍卡片','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJKP" data-url="/grxx/xsxx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学籍卡片" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJKP" data-url="/grxx/xsxx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XJKP">
+																		 <span class="sx">学籍卡片</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学籍信息管理','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJXXGL" data-url="/xsxj/xjxxgl.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学籍信息管理" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJXXGL" data-url="/xsxj/xjxxgl.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XJXXGL">
+																		 <span class="sx">学籍信息管理</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学籍预警查询','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYJCX" data-url="/xsxj/xsyjxx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学籍预警查询" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYJCX" data-url="/xsxj/xsyjxx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XJYJCX">
+																		 <span class="sx">学籍预警查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学籍异动信息','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYDXX" data-url="/xsxj/xsydxx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学籍异动信息" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYDXX" data-url="/xsxj/xsydxx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XJYDXX">
+																		 <span class="sx">学籍异动信息</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','辅修学生异动申请','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYDXX-FX" data-url="/fxxsxj/xsydxx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="辅修学生异动申请" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XJYDXX-FX" data-url="/fxxsxj/xsydxx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XJYDXX-FX">
+																		 <span class="sx">辅修学生异动申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','专业分流','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_ZYFL" data-url="/xsxj/toQueryZyfl.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="专业分流" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_ZYFL" data-url="/xsxj/toQueryZyfl.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_ZYFL">
+																		 <span class="sx">专业分流</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','方向分流','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_FXFL" data-url="/xsxj/toQueryfxfl.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="方向分流" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_FXFL" data-url="/xsxj/toQueryfxfl.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_FXFL">
+																		 <span class="sx">方向分流</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学习完成情况(体系)','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQK" data-url="/xxwcqk/xxwcqk_idxOntx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学习完成情况(体系)" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQK" data-url="/xxwcqk/xxwcqk_idxOntx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XXWCQK">
+																		 <span class="sx">学习完成情况(体系)</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学习完成情况(性质)','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQKLB" data-url="/xxwcqk/xxwcqk_idxOnlb.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学习完成情况(性质)" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQKLB" data-url="/xxwcqk/xxwcqk_idxOnlb.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XXWCQKLB">
+																		 <span class="sx">学习完成情况(性质)</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学习完成情况(属性)','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQKXZ" data-url="/xxwcqk/xxwcqk_idxOnxz.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学习完成情况(属性)" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_XXWCQKXZ" data-url="/xxwcqk/xxwcqk_idxOnxz.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_XXWCQKXZ">
+																		 <span class="sx">学习完成情况(属性)</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','毕业情况查询','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_BYQKCX" data-url="/xxwcqk/byqkcx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="毕业情况查询" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_XJGL" data-sjcode="NEW_XSD_XJCJ_XJGL_BYQKCX" data-url="/xxwcqk/byqkcx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_XJGL_BYQKCX">
+																		 <span class="sx">毕业情况查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">我的成绩</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','课程成绩查询','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_KCCJCX" data-url="/kscj/cjcx_frm"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="课程成绩查询" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_KCCJCX" data-url="/kscj/cjcx_frm">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_WDCJ_KCCJCX">
+																		 <span class="sx">课程成绩查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','等级考试成绩','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_DJKSCJ" data-url="/kscj/djkscj_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="等级考试成绩" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_DJKSCJ" data-url="/kscj/djkscj_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_WDCJ_DJKSCJ">
+																		 <span class="sx">等级考试成绩</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','成绩认定','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_CJRD" data-url="/kscj/cjrd_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="成绩认定" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_CJRD" data-url="/kscj/cjrd_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_WDCJ_CJRD">
+																		 <span class="sx">成绩认定</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','成绩查卷申请','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_CJFH" data-url="/kscj/cjfh_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="成绩查卷申请" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_WDCJ" data-sjcode="NEW_XSD_XJCJ_WDCJ_CJFH" data-url="/kscj/cjfh_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_WDCJ_CJFH">
+																		 <span class="sx">成绩查卷申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">延后毕业管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','延后毕业申请','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_YHBYGL" data-sjcode="NEW_XSD_XJCJ_YHBYGL_SQ" data-url="/tsbygl/yhby_sq"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="延后毕业申请" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_YHBYGL" data-sjcode="NEW_XSD_XJCJ_YHBYGL_SQ" data-url="/tsbygl/yhby_sq">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_YHBYGL_SQ">
+																		 <span class="sx">延后毕业申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">提前毕业管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','提前毕业申请','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_TQBYGL" data-sjcode="NEW_XSD_XJCJ_TQBYGL_SQ" data-url="/tsbygl/tqby_sq"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="提前毕业申请" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_XJCJ_TQBYGL" data-sjcode="NEW_XSD_XJCJ_TQBYGL_SQ" data-url="/tsbygl/tqby_sq">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_XJCJ_TQBYGL_SQ">
+																		 <span class="sx">提前毕业申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">毕业管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','毕业生信息核对','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_BYGL_BYGL" data-sjcode="NEW_XSD_BYGL_BYSXXHD" data-url="/bygl/bysxx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="毕业生信息核对" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_BYGL_BYGL" data-sjcode="NEW_XSD_BYGL_BYSXXHD" data-url="/bygl/bysxx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_BYGL_BYSXXHD">
+																		 <span class="sx">毕业生信息核对</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','毕业结论查看','3')"  data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_BYGL_BYGL" data-sjcode="NEW_XSD_BYGL_BYJLCK" data-url="/bygl/bygl_ckxsList"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="毕业结论查看" data-code="NEW_XSD_XJCJ" data-yjcode="NEW_XSD_XJCJ" data-ejcode="NEW_XSD_BYGL_BYGL" data-sjcode="NEW_XSD_BYGL_BYJLCK" data-url="/bygl/bygl_ckxsList">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_BYGL_BYJLCK">
+																		 <span class="sx">毕业结论查看</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-biyeguanli"></i>
+									<span class="sx">培养管理</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">培养方案</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教学进程查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_JXJCCX" data-url="/pyfa/pyfajc_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教学进程查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_JXJCCX" data-url="/pyfa/pyfajc_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_PYFA_JXJCCX">
+																		 <span class="sx">教学进程查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','执行计划','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_ZXJH" data-url="/pyfa/pyfa_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="执行计划" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_ZXJH" data-url="/pyfa/pyfa_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_PYFA_ZXJH">
+																		 <span class="sx">执行计划</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','培养方案及完成情况','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFAMX" data-url="/pyfa/topyfamx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="培养方案及完成情况" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFAMX" data-url="/pyfa/topyfamx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_PYFAMX">
+																		 <span class="sx">培养方案及完成情况</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','辅修执行计划','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_FXZXJH" data-url="/pyfa/fxpyfa_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="辅修执行计划" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_PYFA_FXZXJH" data-url="/pyfa/fxpyfa_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_PYFA_FXZXJH">
+																		 <span class="sx">辅修执行计划</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','辅修培养方案明细','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_FXPYFAMX" data-url="/pyfa/tofxpyfamx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="辅修培养方案明细" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_PYFA" data-sjcode="NEW_XSD_PYGL_FXPYFAMX" data-url="/pyfa/tofxpyfamx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_FXPYFAMX">
+																		 <span class="sx">辅修培养方案明细</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">我的课表</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学期理论课表','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_XQLLKB" data-url="/xskb/xskb_list.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学期理论课表" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_XQLLKB" data-url="/xskb/xskb_list.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_XQLLKB">
+																		 <span class="sx">学期理论课表</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','实验课表查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_SYKBCX" data-url="/syjx/toXskb.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="实验课表查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_SYKBCX" data-url="/syjx/toXskb.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_SYKBCX">
+																		 <span class="sx">实验课表查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','班级课表查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_BJKBCX" data-url="/kbcx/kbxx_xzb"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="班级课表查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_BJKBCX" data-url="/kbcx/kbxx_xzb">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_BJKBCX">
+																		 <span class="sx">班级课表查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教师课表查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_JSKBCX" data-url="/kbcx/kbxx_teacher"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教师课表查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_JSKBCX" data-url="/kbcx/kbxx_teacher">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_JSKBCX">
+																		 <span class="sx">教师课表查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教室课表查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_JSHKBCX" data-url="/kbcx/kbxx_classroom"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教室课表查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_JSHKBCX" data-url="/kbcx/kbxx_classroom">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_JSHKBCX">
+																		 <span class="sx">教室课表查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','课程课表查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_KCKBCX" data-url="/kbcx/kbxx_kc"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="课程课表查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_KCKBCX" data-url="/kbcx/kbxx_kc">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_KCKBCX">
+																		 <span class="sx">课程课表查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','调停课查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_TTKCK" data-url="/xskb/xskb_ttkmx.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="调停课查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_WDKB" data-sjcode="NEW_XSD_PYGL_WDKB_TTKCK" data-url="/xskb/xskb_ttkmx.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_WDKB_TTKCK">
+																		 <span class="sx">调停课查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">选课管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生选课中心','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_NXSXKZX" data-url="/xsxk/xklc_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生选课中心" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_NXSXKZX" data-url="/xsxk/xklc_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_NXSXKZX">
+																		 <span class="sx">学生选课中心</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生预选管理','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSYXGL" data-url="/xkgl/xsyxgl"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生预选管理" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSYXGL" data-url="/xkgl/xsyxgl">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_XSYXGL">
+																		 <span class="sx">学生预选管理</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生预选查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSYXCX" data-url="/xkgl/xsyxcx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生预选查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSYXCX" data-url="/xkgl/xsyxcx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_XSYXCX">
+																		 <span class="sx">学生预选查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教室借用申请','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_JSJYSQ" data-url="/kbxx/jsjy_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教室借用申请" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_JSJYSQ" data-url="/kbxx/jsjy_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_JSJYSQ">
+																		 <span class="sx">教室借用申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教学进度查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_SKJHCX" data-url="/xkgl/skjhQuery.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教学进度查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_SKJHCX" data-url="/xkgl/skjhQuery.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_SKJHCX">
+																		 <span class="sx">教学进度查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','选课结果查询','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSXKJGCX" data-url="/xkgl/xsxkjgcx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="选课结果查询" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_XKGL" data-sjcode="NEW_XSD_PYGL_XKGL_XSXKJGCX" data-url="/xkgl/xsxkjgcx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_XKGL_XSXKJGCX">
+																		 <span class="sx">选课结果查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">教材管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','教材账目信息','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_JCGL" data-sjcode="NEW_XSD_PYGL_NJCGL_JCZMXX" data-url="/nxsjc/jczmxx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="教材账目信息" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_JCGL" data-sjcode="NEW_XSD_PYGL_NJCGL_JCZMXX" data-url="/nxsjc/jczmxx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_NJCGL_JCZMXX">
+																		 <span class="sx">教材账目信息</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生教材确认','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_JCGL" data-sjcode="NEW_XSD_PYGL_NJCGL_XSJCQR" data-url="/nxsjc/jccx"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生教材确认" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_JCGL" data-sjcode="NEW_XSD_PYGL_NJCGL_XSJCQR" data-url="/nxsjc/jccx">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_NJCGL_XSJCQR">
+																		 <span class="sx">学生教材确认</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">辅修管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','辅修报名','3')"  data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_FXGL" data-sjcode="NEW_XSD_PYGL_FXGL_FXBM" data-url="/fxgl/fxbmxx_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="辅修报名" data-code="NEW_XSD_PYGL" data-yjcode="NEW_XSD_PYGL" data-ejcode="NEW_XSD_PYGL_FXGL" data-sjcode="NEW_XSD_PYGL_FXGL_FXBM" data-url="/fxgl/fxbmxx_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_PYGL_FXGL_FXBM">
+																		 <span class="sx">辅修报名</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-peiyangfangan"></i>
+									<span class="sx">考试报名</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">我的申请</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','缓考申请','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDSQ" data-sjcode="NEW_XSD_KSBM_WDSQ_HKSQ" data-url="/kscj/hksq_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="缓考申请" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDSQ" data-sjcode="NEW_XSD_KSBM_WDSQ_HKSQ" data-url="/kscj/hksq_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_WDSQ_HKSQ">
+																		 <span class="sx">缓考申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','免考申请','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDSQ" data-sjcode="NEW_XSD_KSBM_WDSQ_MKSQ" data-url="/kscj/mksq_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="免考申请" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDSQ" data-sjcode="NEW_XSD_KSBM_WDSQ_MKSQ" data-url="/kscj/mksq_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_WDSQ_MKSQ">
+																		 <span class="sx">免考申请</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">我的考试</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','考试安排查询','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDKS" data-sjcode="NEW_XSD_KSBM_WDKS_KSAPCX" data-url="/xsks/xsksap_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="考试安排查询" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDKS" data-sjcode="NEW_XSD_KSBM_WDKS_KSAPCX" data-url="/xsks/xsksap_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_WDKS_KSAPCX">
+																		 <span class="sx">考试安排查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','随堂考试查询','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDKS" data-sjcode="NEW_XSD_KSBM_WDKS_STKCX" data-url="/xsks/xsstk_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="随堂考试查询" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_WDKS" data-sjcode="NEW_XSD_KSBM_WDKS_STKCX" data-url="/xsks/xsstk_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_WDKS_STKCX">
+																		 <span class="sx">随堂考试查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">成绩管理</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','社会考试报名','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_SHKSBM" data-url="/xsdjks/xsdjks_list"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="社会考试报名" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_SHKSBM" data-url="/xsdjks/xsdjks_list">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_CJGL_SHKSBM">
+																		 <span class="sx">社会考试报名</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','补考报名','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_BKBM" data-url="/kscj/bkbm_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="补考报名" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_BKBM" data-url="/kscj/bkbm_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_CJGL_BKBM">
+																		 <span class="sx">补考报名</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','重修报名选课','3')"  data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_CXBMXK" data-url="/kscj/cxbmxk_query"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="重修报名选课" data-code="NEW_XSD_KSBM" data-yjcode="NEW_XSD_KSBM" data-ejcode="NEW_XSD_KSBM_CJGL" data-sjcode="NEW_XSD_KSBM_CJGL_CXBMXK" data-url="/kscj/cxbmxk_query">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_CJGL_CXBMXK">
+																		 <span class="sx">重修报名选课</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-zhuanjiazhandian"></i>
+									<span class="sx">实践环节</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">实验教学</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','实验预约管理','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_SYYYGL" data-url="/view/syjx/syyy_find.jsp"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="实验预约管理" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_SYYYGL" data-url="/view/syjx/syyy_find.jsp">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_SJHJ_SYJX_SYYYGL">
+																		 <span class="sx">实验预约管理</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','开放实验预约','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_KFSXYY" data-url="/view/syjx/kfsy_find.jsp"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="开放实验预约" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_KFSXYY" data-url="/view/syjx/kfsy_find.jsp">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_SJHJ_SYJX_KFSXYY">
+																		 <span class="sx">开放实验预约</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','实验室信息查询','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_SYSXX" data-url="/view/syjx/sysxx_find.jsp"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="实验室信息查询" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_SJHJ_SYJX" data-sjcode="NEW_XSD_SJHJ_SYJX_SYSXX" data-url="/view/syjx/sysxx_find.jsp">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_SJHJ_SYJX_SYSXX">
+																		 <span class="sx">实验室信息查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">毕业设计</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生选题','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_XSXT" data-url="/bysj/xsxt.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生选题" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_XSXT" data-url="/bysj/xsxt.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_XSXT">
+																		 <span class="sx">学生选题</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','已选课题情况','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_XTQK" data-url="/bysj/xsyxxt.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="已选课题情况" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_XTQK" data-url="/bysj/xsyxxt.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_XTQK">
+																		 <span class="sx">已选课题情况</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','开题报告上传','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_KTBG" data-url="/bysj/byktbg.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="开题报告上传" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_KTBG" data-url="/bysj/byktbg.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_KTBG">
+																		 <span class="sx">开题报告上传</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','过程指导情况','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_GCZD" data-url="/bysj/gcfk.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="过程指导情况" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_GCZD" data-url="/bysj/gcfk.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_GCZD">
+																		 <span class="sx">过程指导情况</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','中期报告查看','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_ZQBG" data-url="/bysj/byzqbg.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="中期报告查看" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_ZQBG" data-url="/bysj/byzqbg.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_ZQBG">
+																		 <span class="sx">中期报告查看</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','设计译文上传','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_SJYW" data-url="/bysj/bybgyw.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="设计译文上传" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_SJYW" data-url="/bysj/bybgyw.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_SJYW">
+																		 <span class="sx">设计译文上传</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','明评论文上传','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_MPLW" data-url="/bysj/bybg.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="明评论文上传" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_MPLW" data-url="/bysj/bybg.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_MPLW">
+																		 <span class="sx">明评论文上传</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','盲评论文上传','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_PPLW" data-url="/bysj/bybgmp.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="盲评论文上传" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_PPLW" data-url="/bysj/bybgmp.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_PPLW">
+																		 <span class="sx">盲评论文上传</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','论文答辩安排','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_DBAP" data-url="/bysj/bydbap.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="论文答辩安排" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_DBAP" data-url="/bysj/bydbap.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_DBAP">
+																		 <span class="sx">论文答辩安排</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','论文成绩查询','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_LWCJ" data-url="/bysj/bydbcj.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="论文成绩查询" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_LWCJ" data-url="/bysj/bydbcj.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_LWCJ">
+																		 <span class="sx">论文成绩查询</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','定稿论文上传','3')"  data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_ZZLW" data-url="/bysj/bysjlw.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="定稿论文上传" data-code="NEW_XSD_SJHJ" data-yjcode="NEW_XSD_SJHJ" data-ejcode="NEW_XSD_KSBM_BYSJ" data-sjcode="NEW_XSD_KSBM_BYSJ_ZZLW" data-url="/bysj/bysjlw.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_KSBM_BYSJ_ZZLW">
+																		 <span class="sx">定稿论文上传</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+						
+						<li class="">
+						
+						
+							<div class="link">
+								<i class="iconfont icon-yuanxipinggu"></i>
+									<span class="sx">教学评价</span>
+								<i class="iconfont icon-xiala"></i>
+							</div>
+						
+							<ul class="submenu" style="display: none">
+								
+									
+									
+										<li>
+										
+										
+											<div class="link">
+												<span class="sx">教学评价</span>
+									  			<i class="iconfont icon-xiala"></i>
+								  			</div>
+										
+											<ul class="submenu">
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+															
+															
+																<!--onclick="showMenuErji(this,'','学生评价','3')"  data-code="NEW_XSD_JXPJ" data-yjcode="NEW_XSD_JXPJ" data-ejcode="NEW_XSD_JXPJ_JXPJ" data-sjcode="NEW_XSD_JXPJ_JXPJ_XSPJ" data-url="/xspj/xspj_find.do"-->
+																<li class="item-file" onclick="checkPerson(this,&#39;0&#39;)" data-name="学生评价" data-code="NEW_XSD_JXPJ" data-yjcode="NEW_XSD_JXPJ" data-ejcode="NEW_XSD_JXPJ_JXPJ" data-sjcode="NEW_XSD_JXPJ_JXPJ_XSPJ" data-url="/xspj/xspj_find.do">
+																  <a href="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx#" id="NEW_XSD_JXPJ_JXPJ_XSPJ">
+																		 <span class="sx">学生评价</span>
+																  </a>
+																</li>
+															
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+														
+													
+												
+													
+												
+													
+														
+													
+												
+								  			</ul>
+										</li>
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+									
+									
+									
+								
+							</ul>
+						</li>
+						
+					
+			  	</ul>
+            </section>
+          </div>
+        </span>
+	<div class="iframeClass" id="iframeClass">
+		<iframe width="100%" height="100%" data-code="" scrolling="auto" src="./首页_files/xsMainV_new.html" frameborder="0" id="Frame0"></iframe>
+	</div>
+</div>
+
+
+<form id="Form1" name="Form1" enctype="multipart/form-data" action="https://jwxt.sgmtu.edu.cn/jsxsd/framework/xsMainV.htmlx" target="hideFrame" method="post">
+	<input type="hidden" id="method" name="method" value="exit">
+</form>
+<iframe id="hideFrame" name="hideFrame" style="width:0px;height:0px;display:none;" src="./首页_files/saved_resource.html"></iframe>
+
+
+<script type="text/javascript" src="./首页_files/jquery.min.js.下载"></script>
+<script type="text/javascript" src="./首页_files/EventDelegates.js.下载"></script>
+<script type="text/javascript" src="./首页_files/layui.all.js.下载"></script>
+<script type="text/javascript" src="./首页_files/layout.js.下载"></script>
+
+<script type="text/javascript">
+    if (false){
+        document.getElementById('light').style.display='block';
+        document.getElementById('fade').style.display='block';
+        //document.getElementById("zccd").style.display="none";
+        var time=0;
+        document.getElementById("s").innerText = "距离页面关闭还有"+(time/1000)%60+"秒";
+        setTimeout(function() {
+            var x = setInterval(function(){
+                time= time - 1000;
+                document.getElementById("s").innerText = "距离页面关闭还有"+(time/1000)%60+"秒";
+                if(time==0){
+                    clearInterval(x);
+                    document.getElementById("s").innerHTML="<input type='button' class='button'  style='font-size: 18px' value='确认'  onclick='gb()' />"
+                    // document.getElementById('light').style.display='none';
+                    //  document.getElementById('fade').style.display='none'
+                }
+            }, 1000);
+        }, time-10000);
+    }
+
+    function gb() {
+        document.getElementById('light').style.display='none';
+        document.getElementById('fade').style.display='none'
+    }
+
+
+
+    $('.sx').hover(function(){
+		var that = this;
+		var clientWidth = that.clientWidth;
+		var scrollWidth = that.scrollWidth;
+		if(clientWidth<scrollWidth){
+			layer.tips(that.innerText, that); //在元素的事件回调体中，follow直接赋予this即可
+		}
+		var e=window.event;
+		e.stopPropagation();
+		e.preventDefault()
+	},function () {
+		return
+	});
+
+	//IE11不支持收缩样式,暂时屏蔽
+	var u = window.navigator.userAgent.toLocaleLowerCase(),
+			ie11 = /(trident)\/([\d.]+)/,
+			b = u.match(ie11);
+	if(b){
+		$(".lsm-expand-btn").remove();
+	}
+	//防止浏览器缓存收缩状态导致bug
+	$('.lsm-mini-btn input[type="checkbox"]').prop("checked",true);
+
+
+	var frameIndex = 1;
+
+	//显示tab页菜单
+	function showTag_1(code,sjcode, index, t) {
+		$("#iframeClass").find("iframe").hide();
+		$("#Frame"+index).show();
+		$(".breadcrumbs > ul > li > a").removeClass("current");
+		$("#grzx").addClass("current");
+		//联动左侧菜单
+
+		if($('.edu-sideMenu').css('overflow')=='hidden'){
+			return;
+		}
+		$("a.active").removeClass("active");
+		$("#"+sjcode).addClass("active");
+		$("ul.accordion > li").removeClass("open");
+		$("#"+sjcode).parents("li").addClass("open");
+		$("ul.submenu").css("display","none");
+		$("#"+sjcode).parents("ul.submenu").css("display","block");
+	}
+
+
+	//加载新tab菜单
+	function showMenuErji_menu(level) {
+		$("#iframeClass").find("iframe").hide();
+		checkPerson(level,'0');
+	}
+
+
+	function checkPerson(t,res) {
+		$("#iframeClass").find("iframe").hide();
+		var src = "/jsxsd"+$(t).data("url");
+		var name = $(t).data("name");
+		var code = $(t).data("code");
+		var sjcode = $(t).data("sjcode");
+		var ul = document.getElementsByClassName("layui-tab-title")[0];
+		var allLi = document.getElementsByClassName("layui-tab-title")[0].children;
+
+		// 所有的标签失去焦点
+		for (var i = 0; i < allLi.length; i++) {
+			allLi[i].classList.remove("layui-this");
+		}
+
+		var flag = false;
+		// 遍历标签
+
+		for (var i = 0; i < allLi.length; i++) {
+			// 判断是否有页面已经打开
+			if (allLi[i].innerText.replace(/[\r\n]/g,"") === name+"ဆ") {
+				flag = true;
+				allLi[i].setAttribute("class", "layui-this");
+				$(allLi[i]).find("i").addClass("current");
+				var num = $(allLi[i]).data("index");
+				$("#Frame"+num).attr("src", $('#Frame'+num).attr("src"));
+				$("#Frame"+num).show();
+				return;
+			}
+		}
+		// 页面没有被打开
+		if (flag) {
+			return;
+		}
+
+		$(".layui-tab > ul > li > i").removeClass("current");
+
+		var newLi = document.createElement("li");
+		var newI = document.createElement("i");
+		newI.setAttribute("class", "layui-icon layui-unselect layui-tab-close current");
+		newI.setAttribute("data-index",frameIndex);
+		newI.setAttribute("frameIndex",frameIndex);
+		newI.setAttribute("onclick","closeTag('"+code+"', '"+frameIndex+"', this)")
+		newI.innerHTML = "ဆ";
+		newLi.setAttribute("data-index",frameIndex);
+		newLi.setAttribute("frameIndex",frameIndex);
+		newLi.setAttribute("data-sjcode",sjcode);
+		newLi.setAttribute("onclick","showTag('"+code+"','"+sjcode+"', '"+frameIndex+"', this)");
+		newLi.setAttribute("class", "layui-this");
+		newLi.innerHTML = "<span class='sx'>"+name+"<span>";
+		newLi.appendChild(newI);
+		ul.appendChild(newLi);
+
+		$("#iframeClass").append("<iframe id='Frame"+frameIndex+"' name='Frame"+frameIndex+"' data-code='"+code+"' src='"+src+"' style='border: 0; margin: 0; width: 100%; height: 100%'></iframe>");
+		frameIndex++;
+
+		$('.sx').hover(function(){
+			var that = this;
+			var clientWidth = that.clientWidth;
+			var scrollWidth = that.scrollWidth;
+			if(clientWidth<scrollWidth){
+				layer.tips(that.innerText, that); //在元素的事件回调体中，follow直接赋予this即可
+			}
+			var e=window.event;
+			e.stopPropagation();
+			e.preventDefault()
+		},function () {
+			return
+		});
+
+	}
+
+
+	//显示tab页菜单
+	function showTag(code,sjcode, index, t) {
+		if(sjcode == "*" && $(t).find("i").hasClass("current")){  //只有主页的时候
+			return;
+		}else if(sjcode == "*" && !$(t).find("i").hasClass("current")){ //有其它页面 但跳回主页时
+			$("#iframeClass").find("iframe").hide();
+			$("#Frame"+index).show();
+		}else{
+			$("#iframeClass").find("iframe").hide();
+			$("#Frame"+index).show();
+		}
+		$(".layui-tab > ul > li > i").removeClass("current");
+		$(t).find("i").addClass("current");
+		ldcd(sjcode);
+
+	}
+
+
+	function closeTag(code, index, t) {
+		var e = window.event || arguments.callee.caller.arguments[0];
+		$("#Frame"+index).remove();
+		//当前页面关闭后要打开前一个tag
+		if($(t).hasClass("current")) {
+			var prevObj = $(t).parent("li").prev("li");
+			prevObj.addClass("layui-this");
+			$(t).parent("li").remove();
+			showTag(prevObj.data("code"),prevObj.data("sjcode"),prevObj.data("index"),prevObj);
+			ldcd(prevObj.data("sjcode"));
+		}else{  //如果关闭的不是当前页
+			$(t).parent("li").remove();
+		}
+
+		e.stopPropagation();//防止冒泡事件
+	}
+
+
+	function ldcd(t){//联动左侧菜单
+		var sls = $(".item-file");
+		var _this;
+		var kg = $("#nav-kg").val();
+		for (var i =0;i<sls.length;i++){
+			var sjco = $(sls[i]).data("sjcode");//display: block;
+			$(sls[i]).find("a").removeClass("active");
+			$(sls[i]).parent("ul").hide()
+			$(sls[i]).parent("ul").parent("li").parent("ul").hide();
+			$(sls[i]).parent("ul").parent("li").removeClass("open");
+			$(sls[i]).parent("ul").parent("li").parent("ul").parent("li").removeClass("open");
+			if(sjco == t){
+				_this = sls[i];
+			}
+		}
+		$(_this).parent("ul").parent("li").parent("ul").parent("li").addClass("open");
+		if(kg==0){
+			$(_this).parent("ul").parent("li").parent("ul").show();
+			$(_this).parent("ul").parent("li").addClass("open");
+			$(_this).parent("ul").show();
+		}
+		$(_this).find("a").addClass("active");
+	}
+
+
+	function tcdl(){
+
+		window.Form1.action="/jsxsd/xk/LoginToXk?method=exit";
+		window.Form1.target="hideFrame";
+		window.Form1.submit();
+		window.Form1.action="";
+		window.Form1.target="";
+	}
+
+	//是否通过快速链接进入 1为是
+	var jumpFlag = "";
+	if("1" == jumpFlag){
+		var t = document.createElement("li");
+		t.setAttribute("data-code",'');
+		t.setAttribute("data-sjcode",frameIndex);
+		t.setAttribute("data-url",'');
+		t.setAttribute("data-name",'');
+		showMenuErji_menu(t);
+	}
+
+	function getColor(title) {
+		if(title == "max")
+			return '强智科技教务系统欢迎<br>您！';//JSTL
+		else
+			return '强智<br>科技';
+	}
+
+	function languageqh(obj){
+		var language=obj.value;
+		$.post("/jsxsd/grsz/languageqh", {language:language},
+				function (result){
+					window.location.reload();
+				}, "json");
+	}
+</script>
+<script type="text/javascript">
+	//搜索框
+	var menuval = "";
+	var text = document.getElementById('findMenu');
+	var search = document.getElementsByClassName('search')[0];
+	var oul = document.querySelector(".search ul");
+
+	$('body').click(function (e) {
+		if ($(e.target).attr('class') != 'menuCodeUrl') {
+			search.style.display = "none";
+		}
+	});
+
+	text.addEventListener("keyup",function () {
+		//document.getElementById("searchul").style.display="none";
+		if (text.value == "") {
+			return false;
+		}
+		display_Menu(text);
+	})
+	window.onload = function (){
+		search.style.display = "none";
+		text.addEventListener("click",function (event){
+			if (text.value == "") {
+				return false;
+			}
+			display_Menu(text);
+			event.stopPropagation();
+		},false);
+
+		document.Form1.parentNode.addEventListener("click",function () {
+			search.style.display = "none"
+		},true,9999);
+		document.onkeydown = function () {
+			if (window.event.keyCode == 13) {
+				var firstli = $("#searchul").find("li").eq(0);
+				firstli.click();
+			}
+		}
+	}
+
+	function display_Menu(node) {
+  var userlanguage='';//语言，1为英文
+		var url="/jspyfa/findMenuByQxCode";
+		if("1"==userlanguage){
+			url="/jspyfa/findYwMenuByQxCode";
+		}
+		// 获取输入框里面的内容
+		var val = node.value;
+		menuval = val;
+		// 如果输入框中不为空，就让联想列表出现，否则消失
+		search.style.display = text.value != "" ? "block" : "none";
+		$.ajax({
+			url: "/jsxsd"+url,
+			type: "POST",
+			sync: true,
+			data: {"findname": val},
+			success: function (result) {
+				var data = JSON.parse(result);
+				if ("1" == data.code) {
+					//清空
+					oul.innerHTML = "";
+					var lis = data.lists;
+					$.each(lis, function (idx, elem) {
+						var fucecode = elem.fucecode;
+						var fuceresource = elem.fuceresource;
+						var fucename = elem.fucename;
+						var lis = document.createElement("li");
+						lis.title = fucename;
+						lis.setAttribute("onclick", "showMenuBycode_ss(\"" + fucecode + "\",\"" + fuceresource + "\",\"" + fucename + "\")");
+						lis.className = "searchli menuCodeUrl";
+						lis.style.textAlign = "center";
+						lis.style.width = "190px";
+						lis.style.height = "30px";
+						lis.style.lineHeight = "20px";
+						lis.style.backgroundColor="white";
+						lis.style.padding="12px";
+						lis.style.color =" #909399";
+						/*lis.style.borderBottom="1px solid #ccc";*/
+						lis.innerHTML = fucename;
+						oul.appendChild(lis);
+					});
+				}
+			}
+		});
+	}
+
+	function showMenuBycode_ss(fucecode, resource, fucename) {
+		var twoLevel = fucecode.substring(0, fucecode.lastIndexOf('_'));
+		var oneLevel = twoLevel.substring(0, twoLevel.lastIndexOf('_'));
+		$("#findMenu").val(fucename);
+		//清空
+		oul.innerHTML = "";
+		//跳转
+		checkPerson_ss(oneLevel, twoLevel, fucecode, resource, fucename,3);
+		event.stopPropagation();
+	}
+
+	function checkPerson_ss(yjcode,ejcode,sjcode,url,name,level) {
+		ldcd(sjcode);
+		$("#iframeClass").find("iframe").hide();
+		var src = "/jsxsd"+url;
+		var name = name;
+		var code = yjcode;
+		var sjcode = sjcode;
+		var ul = document.getElementsByClassName("layui-tab-title")[0];
+		var allLi = document.getElementsByClassName("layui-tab-title")[0].children;
+
+		// 所有的标签失去焦点
+		for (var i = 0; i < allLi.length; i++) {
+			allLi[i].classList.remove("layui-this");
+		}
+
+		var flag = false;
+		// 遍历标签
+		for (var i = 0; i < allLi.length; i++) {
+			var sj = $(allLi[i]).data("sjcode");
+			// 判断是否有页面已经打开
+			if (allLi[i].innerText.replace(/[\r\n]/g,"") === name+"ဆ"&&sj===sjcode) {
+				flag = true;
+				allLi[i].setAttribute("class", "layui-this");
+				$(allLi[i]).find("i").addClass("current");
+				var num = $(allLi[i]).data("index");
+				$("#Frame"+num).attr("src", $('#Frame'+num).attr("src"));
+				$("#Frame"+num).show();
+				return;
+			}
+		}
+		// 页面没有被打开
+		if (flag) {
+			return;
+		}
+
+		$(".layui-tab > ul > li > i").removeClass("current");
+
+		var newLi = document.createElement("li");
+		var newI = document.createElement("i");
+		newI.setAttribute("class", "layui-icon layui-unselect layui-tab-close current");
+		newI.setAttribute("data-index",frameIndex);
+		newI.setAttribute("frameIndex",frameIndex);
+		newI.setAttribute("onclick","closeTag('"+code+"', '"+frameIndex+"', this)")
+		newI.innerHTML = "ဆ";
+		newLi.setAttribute("data-index",frameIndex);
+		newLi.setAttribute("frameIndex",frameIndex);
+		newLi.setAttribute("data-sjcode",sjcode);
+		newLi.setAttribute("onclick","showTag('"+code+"','"+sjcode+"', '"+frameIndex+"', this)");
+		newLi.setAttribute("class", "layui-this");
+		newLi.innerHTML = "<span class='sx'>"+name+"<span>";
+		newLi.appendChild(newI);
+		ul.appendChild(newLi);
+
+		$("#iframeClass").append("<iframe id='Frame"+frameIndex+"' name='Frame"+frameIndex+"' data-code='"+code+"' src='"+src+"' style='border: 0; margin: 0; width: 100%; height: 100%'></iframe>");
+		frameIndex++;
+
+		$('.sx').hover(function(){
+			var that = this;
+			var clientWidth = that.clientWidth;
+			var scrollWidth = that.scrollWidth;
+			if(clientWidth<scrollWidth){
+				layer.tips(that.innerText, that); //在元素的事件回调体中，follow直接赋予this即可
+			}
+			var e=window.event;
+			e.stopPropagation();
+			e.preventDefault()
+		},function () {
+			return
+		});
+
+	}
+
+</script>
+<script type="text/javascript" src="./首页_files/common.js.下载"></script></body></html>

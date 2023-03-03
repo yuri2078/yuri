@@ -130,9 +130,6 @@ public:
 	}
 
 	
-
-
-
 };
 } // namespace yuriSTL
 
