@@ -1,13 +1,24 @@
-#include <iostream>
-#include <ostream>
-#include <string>
-#define STR(s) #s //一个#把他变成字符串
-#define ADD(a,b) a##b
+// 如果没有定义就定义
 
-int main(int argc, const char *argv[])
+#ifndef 头文件 // 如果没有定义
+#define 头文件 // 那么就定义
+
+#include <iostream>
+#include <string>
+
+#define MIN(x, y) (x > y ? y : x)
+#define error(msg) \
+	printf(msg);   \
+	putchar(10);   \
+	return 1;
+
+int main(int argc, const char* argv[])
 {
-	std::string s = STR(yuri is yes);
-	std::cout << s << std::endl;
-	std::cout << ADD(4,4) << std::endl;
-    return 0;
+	int x = 6, y = 7;
+	std::cout << MIN(x, y) << std::endl;
+	error("yuri is yes");
+	return 0;
 }
+
+#undef 头文件 // 取消定义宏，一般宏作用直到文件尾部
+#endif        // ifndef 与 ifdef 结尾
