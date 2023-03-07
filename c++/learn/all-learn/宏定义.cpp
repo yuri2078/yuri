@@ -17,6 +17,13 @@ int main(int argc, const char* argv[])
 	int x = 6, y = 7;
 	std::cout << MIN(x, y) << std::endl;
 	error("yuri is yes");
+#ifdef __GNUC__
+	std::cout << "定义了GNUC";
+#endif
+
+#ifndef __GNUC__
+	std::cout << "没有定义GNUC";
+#endif
 	return 0;
 }
 
