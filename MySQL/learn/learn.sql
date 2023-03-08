@@ -1,4 +1,4 @@
--------- 登陆 mysql --------
+                                                        -------- 登陆 mysql --------
 
 -- mysql -h 127.0.0.1 -u root -pyuri2078 
 /* 
@@ -26,38 +26,51 @@ drop database -- 删除数据库
 
 use miku; -- 使用（name） 数据库
 
-                                        -------- 关于表格的操作 ---------
-create table miku.student ( -- not null下创建表格
-  id             int(100) unsigned not null auto_increment primary key,
-  password       varchar(32)       not null default '' comment '用户密码',
-  reset_password tinyint(32)       not null default 0  comment '用户类型:0-不需要重置密码,1-需要重置密码',
-  mobile         varchar(20)       not null default '' comment '手机',
-  create_at      timestamp(6)      not null default current_timestamp(6),
-  update_at      timestamp(6)      not null default current_timestamp(6) on update current_timestamp(6),
-  
-  unique index idx_user_mobile(`mobile`) -- 创建唯一索引，不允许重复
 
-  -- null:数据列可包含NULL值；
-  -- not null：数据列不允许包含NULL值；
-  -- default
-  -- primary key：主键；
-  -- auto_increment
-  -- unsigned：是指数值类型只能为正数；
-  -- character set name：指定一个字符集；
-  -- comment：对表或者字段说明 注释
-)
-ENGINE=InnoDB DEFAULT CHARSET=utf8
-COMMENT='用户表信息';
+                                        -------- 表格的操作 ---------
+-- 创建表格
+create table if not exists miku.name (
+    name char(20) primary key comment '姓名'
+);         
 
-show tables; -- 显示当前数据库所有表格
-truncate table student; -- 删除表格中所有数据,但是不删除表格
-drop table if exists student; -- 如果数据库中存在user_accounts表，就把它从数据库中drop掉
-describe student; -- 显示表格的内容
-delete from student; -- 清除表中记录
+create table if not exists miku.student ( --如果不存在就创建表
+    id int unsigned not null primary key auto_increment comment '学号',
+    name CHAR(20) default 'yuri' not null comment '姓名',
+    foreign key(name) references miku.name(name), -- 从别的表添加约束
+    unique index number(`id`) -- 创建唯一索引，不允许重复
 
+    -- null:数据列可包含NULL值；
+    -- not null：数据列不允许包含NULL值；
+    -- default
+    -- primary key：主键；
+    -- auto_increment 自增长
+    -- unsigned：是指数值类型只能为正数；
+    -- character set name：指定一个字符集；
+    -- comment：对表或者字段说明 注释
+    -- foreign key(键名) references 表名(键名) 从别的表添加约束
+);
 
+drop table if exists miku.student; -- 删除表格 [如果存在]
+truncate table miku.student; -- 删除表格中所有数据,但是不删除表格
+delete from miku.name; -- 清除表中记录
+select * from miku.name; -- 查询表中记录
 
+-- 向表中插入数据
+insert into miku.name (
+    name 
+) values ('晓美焰'),
+('鹿目圆'),
+('沙耶香'),
+('左仓杏子');
 
+insert into miku.name set 
+    name = '巴麻美'
+;
+
+                                -------- select 操作 --------
+select database(); -- 查询当前正在哪个数据库
+select name, name from miku.name; -- 从表中选择 name 和 name
+select * from miku.name; -- 从表中选择所有数据
 
 
 

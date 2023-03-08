@@ -23,6 +23,7 @@ int main(int argc, const char* argv[])
 
 #ifndef __GNUC__
 	std::cout << "没有定义GNUC";
+
 #endif
 	return 0;
 }
