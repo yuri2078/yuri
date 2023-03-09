@@ -35,7 +35,8 @@ create table if not exists miku.name (
 
 create table if not exists miku.student ( --如果不存在就创建表
     id int unsigned not null primary key auto_increment comment '学号',
-    name CHAR(20) default 'yuri' not null comment '姓名',
+    name char(20) default 'yuri' not null comment '姓名',
+    sex char(10) default '女' not null comment '性别',
     foreign key(name) references miku.name(name), -- 从别的表添加约束
     unique index number(`id`) -- 创建唯一索引，不允许重复
 
@@ -52,7 +53,7 @@ create table if not exists miku.student ( --如果不存在就创建表
 
 drop table if exists miku.student; -- 删除表格 [如果存在]
 truncate table miku.student; -- 删除表格中所有数据,但是不删除表格
-delete from miku.name; -- 清除表中记录
+delete from miku.student; -- 清除表中记录
 select * from miku.name; -- 查询表中记录
 
 -- 向表中插入数据
@@ -61,16 +62,38 @@ insert into miku.name (
 ) values ('晓美焰'),
 ('鹿目圆'),
 ('沙耶香'),
-('左仓杏子');
+('左仓杏子'),
+('白月初'),
+('迪迦');
 
 insert into miku.name set 
     name = '巴麻美'
 ;
 
+insert into miku.student (
+    id, name, sex
+) values (1, '晓美焰', '女'),
+(2, '鹿目圆', '女'),
+(3, '左仓杏子', '女'),
+(4,'白月初', '男'),
+(5, '迪迦', '男');
+
                                 -------- select 操作 --------
 select database(); -- 查询当前正在哪个数据库
 select name, name from miku.name; -- 从表中选择 name 和 name
-select * from miku.name; -- 从表中选择所有数据
+select * from miku.student; -- 从表中选择所有数据
+select distinct s.sex, n.name from miku.student s, miku.name n where sex = '女' and id in(1,2,3) and id not in(2) and s.name = n.name limit 2;
+-- distinct 查询结果会去除重复的
+-- s.sex, n.name  显示两个数据
+-- miku.student s 给表 miku.student 取别名 s 
+-- s.* 查询s 表中 * 数据(全部数据)
+-- from miku.student 从这个表中查询
+-- where sex = '女' 查询属性为女的
+-- and id in(1,2,3) 并且 id 是 1, 2, 3 的
+-- and id not in(2) 并且 id 不是 2 的 
+-- and s.name = n.name 显示不同字段相等的数据
+-- limit 2 只查询 2 条
+
 
 
 
