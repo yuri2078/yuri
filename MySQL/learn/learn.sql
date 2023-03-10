@@ -94,6 +94,6 @@ select distinct s.sex, n.name from miku.student s, miku.name n where sex = '女'
 -- and s.name = n.name 显示不同字段相等的数据
 -- limit 2 只查询 2 条
 
-
+update miku.student set sex = '武装直升机' where name = '迪迦'; -- 如果姓名是迪迦，就将性别改成武装直升机
 
 

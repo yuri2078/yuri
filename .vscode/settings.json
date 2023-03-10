@@ -38,7 +38,7 @@
     "editor.fontFamily": "Fira Code Medium", // 编辑器字体
     "editor.codeLensFontFamily": "Fira Code Medium",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font ", // 终端字体
-    "editor.fontSize": 18, // 编辑器文字大小
+    "editor.fontSize": 19, // 编辑器文字大小
     "terminal.integrated.fontSize": 14, // 集成终端字体大小
     "clangd.arguments": [
         "--all-scopes-completion", // 全局补全(补全建议会给出在当前作用域不可见的索引,插入后自动补充作用域标识符),例如在main()中直接写cout,即使没有`#include <iostream>`,也会给出`std::cout`的建议,配合"--header-insertion=iwyu",还可自动插入缺失的头文件
@@ -64,4 +64,5 @@
     ],
     "commentTranslate.source": "Google",
     "sqltools.connections": [], // 默认翻译设置
+    "terminal.integrated.cursorStyle": "underline" // 设置终端下弧线类型
 }

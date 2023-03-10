@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "cslg.day_3.test",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "test7",
+            "request": "launch",
+            "mainClass": "cslg.day_3.test7",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Ex4",
+            "request": "launch",
+            "mainClass": "cslg.day_3.Ex4",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "test6",
+            "request": "launch",
+            "mainClass": "cslg.day_3.test6",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "test5",
+            "request": "launch",
+            "mainClass": "cslg.day_3.test5",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "test5",
+            "request": "launch",
+            "mainClass": "java.cslg.day_3.test5",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
             "name": "Test4",
             "request": "launch",
             "mainClass": "cslg.day_2.Test4",
