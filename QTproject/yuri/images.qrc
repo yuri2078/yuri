@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/login.png</file>
+        <file>images/QQ/HeadImage.png</file>
+        <file>images/QQ/arrowback.png</file>
+        <file>images/QQ/back.gif</file>
+        <file>images/QQ/checkbox.png</file>
+        <file>images/QQ/closeback.png</file>
+        <file>images/QQ/drop_down_Button.png</file>
+        <file>images/QQ/flicker.png</file>
+        <file>images/QQ/keyboard.png</file>
+        <file>images/QQ/minback.png</file>
+        <file>images/QQ/more_accountlogin.png</file>
+        <file>images/QQ/state_Qme.png</file>
+        <file>images/QQ/state_away.png</file>
+        <file>images/QQ/state_busy.png</file>
+        <file>images/QQ/state_hide.png</file>
+        <file>images/QQ/state_notdisturb.png</file>
+        <file>images/QQ/state_online.png</file>
+    </qresource>
+</RCC>

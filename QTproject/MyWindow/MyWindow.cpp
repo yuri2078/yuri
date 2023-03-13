@@ -15,7 +15,7 @@ MyWindow::MyWindow(QWidget *parent) :
 	button_2->resize(200,30);
 	button_2->move(200,200);
 	connect(button_2,&QPushButton::clicked,[=](){
-		this->setWindowTitle("this is not your window");
+		this->setWindowTitle("孙 展 盆 ");
 			});
 	resize(800,800);
 }

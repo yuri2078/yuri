@@ -39,7 +39,7 @@ mainwindow::mainwindow(QWidget *parent) : QDialog(parent)
 	mainwindow::connect(button_3,&QPushButton::clicked,button_1,&QPushButton::clicked);
 	mainwindow::connect(button_4,&QPushButton::clicked,[=](){
 		button_4->setText("hello");	
-		});
+	});
 	QSlider *slider = new QSlider(Qt::Horizontal,this);
 	slider->move(10,10);
 	slider->setRange(10,100);

@@ -96,4 +96,3 @@ select distinct s.sex, n.name from miku.student s, miku.name n where sex = '女'
 
 update miku.student set sex = '武装直升机' where name = '迪迦'; -- 如果姓名是迪迦，就将性别改成武装直升机
 
-

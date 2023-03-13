@@ -12,7 +12,6 @@
 #include <qcolordialog.h>
 #include <qfiledialog.h>
 #include <qinputdialog.h>
-#include <qnetwork.h>
 #include "log.hpp"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -30,14 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
     QMenuBar *menu = menuBar(); //新建菜单栏 只能存在一个
     setMenuBar(menu); //为窗口设置菜单栏
     QMenu *file = menu->addMenu("文件"); //新建菜单
-    file->setIcon(QIcon(":/icon/icon-24.png"));
+    // file->setIcon(QIcon(":/icon/icon-24.png"));
     QMenu *edit = menu->addMenu("编辑"); //新建菜单
-    edit->setIcon(QIcon(":/icon/icon-48.png"));
+    // edit->setIcon(QIcon(":/icon/icon-48.png"));
     QAction *action_1 = file->addAction("新建"); //新建 菜单选项
-    action_1->setIcon(QIcon(":/icon/icon-24.png"));
+    // action_1->setIcon(QIcon(":/icon/icon-24.png"));
     file->addSeparator(); //新建分隔线
     QAction *action_2 = file->addAction("编辑");
-    action_2->setIcon(QIcon(":/icon/icon-24.png"));
+    // action_2->setIcon(QIcon(":/icon/icon-24.png"));
 
     //工具栏
     QToolBar *tool = new QToolBar(this); //新建工具栏并让他归附于窗口
