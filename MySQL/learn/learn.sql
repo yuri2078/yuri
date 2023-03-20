@@ -79,6 +79,7 @@ insert into miku.student (
 (5, '迪迦', '男');
 
                                 -------- select 操作 --------
+
 select database(); -- 查询当前正在哪个数据库
 select name, name from miku.name; -- 从表中选择 name 和 name
 select * from miku.student; -- 从表中选择所有数据
@@ -93,6 +94,60 @@ select distinct s.sex, n.name from miku.student s, miku.name n where sex = '女'
 -- and id not in(2) 并且 id 不是 2 的 
 -- and s.name = n.name 显示不同字段相等的数据
 -- limit 2 只查询 2 条
+
+select * 
+    from db_student.student student
+    where student.sname like '张_%';
+-- like 字符串匹配
+
+select sdept, sname, sage from db_student.student student where sage between 20 and 23 order by sdept asc;
+-- order by sex asc 通过sex 排序 asc 升序 desc 降序
+-- between 20 and 30 大于等于 20 小于等于 30 not between adn 不在
+select * from db_student.course cross join db_student.sc;
+-- cross 交叉连接 会产生 course.length x sc.lenght 个数据
+-- 也就是笛卡儿积
+
+select * from db_student.student as student inner join db_student.sc as sc on student.sno = sc.sno;
+-- 内连接 SELECT * FROM TableA INNER JOIN TableB ON TableA.name = TableB.name 产生的结果是AB的交集
+-- as 取别名
+-- student inner join sc  将 student 和 sc 进行 内连接
+-- on student.sno = sc.sno 连接条件是 他们的sno 相同
+
+select sno, course.cno, cname from db_student.sc sc left join db_student.course course on sc.cno = course.cno;
+-- 以某张表为主,取出里面的所有记录, 然后每条与另外一张表进行连接: 不管能不能匹配上条件,最终都会保留: 能匹配,正确保留; 不能匹配,其他表的字段都置空NULL.
+-- left 以左边的表为主表 如果右边匹配不上也会保留左边
+-- right 以右边的表为主表 如果左边匹配不上也会保留左边
+
+select * from db_student.student where sage = 19 union all select * from db_student.student where ssex = '男';
+-- 联合查询 将多个select 查询到的东西进行拼接
+-- union 两个选项 union all 保留所有数据 union  distinct 去除重复内容（默认选项）
+-- 联合查询只要求字段一样, 跟数据类型无关
+
+-- 查询学生的选课情况
+-- 输出学号、姓名、选修的课程门数、选修课程名称（用逗号隔开）
+-- 以学号升序排序
+
+select student.sno, student.sname, count(sc.sno), group_concat(course.cname separator ',')
+    from db_student.sc sc 
+    left join db_student.course course 
+        on sc.cno = course.cno
+    left join db_student.student student
+        on sc.sno = student.sno
+    group by sc.sno
+    order by sc.sno asc;
+    
+-- 说明：
+-- select: 查询语句
+-- student.sno, student.sname: 选择学号和姓名
+-- count(sc.sno): 统计选修的课程门数
+-- group_concat(course.cname separator ','): 选修的课程名称，用逗号隔开
+-- from: 查询的数据来源
+-- db_student.sc sc: 表示从 db_student 数据库中的 sc 表中查询数据
+-- left join: 表示左连接，将 sc、course、student 三个表连接起来
+-- on sc.cno = course.cno / on sc.sno = student.sno: 连接条件，连接课程表和选课表，连接学生表和选课表
+-- group by sc.sno: 按照学号分组，统计每个学生选修的课程数和课程名称
+-- order by sc.sno asc: 按照学号升序排序
+
 
 update miku.student set sex = '武装直升机' where name = '迪迦'; -- 如果姓名是迪迦，就将性别改成武装直升机
 

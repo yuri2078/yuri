@@ -1,0 +1,127 @@
+QDialog#login {
+	background-color: #F9F9F9;
+	border-radius: 10px;
+}
+
+QPushButton#button_close,
+QPushButton#button_min {
+	border: none;
+	background-color: transparent;
+	color: #666666;
+	font-size: 22px;
+}
+
+QPushButton#button_close:hover,
+QPushButton#button_min:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+QPushButton#button_close:pressed,
+QPushButton#button_min:pressed {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#username,
+#password {
+	border: none;
+	border-bottom: 2px solid #999999;
+	background-color: transparent;
+	font-size: 18px;
+	color: #333333;
+}
+
+#username:hover,
+#password:hover {
+	border-bottom: 2px solid #3EB1E8;
+}
+
+#username:focus,
+#password:focus {
+	border-bottom: 2px solid #5EBD3E;
+}
+
+QPushButton#button_login {
+	background-color: #5EBD3E;
+	color: #FFFFFF;
+	border-radius: 20px;
+	padding: 10px 30px;
+	border: none;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+QPushButton#button_login:hover {
+	background-color: #3EB1E8;
+}
+
+QPushButton#button_login:pressed {
+	background-color: #FFFFFF;
+	color: #5EBD3E;
+}
+
+#remember_password,
+#auto_login,
+#get_back_password {
+	border: none;
+	color: rgba(1, 11, 20, 0.808);
+	background-color: transparent;
+}
+
+QCheckBox::indicator {
+	width: 15px;
+	height: 15px;
+}
+
+QCheckBox::indicator:unchecked {
+	border: 2px solid #A9A9A9;
+	border-radius: 3px;
+}
+
+QCheckBox::indicator:unchecked:hover {
+	border: 2px solid #3EB1E8;
+}
+
+QCheckBox::indicator:checked {
+	background-color: #3EB1E8;
+	border-radius: 3px;
+	border: none;
+}
+
+QCheckBox::indicator:checked:hover {
+	background-color: #5EBD3E;
+}
+
+QCheckBox::indicator:indeterminate {
+	border: 2px solid #A9A9A9;
+	background-color: #A9A9A9;
+	border-radius: 3px;
+}
+
+QCheckBox::indicator:indeterminate:hover {
+	background-color: #3EB1E8;
+}
+
+
+
+
+QMessageBox {
+    background-color: #F5F5F5;
+    border: 2px solid #333333;
+    font-size: 14px;
+}
+
+QMessageBox QLabel {
+    color: #333333;
+}
+
+QMessageBox QPushButton {
+    background-color: #333333;
+    color: #F5F5F5;
+    padding: 5px;
+    border-radius: 3px;
+    min-width: 80px;
+}
+
+QMessageBox QPushButton:hover {
+    background-color: #666666;
+}

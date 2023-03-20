@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test7",
+            "request": "launch",
+            "mainClass": "cslg.day_4.Test7",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
             "name": "test",
             "request": "launch",
             "mainClass": "cslg.day_3.test",

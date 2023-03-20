@@ -1,0 +1,27 @@
+.rectangle {
+    width: 300px;
+    height: 120px;
+    background-color: #D9EAD3;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .rectangle:hover {
+    background-color: #A9D5E9;
+  }
+  
+  .rectangle:active {
+    background-color: #D9D9D9;
+    animation: ripple 0.8s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 0 50px rgba(255, 255, 255, 0);
+    }
+  }
+  
