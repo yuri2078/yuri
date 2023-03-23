@@ -22,7 +22,6 @@ class Test7 {
     }
 
     public static void main(String[] args) {
-        int n;
         String x, mod;
         char begin, end;
         x = in.nextLine();

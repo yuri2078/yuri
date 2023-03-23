@@ -13,19 +13,19 @@ public class 基础语法 { // 类名需要和文件名保持一致
         }
 
         for (int i = 0; i < array.length; i++) {
-            
+
         }
         System.out.print('\n');
     }
-    
+
     // 基本数据类型-关键字
     public void baseData() {
         byte a = 0; // byte：-128 ~ 127
         short b = 0; // short: -32768 ~ 32767
         int c = 0; // int: -2147483648 ~ 2147483647 --- float
         long d = 0; // -9223372036854775808 ~ 9223372036854775807 ---- double
-        boolean e = true; // bool类型   
-        String str = "yuri"; // 字符串类型 他的本质是引用，不同于c++ 
+        boolean e = true; // bool类型
+        String str = "yuri"; // 字符串类型 他的本质是引用，不同于c++
         final double PI = 3.14159; // 常量类型关键字 不可修改
         var s = new String(); // 自动类型推导 auto 运算符
         float f = (float) a; // 类型强转
@@ -54,6 +54,5 @@ public class 基础语法 { // 类名需要和文件名保持一致
         // 别的东西参考c++
 
     }
-    
 
 }

@@ -6,7 +6,7 @@ public class Test8 {
     static Scanner in = new Scanner(System.in);
 
     static String delimitedString(String x, char start, char end) {
-        int i, j, m = -1, n = -1;
+        int i, m = -1, n = -1;
         for (i = 0; i < x.length(); i++) {
             if (x.charAt(i) == start)
                 m = i;
@@ -33,7 +33,6 @@ public class Test8 {
     }
 
     public static void main(String[] args) {
-        int n;
         String x, mod;
         char begin, end;
         x = in.nextLine();
