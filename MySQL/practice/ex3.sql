@@ -12,7 +12,7 @@ select sno, sname, 2023-sage from db_student.student where sdept = '信息系';
 select sno from db_student.sc where grade < 60;
 
 /* 查询无考试成绩的学生的学号和相应的课程号。 */
-select sno, cno from db_student.sc where grade is null;
+select distinct sno, cno from db_student.sc where grade is null;
 
 /* 将学生按年龄升序排序 */
 select * from db_student.student order by sage asc;
@@ -152,12 +152,60 @@ select s.sno, s.sname
 
 /* 查询选修了全部课程的学生的学号，姓名，系名 */
 select s.sno, s.sname, s.sdept
-    from (select sc.sno, count(cno) as cno_count
+    from(select sc.sno, count(cno) as cno_count
             from db_student.sc sc
             group by sno) new, db_student.student s
     where new.sno = s.sno and 
     new.cno_count = (select count(distinct cno) from db_student.course);
 
+/* 输出“高等数学”课程成绩前三名的学生的学号，姓名，系名 */
+select * from sc;
+select * from course;
+select * from student;
+select distinct s.sno , s.sname, s.sdept
+    from db_student.student s, db_student.sc sc, db_student.course course
+    where s.sno = sc.sno and sc.cno = course.cno and course.cname = '高等数学' 
+    order by sc.grade desc
+    limit 3;
+
+create database study;
+use study;
+
+select * from employee;
+
+/* （1）查询总经理、经理以下的职员信息，包括NULL值记录 */
+select * from study.employee em 
+    where job_title not in('总经理', '经理') 
+    or job_title is null;
 
 
+select * from department;
+/* 查询“联荣资产”的客户信息。 */
+select * from customer
+    where customer_name like ("%联荣资产%");
 
+/* 查询价格5000-6000的“联想”品牌和价格在5000以下的“小米”品牌的产品信息。 */
+select * from product
+    where product_name like ('%联想%') 
+        and price between 5000 and 6000
+    or product_name like ('%小米%') and price < 5000;
+
+/* 查询如“GTX950M”/“GTX960M”系列的产品信息。 */
+select * from product
+    where description like ('%GTX950M%')
+    or description like ('%GTX960M%');
+
+/* 统计各年份订单总数，订单总额，按年份降序排列 */
+select count(order_id), sum(total_money)
+    from payment
+    group by year(pay_time)
+    order by year(pay_time) desc;
+
+/* 统计2016年各产品的订购数量（降序排列），输出5-10名的统计信息，包括产品ID，订购总数 */
+
+select customer_id, sum(created)
+    from payment
+    where year(pay_time) = 2016
+    group by customer_id
+    order by 2 desc
+    limit 5, 5;
