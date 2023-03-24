@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test3",
+            "request": "launch",
+            "mainClass": "cslg.day_5.Test3",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
             "name": "Test7",
             "request": "launch",
             "mainClass": "cslg.day_4.Test7",
@@ -80,6 +87,25 @@
             "name": "Debug",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
             "args": [],
+            "cwd": "${fileDirname}",
+            "preLaunchTask": "cppbuild"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "client",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": ["127.0.0.1", "2078"],
+            "cwd": "${fileDirname}",
+            "preLaunchTask": "cppbuild"
+        }
+        ,
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "server",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+            "args": ["2078"],
             "cwd": "${fileDirname}",
             "preLaunchTask": "cppbuild"
         }
