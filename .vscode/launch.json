@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "cslg.day_5.Main",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Ex4",
+            "request": "launch",
+            "mainClass": "cslg.day_5.Ex4",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Test4",
+            "request": "launch",
+            "mainClass": "cslg.day_5.Test4",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
             "name": "Test3",
             "request": "launch",
             "mainClass": "cslg.day_5.Test3",
@@ -95,17 +116,21 @@
             "request": "launch",
             "name": "client",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-            "args": ["127.0.0.1", "2078"],
+            "args": [
+                "127.0.0.1",
+                "2078"
+            ],
             "cwd": "${fileDirname}",
             "preLaunchTask": "cppbuild"
-        }
-        ,
+        },
         {
             "type": "lldb",
             "request": "launch",
             "name": "server",
             "program": "${fileDirname}/${fileBasenameNoExtension}.out",
-            "args": ["2078"],
+            "args": [
+                "2078"
+            ],
             "cwd": "${fileDirname}",
             "preLaunchTask": "cppbuild"
         }

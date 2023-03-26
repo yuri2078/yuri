@@ -72,6 +72,7 @@ int main(int argc, char **argv) {
       std::cout << str.str() << std::endl;
     }
     iret = recv(sockfd, buffer, sizeof(buffer), 0);
+
     if (iret > 0) {
       std::cout << "本次共接收到 -> " << iret << " 字节的数据\n" << buffer << "\n";
     } else if (iret == 0) {
@@ -79,6 +80,7 @@ int main(int argc, char **argv) {
     } else {
       error("返回字节数错误！")
     }
+    sleep(1);
   }
 
   // 第4步：关闭socket，释放资源

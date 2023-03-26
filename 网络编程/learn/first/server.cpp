@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
       error("返回字节数错误！")
     }
 
-    
+
     iret = send(clientfd, str.c_str(), str.size(), 0);
     if (iret != -1) {
       info("发送响应成功!")

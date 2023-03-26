@@ -98,7 +98,7 @@ public:
 	// 获取结点的最早和最晚开始时间
 	void GetEarliest_Latest()
 	{
-		GetTopSort(); // 先获取突破排序的结果
+		GetTopSort(); // 先获取突破排序的结果sudo pacman-key --lsign-key CB222E7EBC11D682AAC8B317A4A0D73114FDE6FC
 		cout << "\n打印结点最早和最晚开始时间 --- \n\n";
 		for (int i = 0; i < vexnum; i++) {
 			// 根据拓扑排序的结果差早结点最早开始时间
