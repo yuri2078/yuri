@@ -26,6 +26,7 @@ public class Test4 {
                 num[len++] = change(s);
             }
         }
+        
         int number[] = Arrays.copyOf(num, len);
         Arrays.sort(number);
         for (int i = 0; i < len; i++) {
