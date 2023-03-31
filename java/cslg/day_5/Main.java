@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 class Main {
     public static int countCode(String str) {
-        int i, j, count = 0;
+        int i, count = 0;
         for (i = 0; i < str.length() - 3; i++) {
             if (str.charAt(i) == 'c' && str.charAt(i + 1) == 'o' && str.charAt(i + 3) == 'e') {
                 count++;

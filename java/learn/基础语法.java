@@ -29,10 +29,10 @@ public class 基础语法 { // 类名需要和文件名保持一致
         final double PI = 3.14159; // 常量类型关键字 不可修改
         var s = new String(); // 自动类型推导 auto 运算符
         float f = (float) a; // 类型强转
-        String more_str = """
-                这是第一行 // 有个换行
-                这是第二行 // 有个换行
-                """; // 这也有个换行
+        // String more_str = """
+        //         这是第一行 // 有个换行
+        //         这是第二行 // 有个换行
+        //         """; // 这也有个换行
 
         // 打印东西，结果报错难看
         System.out.println(a);
@@ -44,7 +44,7 @@ public class 基础语法 { // 类名需要和文件名保持一致
         System.out.println(PI);
         System.out.println(s);
         System.out.println(f);
-        System.out.println(more_str);
+        // System.out.println(more_str);
 
         // 整数运算在除数为0时会报错，而浮点数运算在除数为0时，不会报错，但会返回几个特殊值
         // NaN表示Not a Number 0 / 0

@@ -6,20 +6,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Test5",
-            "request": "launch",
-            "mainClass": "cslg.day_6.Test5",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test4",
-            "request": "launch",
-            "mainClass": "cslg.day_6.Test4",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
             "name": "Test3",
             "request": "launch",
             "mainClass": "cslg.day_6.Test3",
