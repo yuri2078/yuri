@@ -70,6 +70,8 @@ insert into miku.name set
     name = '巴麻美'
 ;
 
+
+/* 直接插入 */
 insert into miku.student (
     id, name, sex
 ) values (1, '晓美焰', '女'),
@@ -77,6 +79,22 @@ insert into miku.student (
 (3, '左仓杏子', '女'),
 (4,'白月初', '男'),
 (5, '迪迦', '男');
+
+/* 从别的表插入 */
+insert into miku.student
+select sno, sname, ssex
+    from db_student.student;
+
+
+/* 使用default数据 */
+insert into miku.student (
+    id, name, sex
+) values (1, '晓美焰', '女'),
+(2, '鹿目圆', '女'),
+(3, '左仓杏子', '女'),
+(DEFAULT,'白月初', '男'),
+(5, '迪迦', '男');
+
 
                                 -------- select 操作 --------
 
@@ -149,5 +167,19 @@ select student.sno, student.sname, count(sc.sno), group_concat(course.cname sepa
 -- order by sc.sno asc: 按照学号升序排序
 
 
+/* UPDATE语句格式 */
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
 update miku.student set sex = '武装直升机' where name = '迪迦'; -- 如果姓名是迪迦，就将性别改成武装直升机
+
+
+/* UPDATE语句格式 */
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+delete from miku.name where name in(select sno from db_student.student); -- 删除所有 name 表中所有在 student中出现的数据
+
 
