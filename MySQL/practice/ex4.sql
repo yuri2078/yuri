@@ -1,6 +1,5 @@
 select * from miku.student;
-
-select * from miku.name;
+SELECT * FROM db_student.sc;
 select * from db_student.student;
 
 delete from miku.name where name in(select sno from db_student.student);
@@ -33,4 +32,47 @@ INSERT INTO db_student.course
     (cno, cname, ccredit, semster)
 VALUES ("C06", "数据结构", 5, 4);
 
-/* 在选课表SC中插入95211班学生选修C04的选课信息 */
+/* 在选课表SC中插入95211班学生选修C04的选课信息 多行数据插入，插入数据中的sno从student表中查询而来，插入的cno为“C04” */
+
+INSERT INTO db_student.sc 
+    select sno, 'C04', NULL from db_student.student where sno LIKE "95211%";
+
+/* 将所有学生的年龄增加1岁。 */
+UPDATE db_student.student 
+    set sage = sage + 1;
+
+/* 修改“9512101”的“C01”课程成绩为85 */
+
+UPDATE db_student.sc
+    set grade = 85 where sno = 9512101 and cno = 'C01';
+
+
+/* 修改“王大力”的“计算机导论”课程成绩为70。 */
+UPDATE db_student.sc
+    set grade = 70 where 
+    sno = (select sno from db_student.student where sname = '王大力') and
+    cno = (select cno from db_student.course where cname = '计算机导论');
+
+/* （4）将所有平均分为75分以上的学生的各门课成绩在原来基础上加5分。 */
+
+
+update db_student.sc 
+    set grade = grade + 5
+    where sno in (
+        select scc.sno from (
+            select sno from db_student.sc
+            group by(sno)
+            having avg(grade) >= 75
+        ) scc
+    );
+
+/* 修改“高等数学”课程倒数三名成绩，在原来分数上减5分 */
+SELECT * FROM db_student.sc;
+SELECT * FROM db_student.course;
+select * from db_student.student;
+
+select * from db_student.sc sc
+    where cno = (
+        select cno from db_student.course 
+            where cname = '高等数学'
+    );
