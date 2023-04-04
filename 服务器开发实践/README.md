@@ -304,3 +304,165 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
   pthread_attr_setdetachstate(&attr, detachstate); // 设置属性
   pthread_attr_destroy(&attr); // 使用 pthread_getattr_np 获取后需要销毁掉不用的attr
   ```
+
+## 线程的退出
+
+退出方式:
+
+1. 主动退出
+
+   1. 函数使用`pthread_exit(void *value)` 函数主动退出
+   2. 函数`return` 主动退出
+
+    ```cpp
+    void *ptread_fun(void *arg) {
+      for (int i = 1; i; i++) {
+        std::cout << "i -> " << i << "\n";
+        sleep(1);
+        if (i == 5) {
+          // 主动退出
+          pthread_exit(nullptr);
+        }
+      }
+      // 线程主动退出
+      return nullptr;
+    }
+    ```
+
+2. 被动退出
+
+   1. `pthread_kill` 向线程发送信号
+
+      + 第一个参数 `pthread_id` 线程id
+      + 第二个参数 发送的信号
+  
+        + 如果信号不存在，就直接退出线程
+        + 如果信号为0,则探测线程是否存在，存在返回-1
+        + 如果信号不为0 且，存在则在对应的函数就行处理
+
+      ```cpp
+      #include <pthread.h>
+      #include <iostream>
+      #include <sched.h>
+      #include <unistd.h>
+      #include <signal.h>
+
+      static void on_signal_term(int sig) {
+        std::cout << "信号处理函数 sig -> " << sig << "\n";
+        pthread_exit(nullptr);
+      }
+
+      void *ptread_fun(void *arg) {
+        // 注册线程
+        signal(SIGQUIT, on_signal_term);
+        for (int i = 1; i; i++) {
+          std::cout << "i -> " << i << "\n";
+          sleep(1);
+        }
+        // 线程主动退出
+        return nullptr;
+      }
+
+
+      int main() {
+
+        pthread_t *ret = new pthread_t; // 新线程id  unsigned long int
+        std::cout << "程序 开始执行\n";
+
+        // 创建线程并开始执行，默认创建的是非分离线程，也就是可连接线程
+        pthread_create(ret, nullptr, ptread_fun, nullptr);
+        sleep(5); // 先休息5s
+        int return_val = pthread_kill(*ret, 3);
+        // 让主线程等在他执行完毕
+        pthread_join(*ret, nullptr);
+        std::cout << "return_value -> " << return_val << "\n";
+        std::cout << "主线程结束!\n";
+        delete ret;
+        return 0;
+      }
+
+      ```
+
+   2. 使用`pthread_cancel`发送可以取消线程的信号
+
+        发送信号之后他不会退出线程，直到遇到 stdin stdout read wirte之类的
+        或者检测到了`pthread_testcancel`函数
+
+    ```cpp
+    void *ptread_fun(void *arg) {
+      std::cout << "子线程开始执行!\n";
+      for (int i = 1; i; i++) {
+        // std::cout << "i -> " << i << "\n";
+        sleep(1);
+        pthread_testcancel();
+      }
+      // 线程主动退出
+      return nullptr;
+    }
+
+    int main() {
+      pthread_t *ret = new pthread_t; // 新线程id  unsigned long int
+      std::cout << "程序 开始执行\n";
+
+      // 创建线程并开始执行，默认创建的是非分离线程，也就是可连接线程
+    
+      pthread_create(ret, nullptr, ptread_fun, nullptr);
+      sleep(5); // 先休息5s
+      int return_val = pthread_cancel(*ret);
+      pthread_join(*ret, nullptr);
+      
+      std::cout << "return_value -> " << return_val << "\n";
+      std::cout << "主线程结束!\n";
+      delete ret;
+      return 0;
+    }
+    ```
+
+## 线程的清理
+
+```cpp
+#include <pthread.h>
+#include <iostream>
+#include <sched.h>
+#include <unistd.h>
+
+void clean_fun(void *arg) {
+  std::cout << "线程的清理函数调用 -> " << *((int *)arg) << "\n";
+}
+
+void *ptread_fun_1(void *arg) {
+  std::cout << "线程 (1) 开始运行\n";
+  int m = 1;
+  pthread_cleanup_push(clean_fun, &m); // 两个配套使用
+  return nullptr; // 也会引发清理函数
+  pthread_cleanup_pop(0); // 0表示不清理，大于0 表示清理
+}
+
+void *ptread_fun_2(void *arg) {
+  std::cout << "线程 (2) 开始运行\n";
+  int m = 2;
+  pthread_cleanup_push(clean_fun, &m);
+  // 采用堆栈，将清理函数入栈
+  pthread_exit(nullptr); // 会引发清理函数
+  pthread_cleanup_pop(0);
+}
+
+int main() {
+
+  pthread_t *ret_1 = new pthread_t, *ret_2 = new pthread_t;
+  std::cout << "程序 开始执行\n";
+
+  // 创建线程并开始执行，默认创建的是非分离线程，也就是可连接线程
+  pthread_create(ret_1, nullptr, ptread_fun_1, nullptr);
+  pthread_create(ret_2, nullptr, ptread_fun_2, nullptr);
+
+  // 让主线程等在他执行完毕
+  pthread_join(*ret_1, nullptr);
+  pthread_join(*ret_2, nullptr);
+
+  std::cout << "主线程结束!\n";
+  delete ret_1;
+  delete ret_2;
+  return 0;
+}
+```

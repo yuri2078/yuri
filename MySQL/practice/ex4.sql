@@ -67,12 +67,43 @@ update db_student.sc
     );
 
 /* 修改“高等数学”课程倒数三名成绩，在原来分数上减5分 */
+update db_student.sc 
+    set grade = grade - 5 
+    where sno in (
+        select * from (
+            select sno from db_student.sc sc
+            where cno = (
+                select cno from db_student.course
+                    where cname = '高等数学'
+                    and grade is not null
+            )
+            order by grade limit 3
+        ) scc
+    );
+
+/* 删除“9531102”学生“C05”课程的成绩记录 */
+delete from db_student.sc 
+    where sno = '9531102' 
+    and cno = 'C05';
+
+/* 删除“张海”的所有成绩记录 */
+
+delete from db_student.sc
+    where sno = (
+        select sno from db_student.student
+            where sname = '张海'
+    );
+
+/* 删除“数据库基础”的全部记录（包括课程信息，成绩信息） */
+delete from db_student.sc;
+delete from db_student.course;
+delete from db_student.student;
+
+/* 导入rental表数据，在customer_id上建立普通索引（通过语句或表设计器均可）
+查询customer_id=367的记录，记录查询时间：
+有索引情况下的执行时间：
+无索引情况下的执行时间： */
+
 SELECT * FROM db_student.sc;
 SELECT * FROM db_student.course;
 select * from db_student.student;
-
-select * from db_student.sc sc
-    where cno = (
-        select cno from db_student.course 
-            where cname = '高等数学'
-    );
