@@ -298,7 +298,7 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
 
   ```cpp
   pthread_detach(pthread_self()); // 将本线程分离状态属性设置为 可分离属性
-
+  
   pthread_getattr_np(pthread_self(), &attr); // 获取属性
   pthread_attr_getdetachstate(&attr, &detachstate); // 获取属性
   pthread_attr_setdetachstate(&attr, detachstate); // 设置属性
@@ -335,7 +335,7 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
 
       + 第一个参数 `pthread_id` 线程id
       + 第二个参数 发送的信号
-  
+      
         + 如果信号不存在，就直接退出线程
         + 如果信号为0,则探测线程是否存在，存在返回-1
         + 如果信号不为0 且，存在则在对应的函数就行处理
@@ -346,12 +346,12 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
       #include <sched.h>
       #include <unistd.h>
       #include <signal.h>
-
+      
       static void on_signal_term(int sig) {
         std::cout << "信号处理函数 sig -> " << sig << "\n";
         pthread_exit(nullptr);
       }
-
+      
       void *ptread_fun(void *arg) {
         // 注册线程
         signal(SIGQUIT, on_signal_term);
@@ -365,10 +365,10 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
 
 
       int main() {
-
+    
         pthread_t *ret = new pthread_t; // 新线程id  unsigned long int
         std::cout << "程序 开始执行\n";
-
+    
         // 创建线程并开始执行，默认创建的是非分离线程，也就是可连接线程
         pthread_create(ret, nullptr, ptread_fun, nullptr);
         sleep(5); // 先休息5s
@@ -380,7 +380,7 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
         delete ret;
         return 0;
       }
-
+    
       ```
 
    2. 使用`pthread_cancel`发送可以取消线程的信号
@@ -399,11 +399,11 @@ int pthread_create(pthread_t *thread, const pthread_attr_t *attr,
       // 线程主动退出
       return nullptr;
     }
-
+    
     int main() {
       pthread_t *ret = new pthread_t; // 新线程id  unsigned long int
       std::cout << "程序 开始执行\n";
-
+    
       // 创建线程并开始执行，默认创建的是非分离线程，也就是可连接线程
     
       pthread_create(ret, nullptr, ptread_fun, nullptr);
@@ -466,3 +466,72 @@ int main() {
   return 0;
 }
 ```
+
+## c++ 11 多线程
+
+### thread 
+
+> 多线程类
+
+#### 默认情况:
+
+1. 默认创建的对象不传函数参数，默认不会执行
+2. 默认创建的可连接线程
+3. thread::id 线程id
+
+#### 常用函数
+
+- `void join()` 将thread 类的线程等待子线程完成后再退出
+- `void detach()` 将thread 类线程改为分离线程
+- `thread(thread &&x)` 将x 的线程移动， x的线程将不会执行
+- `this_thread::get_id()` 获取本线程的id
+- `this_thread::yield()` 让出本线程的CPU时间片(需要循环一直让出)
+- `this_thread::sleep_until` 暂停线程直到 -- 时间
+- `this_thread::sleep_for` 暂停线程多少时间
+
+
+
+### 案例
+
+### this_thread::yield
+
+```c++
+#include <pthread.h>
+#include <thread>
+#include <iostream>
+
+using std::cout;
+using std::thread;
+
+bool ready = false;
+
+void thfun(int &&val) {
+  while (!ready) {
+    std::this_thread::yield(); //让出自己的时间片
+  }
+  for (int i = 0; i < 1000000; i++) {
+    
+  }
+  cout << val << std::endl;
+}
+
+int main() {
+  cout << "主线程开始\n";
+
+  thread thread_[10];
+  for (int i = 0; i < 10; i++) {
+    thread_[i] = thread (thfun, i);
+    
+  }
+
+  ready = true;
+  for (int i = 0; i < 10; i++) {
+    thread_[i].join();
+  }
+  cout << "主线程结束执行\n";
+  return 0;
+}
+
+// thread test;  直接定义不会执行线程 默认定义的是可连接线程，需要使用join 等待结束
+```
+

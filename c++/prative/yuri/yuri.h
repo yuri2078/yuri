@@ -11,11 +11,11 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <ctime>
 
 // class MyIterator : public std::iterator<std::random_access_iterator_tag, T t>
 
 namespace yuri
+
 {
 class Yuri
 {
