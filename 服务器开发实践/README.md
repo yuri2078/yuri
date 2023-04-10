@@ -467,6 +467,157 @@ int main() {
 }
 ```
 
+## 线程同步
+
+> 多线程中经常需要多个线程访问同一个变量，但是因为是多线程运行，所以会出现争抢问题。比如第一个线程将i(0) + 1 后写入寄存器，那么寄存器中的值应该是1 ，当第二个线程这么做时他的结果理应是2,但如果他在i = 0时就读取数据那么他会将1写入寄存器，最后结果仍任是1,下面看个例子
+
+### 列子
+
+```c++
+#include <pthread.h>
+#include <iostream>
+
+int arg = 0;
+
+void *th_fun(void *) {
+  for (int i = 0; i < 100000; i++) {
+    arg++;
+  }
+
+  return nullptr;
+}
+
+void *th_fun2(void *) {
+  for (int i = 0; i < 100000; i++) {
+    arg++;
+  }
+  return nullptr;
+}
+
+int main() {
+  pthread_t th1, th2;
+  for (int i = 0; i < 10; i++) {
+    pthread_create(&th1, nullptr, th_fun, nullptr);
+    pthread_create(&th2, nullptr, th_fun2, nullptr);
+    pthread_join(th1, nullptr);
+    pthread_join(th2, nullptr);
+
+    std::cout << "arg -> " << arg << std::endl;
+    arg = 0;
+  }
+  
+  return 0;
+}
+
+// 打印结果 没有一次是正确答案200000
+/* 
+arg -> 102470
+arg -> 103754
+arg -> 140057
+arg -> 133124
+arg -> 105652
+arg -> 106397
+arg -> 126014
+arg -> 127684
+arg -> 105871
+arg -> 137969
+*/
+```
+
+### 互斥锁
+
+> 建于上面的问题我们就需要用到互斥锁了.当我们把临界资源锁起来是,别的资源是不能够进行访问的
+
+- `pthread_mutex_init(&mutex, nullptr);` 初始化互斥锁,nullptr表示采用默认属性
+
+- `mutex = PTHREAD_MUTEX_INITIALIZER;` 也可以这样初始化,但是这个只能初始化结构体不能是指针
+
+- `int pthread_mutex_trylock(pthread_mutex_t *mutex);` 尝试上锁,不会阻塞线程,获得不了就返回
+
+- `pthread_mutex_lock(&mutex);` 上锁
+
+- `pthread_mutex_destroy(&mutex);`  使用完毕后需要销毁互斥锁
+
+  ```c++
+  #include <pthread.h>
+  #include <iostream>
+  
+  pthread_mutex_t mutex;
+  int arg = 0;
+  
+  void *th_fun(void *) {
+    for (int i = 0; i < 100000; i++) {
+      pthread_mutex_lock(&mutex);
+      arg++;
+      pthread_mutex_unlock(&mutex);
+    }
+  
+    return nullptr;
+  }
+  
+  void *th_fun2(void *) {
+    for (int i = 0; i < 100000; i++) {
+      pthread_mutex_lock(&mutex);
+      arg++;
+      pthread_mutex_unlock(&mutex);
+    }
+    return nullptr;
+  }
+  
+  int main() {
+    pthread_t th1, th2;
+    pthread_mutex_init(&mutex, nullptr); // 初始化互斥锁
+    for (int i = 0; i < 10; i++) {
+      pthread_create(&th1, nullptr, th_fun, nullptr);
+      pthread_create(&th2, nullptr, th_fun2, nullptr);
+      pthread_join(th1, nullptr);
+      
+      std::cout << "arg -> " << arg << std::endl;
+      arg = 0;
+    }
+    pthread_mutex_destroy(&mutex); // 使用完毕后需要销毁互斥锁
+    return 0;
+  }
+  
+  // 这时候发现结果都是对的了
+  ```
+
+  
+
+### 读写锁
+
+> 有些时候我们只读,不写不会影响别的操作.但是如果用互斥锁会很影响客户体验,因为线程会一直阻塞.使用读写锁就可以解决这个问题.这样可以提高并发性
+
+```c++
+#include <pthread.h>
+
+int mian() {
+  pthread_rwlock_t mutex; // 新建读写锁
+  mutex = PTHREAD_RWLOCK_INITIALIZER; // 初始化读写锁
+  pthread_rwlock_init(&mutex, nullptr);
+
+  pthread_rwlock_rdlock(&mutex); // 读模式上锁 会阻塞线程
+  pthread_rwlock_tryrdlock(&mutex); // 读模式尝试上锁 不会阻塞线程
+
+  pthread_rwlock_wrlock(&mutex); // 写模式尝试上锁 会阻塞线程
+  pthread_rwlock_trywrlock(&mutex); // 写模式尝试上锁 不会阻塞线程
+
+  // 如果读模式上锁 如果锁在别的读模式上,可以直接读取. 如果在写模式上或者将要到写模式上他就会阻塞
+
+  pthread_rwlock_destroy(&mutex); 
+  
+  return 0;
+}
+```
+
+
+
+## 条件变量
+
+> 线程A 需要某个条件才能继续执行 ,在线程B中达成这个条件后就会唤醒线程A 这就是条件变量
+
+
+
 ## c++ 11 多线程
 
 ### thread 

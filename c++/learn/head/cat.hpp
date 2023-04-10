@@ -5,9 +5,6 @@
 //但是这里因为 模板函数只有在调用的时候才会调用，链接的时候会发生问题
 //我们把类模板 的外部文件 的 定义和声明写到一起，后缀名为hpp head + cpp
 
-
-
-
 template <class typeName, class typeAge>
 class Animal
 {
