@@ -107,3 +107,8 @@ delete from db_student.student;
 SELECT * FROM db_student.sc;
 SELECT * FROM db_student.course;
 select * from db_student.student;
+
+
+select * from sc order by cno;
+
+delete from student where sname = 'test';

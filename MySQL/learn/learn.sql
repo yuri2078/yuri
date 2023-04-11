@@ -166,6 +166,19 @@ select student.sno, student.sname, count(sc.sno), group_concat(course.cname sepa
 -- group by sc.sno: 按照学号分组，统计每个学生选修的课程数和课程名称
 -- order by sc.sno asc: 按照学号升序排序
 
+/* EXISTS 常 */
+SELECT 字段 FROM table WHERE EXISTS (subquery); 
+-- subquery是一个受限的SELECT语句（不允许有COMPUTE子句和INTO关键字）
+
+/* 示例： */
+
+SELECT * FROM A WHERE EXISTS (SELECT 1 FROM B WHERE B.id = A.id); 
+/* EXISTS执行顺序： */
+
+-- 1、首先执行一次外部查询，并缓存结果集，如 SELECT * FROM A
+-- 2、遍历外部查询结果集的每一行记录R，代入子查询中作为条件进行查询，如 SELECT 1 FROM B WHERE B.id = A.id
+-- 3、如果子查询有返回结果，则EXISTS子句返回TRUE，这一行R可作为外部查询的结果行，否则不能作为结果
+
 
 /* UPDATE语句格式 */
 

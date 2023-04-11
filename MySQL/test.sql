@@ -40,9 +40,13 @@ select s.sno, sname
 
 /* 5.查询所有人都选修了的课程号与课程名 */
 
-select * from db_student.sc sc
-    where cno exists (select cno from db_student.course);
 
-    select cno from course 
-    where NOT EXISTS(select *from student 
-    where NOT EXISTS(select *from sc B where B.sno = student.sno and course.cno = B.cno))
+select * from course
+    where not exists (
+        select * from student 
+            where not exists (
+                select * from sc
+                    where student.sno = sc.sno
+                        and sc.cno = course.cno
+            )
+    );
