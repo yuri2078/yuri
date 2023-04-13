@@ -18,8 +18,7 @@ void getNowTime() {
 void thfun(int &val) {
   cout << "子线程开始执行 -> ";
   cout << val << std::endl;
-  std::time_t time =
-  std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  std::time_t time = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
   std::tm *tm = std::localtime(&time);
   tm->tm_min++;
   tm->tm_sec = 0;
@@ -30,7 +29,7 @@ void thfun(int &val) {
 void thfun_(std::string &&val) {
   cout << "子线程开始执行 -> ";
   //   休息指定秒数
-  std::this_thread::sleep_for(std::chrono::seconds(1)); 
+  std::this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 int main() {

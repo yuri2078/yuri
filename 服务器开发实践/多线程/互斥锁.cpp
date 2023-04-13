@@ -31,7 +31,7 @@ int main() {
     pthread_create(&th2, nullptr, th_fun2, nullptr);
     pthread_join(th1, nullptr);
     pthread_join(th2, nullptr);
-    
+
     std::cout << "arg -> " << arg << std::endl;
     arg = 0;
   }

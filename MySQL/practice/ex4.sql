@@ -112,3 +112,6 @@ select * from db_student.student;
 select * from sc order by cno;
 
 delete from student where sname = 'test';
+
+SELECT employee_id,employee_name,office_id FROM employee
+WHERE office_id <> 1001 and office_id <> 1002;
