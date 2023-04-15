@@ -22,6 +22,7 @@ public:
     Fish()
     {
         this->cout = 0;
+        std::cout << "构造函数!\n";
     }
 
     void operator() (void)
@@ -30,8 +31,7 @@ public:
         this->cout++;
     }
 
-    int GetCout(void)
-    {
+    int GetCout(void) {
         return this->cout;
     }
 };

@@ -288,3 +288,277 @@ int main(int argc, char const *argv[])
 ### std::move()
 
 将类型转换为左值，默认调用移动构造函数.
+
+### std::packaged_task
+
+> `std::packaged_task` 是 C++ 中的一个异步任务工具，用于异步执行函数或函数对象，并返回一个可以获取异步结果的 `std::future` 对象
+
+#### 创建 packaged_task 对象
+
+`std::packaged_task` 对象是通过传入一个函数对象或一个函数指针来创建的。
+
+```cpp
+std::packaged_task<int(int, int)> task(&add_numbers);
+```
+
+以上代码创建了一个名为 `task` 的 `std::packaged_task` 对象，并将其初始化为调用函数 `add_numbers` 的任务。该任务接受两个整数参数，并返回一个整数结果。
+
+#### 获取 future
+
+要获取与 `std::packaged_task` 对象关联的 `std::future` 对象，可以调用 `get_future()` 方法。
+
+```cpp
+std::future<int> result = task.get_future();
+```
+
+调用 `get_future()` 方法将创建一个 `std::future` 对象，该对象与 `std::packaged_task` 关联，并可用于在异步任务完成后获取结果。
+
+#### 异步执行 packaged_task
+
+要执行 `std::packaged_task` 对象中的任务，可以使用一个线程或一个执行者将其转换为异步任务。
+
+```cpp
+std::thread t(std::move(task), 1, 2);
+t.join();
+```
+
+首先创建一个新线程，并在该线程中执行任务，然后使用 `join()` 方法等待该线程完成。
+
+#### 取得异步执行结果
+
+要获取异步执行的结果，可以使用 `std::future` 对象的 `get()` 方法。
+
+```cpp
+int result_value = result.get();
+```
+
+调用 `get()` 方法将阻塞当前线程，直到异步任务完成并返回结果。结果返回后，将其存储在 `result_value` 变量中。
+
+#### 异常处理
+
+在使用 `std::packaged_task` 时，可能会抛出异常，需要进行异常处理。可以在异步任务中使用 `try...catch` 来捕获异常，并在 `std::promise` 对象上设置异常信息。
+
+```cpp
+void divide_numbers(int numerator, int denominator, std::promise<double> p) {
+    try {
+        if (denominator == 0) {
+            throw std::runtime_error("Division by zero exception");
+        }
+        double result = static_cast<double>(numerator) / denominator;
+        p.set_value(result);
+    } catch (...) {
+        p.set_exception(std::current_exception());
+    }
+}
+
+int main() {
+    std::packaged_task<double(int, int)> task(divide_numbers);
+    std::future<double> result = task.get_future();
+
+    std::thread t(std::move(task), 10, 0);
+
+    t.join();
+
+    try {
+        double result_value = result.get();
+        std::cout << "Result: " << result_value << std::endl;
+    } catch (std::exception& e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+```
+
+在这个例子中，`divide_numbers` 函数用于执行除法操作，如果除数为零，则抛出异常。`std::promise` 对象用于存储异步任务的结果，如果任务执行成功，则调用 `set_value` 方法，否则调用 `set_exception` 方法存储异常信息。在主函数中，调用 `result.get()` 方法时，如果存在异常，则会将异常传播到该线程，需要使用 `try...catch` 块来捕获它们。
+
+### std::bind
+
+> `std::bind` 是 C++11 中的一个函数对象适配器，常用于将一个可调用对象的某些参数进行绑定，生成一个新的可调用对象。以下是 `std::bind` 的详细用法：
+
+#### 静态绑定函数
+
+对于一个静态成员函数或一个全局函数，可以用以下语法来创建 `std::bind` 对象：
+
+```cpp
+void print_name(const std::string& name, int age) {
+    std::cout << "Name: " << name << ", Age: " << age << std::endl;
+}
+
+int main() {
+    auto f = std::bind(&print_name, "Alice", std::placeholders::_1);
+    f(30);  // 输出：Name: Alice, Age: 30
+}
+```
+
+`std::bind` 通过传递函数的指针和绑定参数列表（其中第一个参数是函数指针所属的对象，对于静态成员函数和全局函数，可以传递任意值或省略该参数）来创建一个函数对象 `f`。在这个例子中，`print_name()` 是一个全局函数，`"Alice"` 是一个静态绑定参数（固定值），而使用 `std::placeholders::_1` 表示将其余的参数占位符化，以便在调用 `f()` 时动态绑定。
+
+#### 绑定成员函数
+
+对于非静态的成员函数，需要绑定该函数所属的对象，再绑定函数的参数。例如：
+
+```cpp
+class Person {
+public:
+    void print_age(int age) {
+        std::cout << "Age: " << age << std::endl;
+    }
+};
+
+int main() {
+    Person p;
+    auto f = std::bind(&Person::print_age, &p, std::placeholders::_1);
+    f(30);  // 输出：Age: 30
+}
+```
+
+在这个例子中，`f()` 是一个可调用的对象，它绑定了成员函数 `&Person::print_age` 和对象 `&p`，并使用 `_1` 占位符表示该函数的参数。
+
+#### 绑定并复制参数
+
+`std::bind` 可以将可调用对象的某些参数绑定，并将其余参数原样传递。例如：
+
+```cpp
+void print_info(const std::string& name, int age, double weight) {
+    std::cout << "Name: " << name << ", Age: " << age << ", Weight: " << weight << std::endl;
+}
+
+int main() {
+    auto f = std::bind(print_info, std::placeholders::_2, 25, std::placeholders::_1);
+    f(50.0, "Alice");  // 输出：Name: Alice, Age: 25, Weight: 50
+}
+```
+
+在这个例子中，调用 `f()` 时传递两个参数，`std::placeholders::_2` 代表 `print_info()` 的第一个参数， `std::placeholders::_1` 代表 `print_info()` 的第三个参数，`25` 是一个静态绑定的参数。
+
+#### 用于函数组合
+
+`std::bind` 还可以用于函数组合，将多个函数组合成一个新的函数对象，例如：
+
+```cpp
+double square(double x) {
+    return x * x;
+}
+
+double increment(double x) {
+    return x + 1.0;
+}
+
+int main() {
+    auto f = std::bind(square, std::bind(increment, std::placeholders::_1));
+    std::cout << f(2.0) << std::endl;  // 输出：9
+}
+```
+
+在这个例子中，`f()` 是一个组合函数，其中 `std::bind(square, std::bind(increment, std::placeholders::_1))` 将先调用 `std::bind(increment, std::placeholders::_1)`，然后将其结果传递给 `square()` 函数进行计算。
+
+总之，std::bind 同样适用于 lambda 表达式，可以用来实现在调用时指定一些参数的效果，从而实现更加灵活的编程。
+
+### std::future
+
+> `std::future` 是 C++11 中的一个异步任务工具，用于管理异步任务，等待异步任务的完成并获取其结果。以下是 `std::future` 的详细用法：
+
+#### 创建 future 对象
+
+要创建 `std::future` 对象，需要先使用一个 `std::promise` 对象来设置异步任务的结果。例如：
+
+```cpp
+void divide_numbers(int numerator, int denominator, std::promise<double> p) {
+    if (denominator == 0) {
+        p.set_exception(std::make_exception_ptr(std::runtime_error("Division by zero exception")));
+    } else {
+        p.set_value(static_cast<double>(numerator) / denominator);
+    }
+}
+
+int main() {
+    std::promise<double> p;
+    std::future<double> f = p.get_future();
+
+    std::thread t(divide_numbers, 10, 2, std::move(p));
+
+    t.join();
+
+    double result = f.get();
+    std::cout << "Result: " << result << std::endl;
+}
+```
+
+在这个例子中，首先创建一个 `std::promise` 对象 `p`，并使用 `get_future()` 方法创建与其关联的 `std::future` 对象 `f`。然后创建一个新线程 `t`，并将异步任务函数 `divide_numbers()` 和 `std::move()` 等作为参数传递给该线程。线程执行并等待异步任务完成后，调用 `get()` 方法获取异步任务的结果，该方法将阻塞当前线程，直到异步任务完成并返回结果。
+
+#### 等待异步任务完成
+
+要等待异步任务完成，可以使用 `std::future` 对象的 `wait()` 方法或 `wait_for()` 和 `wait_until()` 方法。如果异步任务已经完成，则这些函数将立即返回，否则将阻塞当前线程。
+
+```cpp
+std::future<int> f = std::async([]() {
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    return 42;
+});
+
+// 等待异步任务完成（使用 wait 函数）
+if (f.valid()) {
+    std::cout << "Waiting..." << std::endl;
+    f.wait();
+    std::cout << "Done." << std::endl;
+}
+
+// 等待异步任务完成（使用 wait_for 函数）
+if (f.valid()) {
+    auto status = f.wait_for(std::chrono::seconds(5));
+    if (status == std::future_status::ready) {
+        std::cout << "Result: " << f.get() << std::endl;
+    } else if (status == std::future_status::timeout) {
+        std::cout << "Timeout." << std::endl;
+    } else if (status == std::future_status::deferred) {
+        std::cout << "Deferred." << std::endl;
+    }
+}
+
+// 等待异步任务完成（使用 wait_until 函数）
+if (f.valid()) {
+    auto deadline = std::chrono::steady_clock::now() + std::chrono::seconds(5);
+    auto status = f.wait_until(deadline);
+    if (status == std::future_status::ready) {
+        std::cout << "Result: " << f.get() << std::endl;
+    } else if (status == std::future_status::timeout) {
+        std::cout << "Timeout." << std::endl;
+    } else if (status == std::future_status::deferred) {
+        std::cout << "Deferred." << std::endl;
+    }
+}
+```
+
+在这个例子中，使用 `std::async()` 函数创建一个异步任务，该任务等待 3 秒钟并返回 42。使用 `f.wait()` 方法等待异步任务完成，或使用 `f.wait_for()` 和 `f.wait_until()` 方法等待一段时间后检查异步任务的状态。
+
+#### 异常处理
+
+如果异步任务中抛出了异常，则可以使用 `std::future` 对象的 `get()` 方法捕捉异常。
+
+```cpp
+void die() {
+    throw std::runtime_error("I'm dead.");
+}
+
+int main() {
+    std::future<void> f = std::async(die);
+
+    try {
+        f.get();
+    } catch (std::exception& e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+}
+```
+
+在这个例子中，异步任务调用 `die()` 函数，并抛出一个异常。在主函数中，调用 `f.get()` 方法捕获异常并在屏幕上输出错误消息。
+
+#### 其他操作
+
+除了上述操作，`std::future` 还支持以下其他操作：
+
+- `valid()`：判断 `std::future` 对象是否可用。
+- `share()`：创建一个共享 `std::future` 对象，多个线程可以共享同一对象的状态。
+- `get_exception_ptr()`：获取异步任务抛出的异常指针，如果异步任务未抛出异常，则返回空指针。
+
+需要注意的是，`std::future` 对象只能获取异步任务的结果一次，如果需要多次获取结果，则可以使用 `std::shared_future` 对象。
