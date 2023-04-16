@@ -59,10 +59,11 @@
         // "--log=verbose", // 让 Clangd 生成更详细的日志
         "--pch-storage=memory", // pch 优化的位置(Memory 或 Disk,前者会增加内存开销，但会提升性能)
         "--pretty", // 输出的 JSON 文件更美观
-        "--ranking-model=decision_forest", // 建议的排序方案：hueristics (启发式), decision_forest (决策树)
+        "--ranking-model=decision_forest" // 建议的排序方案：hueristics (启发式), decision_forest (决策树)
         // "-j=12" // 同时开启的任务数量
     ],
     "commentTranslate.source": "Google",
     "sqltools.connections": [], // 默认翻译设置
     "terminal.integrated.cursorStyle": "underline",// 设置终端下弧线类型
+    "C_Cpp.default.intelliSenseMode": "clang-x64"
 }

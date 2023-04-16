@@ -98,3 +98,14 @@ select name, class from card
     where cno in (select cno from borrow 
         where bno = (select bno from book where bname = '水浒')
     );
+
+SELECT student.sno,sname FROM student,sc
+WHERE student.sno=sc.sno
+GROUP BY sno
+HAVING count(*)=(
+  SELECT count(*) FROM sc
+	GROUP BY sno
+	ORDER BY count(*) DESC
+	LIMIT 1
+);
+

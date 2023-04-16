@@ -1,39 +1,26 @@
-#include <atomic>
-#include <chrono>
+#include <functional>
+#include <future>
 #include <iostream>
-#include <thread>
+#include <utility>
 
-class MyThread {
-public:
-  MyThread() : is_close_(false) {
-    thread_ = std::thread(&MyThread::Task, this);
-  }
+int func(int &x) {
+  std::cout << "左值函数!\n";
+  return x;
+}
+class Pter{};
 
-  ~MyThread() {
-    is_close_ = true;
-    if (thread_.joinable()) {
-      thread_.join();
-    }
-  }
+template <typename Fun, typename... Args>
+std::future<int> addTask(Fun &&fun, Args &&...args) {
+  std::function<int()> new_fun = std::bind(std::forward<Fun>(fun), std::forward<Args>(args)...);
+  std::packaged_task<int()> func(new_fun);
+  func();
 
-private:
-  std::thread thread_;
-  std::atomic<bool> is_close_;
-
-  void Task() {
-    while (!is_close_) {
-      std::cout << "Thread is running!\n";
-    //   std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-    std::cout << "Thread is stopped!\n";
-  }
-};
+  return func.get_future();
+}
 
 int main() {
-  {
-    MyThread thread;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-  }
-  std::cout << "Main thread is done!\n";
+  int x = 666;
+  auto re = addTask(func, x);
+  // std::cout << "return -> " << re.get() <<  std::endl;
   return 0;
 }
