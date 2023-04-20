@@ -13,10 +13,9 @@
 ## 目录介绍
 
 1. `.vscode` 存放vscode 配置文件夹
-2. `MyTinyStl` 存放开源项目[MyTinySTL](https://github.com/Alinshans/MyTinySTL)
-3. 对应语言文件夹
+2. 对应语言文件夹
    1. `learn` 存放学习该语言的代码文件
    2. `practise` 该语言练习文件
-4. 数据结构和算法
+3. 数据结构和算法
 ### Hi there 👋
 

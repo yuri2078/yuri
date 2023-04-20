@@ -45,6 +45,22 @@ git clone https://github.com/JM-Enthusiast/latte-indicator-win11.git
 kpackagetool5 -i . -t Latte/Indicator
 ```
 
+## zsh
+
+1. ```sh
+   sudo pacman -S zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+   chsh -l # 查看安装了哪些 Shell
+   chsh -s /usr/bin/zsh # 修改当前账户的默认 Shell
+   
+   curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+   vim ~/.zshrc
+   zmodule romkatv/powerlevel10k
+   zimfw install
+   sudo pacman -S ttf-jetbrains-mono-nerd
+   ```
+
+   
+
 ## 各种控件存储目录
 
 > 所有用户(root) `/usr/share/*` 当前用户 `~/.local/share/*`

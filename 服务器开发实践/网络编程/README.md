@@ -77,6 +77,57 @@ inet_ntoa()函数用于将一个存储在struct in_addr类型的变量中的IPv4
 
 如果inet_ntoa()函数执行成功，返回一个指向转换后的点分十进制字符串的指针，否则返回NULL。
 
+### inet_pton
+
+> 函数是在网络编程中常用的函数之一，它用于将一个点分十进制的 IP 地址字符串转换成一个二进制 IPv4 或 IPv6 地址。该函数的原型如下：
+
+```c
+#include <arpa/inet.h>
+int inet_pton(int af, const char *src, void *dst);
+```
+
+其中，`af` 表示地址族，只能取值 `AF_INET` 或 `AF_INET6`，分别表示 IPv4 和 IPv6；`src` 是表示点分十进制地址的字符串指针；`dst` 是用于存储转换后二进制地址的指针，其类型为 `void *`，实际上可能是 `struct in_addr *` 或 `struct in6_addr *`。
+
+函数返回值为 `1` 表示转换成功，返回值为 `0` 表示地址格式无效，返回值为 `-1` 表示出错。
+
+使用示例如下：
+
+```c
+#include <arpa/inet.h>
+#include <stdio.h>
+#include <netinet/in.h>
+
+int main() {
+  const char* ip_str = "192.168.0.1";
+  struct in_addr ip4;
+  if (inet_pton(AF_INET, ip_str, &ip4) <= 0) {
+    printf("Invalid IP address\n");
+    return 1;
+  }
+  printf("IPv4 address: 0x%x\n", ip4.s_addr);
+
+  const char* ip6_str = "2001:0DB8:AC10:FE01:0000:0000:0000:0000";
+  struct in6_addr ip6;
+  if (inet_pton(AF_INET6, ip6_str, &ip6) <= 0) {
+    printf("Invalid IP address\n");
+    return 1;
+  }
+  printf("IPv6 address: ");
+  for (int i = 0; i < 16; i++) {
+    printf("%02x", ip6.s6_addr[i]);
+    if (i % 2 == 1 && i < 15) {
+      printf(":");
+    }
+  }
+  printf("\n");
+  return 0;
+}
+```
+
+上述代码中，首先定义一个表示 IPv4 地址的字符串 `ip_str` 和一个表示 IPv6 地址的字符串 `ip6_str`。然后，定义了两个用于存储转换后地址的结构体 `ip4` 和 `ip6`。接着，调用 `inet_pton()` 函数将两个字符串分别转换成二进制的 IPv4 和 IPv6 地址。如果转换失败，则输出错误信息；否则，输出转换后的 IPv4 和 IPv6 地址。
+
+可以看到，在转换 IPv6 地址时，需要使用循环结构遍历 `ip6` 结构体中的 16 个字节，并以 `:` 分割每 2 个字节。
+
 ### recv
 
 > 函数原型 `ssize_t recv(int fd, void *buf, size_t n, int flags);`
@@ -149,11 +200,94 @@ ethostbyname()函数是一个用于获取主机信息的函数，它的参数是
 
 函数描述： connect函数用于在TCP/IP网络中建立与远程服务器的连接。在客户端执行这个函数之前，需要先创建一个套接字文件描述符，用于发送请求和接收服务器的响应
 
-## 常用数据
+## 常用数据结构
 
-### struct sockaddr_in
+### 字节序
+
+> 字节顺序（Byte Order）也叫 Endianness，是用来表示一个多字节数据类型（比如整数）在内存中存储的顺序方式。在计算机发展的早期，由于不同的计算机采用的处理器架构不同，处理器的字节序也存在差异，因此，数据存储时需要遵循特定的字节序。
+
+目前，通用的字节序有两种：
+
+- 大端字节序（Big-Endian）：低地址存放高位字节，高地址存放低位字节。
+- 小端字节序（Little-Endian）：低地址存放低位字节，高地址存放高位字节。
+
+例如，对于一个 2 字节的整数 0x1234，按照大端字节序存储的话，在内存中是这样的：
+
+```sh
+0x1000: 12　　高地址
+0x1001: 34　　低地址
+```
+
+而按照小端字节序存储的话，在内存中则是这样的：
+
+```sh
+0x1000: 34　　低地址
+0x1001: 12　　高地址
+```
+
+在网络编程中，由于不同计算机的字节序可能不同，可能会对数据的传输和解释产生误解。为了解决这个问题，网络通信中一般采用大端字节序（也称为网络字节序）来传输数据，以确保不同主机之间的数据传输正确性。网络字节序采用大端字节序，在数据传输过程中，发送方将数据转换为网络字节序（使用 `htons()` 函数），接收方在接收数据之后再将其转换为本地主机字节序（使用 `ntohs()` 函数）
+
+### sockaddr
+
+> sockaddr 是一个通用的套接字地址结构体，用于表示各种网络协议的地址信息，其定义如下：
+
+```c
+struct sockaddr
+{
+  __SOCKADDR_COMMON (sa_);	// 地址簇
+  char sa_data[14];		// 实际地址	
+};
+```
+
+该结构体中的 `sa_family` 成员指定了地址族类型，常用的地址族包括：
+
+- `AF_INET`：IPv4 地址族
+- `AF_INET6`：IPv6 地址族
+- `AF_LOCAL`：本地通信地址族
+- `AF_PACKET`：底层协议（比如以太网）地址族
+
+不同的地址族需要使用不同的数据类型存储真实的地址信息，因此在 `sockaddr` 结构体中，使用 `sa_data` 数组存储实际的地址信息。实际上，`sa_data` 数组的大小为 14 字节，但不同的地址族只会使用其中一部分，其具体使用情况如下：
+
+| 地址族    | 实际的地址信息                     |
+| --------- | ---------------------------------- |
+| AF_INET   | 2 字节端口号 + 4 字节 IP 地址      |
+| AF_INET6  | 2 字节端口号 + 16 字节 IP 地址     |
+| AF_LOCAL  | 最多 108 字节的路径名              |
+| AF_PACKET | 14 字节以太网地址 + 4 字节协议类型 |
+
+IPv6 地址需要使用大端序（网络字节序）存储，而 IPv4 地址需要使用小端序存储 
+
+当然，在实际使用中，为了方便，我们一般会使用更具体的地址结构体，如 `struct sockaddr_in`（IPv4）和 `struct sockaddr_in6`（IPv6），它们继承了 `struct sockaddr` 的全部成员，同时还定义了额外的成员，用于存储更具体的地址信息。
+
+### sockaddr_in
 
 > 是一个IPv4套接字地址结构体，其中包含了网络通信中的必要信息，例如IP地址、端口号等。
+>
+> 使用小端序就行存储
+
+```c++
+struct sockaddr_in
+{
+  __SOCKADDR_COMMON (sin_); // 地址族
+  in_port_t sin_port;			// 端口号
+  struct in_addr sin_addr;		// 网络地址
+
+  /* 为了和sockaddr 对齐,用于填充的0'.  */
+  unsigned char sin_zero[sizeof (struct sockaddr) // 通用套接字大小
+                         - __SOCKADDR_COMMON_SIZE // 地址族大小
+                         - sizeof (in_port_t) // 端口号大小
+                         - sizeof (struct in_addr)]; // 网络地址大小
+};
+
+// 存储网络地址
+typedef uint32_t in_addr_t;
+struct in_addr
+{
+  in_addr_t s_addr;
+};
+```
+
+
 
 1. `sin_family`：表示地址族，通常为AF_INET。
 2. `sin_port`：表示端口号，以网络字节序（Big-Endian）存储。
