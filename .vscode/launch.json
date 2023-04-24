@@ -5,6 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Test3",
+            "request": "launch",
+            "mainClass": "cslg.day_9.Test3",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Test2",
+            "request": "launch",
+            "mainClass": "cslg.day_9.Test2",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
+            "type": "java",
+            "name": "Test1",
+            "request": "launch",
+            "mainClass": "cslg.day_9.Test1",
+            "projectName": "yuri_5d503d4e"
+        },
+        {
             "type": "lldb",
             "request": "launch",
             "name": "Debug",

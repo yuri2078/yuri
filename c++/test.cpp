@@ -1,11 +1,9 @@
-#include <iostream>
+#include <ros/init.h>
+#include <ros/node_handle.h>
+#include <ros/ros.h>
 
-int main() {
-  int *p = nullptr, b = 1;
-  
-  for (int i = 0; i < 10; i++) {
-    std::cout << i << " ";
-  }
-  std::cout << "\n";
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "hello");
+  ros::NodeHandle n; // 
   return 0;
 }
