@@ -77,6 +77,12 @@ inet_ntoa()函数用于将一个存储在struct in_addr类型的变量中的IPv4
 
 如果inet_ntoa()函数执行成功，返回一个指向转换后的点分十进制字符串的指针，否则返回NULL。
 
+### inet_addr
+
+> 函数原型 `inet_addr(const char* cp)`
+
+将一串ip地址字符串转换为 `struct in_addr`
+
 ### inet_pton
 
 > 函数是在网络编程中常用的函数之一，它用于将一个点分十进制的 IP 地址字符串转换成一个二进制 IPv4 或 IPv6 地址。该函数的原型如下：
@@ -183,6 +189,30 @@ ssize_t send(int sockfd, const void *buf, size_t len, int flags);
 ethostbyname()函数是一个用于获取主机信息的函数，它的参数是主机名字符串，返回值是一个指向hostent结构体的指针，其中包含了主机相关的各种信息，如IP地址、别名等.
 
 函数返回hostent结构体指针，供后续操作使用，例如获取主机的IP地址。
+
+### getsockname
+
+> `getsockname` 函数可以用于获取一个已绑定到本地地址的套接字的本地协议地址，它的原型为：
+
+```c
+int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+
+- `sockfd`：要获取本地协议地址的套接字的描述符；
+- `addr`：指向存放返回的本地协议地址的结构体的指针；
+- `addrlen`：指向 `sockaddr` 结构体的长度，同时也会更新为实际地址结构体的长度
+
+### getpeername
+
+> `getpeername` 函数可以用于获取一个已连接套接字的远程主机的地址和端口号，它的原型为：
+
+```c
+int getpeername(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+
+- `sockfd`：要获取远程主机地址和端口号的已连接套接字的描述符；
+- `addr`：指向存放返回的远程主机地址的结构体的指针；
+- `addrlen`：指向 `sockaddr` 结构体的长度，同时也会更新为实际地址结构体的长度。
 
 ### connect
 

@@ -4,16 +4,8 @@
 #include <string.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
-#include <iostream>
-#include <string>
 #include <unistd.h>
-
-
-#define error(str) \
-    std::cout << "\e[31merror! -> " << str << "\e[0m\n";
-
-#define info(str) \
-    std::cout << "info -> " << str << "\n";
+#include <yuri.h>
     
 int main(int argc, char **argv) {
   if (argc != 3) {
