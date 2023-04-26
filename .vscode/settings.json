@@ -64,6 +64,13 @@
     ],
     "commentTranslate.source": "Google",
     "sqltools.connections": [], // 默认翻译设置
-    "terminal.integrated.cursorStyle": "underline",// 设置终端下弧线类型
-    "C_Cpp.default.intelliSenseMode": "clang-x64"
+    "terminal.integrated.cursorStyle": "underline", // 设置终端下弧线类型
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/noetic/lib/python3.10/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/opt/ros/noetic/lib/python3.10/site-packages"
+    ],
+    "ros.distro": "noetic"
 }
