@@ -130,3 +130,59 @@ select sdept, sno, sname, ssex from student
     order by sdept, sno;
 
 /* 18. 查询所有人都选修了的课程号与课程名 */
+select cno, cname from course
+    where cno in (
+        select cno from sc 
+        group by cno
+        having  count(*) = (
+            select count(*) from course
+        )
+    );
+/* #查询每个学生高于他自己选修平均分的那门课程的成绩，输出学号，课程号，课程成绩，他所有课程的平均分(取整)，并按学号升序排列 */
+
+select sc.sno, sc.cno, grade, avg_grade from sc 
+    left join (select sno, round(avg(grade)) avg_grade 
+                    from sc group by sno
+    ) scc
+    on sc.sno = scc.sno
+    where grade > avg_grade
+    order by sno;
+
+/* 统计各门课程的重修人数（包括grade为NULL），要求输出课程代号，课程名及重修人数。 */
+select course.cno, cname, coalesce(num,0) from course
+    left join (
+        select cno, count(*) num from sc
+            where grade < 60 or grade is null
+            group by cno
+    )scc 
+    on scc.cno = course.cno;
+
+/* 查询输出平均成绩在2-5名的学生，输出学号、姓名和平均成绩（取整），平均成绩降序。【不用考虑空值】 */
+select sc.sno, sname, round(avg(grade)) from sc
+    left join student
+    on sc.sno = student.sno
+    group by(sno)
+    having avg(grade) is not null
+    order by(3) desc
+    limit 1, 4;
+
+/* 查询超过该课程平均分的成绩信息，输出学号，课程号及成绩。 */
+
+select sno, cno, grade from sc
+    where grade > (
+        select avg(grade) from sc scc
+            where scc.cno = sc.cno
+            group by(cno)
+    );
+
+/* 查询选修平均分为60分(包括60分)以上的学生的各门课成绩，要求输出学号，姓名，课程名和成绩，并按学号升序排序 */
+select sc.sno, sname, cno, grade from sc
+    left join student on sc.sno = student.sno
+    where exists(
+        select * from sc scc
+            where scc.grade is not null
+            group by(scc.sno)
+            having scc.sno = sc.sno and avg(grade) >= 60
+    )order by sc.sno;
+
+select sno,avg(grade) from sc group by(sno);

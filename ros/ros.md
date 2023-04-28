@@ -267,5 +267,30 @@ target_link_libraries(${PROJECT_NAME}_node
 
 
 
+## 常用指令
+
+### roscore
+
+> 启动一个ros运行空间
+
+### rosrun
+
+> 运行ros包
+
+执行 yuri 包下的talker_node 节点
+
+```bash
+rosrun yuri talker_node
+```
+
+### rosnode
+
+> 可以查看ros节点相关信息
+
+1. `rosnode list` 查看正在运行的节点
+2. `rosnode info /rosout` 查看运行节点的相关信息
+
+
+
 ## 话题
 

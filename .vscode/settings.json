@@ -72,5 +72,6 @@
     "python.analysis.extraPaths": [
         "/opt/ros/noetic/lib/python3.10/site-packages"
     ],
-    "ros.distro": "noetic"
+    "ros.distro": "noetic",
+    "cmake.sourceDirectory": "/home/yuri/yuri/ros/package/src/yuri"
 }
