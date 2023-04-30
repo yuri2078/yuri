@@ -5,23 +5,24 @@ project(package)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
+  message_generation
 )
 
 
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  hello.msg
+)
 
 
-
+#generate_messages必须在catkin_package前面
+generate_messages(
+ DEPENDENCIES
+)
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES package
-#  CATKIN_DEPENDS roscpp std_msgs
-#  DEPENDS system_lib
+
+  CATKIN_DEPENDS message_runtime
 )
 
 
@@ -49,5 +50,16 @@ target_link_libraries(reader_node
 
 add_executable(talker_node src/talker_node.cpp)
 target_link_libraries(talker_node
+  ${catkin_LIBRARIES}
+)
+
+
+add_executable(msg_test_reader src/msg_test/reader.cpp)
+target_link_libraries(msg_test_reader
+  ${catkin_LIBRARIES}
+)
+
+add_executable(msg_test_talker src/msg_test/talker.cpp)
+target_link_libraries(msg_test_talker
   ${catkin_LIBRARIES}
 )

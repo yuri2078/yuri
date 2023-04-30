@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="package" type="msg_test_talker" name="msg_tes_talker" output="screen"/>
+    <node pkg="package" type="msg_test_reader" name="msg_tes_reader" output="screen"/>
+</launch>

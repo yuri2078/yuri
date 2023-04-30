@@ -1,4 +1,4 @@
-# ros
+# cros
 
 ## Hello World
 
@@ -248,11 +248,94 @@ target_link_libraries(${PROJECT_NAME}_node
 
 ```
 
-## launch 文件
 
-> 有多个节点需要打开时就会很麻烦
 
-### 实例
+## ROS基础
+
+
+
+### 常用ros包
+
+| 软件包                        | 内容                                                      |
+| ----------------------------- | --------------------------------------------------------- |
+| **robot_sim_demo**            | 机器人仿真程序，大部分示例会用到这个软件包                |
+| **topic_demo**                | topic通信，自定义msg，包括C++和python两个版本实现         |
+| **service_demo**              | service通信，自定义srv，分别以C++和python两种语言实现     |
+| **action_demo**               | action通信，自定义action，C++和python两种语言实现         |
+| **param_demo**                | param操作，分别以C++和python两种语言实现                  |
+| **msgs_demo**                 | 演示msg、srv、action文件的格式规范                        |
+| **tf_demo**                   | tf相关API操作演示，tf示例包括C++和python两个版本          |
+| **name_demo**                 | 演示全局命名空间和局部命名空间下参数的提取                |
+| **tf_follower**               | 制作mybot机器人 实现mybot跟随xbot的功能                   |
+| **urdf_demo**                 | 创建机器人urdf模型，在RViz中显示                          |
+| **navigation_sim_demo**       | 导航演示工具包，包括AMCL, Odometry Navigation等演示       |
+| **slam_sim_demo**             | 同步定位与建图演示，包括Gmapping, Karto, Hector等SLAM演示 |
+| **robot_orbslam2_demo**       | ORB_SLAM2的演示                                           |
+| **ros_academy_for_beginners** | Metapacakge示例，依赖了本仓库所有的pacakge                |
+
+## 通信架构
+
+### master
+
+> 节点管理器,所有节点都需要向ros master 注册
+>
+> 各个节点也不认识别的,只有通过master才能认识对方
+
+#### roscore
+
+> 启动ros master `roscre` 
+
+他会一同启动几个包:
+
+1. `mastert` 节点管理器
+2. `rosout` 日志输出
+3. `parameter server` 参数管理器
+
+### node
+
+> 节点 一个节点就是一个ros进程  是 pkg 文件里的可执行程序实例
+
+#### rosrun
+
+> 运行一个ros 节点
+
+指令格式 `rosrun` [包名] [节点名]
+
+执行`yuri` 包下的 `hello_node` 节点 ---`rosrun yuri hello_node`
+
+#### rosnode
+
+> 可以查看ros节点相关信息
+
+1. `rosnode list` 查看正在运行的节点
+2. `rosnode info [节点名]` 查看运行节点的相关信息
+3. `rosnode kill [节点名]` 结束某个node 节点 
+
+### launch
+
+> 有多个节点需要打开时就会很麻烦,所以就需要一个launch 文件,一次性启动各个节点\
+
+指令格式 `launch [包名] [launch文件名]`
+
+#### 组成
+
+```xml
+<launch> <!-- 根标签 -->
+
+    <node> <!-- 需要启动的node 以及参数 -->
+    <include> <!-- 包含其他launch 文件 -->
+    <machine> <!-- 指定运行的机器 -->
+    <env-loader> <!-- 设置环境变量 -->
+    <param> <!-- 定制参数到参数服务器 -->
+    <rosparam> <!-- 启动yaml 文件到参数服务器 -->
+    <arg> <!-- 定义参数传入到launch 文件中 -->
+    <remap> <!-- 设置参数映射 -->
+    <group> <!-- 设置命名空间 -->
+
+</launch>
+```
+
+#### node
 
 ```xml
 <launch>
@@ -265,32 +348,229 @@ target_link_libraries(${PROJECT_NAME}_node
 - `name` 表示命名 
 - `output  `重新定向输出
 
+## 通信方式
 
+### topic
 
-## 常用指令
+> ros 中的异步通信方式  异步:
+>
+> (发送者只管发送,不管别人怎么接受) (接受者只管接受,不管是谁发的)
+>
+> node 间通过 publish-subscribe机制通信
 
-### roscore
+#### rostopic
 
-> 启动一个ros运行空间
+常用指令
 
-### rosrun
+1. `rostopic list` 列出所有topic
+2. `rostopic info [topic_name] ` 列出topic 信息
+3. `rostopic echo [rostopi_name]` 列出topic 内容
+4. `rostopic pub [rostopic_name] ...`  向topic 发送内容
 
-> 运行ros包
+### message 
 
-执行 yuri 包下的talker_node 节点
+> topic 内容的通信数据类型 定义在 msg/*.msg
 
-```bash
-rosrun yuri talker_node
+####  消息对照表
+
+| msg类型  | C++对应类型   | Python对应类型 |
+| -------- | ------------- | -------------- |
+| bool     | uint8_t       | bool           |
+| int8     | int8_t        | int            |
+| int16    | int16_t       | int            |
+| int32    | int32_t       | int            |
+| int64    | int64_t       | int，long      |
+| uint8    | uint8_t       | int            |
+| uint16   | uint16_t      | int            |
+| uint32   | uint32_t      | int            |
+| uint64   | uint64_t      | int，long      |
+| float32  | float         | float          |
+| float64  | float         | float          |
+| string   | std:string    | str，bytes     |
+| time     | ros:Time      | rospy.Time     |
+| duration | ros::Duration | rospy.Duration |
+
+#### rosmsg
+
+常用指令
+
+1. `rosmsg list` 列出所有msg
+2. `rosmsg show [msg_name]` 显示msg 内容
+
+### topic + message 示例
+
+> 使用topic + message 自定义数据类型通信实例
+
+#### 目录结构
+
+```
+ros 工作空间
+	 -- build  build 文件夹
+	 -- devel  devel 文件夹
+	 -- package 包
+			-- include
+			-- launch
+			-- msg
+				-- hello.msg
+			-- src
+				-- talker.cpp 
+				-- reader.cpp
+			-- CMakeLists.txt
+			
 ```
 
-### rosnode
+#### msg 文件
 
-> 可以查看ros节点相关信息
+需要在 包/msg 文件夹下 所以需要在包下新建msg 文件夹
 
-1. `rosnode list` 查看正在运行的节点
-2. `rosnode info /rosout` 查看运行节点的相关信息
+```c++
+string name
+int16 age
+```
+
+#### talker.cpp
+
+> 需要包含msg 生成的头文件 ,一般是包名/msg文件名.h
+
+```c++
+#include <ros/ros.h>
+#include "package/hello.h" // 包含编译生成的.h 文件
+
+using package::hello;
+
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "msg_test_talker");
+
+  // 创建句柄
+  ros::NodeHandle handle;
+  // 实例化一个 publisher 发布者 发布到话题 msg_test 消息队列为20
+  ros::Publisher pub = handle.advertise<hello>("msg_test", 20);
+
+  // 设置发布频率为1
+  ros::Rate rate(1);
+  // 设置年龄标识数据
+  int age = 1;
+
+  while (ros::ok()) {
+    // 实例化对象并设置数据
+    hello h;
+    h.name = "yuri";
+    h.age = age++;
+
+    // 发布数据
+    pub.publish(h);
+    // 调用数据处理函数
+    ros::spinOnce();
+
+    // 发布频率
+    rate.sleep();
+  }
+  
+  return 0;
+}
+
+```
+
+#### reader.cpp
+
+```c++
+#include <ros/ros.h>
+#include "package/hello.h"
+
+using package::hello;
+
+// 回调函数,类型需要是 ConstPtr 
+void callBack(const hello::ConstPtr &h) {
+  ROS_INFO("name -> %s, age -> %d", h->name.c_str(), h->age);
+}
+
+int main(int argc, char **argv) {
+  ros::init(argc, argv, "msg_test_reader");
+
+  // 创建句柄并订阅 mst_test 话题
+  ros::NodeHandle handle;
+  ros::Subscriber sub = handle.subscribe<hello>("msg_test", 20, callBack);
+
+  
+  ros::spin();
+  return 0;
+}
+
+```
+
+#### xml 文件
+
+需要在包的xml 文件中增加两行依赖
+
+```xml
+ <build_depend>message_generation</build_depend>
+ <exec_depend>message_runtime</exec_depend>
+```
+
+#### CMakeLists.txt
+
+```cmake
+cmake_minimum_required(VERSION 3.0.2)
+project(package)
+
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  std_msgs
+  message_generation # 添加这个
+)
 
 
+add_message_files(
+  FILES
+  hello.msg
+)
 
-## 话题
+
+#添加下面这个
+#generate_messages必须在catkin_package前面
+generate_messages(
+ DEPENDENCIES
+)
+
+# 添加这个
+catkin_package(
+  CATKIN_DEPENDS message_runtime
+)
+
+include_directories(
+# include
+  ${catkin_INCLUDE_DIRS}
+)
+
+
+# 两个节点
+add_executable(msg_test_reader src/msg_test/reader.cpp)
+target_link_libraries(msg_test_reader
+  ${catkin_LIBRARIES}
+)
+
+add_executable(msg_test_talker src/msg_test/talker.cpp)
+target_link_libraries(msg_test_talker
+  ${catkin_LIBRARIES}
+)
+```
+
+#### 运行
+
+首先需要source 一下文件
+
+然后你可以运行`roscore` 或者编写`launch` 文件进行运行
+
+运行结果:
+
+```bash
+
+[ INFO] [1682837989.693616266]: name -> yuri, age -> 2
+[ INFO] [1682837990.693973701]: name -> yuri, age -> 3
+[ INFO] [1682837991.693691557]: name -> yuri, age -> 4
+[ INFO] [1682837992.693674520]: name -> yuri, age -> 5
+[ INFO] [1682837993.693485060]: name -> yuri, age -> 6
+[ INFO] [1682837994.693620069]: name -> yuri, age -> 7
+
+```
 

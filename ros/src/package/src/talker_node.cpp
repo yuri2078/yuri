@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
     ss << "发布的第 -> " << ++count << " 条消息!";
     msg.data = ss.str();
 
+
     // 发布消息
     ROS_INFO("%s", ss.str().c_str());
     talker.publish(msg);
