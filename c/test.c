@@ -11,7 +11,7 @@ void fun(char q[][20], int n) {
     if (strcmp(q[i], q[i + 1]) > 0) {
       strcat(q[i], q[i + 1]);
     }
-    strcpy(q[j],q[i]);
+    strcpy(q[j], q[i]);
   }
 }
 
@@ -22,6 +22,6 @@ int main() {
   for (i = 0; i < 5; i++) {
     puts(p[i]);
   }
-    printf("%lu\n", strlen(p[i - 4]));
+  printf("%lu\n", strlen(p[i - 4]));
   return 0;
 }

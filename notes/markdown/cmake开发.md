@@ -2,19 +2,7 @@
 
 ## 开发环境搭建
 
-1. ubantu 22.04
-
-2. sudo apt update 先更新
-
-3. 安装gcc sudo apt install gcc
-
-4. 安装g++ sudo apt install g++
-
-5. 安装gdb sudo apt install build-essential gdb
-
-6. 安装cmake sudo apt install cmake
-
-7. 查看版本 gcc --version
+`sudo pacman -S `
 
 ## 开始编译
 
