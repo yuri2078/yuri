@@ -101,3 +101,5 @@ update sc set GRADE = GRADE - 5 where
             order by GRADE limit 3
         ) scc
     );
+
+create procedure 

@@ -1172,3 +1172,426 @@ DELETE FROM view_name WHERE condition;
 - 视图没有使用 `WITH CHECK OPTION` 选项。
 
 如果视图不符合上述限制，则将无法进行更新操作。
+
+## 存储过程
+
+> MySQL存储过程是一种预编译的数据库对象，由SQL语句和控制语句组成，可以在MySQL服务器上保存和执行。存储过程通常用于执行特定的数据操作，以及在MySQL中实现业务逻辑和数据操作的安全性和一致性。
+
+存储过程具有以下优点：
+
+1. 提高性能 - 存储过程能够在MySQL服务器上编译和缓存，可以在不影响应用程序性能的情况下快速执行。
+2. 提高可重用性 - 存储过程可以在MySQL服务器上创建一次，然后在多个查询中多次调用，提高了代码可重用性和维护性。
+3. 提高安全性 - 存储过程可以对关键数据进行权限控制和过滤，从而提高了数据库的安全性和完整性。
+4. 提高一致性 - 存储过程可以保证所有的操作都在一个事务内完成，从而保证了数据库数据的一致性。
+
+### 创建存储过程
+
+```sql
+-- 创建名为 get_employee 的存储过程
+CREATE PROCEDURE 存储过程名字(参数列表)
+BEGIN
+    -- sql 语句
+END;
+```
+
+###  调用存储过程
+
+```sql
+-- 调用存储过程并传入参数 'Sales'
+CALL 名称(参数)
+```
+
+### 查看存储过程
+
+```sql
+SHOW CREATE PROCEDURE procedure_name;
+```
+
+其中，`procedure_name`是要查看的存储过程名称。
+
+```sql
+DESCRIBE get_employee;
+```
+
+或者：
+
+```sql
+SELECT * FROM information_schema.ROUTINES WHERE ROUTINE_SCHEMA = '数据库名';
+```
+
+### 删除存储过程
+
+```sql
+DROP PROCEDURE [IF EXISTS] procedure_name;
+```
+
+其中，`procedure_name`是要删除的存储过程名称。如果使用了`IF EXISTS`选项，则表示只在该存储过程存在时才进行删除，否则不会报错。
+
+### 变量
+
+> 在MySQL的存储过程中，变量可以用来存储和处理数据。MySQL支持声明和使用三种类型的变量：
+
+- 局部变量（Local Variable）：在存储过程中声明和使用的变量，仅在该存储过程内部有效。
+- 用户变量（User-defined Variable）：以@符号开头定义的变量，在整个会话期间有效。
+- 系统变量（System Variable）：MySQL中内置的变量，用于设置和管理系统行为。
+
+#### 系统变量
+
+> 系统变量可以分为全局变量和会话变量
+
+- 全局变量（Global Variable）：指在MySQL服务器启动时被创建，被整个MySQL服务器进程共享的变量。全局变量的值可以在MySQL服务器运行期间修改，但对所有MySQL连接和会话都可见，即对整个MySQL系统生效。
+- 会话变量（Session Variable）：指在MySQL连接建立后在MySQL会话期间创建的变量，仅对当前MySQL连接和会话有效。会话变量的值在MySQL连接和会话期间可以随时修改，但不会跨连接和会话传递。
+
+```sql
+SHOW [GLOBAL | SESSION] VARIABLES; -- 查看所有系统变量的值
+-- 不指定默认SESSION会话变量
+SHOW GLOBAL VARIABLES; -- 查看所有全局变量
+SHOW SESSION VARIABLES; -- 查看所有会话变量
+SHOW VARIABLES LIKE 'variable_name'; -- 模糊搜索变量名
+SELECT @@activate_all_roles_on_login; -- 查看指定变量名
+/* 重启后变量仍任会除非修改配置文件 */
+SET [GLOBAL | SESSION].系统变量名 = 值; -- 设置系统变量名
+SET @@GLOBAL.activate_all_roles_on_login = 0; -- 设置系统变量名
+```
+
+注意： 
+
+1. `GLOBAL` 是全局变量 `SESSION` 是局部变量，不声明 默认就是这个
+2. 设置的系统变量和会话变量重启mysql 服务后都会更新，除非修改配置文件
+
+#### 用户变量
+
+```sql
+set @my_name = 'yuri'; -- 等号赋值
+set @my_age := 20; -- := 赋值
+select @java := 'java', @python := 'python'; -- 多个参数赋值
+select @my_name, @my_age, @java, @python; -- 打印值
+
+select count(*) into @count_st from db_student.student; -- 通过查询结果赋值
+```
+
+注意：
+
+1. 使用 `=` 和 `:=` 都是一样的，但是推荐 `:=`  防止 和 `=` 比较冲突
+2. 使用`set` 和 `select` 都可以进行赋值，和多个参数赋值
+3. 将插叙结果进行赋值的时候只能使用`select`
+4. 不用声明直接使用，如果没有`set` 获得的值是`null`不会报错
+
+#### 局部变量
+
+> 在MySQL存储过程中，局部变量（Local Variable）是在存储过程中声明和使用的变量，仅在该存储过程内部有效。他的作用范围是他的`begin`和`end` 语句内部
+
+```sql
+DECLARE 变量名 变量类型 [DEFAULT initial_value];
+SET 变量名 := 值  
+```
+
+其中，`variable_name`是变量的名称，`data_type`是变量的数据类型，`initial_value`是变量的初始值，是可选参数。
+
+#### 参数
+
+> 在MySQL存储过程中，参数可以使用`IN`、`OUT`和`INOUT`关键字进行定义。这三个关键字分别表示输入参数、输出参数和输入输出参数。
+
+具体来说，它们的区别如下：
+
+- `IN`：输入参数，用于将某个值传递给存储过程中的语句块。在存储过程内，IN参数的值不允许更改，只能被读取使用，这是该参数的限制。
+- `OUT`：输出参数，用于将存储过程中的执行结果返回给调用者。在调用存储过程之前，必须先事先声明变量来接收输出参数的值。OUT参数必须在存储过程中被显式地赋值。调用过程结束后，该参数的值会保存到调用者中声明的变量中。
+- `INOUT`：也是输入输出参数，表示该参数可以作为输入和输出。调用过程需要先事先声明变量来作为 INOUT 参数的值传递给存储过程。在存储过程中，该参数可被修改，存储过程执行完成后，参数值会被更新到该参数的引用处。
+
+示例：
+
+下面是一个简单的存储过程，演示了如何定义和使用各种类型的参数：
+
+```sql
+CREATE PROCEDURE test_proc (in/out/inout 参数名 参数类型)
+CREATE PROCEDURE test_proc (IN a INT, OUT b INT, INOUT c INT)
+BEGIN
+    -- a 是输入参数，b 是输出参数，c 是输入输出参数
+    -- 根据输入参数 a 的值计算 b 和 c 的值
+    SET b = a * 2;
+    SET c = c + 10;
+END;
+```
+
+在这个例子中，我们定义了一个存储过程`test_proc`，该过程接受三个参数：`a`是输入参数，`b`是输出参数，`c`是输入输出参数。
+
+在存储过程内部，我们根据输入参数`a`的值计算了输出参数`b`和输入输出参数`c`的值。需要注意的是，我们对输入输出参数`c`的值进行了修改。该参数的初始化值是由调用者传递进来的，因此，存储过程将更改其值并将其返回给调用者。
+
+在调用存储过程`test_proc`时，必须先事先声明变量来接收输出参数`b`和输入输出参数`c`的值。例如：
+
+```sql
+DECLARE b INT;
+DECLARE c INT DEFAULT 10;
+CALL test_proc(5, @b, @c);
+SELECT @b, @c;
+```
+
+
+
+#### IF语句
+
+> IF语句用于根据某个条件判断执行不同的语句块。例如：
+
+```sql
+CREATE PROCEDURE test_proc (IN num INT)
+BEGIN
+    -- 定义局部变量 result
+    DECLARE result VARCHAR(10);
+    -- 判断 num 的值，设置 result
+    IF num > 0 THEN
+        SET result = 'positive';
+    ELSEIF num < 0 THEN
+        SET result = 'negative';
+    ELSE
+        SET result = 'zero';
+    END IF;
+    -- 打印 result
+    SELECT result;
+END;
+```
+
+在这个例子中，我们使用了`IF`语句根据传入参数的值设置一个局部变量`result`。如果`num`大于0，则将`result`设为`'positive'`；如果小于0，则设为`'negative'`；否则设为`'zero'`。最后，我们使用`SELECT`语句将`result`返回。
+
+#### CASE语句
+
+> CASE语句是IF语句的另一种表达方式，用于根据某个表达式的值选择执行不同的语句块。例如：
+
+```sql
+CREATE PROCEDURE test_proc (IN grade INT)
+BEGIN
+    -- 定义局部变量 result
+    DECLARE result VARCHAR(10);
+    -- 根据 grade 的值设置 result
+    CASE grade
+        WHEN 1 THEN SET result = 'A';
+        WHEN 2 THEN SET result = 'B';
+        WHEN 3 THEN SET result = 'C';
+        ELSE SET result = 'unknown';
+    END CASE;
+    -- 打印 result
+    SELECT result;
+END;
+```
+
+在这个例子中，我们使用了`CASE`语句根据传入参数的值设置一个局部变量`result`。如果`grade`等于1，则将`result`设为`'A'`；如果等于2，则设为`'B'`；如果等于3，则设为`'C'`；否则设为`'unknown'`。最后，我们使用`SELECT`语句将`result`返回。
+
+#### WHILE循环语句
+
+> WHILE循环语句可用于反复执行某个语句块，直到某个条件不满足为止。例如：
+
+```sql
+CREATE PROCEDURE test_proc ()
+BEGIN
+    -- 定义局部变量 sum 和 i
+    DECLARE sum INT DEFAULT 0;
+    DECLARE i INT DEFAULT 1;
+    -- 计算1到10之间整数的和
+    WHILE i <= 10 DO
+        SET sum = sum + i;
+        SET i = i + 1;
+    END WHILE;
+    -- 打印结果
+    SELECT sum;
+END;
+```
+
+在这个例子中，我们使用了`WHILE`循环语句计算1到10之间整数的和。我们定义了两个局部变量`sum`和`i`，将`sum`初始化为0，将`i`初始化为1。在`WHILE`循环中，我们一直将`i`增加1，并将`i`添加到`sum`中，直到`i`大于10为止。最后，我们使用`SELECT`语句将`sum`返回。
+
+需要注意的是，`WHILE`循环和`LOOP`循环语句的用法类似，但它们的语句块结构有所不同。具体来说，`WHILE`循环是在条件满足时执行语句块，而`LOOP`循环是先执行语句块，再判断条件是否满足。在使用这些循环语句时，需要避免死循环的情况。
+
+#### REPEAT 循环
+
+> 在MySQL存储过程中，`REPEAT`循环是一种基于条件的循环语句，它允许用户在满足特定条件下重复执行语句块。
+
+具体来说，`REPEAT`循环首先执行一遍语句块，然后检查循环条件。如果条件为真，则重复执行语句块，直到条件为假为止。
+
+下面是一个使用`REPEAT`循环的简单存储过程示例，用于计算整数`n`的阶乘：
+
+```sql
+CREATE PROCEDURE factorial (IN n INT, OUT result INT)
+BEGIN
+    DECLARE i INT Default 1;
+    SET result = 1;
+    REPEAT
+        SET result = result * i;
+        SET i = i + 1;
+    UNTIL i > n
+    END REPEAT;
+END;
+```
+
+在这个例子中，我们使用了`REPEAT`循环来计算整数`n`的阶乘。我们定义了一个局部变量`i`，将其初始化为1，定义了输出参数`result`，将其初始化为1。
+
+在`REPEAT`循环中，我们将`result`乘以`i`的值，并将`i`增加1。每次循环时，我们检查`i`是否大于`n`，如果是，则终止循环。最后，我们将计算结果存储在输出参数`result`中返回。
+
+需要注意的是，在使用`REPEAT`循环时，需要注意循环条件的设置，以避免死循环的情况。
+
+#### LOOP 循环
+
+> 在MySQL存储过程中，`LOOP`循环语句也是一种基于条件的循环语句，与`REPEAT`语句类似，都是按条件重复执行语句块。具体来说，`LOOP`循环会在每次循环之后检查循环条件，如果条件为真，则继续执行语句块，直到条件为假为止。`LOOP`循环一般与`IF`语句搭配使用，以实现更为复杂的逻辑运算。
+
+下面是一个简单的存储过程示例，演示如何使用`LOOP`循环来计算两个数的最大公约数：
+
+```sql
+CREATE PROCEDURE get_gcd (IN a INT, IN b INT, OUT gcd INT)
+BEGIN
+    DECLARE temp INT;
+    -- 确保 a 大于 b
+    IF b > a THEN
+        SET temp = a;
+        SET a = b;
+        SET b = temp;
+    END IF;
+    -- 循环计算最大公约数
+    LOOP
+        SET temp = a % b;
+        IF temp = 0 THEN
+            SET gcd = b;
+            LEAVE;
+        END IF;
+        SET a = b;
+        SET b = temp;
+    END LOOP;
+END;
+```
+
+- 使用`leave` 退出循环 类似`break`
+- 使用`iterate` 跳过循环，类似`continue`
+
+#### CURSOR
+
+在这个例子中，我们定义了一个存储过程`get_average_salary`，该过程接受一个名为`dept_name`的输入参数，表示需要查询的员工所在部门。我们还定义了一个名为`average_salary`的输出参数，用于存储计算结果。
+
+在存储过程主体中，我们定义了一些局部变量，包括`total_salary`（总工资）、`num_employees`（员工数量）、`emp_id`（员工ID）、`emp_name`（员工姓名）和`emp_salary`（员工工资）。我们还使用`DECLARE`语句声明了一个名为`emp_cursor`的游标，用于查询指定部门中所有员工的信息。
+
+在存储过程主体的下一部分，我们使用`OPEN`语句打开游标，并在循环中使用`FETCH`语句从游标中读取每一行数据。我们使用`IF`语句检查是否已经处理完所有行，如果是，则跳出循环。否则，我们将记录的工资累加到`total_salary`变量中，并递增`num_employees`变量的值，以便进行平均工资计算。最后，我们使用`CLOSE`语句关闭游标，并将计算结果存储在输出参数`average_salary`中返回。
+
+需要注意的是，在使用游标时，需要注意游标的打开、读取、关闭等操作，以免出现资源泄漏或其他错误。另外，在处理大量数据时，使用游标可能会对性能产生较大影响，应该谨慎使用。
+
+#### HANDLER
+
+> 在MySQL存储过程中，`HANDLER`是一种用于处理SQL异常的语句，可以捕获和处理存储过程中发生的异常情况，以便于存储过程可以做出适当的反应。具体来说，`HANDLER`语句通常与游标（Cursor）一起使用，用于捕获查询结果集中的异常情况，如记录不存在、查询超时或键冲突等。
+
+下面是一个使用`HANDLER`语句处理存储过程中的异常情况的示例：
+
+```sql
+CREATE PROCEDURE find_employee (IN emp_id INT)
+BEGIN
+    DECLARE emp_name VARCHAR(50);
+    DECLARE found_count INT Default 0;
+    DECLARE emp_cursor CURSOR FOR SELECT name FROM employees WHERE id=emp_id;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET found_count = 0;
+    OPEN emp_cursor;
+    FETCH emp_cursor INTO emp_name;
+    IF found_count=0 THEN
+        SELECT "Employee not found!" AS message;
+    ELSE
+        SELECT emp_name AS message;
+    END IF;
+    CLOSE emp_cursor;
+END;
+```
+
+在这个例子中，我们定义了一个存储过程`find_employee`，该过程接受一个名为`emp_id`的输入参数，表示需要查找的员工ID。
+
+在存储过程主体中，我们定义了一些局部变量，包括`emp_name`（员工姓名）和`found_count`（符合条件的记录数量）。我们还使用`DECLARE HANDLER`语句声明了一个名为`CONTINUE HANDLER`的异常处理程序，用于处理查询结果集中的 NOT FOUND 异常情况。
+
+在存储过程主体的下一部分，我们使用`OPEN`语句打开游标，并在循环中使用`FETCH`语句从游标中读取每一行数据。如果找到符合条件的行，则将`found_count`变量设置为1，否则不做修改。最后，我们根据`found_count`的值选择显示“Employee not found!”或员工姓名。最后使用`CLOSE`语句关闭游标。
+
+需要注意的是，在使用`HANDLER`语句时，需要注意异常处理程序的设置和存储过程的反应，以满足实际需求，并保证存储过程的正确性和可靠性。
+
+### 存储函数
+
+> 在MySQL中，存储函数（Stored Function）是一种查询操作，它们可返回单个值，这个值可以是数值、字符串或日期等。存储函数与存储过程类似，但是存储函数必须返回一个结果。与存储过程不同的是，存储函数可以用于SQL语句中的表达式中，以及在查询中作为计算列。存储函数还可以使用SELECT语句调用。
+
+下面是一个简单的存储函数示例，用于计算两个数的加法运算：
+
+```sql
+CREATE FUNCTION add_numbers (num1 INT, num2 INT) 
+RETURNS INT -- 函数确定性
+BEGIN
+    DECLARE result INT;
+    SET result = num1 + num2;
+    RETURN result;
+END;
+```
+
+在这个例子中，我们定义了一个名为`add_numbers`的存储函数，该函数接受两个输入参数`num1`和`num2`，用于表示两个数。
+
+在函数体内，我们定义了一个名为`result`的局部变量，用于存储计算结果。我们将`num1`和`num2`相加，并将结果存储在`result`变量中。
+
+最后，我们使用`RETURN`语句将`result`的值返回给调用者。
+
+使用该函数的例子：
+
+```sql
+SELECT add_numbers(2, 3);
+```
+
+该语句将返回结果`5`。可以看到，存储函数可以像普通函数一样调用，也可以在SQL语句中直接使用。
+
+#### 函数确定性
+
+> 在MySQL存储函数中，函数的确定性（determinism）是指函数对于相同的输入，是否总是返回相同的结果。根据函数的不同实现和使用情况，函数可以被定义为不同的确定性类型，包括：
+
+1. 非确定性函数（`NON-DETERMINISTIC`）：对于相同的输入，不能保证总是返回相同的结果。例如，使用当前时间戳作为函数参数的函数，可能每次执行都会返回不同的结果。
+2. 确定性但有可能产生副作用的函数（`DETERMINISTIC, NO SQL`）：对于相同的输入，总是返回相同的结果，但是函数可能会执行一些与SQL语句无关的操作（如调用文件系统，修改全局变量等）。
+3. 纯粹的确定性函数（`DETERMINISTIC, READS SQL DATA`）：对于相同的输入，总是返回相同的结果，而且在执行过程中只从数据库中读取数据，不会修改数据。
+4. 纯粹的确定性函数（`DETERMINISTIC, CONTAINS SQL`）：对于相同的输入，总是返回相同的结果，而且在执行过程中会包含一些非查询的SQL操作（如变量赋值，条件判断等），但不会修改数据。
+5. 纯粹的确定性函数（`DETERMINISTIC, NO SQL`）：对于相同的输入，总是返回相同的结果，而且在执行过程中不包含任何SQL操作，也不会对全局变量进行修改。
+
+需要注意的是，确定性函数（无论是纯粹的还是带有副作用的）在查询缓存中缓存的时间更长，可以帮助提高查询性能。然而，在查询中使用带有副作用的函数可能会导致误解，影响数据的一致性或安全性，因此需要谨慎使用。
+
+## 触发器
+
+> 触发器（Trigger）是MySQL中的一种数据库对象，用于在数据库表上创建操作的响应。当指定的表上发生某些操作（如INSERT、UPDATE、DELETE等），触发器会自动执行一个预定义的操作序列。
+
+#### 创建触发器
+
+在MySQL中，触发器可以定义在表之前或之后，可以定义在行之前或之后。它可以用于进行数据验证、自动机器人、历史记录、审计和日志记录等操作。触发器的语法如下所示：
+
+```sql
+CREATE TRIGGER trigger_name 
+{BEFORE | AFTER} {INSERT | UPDATE | DELETE}
+ON table_name 
+FOR EACH ROW  -- 行级触发器 (只要有修改的行，每行都会出触发)
+BEGIN
+	...
+END;
+```
+
+其中，触发器名称是自定义的，而且必须在数据库内唯一。`BEFORE`或`AFTER`关键字指定触发器执行时间，`INSERT`、`UPDATE`或`DELETE`指定了触发操作的类型。`table_name`是要监视的表名。`FOR EACH ROW`指示此触发器为每个操作行执行一次。`trigger_body`是在触发器执行时要执行的SQL语句序列。
+
+以下是一个简单的触发器示例，当在`employee`表中插入新行时，将向`history`表中插入一条记录：
+
+```sql
+CREATE TRIGGER emp_insert_trigger 
+AFTER INSERT
+ON employee
+FOR EACH ROW 
+BEGIN
+    INSERT INTO history (user_id, operation, table_name, data) 
+    VALUES (USER(), 'INSERT', 'employee', NEW.id);
+END;
+```
+
+在这个例子中，我们创建了一个名为`emp_insert_trigger`的触发器，当在`employee`表中插入新行时，会向`history`表中插入一条记录。插入操作的用户名以及新插入数据的`id`字段值将包含在插入记录中。
+
+需要注意的是，触发器在数据库中既可以是有用的，也可以是有害的。合理的使用触发器可以帮助完成许多有用和自动化的任务，而滥用或错误地使用触发器可能会导致性能问题、数据的不一致，或其他负面影响。因此，在使用触发器时应该考虑到所有的使用场景和风险，并仔细规划和实现触发器。
+
+#### 触发器类型
+
+- `INSERT` 触发器，`NEW` 表示将要或者已经新增的数据
+- `UPDATE` 触发器，`OLD` 表示修改之前的数据，`NEW` 表示将要或者已经修改的数据
+- `DELET` 触发器， `OLD` 表示已经删除的数据
+
+#### 查看/删除触发器
+
+查看触发器 `SHOW TRIGGERS;` 
+
+删除触发器：
+
+```sql
+DROP TRIGGERS [数据库名].触发器名;
+```
+
