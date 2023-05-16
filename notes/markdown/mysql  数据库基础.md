@@ -326,6 +326,27 @@ ALTER USER user1 IDENTIFIED BY 'new_passw0rd';
 
 注意，有些数据库管理系统可能会在 `ALTER USER` 命令中支持更多选项。因此，在使用此命令时，应查阅特定系统的文档以查看所有可用选项
 
+#### 示例
+
+> 创建超级用户admin，具有对所有数据库的所有访问权限，仅限本机连接（密码自行设置），并验证用户和权限设置是否正确
+
+```sql
+CREATE USER 'admin'@'localhost' IDENTIFIED by 'admin'; -- 新建用户
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost'; -- 授予权限
+SHOW GRANTS FOR 'admin'@'localhost'; -- 检查权限
+```
+
+```sql
+/* ）创建管理员teacher_liu，具有对SC表、IS_STUDENT视图（实验5创建）的增删改查权限，并且具有授权的权限，
+允许从任意位置连接（密码自行设置），并验证用户和权限设置是否正确。 */
+CREATE USER 'teacher_liu'@'%' IDENTIFIED by 'test'; -- 新建用户
+GRANT INSERT, DELETE, UPDATE, SELECT ON SC, IS_STUDENT TO 'teacher_liu'@'%'; -- 授予增删改查权限
+GRANT GRANT OPTION ON *.* TO 'teacher_liu'@'%'; -- 授予 授予权限 权限
+SHOW GRANTS FOR 'teacher_liu'@'%';
+```
+
+
+
 ## 常用语句
 
 ### SHOW

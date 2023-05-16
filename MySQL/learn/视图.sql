@@ -49,3 +49,6 @@ select count(*) into @count_st from db_student.student; -- 通过查询结果赋
 
 
 /* 局部变量 */
+
+
+
