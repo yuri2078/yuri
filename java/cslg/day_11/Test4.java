@@ -1,3 +1,5 @@
+package cslg.day_11;
+
 import java.util.HashMap;
 import java.util.Scanner;
 

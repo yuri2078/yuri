@@ -1,4 +1,4 @@
-//package cslg.day_11;
+package cslg.day_11;
 
 import java.util.ArrayList;
 import java.util.Scanner;
