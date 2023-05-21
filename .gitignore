@@ -1,6 +1,7 @@
 *.out
 *.class
 *.user
+.ccls-cache
 .idea/
 *.o
 cmake-build-debug/

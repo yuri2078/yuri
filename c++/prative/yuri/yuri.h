@@ -165,10 +165,10 @@ public:
 };
 
 #define error(str) \
-    std::cout << "\e[31merror! -> " << str << "\e[0m\n";
+    std::cout << "\e[31merror! -> " << str << "\e[0m\n"
 
 #define info(str) \
-    std::cout << "info -> " << str << "\n";
+    std::cout << "info -> " << str << "\n"
 
 } // namespace yuri
 

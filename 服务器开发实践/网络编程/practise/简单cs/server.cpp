@@ -12,7 +12,7 @@ int main() {
   }
 
   // 创建addr
-  struct sockaddr_in addr{};
+  struct sockaddr_in addr {};
   addr.sin_family = AF_INET;
   addr.sin_port = htons(2078);
   addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -26,10 +26,9 @@ int main() {
     error("设置监听模式失败!")
   }
 
-  struct sockaddr_in serv{};
+  struct sockaddr_in serv {};
   socklen_t size = sizeof(serv);
-  info("开始获取服务!")
-  int serverd = accept(listend, (struct sockaddr *)(&serv), &size);
+  info("开始获取服务!") int serverd = accept(listend, (struct sockaddr *)(&serv), &size);
   if (serverd == -1) {
     error("获取服务失败!")
   }
@@ -41,13 +40,11 @@ int main() {
     info(str);
   }
 
-  sleep(3);
-
 
   if (send(serverd, std::string("收到你的信息啦!").c_str(), 1024, 0) <= 0) {
     error("获取信息失败!")
   }
-  
+
   close(listend);
   return 0;
 }

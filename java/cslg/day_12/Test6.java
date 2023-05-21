@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-class Book implements Comparable<Book> {
+class Book {
 	String name;
 	int price;
 
@@ -15,10 +15,6 @@ class Book implements Comparable<Book> {
 
 	public int hashCode() {
 		return name.length() * price;	
-	}
-
-	public int compareTo(Book book) {
-		return this.name.compareTo(book.name);
 	}
 
 }
@@ -35,7 +31,14 @@ public class Test6 {
 	}
 
 	public static void main(String[] args) {
-		TreeSet<Book> books = new TreeSet<>();
+		TreeSet<Book> books = new TreeSet<>(new Comparator<Book>() {
+		  public int compare(Book b1, Book b2) {
+        if(b1.price == b2.price) {
+          return b1.name.compareTo(b2.name);
+        }
+        return b1.price - b2.price;
+      }
+		});
 		getData(books);
 		ArrayList<Book> list = new ArrayList<>(books);
 		Collections.sort(list, new Comparator<Book>() {

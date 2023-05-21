@@ -24,6 +24,7 @@ int main() {
   send(fd, "你好捏!", 100, 0);
   recv(fd, str, 1024, 0);
   info(str)
+  sleep(4);
   close(fd);
   return 0;
 }
