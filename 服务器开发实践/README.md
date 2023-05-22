@@ -2,187 +2,298 @@
 
 > 读书笔记 《linux c/c++ 服务器开发实践》
 
-## tcp协议
+## 网络编程常用函数
 
-> tcp协议是有连接的可靠的(数据无丢失，数据无失序， 数据无错误， 数据无重复到到) 的传输层系协议，他提供一对一的面向连接的可靠服务
+### socket
 
-### TCP 的特点
+> 函数原型 `int socket(int domain, int type, int protocol);`
 
-+ 面向连接：在数据传输之前需要建立一个连接，传输完成后需要断开连接。
-+ 可靠性：通过序列号、确认号和校验和等机制，保证数据的可靠传输。
-+ 流量控制：通过滑动窗口机制，控制数据发送的速度，防止数据的发送方过度发送。
-+ 拥塞控制：通过拥塞窗口、超时重传等机制，控制数据在网络中的流量，保证网络的可靠性和稳定性。
-+ 面向字节流：将数据视为一个连续的字节流，而不是独立的数据包。
-+ 可靠传输：保证数据按照正确的顺序到达接收方，如果数据丢失或损坏，则会自动重传。
+1. `domain` -- 表示协议族或者域，用于指定套接字使用的地址族，例如AF_INET（IPv4）或AF_INET6（IPv6）等
+2. `type` -- 表示套接字的类型，指定套接字的传输协议，例如SOCK_STREAM（TCP协议）或SOCK_DGRAM（UDP协议）等
+3. `protocol` 表示协议类型，用于在同一地址族中指定协议。通常采用默认值0，表示由domain和type参数确定套接字使用的协议。在有些情况下，如有多个网络协议可供选择的情况下，可以使用protocol参数来指定要使用的协议
 
-### TCP 的连接建立
+综上所述，socket函数的三个参数主要用于指定套接字的地址族、传输协议和协议类型。根据不同的需求和场景，可以灵活地配置这些参数，以创建不同类型的套接字
 
-TCP 的连接建立使用了三次握手（Three-Way Handshake）的机制，具体过程如下：
+### bind
 
-1. 客户端向服务器发送 SYN 报文，表示请求建立连接。
-2. 服务器收到 SYN 报文后，向客户端发送 SYN+ACK 报文，表示确认客户端的请求，并要求建立连接。
-3. 客户端收到 SYN+ACK 报文后，向服务器发送 ACK 报文，表示确认服务器的请求，并建立连接。
+> 函数原型 `int bind(int sockfd, struct sockaddr *myaddr, socklen_t addrlen);`
 
-TCP 的连接终止
+bind()函数用于将一个socket绑定到一个IP地址和端口号。
 
-TCP 的连接终止使用了四次挥手（Four-Way Handshake）的机制，具体过程如下：
+1. `sockfd`:它的第一个参数是要绑定的socket的描述符
+2. `struct sockaddr`:一个指向存有IPv4或IPv6地址、端口号等信息的数据结构（通常是struct sockaddr_in或struct sockaddr_in6类型）
+3. `addrlen`:用于存储该数据结构大小的变量
 
-1. 客户端向服务器发送 FIN 报文，表示请求断开连接。
-2. 服务器收到 FIN 报文后，向客户端发送 ACK 报文，表示确认客户端的请求。
-3. 服务器向客户端发送 FIN 报文，表示服务器也要断开连接。
-4. 客户端收到 FIN 报文后，向服务器发送 ACK 报文，表示确认服务器的请求，并断开连接。
+如果bind()函数执行成功，返回值为0，否则返回-1。在这段代码中如果bind()返回值不为0，说明绑定失败，那么就输出一个错误信息，然后关闭socket，函数返回-1。
 
-TCP 的拥塞控制
+### accept
 
-TCP 的拥塞控制主要包括拥塞窗口和慢启动两种机制。拥塞窗口是指网络中的可用带宽大小，它是一个动态调整的值，根据网络情况进行自适应调整。慢启动是指在连接建立时，发送方会逐步增加发送数据的速率，直到拥塞窗口达到一个合适的值为止。
+> 函数原型 `int accept(int fd, struct sockaddr *__restrict addr,socklen_t *__restrict addr_len);`
 
-TCP 的重传机制
-TCP 通过序列号和确认号机制保证数据的
+accept()函数用于从一个监听socket中接收连接请求，创建一个新的socket用于与客户端通信
 
-### 报文头
+1. `fd`:要接受连接的监听socket的描述符
+2. `addr`:一个指向存有客户端的IP地址、端口号等信息的数据结构（通常是struct sockaddr_in或struct sockaddr_in6类型）
+3. `addr_len`:用于存储该数据结构大小的变量
 
-TCP报文头部通常包括以下字段：
+如果accept()函数执行成功，返回值为新创建的用于与客户端通信的socket的描述符，即clientfd，否则返回-1。在这段代码中如果accept()返回值不为-1，说明成功接受了客户端连接，那么就可以使用clientfd来与客户端进行通信，否则表示接受连接失败。
 
-+ 源端口号：发送端口号
-+ 目的端口号：接收端口号
-+ 序列号：用于标识发送的数据包的序号，保证数据包的有序性
-+ 确认号：用于确认接收端已经收到的数据包序号
-+ 数据偏移量：表示TCP头部长度，用于指示TCP头部结束位置和数据开始位置
-+ 保留位：保留未来使用的位
-+ 标志位：用于控制TCP连接的建立、维护和关闭，包括URG、ACK、PSH、RST、SYN和FIN等标志位
-+ 窗口大小：用于指示接收端还能接收多少数据，以及发送端应该发送多少数据
-+ 校验和：用于检验TCP头部和数据的完整性
-+ 紧急指针：用于指示紧急数据的结束位置，只有在URG标志位被设置时才有效
-+ 选项字段：包含一些可选的TCP协议扩展字段，如时间戳、窗口扩大因子等。
+### inet_ntoa
 
-```cpp
-typedef struct _TCP_HEADER {
-    uint16_t source_port;    // 源端口号 16位
-    uint16_t dest_port;      // 目的端口号 16位
-    uint32_t seq_num;        // 序列号 32位
-    uint32_t ack_num;        // 确认号 32位
-    uint16_t hdr_len:4;      // 数据偏移量，占4位
-    uint16_t reserved:6;     // 保留位，占6位
-    uint16_t flags:6;        // 标志位，占6位
-    uint16_t window_size;    // 窗口大小  16位
-    uint16_t checksum;       // 校验和 16位
-    uint16_t urgent_ptr;     // 紧急指针 16位
-    // 选项字段
-} TCP_HEADER;
+> 函数原型 `char *inet_ntoa(struct in_addr in);`
+
+inet_ntoa()函数用于将一个存储在struct in_addr类型的变量中的IPv4地址转换成点分十进制的字符串表示。它的参数是一个指向struct in_addr类型变量的指针。
+
+如果inet_ntoa()函数执行成功，返回一个指向转换后的点分十进制字符串的指针，否则返回NULL。
+
+### inet_addr
+
+> 函数原型 `inet_addr(const char* cp)`
+
+将一串ip地址字符串转换为 `struct in_addr`
+
+### inet_pton
+
+> 函数是在网络编程中常用的函数之一，它用于将一个点分十进制的 IP 地址字符串转换成一个二进制 IPv4 或 IPv6 地址。该函数的原型如下：
+
+```c
+#include <arpa/inet.h>
+int inet_pton(int af, const char *src, void *dst);
 ```
 
-## udp协议
+其中，`af` 表示地址族，只能取值 `AF_INET` 或 `AF_INET6`，分别表示 IPv4 和 IPv6；`src` 是表示点分十进制地址的字符串指针；`dst` 是用于存储转换后二进制地址的指针，其类型为 `void *`，实际上可能是 `struct in_addr *` 或 `struct in6_addr *`。
 
-> UDP（User Datagram Protocol）是一种无连接的、不可靠的网络传输协议，它没有像TCP那样的确认机制和重发机制，因此传输速度较快，但可靠性较差。他提供一对一或者一对多的，无连接的不可靠通信服务。
+函数返回值为 `1` 表示转换成功，返回值为 `0` 表示地址格式无效，返回值为 `-1` 表示出错。
 
-UDP报文头主要包括以下字段：
+使用示例如下：
 
-+ 源端口号（Source Port）：发送端口号。
-+ 目的端口号（Destination Port）：接收端口号。
-+ 长度（Length）：UDP报文长度，包括头部和数据部分。
-+ 校验和（Checksum）：用于检验UDP报文的完整性。
+```c
+#include <arpa/inet.h>
+#include <stdio.h>
+#include <netinet/in.h>
 
-```cpp
-struct udp_header {
-  uint16_t source_port;    // 源端口号
-  uint16_t dest_port;      // 目的端口号
-  uint16_t length;         // UDP报文长度
-  uint16_t checksum;       // 校验和
-};
+int main() {
+  const char* ip_str = "192.168.0.1";
+  struct in_addr ip4;
+  if (inet_pton(AF_INET, ip_str, &ip4) <= 0) {
+    printf("Invalid IP address\n");
+    return 1;
+  }
+  printf("IPv4 address: 0x%x\n", ip4.s_addr);
+
+  const char* ip6_str = "2001:0DB8:AC10:FE01:0000:0000:0000:0000";
+  struct in6_addr ip6;
+  if (inet_pton(AF_INET6, ip6_str, &ip6) <= 0) {
+    printf("Invalid IP address\n");
+    return 1;
+  }
+  printf("IPv6 address: ");
+  for (int i = 0; i < 16; i++) {
+    printf("%02x", ip6.s6_addr[i]);
+    if (i % 2 == 1 && i < 15) {
+      printf(":");
+    }
+  }
+  printf("\n");
+  return 0;
+}
 ```
 
-其中，source_port和dest_port字段分别用于存储源端口号和目的端口号，长度字段表示UDP报文的长度，checksum字段用于存储校验和。需要注意的是，由于UDP报文头不包含序列号和确认号等信息，因此其长度比TCP报文头要短
+上述代码中，首先定义一个表示 IPv4 地址的字符串 `ip_str` 和一个表示 IPv6 地址的字符串 `ip6_str`。然后，定义了两个用于存储转换后地址的结构体 `ip4` 和 `ip6`。接着，调用 `inet_pton()` 函数将两个字符串分别转换成二进制的 IPv4 和 IPv6 地址。如果转换失败，则输出错误信息；否则，输出转换后的 IPv4 和 IPv6 地址。
 
-## ip协议
+可以看到，在转换 IPv6 地址时，需要使用循环结构遍历 `ip6` 结构体中的 16 个字节，并以 `:` 分割每 2 个字节。
 
-> IP数据报是互联网协议 (IP) 中的一种数据传输格式。它是在传输层（如TCP、UDP）之前的网络层中使用的，其中IP是这一层的核心协议。。
+### recv
 
-### IP数据报的基本结构
+> 函数原型 `ssize_t recv(int fd, void *buf, size_t n, int flags);`
 
-IP数据报的基本结构由报头和数据两部分组成：
+recv()函数用于从一个已连接的socket接收数据
 
-+ 版本号指的是使用的IP协议版本
-+ 头部长度是头部的字节数，最长为60个字节
-+ 服务类型用于指定数据包的优先级和特殊需求
-+ 总长度则表示整个数据包的长度
-+ 标识符和分片偏移用于确定数据包分片后重组的顺序
-+ 时限用于控制数据包在网络中的生存时间
-+ 协议字段指示了数据包的上层协议，如TCP、UDP等
-+ 头校验和用于确认IP数据包的头部是否有错误
-+ 源IP地址和目标IP地址则指示了数据包的来源与目的地。
+1. `fd`:目标socket的描述符
+2. `buf`:指向存储接收数据的缓冲区的指针
+3. `n`:缓冲区的大小
+4. `flags`:一组标志，用于控制接收操作的方式 0是一个控制标志，表示以默认方式进行接收操作
 
-```cpp
-struct IPHeader
+如果recv()函数执行成功，返回值为实际接收到的数据的字节数，否则返回-1。如果返回值为0，表示对方已经关闭了连接。
+
+### send
+
+`send()` 函数是 C++ 和 C 系统编程中用于发送数据的函数，通常用于网络编程中，可以向指定的 socket 发送数据。
+其函数原型如下：
+
+```c++
+#include <sys/socket.h>
+
+ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+```
+
+函数参数说明：
+
++ `sockfd`：指定连接或套接字的文件描述符.
+
++ `buf`：需要发送的数据的指针。
++ `len`：需要发送的数据的长度。
+
++ `flags`：指定发送操作的各种控制选项，通常设置为 0。
+
+函数返回值：
+
++ 如果成功，返回已发送的字节数。
+
++ 如果失败，返回 -1，并设置 `errno` 变量来指示错误的原因。
+
+使用 `send()` 函数时，需要注意以下几点：
+
++ 可以将任何数据类型的指针作为 `buf` 参数传递，但通常使用 `char*` 类型的指针来发送文本数据
+
++ 可以使用 `write()` 函数来替代 `send()` 函数，但有一些区别，例如，`write()` 函数没有支持发送特定标志的选项。
+
++ `send()` 函数通常用于将数据发送到套接字（socket）中，因此需要先建立连接（如 TCP 的三次握手）和绑定地址。
+  以上是send函数的详细解析
+
+### gethostbyname
+
+> 根据指定的主机名获取该主机的IP地址信息，涉及到了网络编程中的域名解析
+
+ethostbyname()函数是一个用于获取主机信息的函数，它的参数是主机名字符串，返回值是一个指向hostent结构体的指针，其中包含了主机相关的各种信息，如IP地址、别名等.
+
+函数返回hostent结构体指针，供后续操作使用，例如获取主机的IP地址。
+
+### getsockname
+
+> `getsockname` 函数可以用于获取一个已绑定到本地地址的套接字的本地协议地址，它的原型为：
+
+```c
+int getsockname(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+
+- `sockfd`：要获取本地协议地址的套接字的描述符；
+- `addr`：指向存放返回的本地协议地址的结构体的指针；
+- `addrlen`：指向 `sockaddr` 结构体的长度，同时也会更新为实际地址结构体的长度
+
+### getpeername
+
+> `getpeername` 函数可以用于获取一个已连接套接字的远程主机的地址和端口号，它的原型为：
+
+```c
+int getpeername(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
+```
+
+- `sockfd`：要获取远程主机地址和端口号的已连接套接字的描述符；
+- `addr`：指向存放返回的远程主机地址的结构体的指针；
+- `addrlen`：指向 `sockaddr` 结构体的长度，同时也会更新为实际地址结构体的长度。
+
+### connect
+
+> 函数原型 `int connect(int fd, const struct sockaddr *addr, socklen_t len);`
+
++ `sockfd`：套接字文件描述符，即调用socket函数返回的文件描述符；
+
++ `addr`：包含有目的服务器IP地址和端口号的结构体指针；
++ `addrlen`：addr结构体的大小。
+
+成功：返回0；
+失败：返回-1，并设置errno变量.
+
+函数功能：建立与远程服务器的TCP连接，向指定的目的地址发送TCP连接请求。
+
+函数描述： connect函数用于在TCP/IP网络中建立与远程服务器的连接。在客户端执行这个函数之前，需要先创建一个套接字文件描述符，用于发送请求和接收服务器的响应
+
+## 常用数据结构
+
+### 字节序
+
+> 字节顺序（Byte Order）也叫 Endianness，是用来表示一个多字节数据类型（比如整数）在内存中存储的顺序方式。在计算机发展的早期，由于不同的计算机采用的处理器架构不同，处理器的字节序也存在差异，因此，数据存储时需要遵循特定的字节序。
+
+目前，通用的字节序有两种：
+
+- 大端字节序（Big-Endian）：低地址存放高位字节，高地址存放低位字节。
+- 小端字节序（Little-Endian）：低地址存放低位字节，高地址存放高位字节。
+
+例如，对于一个 2 字节的整数 0x1234，按照大端字节序存储的话，在内存中是这样的：
+
+```sh
+0x1000: 12　　高地址
+0x1001: 34　　低地址
+```
+
+而按照小端字节序存储的话，在内存中则是这样的：
+
+```sh
+0x1000: 34　　低地址
+0x1001: 12　　高地址
+```
+
+在网络编程中，由于不同计算机的字节序可能不同，可能会对数据的传输和解释产生误解。为了解决这个问题，网络通信中一般采用大端字节序（也称为网络字节序）来传输数据，以确保不同主机之间的数据传输正确性。网络字节序采用大端字节序，在数据传输过程中，发送方将数据转换为网络字节序（使用 `htons()` 函数），接收方在接收数据之后再将其转换为本地主机字节序（使用 `ntohs()` 函数）
+
+### sockaddr
+
+> sockaddr 是一个通用的套接字地址结构体，用于表示各种网络协议的地址信息，其定义如下：
+
+```c
+struct sockaddr
 {
-    uint8_t  versionAndHeaderLength;  // 版本和头长度
-    uint8_t  typeOfService;           // 服务类型
-    uint16_t totalLength;             // 总长度
-    uint16_t packetID;                // 分片标识
-    uint16_t fragmentOffset;          // 分片偏移
-    uint8_t  timeToLive;              // 生存期
-    uint8_t  protocol;                // 上层协议
-    uint16_t checksum;                // 首部校验和
-    uint32_t sourceIP;                // 源IP地址
-    uint32_t destIP;                  // 目标IP地址
-    // 从这里开始是可选字段（选项）
-    // 注意：IP选项不总是出现在结构体中
-    uint32_t option1;
-    uint32_t option2;
-    // ...
-    uint32_t optionN;
-    // 数据字段
-    uint8_t data[0];                  // 可变长数据内容
+  __SOCKADDR_COMMON (sa_);	// 地址簇
+  char sa_data[14];		// 实际地址	
 };
 ```
 
-### IP数据报的分片
+该结构体中的 `sa_family` 成员指定了地址族类型，常用的地址族包括：
 
-IP数据报的长度通常受到链路层的最大传输单元的限制，因此可能需要在传输过程中进行分片。当IP数据报太大无法通过某个网络时，它会被分成较小的片段，每个片段都会正常地进行传输，最终到达目的地后再恢复为完整数据包。
+- `AF_INET`：IPv4 地址族
+- `AF_INET6`：IPv6 地址族
+- `AF_LOCAL`：本地通信地址族
+- `AF_PACKET`：底层协议（比如以太网）地址族
 
-### IP数据报的选项
+不同的地址族需要使用不同的数据类型存储真实的地址信息，因此在 `sockaddr` 结构体中，使用 `sa_data` 数组存储实际的地址信息。实际上，`sa_data` 数组的大小为 14 字节，但不同的地址族只会使用其中一部分，其具体使用情况如下：
 
-IP数据报的选项是可变部分，它允许发送方指定一些控制信息，这些信息超出了标准头部结构的限制。选项字段的长度可以从0到40字节。选项字符集以1个平衡的方式在字节的8个位中传输，以确保没有任何字节会全部为0或1。
+| 地址族    | 实际的地址信息                     |
+| --------- | ---------------------------------- |
+| AF_INET   | 2 字节端口号 + 4 字节 IP 地址      |
+| AF_INET6  | 2 字节端口号 + 16 字节 IP 地址     |
+| AF_LOCAL  | 最多 108 字节的路径名              |
+| AF_PACKET | 14 字节以太网地址 + 4 字节协议类型 |
 
-### IP地址
+IPv6 地址需要使用大端序（网络字节序）存储，而 IPv4 地址需要使用小端序存储 
 
-IP数据报指定了两个IP地址，一个是源地址，另一个是目标地址。IP地址通常由四个十进制数字组成，每个数字之间用点分隔。IP地址的长度为32位。
+当然，在实际使用中，为了方便，我们一般会使用更具体的地址结构体，如 `struct sockaddr_in`（IPv4）和 `struct sockaddr_in6`（IPv6），它们继承了 `struct sockaddr` 的全部成员，同时还定义了额外的成员，用于存储更具体的地址信息。
 
-传输控制协议 (TCP) 和用户数据报协议 (UDP)
-传输控制协议 (TCP) 和用户数据报协议 (UDP) 是两种常见的传输层协议。它们在网络层之上，作为上层协议使用。TCP提供了对数据流的可靠传输，而UDP则提供了非可靠的传输。
+### sockaddr_in
 
-### 结论
+> 是一个IPv4套接字地址结构体，其中包含了网络通信中的必要信息，例如IP地址、端口号等。
+>
+> 使用小端序就行存储
 
-IP数据报是网络层协议中最为重要的协议之一。通过正确理解IP数据报的基本结构、分片、选项、IP地址和上层协议TCP和UDP，可以更好地理解网络在传输数据过程中的工作原理。
+```c++
+struct sockaddr_in
+{
+  __SOCKADDR_COMMON (sin_); // 地址族
+  in_port_t sin_port;			// 端口号
+  struct in_addr sin_addr;		// 网络地址
 
-## ARP 协议
+  /* 为了和sockaddr 对齐,用于填充的0'.  */
+  unsigned char sin_zero[sizeof (struct sockaddr) // 通用套接字大小
+                         - __SOCKADDR_COMMON_SIZE // 地址族大小
+                         - sizeof (in_port_t) // 端口号大小
+                         - sizeof (struct in_addr)]; // 网络地址大小
+};
 
-> ARP是地址解析协议（Address Resolution Protocol）的缩写，它是一种用于将IP地址解析成物理地址（如MAC地址）的协议。当主机需要发送数据包时，将需要目标主机的IP地址，通过ARP协议获取到目标主机的MAC地址，才能最终将数据包发送到目标主机
-
-ARP报文是一种以太网上的广播消息，用于寻找特定IP地址的MAC地址。ARP报文由以下几部分组成：
-
-+ 硬件类型：表示所使用的硬件类型，如以太网、无线局域网等；
-+ 协议类型：表示所使用的网络协议类型，如IP地址；
-+ 硬件地址长度：表示硬件地址的长度，通常为6个字节，即MAC地址的长度；
-+ 协议地址长度：表示协议地址的长度，通常为4个字节，即IPv4地址的长度；
-+ 操作码：请求或者应答，用于标识ARP报文的类型；
-+ 发送方MAC地址：发送方硬件地址，即发送方的MAC地址；
-+ 发送方IP地址：发送方协议地址，即发送方的IP地址；
-+ 目标MAC地址：目标硬件地址，即目标的MAC地址；
-+ 目标IP地址：目标协议地址，即目标的IP地址。
-
-```cpp
-struct ARPHeader {
-    uint16_t hardwareType;  // 硬件类型
-    uint16_t protocolType;  // 协议类型
-    uint8_t  hardwareSize;  // 硬件地址长度
-    uint8_t  protocolSize;  // 协议地址长度
-    uint16_t opcode;        // 操作码
-    uint8_t  senderMAC[6];  // 发送方MAC地址
-    uint32_t senderIP;      // 发送方IP地址
-    uint8_t  targetMAC[6];  // 目标MAC地址
-    uint32_t targetIP;      // 目标IP地址
+// 存储网络地址
+typedef uint32_t in_addr_t;
+struct in_addr
+{
+  in_addr_t s_addr;
 };
 ```
+
+
+
+1. `sin_family`：表示地址族，通常为AF_INET。
+2. `sin_port`：表示端口号，以网络字节序（Big-Endian）存储。
+3. `sin_addr`：表示IP地址，以网络字节序存储。
+4. `sin_zero`：填充字段，保证sockaddr_in结构体和sockaddr结构体在长度上的兼容性。
+
+在网络编程中，当客户端需要连接到一个服务器时，需要指定服务器的IP地址和端口号。而struct sockaddr_in结构体就是用来存储这些信息的。通常情况下，开发人员会将服务器地址和端口信息存储在一个名为servaddr的sockaddr_in结构体中，然后将其作为套接字函数的参数，以便建立客户端和服务器之间的连接
 
 ## 多线程常用函数
 
@@ -685,5 +796,4 @@ int main() {
 
 // thread test;  直接定义不会执行线程 默认定义的是可连接线程，需要使用join 等待结束
 ```
-
 
