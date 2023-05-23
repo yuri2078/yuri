@@ -1,7 +1,8 @@
-#include <ros/ros.h>
+#include <format>
+#include <iostream>
 
-int main(int argc, char **argv) {
-  ros::init(argc, argv, "hello");
-	ROS_INFO("hello world");
-	return 0;
+int main() {
+  std::cout << std::format("{}", 44);
+  std::cerr << "sfsdf ";
+  return 0;
 }
