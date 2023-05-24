@@ -32,8 +32,9 @@ public:
     if (ret == -1) {
       error("连接客户端失败!");
       error(strerror(errno));
+      return false;
     }
-    return false;
+    return true;
   }
 
   // 向客户端发送数据
@@ -42,9 +43,18 @@ public:
       error("套接字没有连接!");
       return false;
     }
+
+    sock_t size = msg.size();
+    if (::send(fd, &size, sizeof(sock_t), 0) <= 0) {
+      error("写入数据长度失败!");
+      error(strerror(errno));
+      return false;
+    }
+
     if (::send(fd, msg.c_str(), msg.size(), 0) <= 0) {
       error("写入数据失败!");
       error(strerror(errno));
+      return false;
     }
     return true; 
   }

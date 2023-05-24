@@ -2,7 +2,12 @@
 
 int main() {
   TcpServer server(2078);
-  server.listen();
-  server.accept();
+  if (server.listen() == false) {
+    return 1;
+  }
+  while (true) {
+    server.accept();
+  }
+  
   return 0;
 }

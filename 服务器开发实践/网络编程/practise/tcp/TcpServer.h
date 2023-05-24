@@ -10,39 +10,57 @@ class TcpServer {
   using sock_t = unsigned short int;
 
 private:
+  int recv_(const int client, char *buf, sock_t size) {
+    int ret = ::recv(client, buf, size, 0);
+    if (ret == 0) {
+      info(std::format("{} 断开连接!", client));
+      return 0;
+    }
+    if (ret < 0) {
+      error("读取报文出错!");
+      error(strerror(errno));
+      return 0;
+    }
+    return ret;
+  }
   // 接受数据
   void recv(const int client) {
     while (true) {
-      char buff[1024]{};
-      int ret = ::recv(client, buff, 1024, 0);
-      if (ret == 0) {
-        info(std::format("{} 断开连接!", client));
+      std::string msg;
+      sock_t size;
+      // 接收需要读取的大小
+      if (recv_(client, reinterpret_cast<char *>(&size), sizeof(sock_t)) > 1) {
+        while (size > 0) {
+          char buff[1024]{};
+          if (size > 1024) {
+            recv_(client, buff, 1024);
+            size -= 1024;
+          } else {
+            recv_(client, buff, size);
+            size = 0;
+          }
+          msg.append(buff);
+        }
+      } else {
         return;
       }
-
-      if (ret < 0) {
-        error("读取报文出错!");
-        error(strerror(errno));
-        continue;
-      }
-
-      buff[ret] = 0;
       // 打印数据
-      std::cout << std::format("{} -> {}\n", client, buff);
+      std::cout << std::format("{} -> {} size -> {}\n", client, msg, msg.size());
     }
   }
 
 public:
-  // 构造函数
+
   TcpServer(const sock_t port, const std::string ip = "any") :
     fd(-666), addr({}) {
     if (ip == "any") {
       addr.setAddress(INADDR_ANY);
     } else {
-      addr.setAddress("127.0.0.1");
+      addr.setAddress(ip);
     }
     addr.setPort(port);
   }
+
 
   ~TcpServer() {
     if (fd != -666) {
@@ -51,7 +69,9 @@ public:
 
     // 结束僵尸线程并关闭连接释放资源
     for (auto iter = users.begin(); iter != users.end(); iter++) {
-      threads[iter->first].join();
+      if (threads[iter->first].joinable()) {
+        threads[iter->first].join();
+      }
       ::close(iter->first);
     }
   }
@@ -80,7 +100,6 @@ public:
       error(strerror(errno));
       return false;
     }
-    
     return true;
   }
 
@@ -118,6 +137,10 @@ public:
       return false;
     }
     return true;
+  }
+
+  void setAddress(const std::string ip) {
+    addr.setAddress(ip);
   }
 
 private:
