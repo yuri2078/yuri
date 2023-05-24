@@ -10,12 +10,31 @@
 
 > 这是我的个人代码仓库，里面存放了我所有学习的代码以及我自己写的各种小项目。
 
-## 目录介绍
+- [`linux 服务器开发`](https://github.com/yuri2078/yuri/tree/main/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5)
 
-1. `.vscode` 存放vscode 配置文件夹
-2. 对应语言文件夹
-   1. `learn` 存放学习该语言的代码文件
-   2. `practise` 该语言练习文件
-3. 数据结构和算法
+- [`线程池`](https://github.com/yuri2078/yuri/tree/main/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/%E7%BA%BF%E7%A8%8B%E6%B1%A0) (c11 和 pthread)
+
+- [`网络编程`](https://github.com/yuri2078/yuri/tree/main/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B) 基于 tcp协议和多线程
+
+- [定时器 ](https://github.com/yuri2078/yuri/blob/main/%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/%E5%AE%9A%E6%97%B6%E5%99%A8_%E5%A4%9A%E7%BA%BF%E7%A8%8B.cpp)基于多线程
+
+- [数据结构和算法](https://github.com/yuri2078/yuri/tree/main/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/learn)
+
+- [笔记](https://github.com/yuri2078/yuri/tree/main/notes/markdown)
+
+- [xmind](https://github.com/yuri2078/yuri/tree/main/notes/xmind)
+
+- [c++ 基础](https://github.com/yuri2078/yuri/tree/main/c%2B%2B/learn/all-learn)
+
+- [c++STL容器](https://github.com/yuri2078/yuri/tree/main/c%2B%2B/learn/STL)
+
+- [Qt项目](https://github.com/yuri2078/yuri/tree/main/QTproject)
+
+- [rust基础](https://github.com/yuri2078/yuri/tree/main/rust/learn)
+
+- [python基础](https://github.com/yuri2078/yuri/tree/main/python/learn)
+
+  
+
 ### Hi there 👋
 
