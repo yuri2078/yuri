@@ -1,4 +1,4 @@
-//package cslg.day_12;
+package cslg.day_12;
 
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -10,6 +10,7 @@ public class Test4 {
 		int n = input.nextInt();
 		int count = 0;
 		int max_key = 0;
+		System.out.println(max_key);
 		for(int i = 0; i < n; i++) {
 			int key = input.nextInt();
 			Integer val = map.get(key);

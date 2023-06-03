@@ -1,3 +1,4 @@
+package cslg.day_12;
 import java.util.*;
 
 class SortablePoint implements Comparable<SortablePoint> {

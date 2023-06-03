@@ -31,15 +31,13 @@ def catch() :
     suck_client = rospy.ServiceProxy("/DobotServer/SetEndEffectorSuctionCup",SetEndEffectorSuctionCup)
 
     #start to catch
-    arm_client(0, 1.86102235317, -287.701812744, 105.714881897, -89.6293792725) # search package
-    time.sleep(5)
-
-    arm_client(0, 1.86102235317, -287.701812744, 95.714881897, -89.6293792725) # search package
+    arm_client(0, -21.9793758392 , -266.671203613 , 126.494918823 , -94.7117385864) # search package
+    time.sleep(5) 
+    arm_client(0, -22.0892620087, -265.013031006, 89.8041992188, -94.7646789551) # search package
     time.sleep(5)
     suck_client(1, 1, False) # open suck
     time.sleep(2)
 
-    
 
     suck_client.close()
     arm_client.close()

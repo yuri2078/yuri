@@ -14,7 +14,6 @@ import json
 from pyzbar.pyzbar import decode
 
 
- 
 class image_converter:
  
   def __init__(self):

@@ -1,3 +1,4 @@
+package cslg.day_12;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 

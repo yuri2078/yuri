@@ -1529,7 +1529,7 @@ END;
 
 ```sql
 CREATE FUNCTION add_numbers (num1 INT, num2 INT) 
-RETURNS INT -- 函数确定性
+RETURNS INT DETERMINISTIC -- 函数确定性
 BEGIN
     DECLARE result INT;
     SET result = num1 + num2;
