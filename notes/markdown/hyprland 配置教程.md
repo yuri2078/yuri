@@ -9,7 +9,7 @@
 > 安装hyprlan waybar  kitty终端 swaybg设置壁纸 wofi 查看应用
 
 ```
-yay -S hyprland-git waybar-hyprland-git kitty swaybg rofi-lbonn-wayland-only-git dunst swaylock thunar polkit-gnome starship wlogout-git grim slurp pamixer cliphist wl-clipboard neofetch cava b
+yay -S hyprland-git waybar-hyprland-git kitty swaybg rofi-lbonn-wayland-only-git dunst swaylock thunar polkit-gnome starship wlogout-git grim slurp pamixer cliphist wl-clipboard neofetch cava 
 ```
 
 ### 字体安装
@@ -114,6 +114,13 @@ vim ~/.zshrc
 zmodule romkatv/powerlevel10k
 zimfw install
 sudo pacman -S ttf-jetbrains-mono-nerd
+
+```
+
+## 剪贴板
+
+```bash
+ for i in $(cliphist list | awk -F. '{ print $2 }'); do cliphist delete-query "$i"; done
 ```
 
 ## 常用软件
