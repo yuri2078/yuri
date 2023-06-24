@@ -1,5 +1,9 @@
 # mysql  数据库基础
 
+
+
+
+
 ## mysql 登陆
 
 ```bash
@@ -14,17 +18,9 @@ mysql -h hostname -u username -p
 
 ## SQL 语句分类
 
-1. 
-2. 
-3. 
-4. 数据控制语言 (DCL)：Data Control Language，用于授权访问数据库中的对象，如 `GRANT` 和 `REVOKE`。
-5. 事务控制语言 (TCL)：Transaction Control Language，用于控制事务的处理，如 `COMMIT`, `ROLLBACK` 和 `SAVEPOINT`。
-
-其中，DDL、DML 和 DQL 是 SQL 中最为常见的语句类型，它们构成了 SQL 查询和数据处理的主要逻辑。
-
 ### DDL 语句
 
-> 数据定义语言 (DDL)：Data Definition Language，用于创建、更新或删除数据库中的表和其他对象，如 `CREATE`, `ALTER` 。
+> 数据定义语言 (DDL)：Data Definition Language，用于创建、更新或删除数据库中的表和其他对象，如 `CREATE`, `ALTER` 
 
 1. `CREATE`
 
@@ -48,7 +44,9 @@ mysql -h hostname -u username -p
    示例：向 `students` 表中添加一列 `gender`。
 
    ```sql
-   ALTER TABLE students ADD COLUMN gender VARCHAR(10);
+   ALTER TABLE students ADD COLUMN gender VARCHAR(10); #添加列
+   ALTER TABLE student ADD PRIMARY KEY (sno); #给student 添加主键
+   ALTER TABLE student DROP PRIMARY KEY; #删除student 的主键
    ```
 
 3. `DROP`
@@ -99,6 +97,8 @@ mysql -h hostname -u username -p
 
    ```sql
    GRANT INSERT ON students TO user1;
+   # 将查询SC 表的权限授予用户U1，并允许该用户将此权限授予其他用户。实现此功能的SQL
+   GRANT SEIECT ON SC TO U1 WITH GRANT OPTION
    ```
 
 8. `REVOKE`

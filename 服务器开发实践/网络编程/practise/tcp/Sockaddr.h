@@ -10,6 +10,7 @@
 
 class Sockaddr {
   using sock_t = unsigned short int;
+  
 
 public:
   // 创建并初始化
@@ -32,14 +33,14 @@ public:
   void setAddress(const std::string ip) {
     addr_.sin_addr.s_addr = inet_addr(ip.c_str());
     if (addr_.sin_addr.s_addr == INADDR_NONE) {
-      error("ip 地址转换错误!");
+      error << "ip 地址转换错误!";
     }
   }
 
   void setAddress(const unsigned long int ip) {
     addr_.sin_addr.s_addr = htonl(ip);
     if (addr_.sin_addr.s_addr == INADDR_NONE) {
-      error("ip 地址转换错误!");
+      error << "ip 地址转换错误!";
     }
   }
 

@@ -13,12 +13,12 @@ private:
   int recv_(const int client, char *buf, sock_t size) {
     int ret = ::recv(client, buf, size, 0);
     if (ret == 0) {
-      info(std::format("{} 断开连接!", client));
+      info << std::format("{} 断开连接!", client);
       return 0;
     }
     if (ret < 0) {
-      error("读取报文出错!");
-      error(strerror(errno));
+      error << "读取报文出错!";
+      error << strerror(errno);
       return 0;
     }
     return ret;
@@ -45,14 +45,14 @@ private:
         return;
       }
       // 打印数据
-      std::cout << std::format("{} -> {} size -> {}\n", client, msg, msg.size());
+      info << std::format("{} -> {} size -> {}", client, msg, msg.size());
     }
   }
 
 public:
 
   TcpServer(const sock_t port, const std::string ip = "any") :
-    fd(-666), addr({}) {
+    fd(-2078), addr({}) {
     if (ip == "any") {
       addr.setAddress(INADDR_ANY);
     } else {
@@ -63,7 +63,7 @@ public:
 
 
   ~TcpServer() {
-    if (fd != -666) {
+    if (fd != -2078) {
       ::close(fd);
     }
 
@@ -82,24 +82,25 @@ public:
     // 创建socket
     fd = ::socket(AF_INET, SOCK_STREAM, 0);
     if (fd <= 0) {
-      error("创建socket 失败!");
-      error(strerror(errno));
+      error << "创建socket 失败!";
+      error << strerror(errno);
       return false;
     }
 
     // 绑定本地ip 地址
     if (::bind(fd, addr.addr(), addr.size()) == -1) {
-      error("绑定地址失败!");
-      error(strerror(errno));
+      error << "绑定地址失败!";
+      error << strerror(errno);
       return false;
     }
 
     // 开启监听
     if (::listen(fd, 20) == -1) {
-      error("监听失败!");
-      error(strerror(errno));
+      error << "监听失败!";
+      error << strerror(errno);
       return false;
     }
+    info << "正在监听 ip -> " << addr.getAddress() << " " << addr.getPort();
     return true;
   }
 
@@ -108,8 +109,8 @@ public:
     Sockaddr client_addr;
     int client = ::accept(fd, client_addr.addr(), addr.size_p());
     if ( client <= 0) {
-      error("监听客户端失败!");
-      error(strerror(errno));
+      error << "监听客户端失败!";
+      error << strerror(errno);
       return -1;
     }
 
@@ -126,14 +127,14 @@ public:
   // 向指定client 发送信息
   bool write(const int client,const std::string msg) {
     if (users.find(client) == users.end()) {
-      error("没有该用户,或者该用户已经断开连接!");
+      error << "没有该用户,或者该用户已经断开连接!";
       return false;
     }
 
     int ret = ::send(client, msg.c_str(), msg.size(), 0);
     if (ret <= 0) {
-      error("发送失败!");
-      error(strerror(errno));
+      error << "发送失败!";
+      error << strerror(errno);
       return false;
     }
     return true;

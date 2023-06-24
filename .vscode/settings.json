@@ -67,7 +67,6 @@
     "sqltools.connections": [], // 默认翻译设置
     "terminal.integrated.cursorStyle": "underline", // 设置终端下弧线类型
     "C_Cpp.default.intelliSenseMode": "clang-x64",
-
     "clangd.fallbackFlags": [
         "-pedantic",
         "-Wall",
@@ -90,6 +89,9 @@
         "-fsanitize=undefined",
         // "-stdlib=libc++",
         "-std=c++20"
-    ]
-    
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none"
 }

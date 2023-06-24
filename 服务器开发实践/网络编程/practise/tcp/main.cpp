@@ -5,9 +5,10 @@ int main() {
   if (server.listen() == false) {
     return 1;
   }
+  
   while (true) {
     server.accept();
+    server.write(10, "yuri");
   }
-  
   return 0;
 }

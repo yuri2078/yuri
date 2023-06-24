@@ -4,76 +4,7 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "java",
-            "name": "Test1",
-            "request": "launch",
-            "mainClass": "Test1",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test2",
-            "request": "launch",
-            "mainClass": "cslg.day_11.Test2",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "test",
-            "request": "launch",
-            "mainClass": "test",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test1",
-            "request": "launch",
-            "mainClass": "cslg.day_11.Test1",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test3",
-            "request": "launch",
-            "mainClass": "cslg.day_10.Test3",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test2",
-            "request": "launch",
-            "mainClass": "cslg.day_10.Test2",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test1",
-            "request": "launch",
-            "mainClass": "cslg.day_10.Test1",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test3",
-            "request": "launch",
-            "mainClass": "cslg.day_9.Test3",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test2",
-            "request": "launch",
-            "mainClass": "cslg.day_9.Test2",
-            "projectName": "yuri_5d503d4e"
-        },
-        {
-            "type": "java",
-            "name": "Test1",
-            "request": "launch",
-            "mainClass": "cslg.day_9.Test1",
-            "projectName": "yuri_5d503d4e"
-        },
+        
         {
             "type": "lldb",
             "request": "launch",

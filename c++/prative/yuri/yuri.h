@@ -14,6 +14,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <sys/socket.h>
+#include <chrono>
 
 // class MyIterator : public std::iterator<std::random_access_iterator_tag, T t>
 
@@ -49,8 +50,8 @@ public:
     fst >> row >> col;
     data = std::make_unique<std::vector<std::vector<int>>>(
       row, std::vector<int>(col));
-    for (int i = 0; i < row; i++) {
-      for (int j = 0; j < col; j++) {
+    for (size_t i = 0; i < row; i++) {
+      for (size_t j = 0; j < col; j++) {
         fst >> (*data)[i][j];
       }
     }
@@ -65,7 +66,7 @@ public:
     checkFile(fst, in_file, std::ios::in);
     fst >> col;
     data_single = std::make_unique<std::vector<int>>(col);
-    for (int i = 0; i < col; i++) {
+    for (size_t i = 0; i < col; i++) {
       fst >> (*data_single)[i];
     }
     fst.close();
@@ -146,29 +147,38 @@ public:
   }
 };
 
-class Aerror {
+
+class Log {
 public:
-  Aerror() = default;
-  ~Aerror() = default;
+  Log(bool) {
+    std::cout << "\x1b[31m";
+    sendMsg();
+  }
+
+  Log() {
+    sendMsg();
+  }
+
+  void sendMsg() {
+    std::time_t currentTime_t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    std::tm* localTime = std::localtime(&currentTime_t);
+    std::cout << "[" << std::put_time(localTime, "%H:%M:%S");
+    std::cout << " " << __FILE__ << ":"  <<  __LINE__ << "] ";
+  }
 
   template <typename T>
-  Aerror &operator<<(T &&s) {
-    std::cout << "\e[31m" << s << "\e[0m";
+  Log &operator<<(T &&val) {
+    std::cout << val;
     return *this;
   }
 
-  Aerror operator()() {
-    return Aerror();
+  ~Log() {
+    std::cout << "\x1b[0m\n";
   }
-
-  // 日志类
 };
 
-#define error(str) \
-    std::cout << "\e[31merror! -> " << str << "\e[0m\n"
-
-#define info(str) \
-    std::cout << "info -> " << str << "\n"
+#define info Log()
+#define error Log(false)
 
 } // namespace yuri
 
