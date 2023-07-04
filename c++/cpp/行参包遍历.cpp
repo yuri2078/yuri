@@ -18,8 +18,8 @@ void printf(Args &&...args) {
 }
 
 // 使用函数重载实现打印可变参数
-template <typename T>
-void log(T &&val) {
+template <typename T> 
+void log(T &&val)  {
   std::cout << val << std::endl;
 }
 

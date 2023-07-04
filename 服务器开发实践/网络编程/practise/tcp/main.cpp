@@ -8,7 +8,6 @@ int main() {
   
   while (true) {
     server.accept();
-    server.write(10, "yuri");
   }
   return 0;
 }

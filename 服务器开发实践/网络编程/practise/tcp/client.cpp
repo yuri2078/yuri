@@ -13,7 +13,7 @@ int main() {
     if (msg == "bye") {
       break;
     }
-    client.write(msg);
+    client.writeToServer(msg);
   }
   
   return 0;

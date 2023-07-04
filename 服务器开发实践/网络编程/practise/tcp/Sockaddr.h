@@ -8,15 +8,25 @@
 #include <cstring>
 #include <yuri.h>
 
+
+enum SocketState{未连接, 客户端, 服务端};
 class Sockaddr {
   using sock_t = unsigned short int;
-  
 
 public:
   // 创建并初始化
   Sockaddr() :
     addr_({}), len(sizeof(addr_)) {
     addr_.sin_family = AF_INET;
+    state = SocketState::未连接;
+  }
+
+  void setStatus(const SocketState &new_state) {
+    state = new_state;
+  }
+
+  SocketState getStatus() const {
+    return state;
   }
 
   // 返回 sockaddr *
@@ -76,8 +86,10 @@ public:
   }
 
 private:
+
   sockaddr_in addr_;
   socklen_t len;
+  SocketState state;
 };
 
 #endif

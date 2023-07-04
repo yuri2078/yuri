@@ -14,6 +14,7 @@ private:
     int ret = ::recv(client, buf, size, 0);
     if (ret == 0) {
       info << std::format("{} 断开连接!", client);
+      users[client].setStatus(SocketState::未连接);
       return 0;
     }
     if (ret < 0) {
@@ -21,6 +22,7 @@ private:
       error << strerror(errno);
       return 0;
     }
+
     return ret;
   }
   // 接受数据
@@ -100,7 +102,7 @@ public:
       error << strerror(errno);
       return false;
     }
-    info << "正在监听 ip -> " << addr.getAddress() << " " << addr.getPort();
+    info << fd << " 正在监听 ip -> " << addr.getAddress() << " " << addr.getPort();
     return true;
   }
 
@@ -116,6 +118,7 @@ public:
 
     users[client] = client_addr; // 添加进map
     std::cout << "客户端 -> " << client << " 已经连接 ! ";
+    users[client].setStatus(SocketState::客户端);
     client_addr.showInfo();
     // 创建新线程接受信息
     threads[client] = std::thread([this, client]() {
@@ -125,8 +128,8 @@ public:
   }
 
   // 向指定client 发送信息
-  bool write(const int client,const std::string msg) {
-    if (users.find(client) == users.end()) {
+  bool writeToClient(const int client,const std::string msg) {
+    if (users.find(client) == users.end() || users[client].getStatus() == SocketState::未连接) {
       error << "没有该用户,或者该用户已经断开连接!";
       return false;
     }
@@ -138,10 +141,6 @@ public:
       return false;
     }
     return true;
-  }
-
-  void setAddress(const std::string ip) {
-    addr.setAddress(ip);
   }
 
 private:

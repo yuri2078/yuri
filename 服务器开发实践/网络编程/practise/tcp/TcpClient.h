@@ -34,11 +34,12 @@ public:
       error << strerror(errno);
       return false;
     }
+    info << "连接到服务端 -> " << fd;
     return true;
   }
 
   // 向客户端发送数据
-  bool write(const std::string msg) {
+  bool writeToServer(const std::string msg) {
     if (fd == -666) {
       error << "套接字没有连接!";
       return false;
