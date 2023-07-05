@@ -38,7 +38,7 @@
     "editor.fontFamily": "Fira Code Medium", // 编辑器字体
     "editor.codeLensFontFamily": "Fira Code Medium",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font", // 终端字体
-    "editor.fontSize": 27, // 编辑器文字大小
+    "editor.fontSize": 30, // 编辑器文字大小
     "terminal.integrated.fontSize": 14, // 集成终端字体大小
     "editor.semanticHighlighting.enabled": true,
     "clangd.arguments": [
@@ -90,8 +90,4 @@
         // "-stdlib=libc++",
         "-std=c++20"
     ],
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
-    },
-    "python.formatting.provider": "none"
 }
