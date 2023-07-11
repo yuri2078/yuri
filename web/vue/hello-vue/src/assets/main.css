@@ -1,0 +1,21 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#yuri {
+  width: 200px;
+  height: 80px;
+  background-color: aliceblue;
+  font-size: 32px;
+  color: black;
+  text-align: center;
+  line-height: 80px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+

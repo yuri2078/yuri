@@ -80,6 +80,7 @@ body
     color: #3d5245;
     border: none;
     -webkit-appearance:none;/*去除阴影边框*/
+    appearance: none;
     outline: none;
 }
 
