@@ -5,8 +5,8 @@
                 <p>用户登陆</p>
             </div>
             <div id = "login-center">
-                <input id="username" placeholder="账号" type="text" v-model="name">
-                <input id="password" placeholder="密码" type="password">
+                <input id="username" placeholder="账号" type="text" v-model="username">
+                <input id="password" placeholder="密码" type="password" v-model="password">
             </div>
 
             <div id = "login-buttom">
@@ -20,44 +20,50 @@
 <script>
 import axios from 'axios'
 export default {
+    emits:['isLogin'],
     data() {
         return {
-            name: "",
+            username: "",
+            password: "",
             login_readey: false,
             student: {
             }
         }
     },
     created:function() {
-        // axios.get("http://localhost:8080/findStudent").then((respose) => {
-        //     console.log(respose.data);
-        // })
 
     },
     methods: {
         login(e) {
-            axios.post("http://localhost:8080/login", null, {
-                params: {
-                    sno : 207817
-                }
-            }).then((response) => {
-                this.student = response.data;
-                if (response.data.sname != null) {
-                    console.log(response.data);
-                } else {
-                    console.log("登陆失败!");
-                }
-                
-            });
+            // axios.post("http://localhost:8080/login", null, {
+            //     params: {
+            //         sno : 207817
+            //     }
+            // }).then((response) => {
+            //     this.student = response.data;
+            //     if (response.data.sname != null) {
+            //         console.log(response.data);
+            //     } else {
+            //         console.log("登陆失败!");
+            //     }
+            // });
+
+            if (this.username === "" || this.password === "") {
+                alert("账号或者密码为空!");
+            } else {
+                alert("登陆成功!");
+                this.$emit('isLogin');
+                console.log("name -> " + this.username + " passwd -> " + this.password);
+            }
         },
         register() {
-            console.log(this.student.sname);
+            console.log(this.login_readey);
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 #login-back {
   width: 100vw;
   height: 100vh;
