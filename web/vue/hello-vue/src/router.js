@@ -3,7 +3,6 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import hello from "./components/hello.vue"
 import test from "./components/test.vue"
 import login from "./components/login.vue"
-import student from "./components/student.vue"
 import userinfo from "./components/userinfo.vue"
 import { compile } from "vue"
 
@@ -24,19 +23,43 @@ const router = createRouter({
         },
         {
             path: '/student',
-            component: student,
-            children: [
-                {
-                    path: '/userinfo',
-                    component:userinfo
-                }
-                
-            ]
+            component: userinfo,
         },
         {
-            path: '/student/userinfo',
+            path: '/student/0',
             component:userinfo
-            
+        },
+        {
+            path: '/student/1',
+            component:hello
+        },
+        {
+            path: '/student/2',
+            component:test
+        },
+        {
+            path: '/student/3',
+            component:hello
+        },
+        {
+            path: '/student/4',
+            component:hello
+        },
+        {
+            path: '/student/5',
+            component:hello
+        },
+        {
+            path: '/student/6',
+            component:hello
+        },
+        {
+            path: '/student/7',
+            component:hello
+        },
+        {
+            path: '/student/8',
+            component:hello
         }
     ]
 });

@@ -2,7 +2,7 @@
   <p> {{ yuri }} </p>
   <p> {{ OK ? 'yes' : 'no' }}</p>
   <p> {{ }} </p>
-  <P v-html="a"></P>
+  <p v-html="a"></p>
   <div v-bind:id="id">
     <p>
       {{ yuri }}

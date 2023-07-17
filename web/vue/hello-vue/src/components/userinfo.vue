@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>学生信息管理</h1>
+        <button @click="getData"></button>
         <table>
             <tr>
                 <th v-for="(value,key,index) in students[0]" :key="index">{{ key }}</th>
@@ -9,7 +10,10 @@
             <tr v-for="student in students" :key="student.sno">
                 <td v-for="(value, key, index) in student" :key="index">{{ value }}</td>
             </tr>
+
+
         </table>
+        
     </div>
 	
 </template>
@@ -25,19 +29,18 @@ export default {
 
     created() {
         this.getData();
-        
     },
     methods: {
-        getData() {
-            axios.get("http://localhost:8080/findStudent", null,).then((response) => {
-                console.log(response.data);
-                if (response.data != null) {
-                    this.students = response.data
-                }
-            }).catch((response) => { 
-                console.log(response);
-            });
-            console.log("加载学生列表!");
+        async getData() {
+            try {
+                let get = await axios.get("http://localhost:8080/findStudent", null);
+                console.log(get.data);
+                this.students = get.data
+            } catch (error) {
+                this.students = null;
+                console.log(error);
+                alert("获取数据出错!");
+            }
         }
     }
 };
@@ -53,8 +56,8 @@ import axios from 'axios';
 }
 
 div {
-    width: 1000px;
-    height: 800px;
+    width:100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,6 +79,18 @@ tr, td, th {
     border: 2px solid black;
     text-align: center;
     font-size: 33px;
+}
+
+button {
+    width: 64px;
+    height: 64px;
+    background-image: url("../assets/icons/刷新.svg");
+    background-repeat: no-repeat;
+    background-size: 64px;
+    background-color: aliceblue;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
 }
 
 </style>
