@@ -2,7 +2,9 @@
 #define UDOCLIENT_H
 
 #include "Sockaddr.h"
+#include <memory>
 #include <sys/socket.h>
+#include "message.h"
 #include <unordered_map>
 #include <thread>
 
@@ -36,15 +38,10 @@ public:
     return std::string(buf);
   }
 
-  bool sendTo(const std::string &msg) {
-    if (fd == -2078 && !init()) {
-      error << "绑定套接字失败!";
-      return "";
-    }
-    std::string msg_ = std::format("fd -> {} msg -> {}", fd, msg);
-    int ret = ::sendto(fd, msg_.c_str(), msg_.size(), 0, addr.addr(), addr.size());
-    if (ret < 0) {
-      error << "发送信息失败:fd -> " << fd;
+  bool sendTo(const std::string &msg, const MessageType &type = MessageType::msg) {
+    MessageHead head(msg.size(), type);
+    if (send(head.data(), sizeof(MessageHead))) {
+      send(msg.c_str(), msg.size());
     }
     return true;
   }
@@ -65,6 +62,20 @@ private:
     }
     return true;
   }
+
+  bool send(const char *data, sock_t size) {
+    if (fd == -2078 && !init()) {
+      error << "绑定套接字失败!";
+      return "";
+    }
+    int ret = ::sendto(fd, data, size, 0, addr.addr(), addr.size());
+    if (ret < 0) {
+      error << "发送信息失败:fd -> " << fd;
+    }
+    return true;
+  }
+
+
 };
 
 #endif

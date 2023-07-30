@@ -87,7 +87,7 @@ public:
     is_close = true; // 将关闭标志设置为false 防止线程一直阻塞
     cv.notify_all(); // 唤醒所有线程 处理任务或者结束线程
     // 将所有还没执行完的线程等待执行
-    for (int i = 0; i < threads.size(); i++) {
+    for (unsigned i = 0; i < threads.size(); i++) {
       if (threads[i].joinable()) {
         threads[i].join();
       }

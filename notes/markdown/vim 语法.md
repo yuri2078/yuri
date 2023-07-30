@@ -48,3 +48,9 @@ keywords:
 ## 其他操作
 
 - `10p` -- 粘贴10次
+- `space l c` 注释
+- `space l f` 格式化代码
+- `space l t` 运行代码
+- 
+- `c n` 打开代码导航
+- 

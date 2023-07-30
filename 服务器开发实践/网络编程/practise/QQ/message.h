@@ -4,44 +4,52 @@
 #include <string>
 #include <iostream>
 
-
-enum MessageType{msg, login, config};
+enum MessageType { msg,
+                   login,
+                   config };
 // 普通消息 登陆消息 日志消息
-class Message {
+class MessageHead {
 public:
-  
-  Message(const std::string name) : type(MessageType::msg), name(name) {
-    size_t = 78;
-    std::cout << "sizeof this : " << sizeof *this
-              << "\n sizeof type : " << sizeof type
-              << "\nsizeof name : " << sizeof name
-              << "\n sizeof msg : " << sizeof msg;
-    std::endl(std::cout);
-    
+  MessageHead(unsigned length, const MessageType &type = MessageType::msg) :
+    type_(type), length_(length) {
   }
 
-  void setType(const MessageType &new_type) {
-    this->type = new_type;
+  unsigned length() const {
+    return length_;
   }
 
-  void setMsg(const std::string &str) {
-    msg = std::move(str);
+  MessageType type() const {
+    return type_;
   }
 
-  unsigned size() {
-    return sizeof(*this);
+  unsigned *mutable_lenght() {
+    return &length_;
   }
 
-  char *getThis() {
+  MessageType *mutable_type() {
+    return &type_;
+  }
+
+  const char *data() {
     return reinterpret_cast<char *>(this);
   }
 
-private:
-  unsigned int size_t;
-  MessageType type;
-  std::string name;
-  std::string msg;
-};
+  static std::string const getType(const MessageType &type) {
+    switch (type) {
+    case MessageType::msg:
+      return "普通消息";
+    case MessageType::login:
+      return "登陆消息";
+    case MessageType::config:
+      return "配置消息";
+    default:
+      return "未知消息";
+    }
+  }
 
+private:
+  MessageType type_;
+  unsigned int length_;
+};
 
 #endif
