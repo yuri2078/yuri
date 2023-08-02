@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/build",
+  "command": "/usr/bin/c++  -I/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/include -std=gnu++20 -o CMakeFiles/server.dir/server.cpp.o -c /home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/server.cpp",
+  "file": "/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/server.cpp",
+  "output": "CMakeFiles/server.dir/server.cpp.o"
+},
+{
+  "directory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/build",
+  "command": "/usr/bin/c++  -I/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/include -std=gnu++20 -o CMakeFiles/client.dir/client.cpp.o -c /home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/client.cpp",
+  "file": "/home/yuri/yuri/服务器开发实践/网络编程/practise/QQ/client.cpp",
+  "output": "CMakeFiles/client.dir/client.cpp.o"
+}
+]

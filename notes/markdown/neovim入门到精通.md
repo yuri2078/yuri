@@ -13,24 +13,6 @@ date: 2022-08-04 19:17:31
 tags: vim
 keywords:
 ---
-# neovim 从入门到精通
-
-## 本地环境
-
-1. 系统 `archlinux`
-2. neovim `v0.9.1`
-
-## 安装
-
-`sudo pacman -S neovim`
-
-```bash
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-
-
-
 # vim语法
 
 ## 移动

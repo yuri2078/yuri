@@ -5,7 +5,7 @@
 #include "message.h"
 #include <unordered_map>
 #include <functional>
-#include <utility>
+#include <memory>
 
 class UdpServer {
   using sock_t = unsigned short int;
@@ -35,7 +35,7 @@ public:
     char head_[sizeof(MessageHead)];
     if (recv(head_, sizeof(MessageHead)) > 0) {
       MessageHead *head = reinterpret_cast<MessageHead *>(head_);
-      func[head->type()]();
+      func[head->type()](std::make_shared<MessageHead>(*head));
     }
     return true;
   }
@@ -43,7 +43,7 @@ public:
 private:
   int fd;        // socket 描述符
   Sockaddr addr; // 地址
-  std::unordered_map<MessageType, std::function<void()>> func;
+  std::unordered_map<MessageType, std::function<void(std::shared_ptr<MessageHead>)>> func;
 
   // 开启监听本地端口
   bool init() {
@@ -77,15 +77,20 @@ private:
   }
 
   void initFunc() {
-    func[MessageType::login] = []() {
+    func[MessageType::login] = [](const std::shared_ptr<MessageHead> head) {
       info << "这是登陆消息!\n";
     };
 
-    func[MessageType::msg] = []() {
-      info << "这是普通消息!\n";
+    func[MessageType::msg] = [this](const std::shared_ptr<MessageHead> head) {
+      info << "这是普通消息捏!\n";
+      info << "msgSize -> " << head->length();
+      head->setMsgSize(head->length());
+      if(this->recv(head->msg(), head->length())) {
+        info << "msg -> " << head->msg();
+      }
     };
 
-    func[MessageType::config] = []() {
+    func[MessageType::config] = [](const std::shared_ptr<MessageHead> head) {
       info << "这是配置消息!\n";
     };
   }

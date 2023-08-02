@@ -12,6 +12,7 @@ class MessageHead {
 public:
   MessageHead(unsigned length, const MessageType &type = MessageType::msg) :
     type_(type), length_(length) {
+      msg_ = nullptr;
   }
 
   unsigned length() const {
@@ -34,6 +35,15 @@ public:
     return reinterpret_cast<char *>(this);
   }
 
+  void setMsgSize(const unsigned size) {
+    msg_ = new char[size];
+  }
+
+  char *msg() const {
+    return msg_;
+  }
+
+
   static std::string const getType(const MessageType &type) {
     switch (type) {
     case MessageType::msg:
@@ -50,6 +60,7 @@ public:
 private:
   MessageType type_;
   unsigned int length_;
+  char *msg_;
 };
 
 #endif

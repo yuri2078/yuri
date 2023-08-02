@@ -15,6 +15,7 @@ void fun(char q[][20], int n) {
   }
 }
 
+
 int main() {
   char p[][20] = {"abc", "bdefg", "abcd123", "456ace", "#$%"};
   int i;
@@ -23,5 +24,6 @@ int main() {
     puts(p[i]);
   }
   printf("%lu\n", strlen(p[i - 4]));
+
   return 0;
 }
