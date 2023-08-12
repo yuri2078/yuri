@@ -3,6 +3,9 @@
 
 int main() {
   UdpServer server(2078);
-  server.recv();
+  while (true) {
+    server.recv();
+  }
+
   return 0;
 }

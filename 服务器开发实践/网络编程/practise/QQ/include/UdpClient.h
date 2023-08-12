@@ -24,30 +24,28 @@ public:
     }
   }
 
-  std::string recvFrom() {
-    if (fd == -2078 && !init()) {
-      error << "绑定套接字失败!";
-      return "";
+  bool login(const std::string &username) {
+    send(username, MessageType::login);
+    int ret;
+    if (!recv(reinterpret_cast<char *>(&ret), sizeof(ret))) {
+      return false;
     }
-    char buf[1024]{};
-    int ret = ::recvfrom(fd, buf, 1024, 0, addr.addr(), addr.size_p());
-    if (ret < 0) {
-      error << "获取信息失败:fd -> " << fd;
+    if (ret > 0) {
+      id = ret;
+    } else {
+      error << "登陆失败! 错误码 -> " << ret;
+      return false;
     }
-    info << "msg -> " << buf;
-    return std::string(buf);
+    return ret > 0;
   }
 
-  bool sendTo(const std::string &msg, const MessageType &type = MessageType::msg) {
-    MessageHead head(msg.size(), type);
-    if (send(head.data(), sizeof(MessageHead))) {
-      send(msg.c_str(), msg.size());
-    }
-    return true;
+  bool send(const std::string &msg) {
+    return send(msg, MessageType::msg);
   }
 
 private:
-  int fd;                                       // socket 描述符
+  int fd; // socket 描述符
+  int id; // 身份id
   Sockaddr addr;                                // 地址
   std::unordered_map<int, std::thread> threads; // 线程
 
@@ -63,6 +61,25 @@ private:
     return true;
   }
 
+  bool send(const std::string &msg, const MessageType &type) {
+    MessageHead head(msg.size(), type);
+    head.setId(id);
+    if (send(head.headData(), sizeof(MessageHead))) {
+      send(msg.c_str(), msg.size());
+    }
+    return true;
+  }
+
+  bool recv(char *data, const unsigned size) {
+    int ret = ::recvfrom(fd, data, size, 0, addr.addr(), addr.size_p());
+    if (ret < 0) {
+      error << "获取信息失败:fd -> " << fd;
+    } else if (ret == 0) {
+      error << "对方关闭链接!";
+    }
+    return ret > 0;
+  }
+
   bool send(const char *data, sock_t size) {
     if (fd == -2078 && !init()) {
       error << "绑定套接字失败!";
@@ -74,7 +91,6 @@ private:
     }
     return true;
   }
-
 
 };
 

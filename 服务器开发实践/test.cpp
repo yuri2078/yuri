@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
 
-
-
 int main() {
-  const char *str = "yuri is yes";
+  const char str[4] = {'y','u','r','i'};
+  
   std::string msg(str);
-  std::cout << msg;
+  std::cout << msg.size();
   std::endl(std::cout);
   return 0;
 }

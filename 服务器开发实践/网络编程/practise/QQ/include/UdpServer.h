@@ -26,6 +26,7 @@ public:
     if (fd != -2078) {
       ::close(fd);
     }
+
   }
 
   bool recv() {
@@ -44,6 +45,7 @@ private:
   int fd;        // socket 描述符
   Sockaddr addr; // 地址
   std::unordered_map<MessageType, std::function<void(std::shared_ptr<MessageHead>)>> func;
+  std::unordered_map<int, std::string> users;
 
   // 开启监听本地端口
   bool init() {
@@ -77,22 +79,49 @@ private:
   }
 
   void initFunc() {
-    func[MessageType::login] = [](const std::shared_ptr<MessageHead> head) {
-      info << "这是登陆消息!\n";
-    };
-
-    func[MessageType::msg] = [this](const std::shared_ptr<MessageHead> head) {
-      info << "这是普通消息捏!\n";
-      info << "msgSize -> " << head->length();
-      head->setMsgSize(head->length());
-      if(this->recv(head->msg(), head->length())) {
-        info << "msg -> " << head->msg();
+    func[MessageType::login] = [this](const std::shared_ptr<MessageHead> head) {
+      head->setSize(head->size());
+      if(this->recv(head->msgData(), head->size())) {
+        int ret(addUser(head->msg()));
+        if (ret > 0) {
+          info << "用户 -> " << head->msg() << " 登陆成功!";
+        }
+        send(reinterpret_cast<char *>(&ret), sizeof(ret));
       }
     };
 
-    func[MessageType::config] = [](const std::shared_ptr<MessageHead> head) {
-      info << "这是配置消息!\n";
+    func[MessageType::msg] = [this](const std::shared_ptr<MessageHead> head) {
+      head->setSize(head->size());
+      if(this->recv(head->msgData(), head->size())) {
+        info << users[head->id()] << " : " << head->msg();
+      }
     };
+
+    func[MessageType::config] = [this](const std::shared_ptr<MessageHead> head) {
+      info << "这是配置消息!";
+    };
+  }
+
+  bool send(const char *data, sock_t size) {
+    if (fd == -2078 && !init()) {
+      error << "绑定套接字失败!";
+      return "";
+    }
+    int ret = ::sendto(fd, data, size, 0, addr.addr(), addr.size());
+    if (ret < 0) {
+      error << "发送信息失败:fd -> " << fd;
+    }
+    return true;
+  }
+
+  int addUser(const std::string &username) {
+    for (auto begin = users.begin(); begin != users.end(); begin++) {
+      if (begin->second == username) {
+        return -1;
+      }
+    }
+    users[users.size() + 1] = username;
+    return users.size();
   }
 };
 

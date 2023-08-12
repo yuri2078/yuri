@@ -18,12 +18,15 @@ public:
     std::cout << " 移动构造函数!\n";
   }
 
-  A &operator=(const A &a)  {
+   A &operator=(const A &a)  {
     std::cout << a.i;
     std::cout << " 等号构造函数!\n";
     return *this;
   }
 
+  std::iostream & operator<<(std::iostream &cout) {
+    return cout;
+  }
 
 };
 

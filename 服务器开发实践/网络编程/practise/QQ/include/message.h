@@ -10,39 +10,49 @@ enum MessageType { msg,
 // 普通消息 登陆消息 日志消息
 class MessageHead {
 public:
-  MessageHead(unsigned length, const MessageType &type = MessageType::msg) :
-    type_(type), length_(length) {
-      msg_ = nullptr;
+  MessageHead(const unsigned int size = 0, const MessageType &type = MessageType::msg) :
+    type_(type), size_(size) , id_(0){
+    msg_ = nullptr;
   }
 
-  unsigned length() const {
-    return length_;
+  virtual ~MessageHead() {
+    if (msg_) {
+      delete [] msg_;
+    }
+  }
+
+  unsigned size() const {
+    return size_;
   }
 
   MessageType type() const {
     return type_;
   }
 
-  unsigned *mutable_lenght() {
-    return &length_;
+  unsigned int id() const {
+    return id_;
   }
 
-  MessageType *mutable_type() {
-    return &type_;
+  void setId(unsigned int id) {
+    id_ = id;
   }
 
-  const char *data() {
+  void setSize(unsigned int size) {
+    size_ = size;
+    msg_ = new char[size + 1]();
+  }
+
+  const char *headData() {
     return reinterpret_cast<char *>(this);
   }
 
-  void setMsgSize(const unsigned size) {
-    msg_ = new char[size];
-  }
-
-  char *msg() const {
+  char *msgData() const {
     return msg_;
   }
 
+  std::string msg() const {
+    return std::string(msg_);
+  }
 
   static std::string const getType(const MessageType &type) {
     switch (type) {
@@ -59,7 +69,8 @@ public:
 
 private:
   MessageType type_;
-  unsigned int length_;
+  unsigned int size_;
+  unsigned int id_;
   char *msg_;
 };
 
