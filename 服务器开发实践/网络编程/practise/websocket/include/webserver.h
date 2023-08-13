@@ -1,12 +1,13 @@
-#ifndef TCPSERVER_H
-#define TCPSERVER_H
+#ifndef WEBSOCKET_H
+#define WEBSOCKET_H
 
 #include "Sockaddr.h"
+#include <string>
 #include <sys/socket.h>
 #include <unordered_map>
 #include <thread>
 
-class TcpServer {
+class WebServer {
   using sock_t = unsigned short int;
 
 private:
@@ -28,32 +29,32 @@ private:
   // 接受数据
   void recv(const int client) {
     while (true) {
-      std::string msg;
-      sock_t size;
-      // 接收需要读取的大小
-      if (recv_(client, reinterpret_cast<char *>(&size), sizeof(sock_t)) > 1) {
-        while (size > 0) {
-          char buff[1024]{};
-          if (size > 1024) {
-            recv_(client, buff, 1024);
-            size -= 1024;
-          } else {
-            recv_(client, buff, size);
-            size = 0;
-          }
-          msg.append(buff);
+      std::string html_content = "<html><body><h1>Hello, world!</h1></body></html>";
+      std::string response = "HTTP/1.1 200 OK\r\n""Content-Type: text/html\r\n"
+      "Content-Length: " + std::to_string(html_content.size()) + "\r\n"
+      "Access-Control-Allow-Origin: *\r\n"
+      "Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n"
+      "Access-Control-Allow-Headers: Content-Type, Authorization\r\n"
+      "Access-Control-Allow-Credentials: true\r\n"
+      "Access-Control-Max-Age: 3600\r\n"
+      "\r\n" + html_content;
+
+      char buff[1024]{};
+      if (recv_(client, buff, 1024) > 0) {
+        info << client << " -> " << buff;
+        for (int i = 0; i < 1024; i++) {
+
         }
+        writeToClient(client, response);
       } else {
         return;
       }
-      // 打印数据
-      info << std::format("{} -> {} size -> {}", client, msg, msg.size());
     }
   }
 
 public:
 
-  TcpServer(const sock_t port, const std::string ip = "any") :
+  WebServer(const sock_t port, const std::string ip = "any") :
     fd(-2078), addr({}) {
     if (ip == "any") {
       addr.setAddress(INADDR_ANY);
@@ -64,7 +65,7 @@ public:
   }
 
 
-  ~TcpServer() {
+  ~WebServer() {
     if (fd != -2078) {
       ::close(fd);
     }

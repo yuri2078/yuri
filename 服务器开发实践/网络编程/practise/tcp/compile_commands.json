@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/build",
+  "command": "/usr/bin/c++  -I/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/include -std=gnu++20 -o CMakeFiles/client.dir/client.cpp.o -c /home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/client.cpp",
+  "file": "/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/client.cpp",
+  "output": "CMakeFiles/client.dir/client.cpp.o"
+},
+{
+  "directory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/build",
+  "command": "/usr/bin/c++  -I/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/include -std=gnu++20 -o CMakeFiles/server.dir/server.cpp.o -c /home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/server.cpp",
+  "file": "/home/yuri/yuri/服务器开发实践/网络编程/practise/tcp/server.cpp",
+  "output": "CMakeFiles/server.dir/server.cpp.o"
+}
+]
