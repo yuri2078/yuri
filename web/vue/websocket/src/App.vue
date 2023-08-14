@@ -52,7 +52,10 @@ export default defineComponent({
 
     const cpp = async () => {
       try {
-        let get = await axios.post("http://localhost:2078");
+        let get = await axios.post("http://localhost:2078", {
+          username: 'yuri',
+          password: 'yuri'
+        });
         val.value = get.data;
       } catch (error: any) {
         ElNotification.error(error)

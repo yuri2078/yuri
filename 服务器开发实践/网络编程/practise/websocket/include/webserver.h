@@ -6,6 +6,11 @@
 #include <sys/socket.h>
 #include <unordered_map>
 #include <thread>
+#include "httptype.h"
+#include "response.h"
+
+namespace yuri {
+
 
 class WebServer {
   using sock_t = unsigned short int;
@@ -29,23 +34,14 @@ private:
   // 接受数据
   void recv(const int client) {
     while (true) {
-      std::string html_content = "<html><body><h1>Hello, world!</h1></body></html>";
-      std::string response = "HTTP/1.1 200 OK\r\n""Content-Type: text/html\r\n"
-      "Content-Length: " + std::to_string(html_content.size()) + "\r\n"
-      "Access-Control-Allow-Origin: *\r\n"
-      "Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n"
-      "Access-Control-Allow-Headers: Content-Type, Authorization\r\n"
-      "Access-Control-Allow-Credentials: true\r\n"
-      "Access-Control-Max-Age: 3600\r\n"
-      "\r\n" + html_content;
-
       char buff[1024]{};
       if (recv_(client, buff, 1024) > 0) {
         info << client << " -> " << buff;
-        for (int i = 0; i < 1024; i++) {
-
-        }
-        writeToClient(client, response);
+        Response response(buff);
+        std::string html = response.readFile("/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/dist/index.html");
+        response.setContent(ContentType::html, html.size());
+        writeToClient(client, response.httpHeader());
+        writeToClient(client, html);
       } else {
         return;
       }
@@ -150,5 +146,7 @@ private:
   std::unordered_map<int, Sockaddr> users; // 用户
   std::unordered_map<int, std::thread> threads; // 线程
 };
+
+} // namespace yuri
 
 #endif
