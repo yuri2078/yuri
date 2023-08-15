@@ -1,40 +1,36 @@
 #include <iostream>
-#include <vector>
+#include <yuri.h>
 
-class A {
+class C {
 public:
-  int i;
-public:
-  A() {
-    std::cout << "构造函数\n";
+  C() {
+    info << "构造函数!";
   }
 
-  A(const A &a) {
-    std::cout << a.i << " 拷贝构造函数\n";
+  ~C() {
+    info << "析构函数!";
   }
 
-  A(A &&a) {
-    std::cout << a.i;
-    std::cout << " 移动构造函数!\n";
+  C(const C &) {
+    info << "拷贝构造函数!";
   }
 
-   A &operator=(const A &a)  {
-    std::cout << a.i;
-    std::cout << " 等号构造函数!\n";
+  C(C &&) {
+    info << "移动构造函数!";
+  }
+
+  C operator=(const C &) {
+    info << "等号构造函数!";
     return *this;
   }
-
-  std::iostream & operator<<(std::iostream &cout) {
-    return cout;
-  }
-
 };
 
-int main() {
-  A a;
-  std::vector<A> vec;
-  vec.push_back(std::move(a));
-  vec.emplace_back(a);
+C fun() {
+  C c;
+  return c;
+}
 
+int main() {
+  C b = fun();
   return 0;
 }
