@@ -1,3 +1,0 @@
-/home/yuri/yuri/cmake练习/five/build/CMakeFiles/main.dir
-/home/yuri/yuri/cmake练习/five/build/CMakeFiles/edit_cache.dir
-/home/yuri/yuri/cmake练习/five/build/CMakeFiles/rebuild_cache.dir
