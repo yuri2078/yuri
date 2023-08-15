@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-  WebServer webserver(2078);
+  yuri::WebServer webserver(2078);
   if(webserver.listen()) {
     while(true) {
       webserver.accept();

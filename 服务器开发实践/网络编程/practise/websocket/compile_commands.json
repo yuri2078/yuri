@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/build",
-  "command": "/usr/bin/c++  -I/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/include -std=gnu++20 -o CMakeFiles/server.dir/server.cpp.o -c /home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/server.cpp",
-  "file": "/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/server.cpp",
-  "output": "CMakeFiles/server.dir/server.cpp.o"
-}
-]

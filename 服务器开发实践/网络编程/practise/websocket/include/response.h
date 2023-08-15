@@ -6,18 +6,20 @@ namespace yuri {
 
 class Response {
 public:
-  Response(const std::string &header);
+  Response(const std::string &header, const int client);
   virtual ~Response();
 
-  static std::string readFile(const std::string &file_name);
+  std::string readFile(const std::string &file_name);
 
   std::string httpHeader();
 
   void setStatusType(StatusType value);
   void setRequestType(RequestType value);
-  void setContent(ContentType value, unsigned size);
-
+  void setContent(ContentType type, unsigned length);
+  
   std::string getRequestPath() const;
+
+  int client() const;
 
 private:
   StatusType status_type;   // 状态码
@@ -29,9 +31,12 @@ private:
   std::string header;       // 报文头源数据
   std::string cross;        // 跨域头
   std::string message;      // 消息体
+  std::string root_path;    // 根路径
+  std::string file_name;    // 文件名
 
 private:
   void init();
+  int client_;
 };
 
 } // namespace yuri

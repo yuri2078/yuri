@@ -1,13 +1,14 @@
 #include "../include/response.h"
 #include "httptype.h"
 
+#include <iostream>
 #include <sstream>
 #include <fstream>
 
 namespace yuri {
-Response::Response(const std::string &header) :
-  header(header) {
-  setStatusType(StatusType::OK);
+Response::Response(const std::string &header, const int client) :
+  header(header), status_type(StatusType::OK), root_path(""), client_(client) {
+  root_path = "/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/dist";
   setContent(ContentType::text, 0);
   int start = 0;
   while (header[start] != ' ' && header[start]) {
@@ -29,13 +30,14 @@ Response::Response(const std::string &header) :
 }
 
 std::string Response::readFile(const std::string &file_name) {
-  std::ifstream file(file_name, std::ios::binary);
+  std::ifstream file(root_path + file_name, std::ios::binary);
   if (!file) {
     return "";
   }
   std::ostringstream buffer;
   buffer << file.rdbuf();
   file.close();
+  buffer.str();
   return buffer.str();
 }
 
@@ -54,13 +56,17 @@ void Response::setRequestType(RequestType value) {
   request_type = value;
 }
 
-void Response::setContent(ContentType value, unsigned size) {
-  content_length = "Content-Length: " + std::to_string(size) + "\r\n";
-  content_type = value;
+void Response::setContent(ContentType type, unsigned length) {
+  content_length = "Content-Length: " + std::to_string(length) + "\r\n";
+  content_type = type;
 }
 
 std::string Response::getRequestPath() const {
   return request_path;
+}
+
+int Response::client() const {
+  return client_;
 }
 
 } // namespace yuri

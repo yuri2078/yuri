@@ -25,9 +25,9 @@ std::unordered_map<StatusType, std::string> Type::status_type = {
 // 数据类型
 std::unordered_map<ContentType, std::string> Type::content_type{
   {ContentType::html, "Content-Type: text/html\r\n"},
-  {ContentType::text, "Content-Type: text/html\r\n"},
-  {ContentType::css, "Content-Type: text/html\r\n"},
-  {ContentType::js, "Content-Type: text/html\r\n"},
+  {ContentType::text, "Content-Type: text/plain\r\n"},
+  {ContentType::css, "Content-Type: text/css\r\n"},
+  {ContentType::js, "Content-Type: application/javascript\r\n"},
   {ContentType::icon, "Content-Type: image/x-icon\r\n"}};
 
 std::string Type::cross = "Access-Control-Allow-Origin: *\r\n"
