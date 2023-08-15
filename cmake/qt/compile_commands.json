@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/yuri/yuri/cmake练习/qt/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6 -isystem /usr/include/qt6/QtCore -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtGui -std=gnu++20 -mno-direct-extern-access -o CMakeFiles/yuri.dir/main.cpp.o -c /home/yuri/yuri/cmake练习/qt/main.cpp",
+  "file": "/home/yuri/yuri/cmake练习/qt/main.cpp",
+  "output": "CMakeFiles/yuri.dir/main.cpp.o"
+}
+]
