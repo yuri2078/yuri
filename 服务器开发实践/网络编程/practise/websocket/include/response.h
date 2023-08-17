@@ -1,44 +1,51 @@
 #ifndef RESPONSE_H
 #define RESPONSE_H
-#include "httptype.h"
 
-namespace yuri {
+#include <string>
+
+namespace yuri::web {
 
 class Response {
 public:
-  Response(const std::string &header, const int client);
-  virtual ~Response();
+  enum Status {
+    OK = 200,
+    Created = 201,
+    Accepted = 202,
+    NoContent = 204,
+    MovedPermanently = 301,
+    Found = 302,
+    BadRequest = 400,
+    Unauthorized = 401,
+    Forbidden = 403,
+    NotFound = 404,
+    InternalServerError = 500
+  };
 
-  std::string readFile(const std::string &file_name);
+  enum Type {
+    html,
+    icon,
+    css,
+    js,
+    text,
+    picture
+  };
 
-  std::string httpHeader();
+public:
+  // 根据函数参数发送响应 默认发送请求的响应
+  static std::string response(const Type, const unsigned lenght, const Status = Status::OK);
 
-  void setStatusType(StatusType value);
-  void setRequestType(RequestType value);
-  void setContent(ContentType type, unsigned length);
+private:
+  static std::string getTypeString(const Status status);
+  static std::string getTypeString(const Type type);
+  static std::string getTypeString(const unsigned length);
+
   
-  std::string getRequestPath() const;
-
-  int client() const;
-
 private:
-  StatusType status_type;   // 状态码
-  RequestType request_type; // 请求类型
-  ContentType content_type; // 文件类型
-
-  std::string request_path; // 请求路径
-  std::string content_length; // 请求长度
-  std::string header;       // 报文头源数据
-  std::string cross;        // 跨域头
-  std::string message;      // 消息体
-  std::string root_path;    // 根路径
-  std::string file_name;    // 文件名
-
-private:
-  void init();
-  int client_;
+  Status status;
+  Type type;
+  unsigned lenght;
 };
 
-} // namespace yuri
+} // namespace yuri::web
 
 #endif

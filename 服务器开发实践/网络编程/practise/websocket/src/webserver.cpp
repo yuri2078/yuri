@@ -1,8 +1,9 @@
 #include "../include/webserver.h"
-#include "httptype.h"
-#include "pathhandler.h"
 #include "response.h"
+#include "request.h"
 #include <memory>
+#include <sstream>
+#include <fstream>
 
 namespace yuri {
 
@@ -114,25 +115,33 @@ int WebServer::recv_(const int client, char *buf, sock_t size) {
 void WebServer::recv(const int client) {
   while (true) {
     char buff[1024]{};
+    static auto readFile = [](const std::string &file_name) ->std::string {
+      std::ifstream file(file_name, std::ios::binary);
+      if (!file) {
+        error << "未找到文件 -> " << file_name;
+        return "";
+      }
+      std::ostringstream buffer;
+      buffer << file.rdbuf();
+      file.close();
+      return buffer.str();
+    };
     if (recv_(client, buff, 1024) > 0) {
-      info << client << " -> " << buff;
-      std::shared_ptr<Response> response = std::make_shared<Response>(buff, client);
-      PathHandler path(this, response.get());
-      if (response->getRequestPath().find("js") != std::string::npos) {
-        path.sendFile(response->getRequestPath(), ContentType::js);
+      using namespace yuri::web;
+      std::shared_ptr<Request> request = std::make_shared<Request>(buff);
+      info << request->showInfo();
+      if (request->type() == Request::GET) {
+        std::string file;
+        if (request->path() == "/") {
+          file = readFile("../dist/index.html");
+        } else {
+          file = readFile("../dist" + request->path());
+        }
+        std::string response = Response::response(Response::html, file.size());
+        writeToClient(client, response);
+        writeToClient(client, file);
       }
-
-      if (response->getRequestPath().find("css") != std::string::npos) {
-        path.sendFile(response->getRequestPath(), ContentType::css);
-      }
-
-      if (response->getRequestPath() == "/") {
-        path.sendFile("/index.html", ContentType::html);
-      }
-
-      if (response->getRequestPath() == "/favicon.ico") {
-        path.sendFile("/favicon.ico", ContentType::html);
-      }
+      
     } else {
       return;
     }

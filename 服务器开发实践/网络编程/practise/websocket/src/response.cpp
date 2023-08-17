@@ -1,72 +1,59 @@
 #include "../include/response.h"
-#include "httptype.h"
 
-#include <iostream>
-#include <sstream>
-#include <fstream>
+namespace yuri::web {
 
-namespace yuri {
-Response::Response(const std::string &header, const int client) :
-  header(header), status_type(StatusType::OK), root_path(""), client_(client) {
-  root_path = "/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/dist";
-  setContent(ContentType::text, 0);
-  int start = 0;
-  while (header[start] != ' ' && header[start]) {
-    start++;
-  }
-  request_type = header.substr(0, start) == "GET" ? RequestType::GET : RequestType::POST;
-  start++;
-  int end = start;
-  while (header[end] != ' ' && header[end]) {
-    end++;
-  }
-  request_path = header.substr(start, end - start);
-  start = header.find_last_of("{");
-  if (start < header.size()) {
-    message = header.substr(start, header.size() - start);
-  } else {
-    message = "none";
-  }
+std::string Response::response(const Type type, const unsigned int lenght, const Status status) {
+  return getTypeString(status) + getTypeString(type) + getTypeString(lenght) + "Connection: close\r\n\r\n";
 }
 
-std::string Response::readFile(const std::string &file_name) {
-  std::ifstream file(root_path + file_name, std::ios::binary);
-  if (!file) {
+std::string Response::getTypeString(const Status status) {
+  switch (status) {
+  case Status::OK:
+    return "HTTP/1.1 200 OK\r\n";
+  case Status::Created:
+    return "HTTP/1.1 201 Created\r\n";
+  case Status::Accepted:
+    return "HTTP/1.1 202 Accepted\r\n";
+  case Status::NoContent:
+    return "HTTP/1.1 204 No Content\r\n";
+  case Status::MovedPermanently:
+    return "HTTP/1.1 301 Moved Permanently\r\n";
+  case Status::Found:
+    return "HTTP/1.1 302 Found\r\n";
+  case Status::BadRequest:
+    return "HTTP/1.1 400 Bad Request\r\n";
+  case Status::Unauthorized:
+    return "HTTP/1.1 401 Unauthorized\r\n";
+  case Status::Forbidden:
+    return "HTTP/1.1 403 Forbidden\r\n";
+  case Status::NotFound:
+    return "HTTP/1.1 404 Not Found\r\n";
+  case Status::InternalServerError:
+    return "HTTP/1.1 500 Internal Server Error\r\n";
+  default:
     return "";
   }
-  std::ostringstream buffer;
-  buffer << file.rdbuf();
-  file.close();
-  buffer.str();
-  return buffer.str();
 }
 
-std::string Response::httpHeader() {
-  return Type::getType(status_type) + Type::getType(content_type) + content_length + Type::cross + "Connection: close\r\n\r\n";
+std::string Response::getTypeString(const Type type) {
+  switch (type) {
+  case Type::html:
+    return "Content-Type: text/html\r\n";
+  case Type::text:
+    return "Content-Type: text/plain\r\n";
+  case Type::css:
+    return "Content-Type: text/css\r\n";
+  case Type::js:
+    return "Content-Type: application/javascript\r\n";
+  case Type::icon:
+    return "Content-Type: image/x-icon\r\n";
+  default:
+    return "";
+  }
 }
 
-Response::~Response() {
+std::string Response::getTypeString(const unsigned length) {
+  return "Content-Length: " + std::to_string(length) + "\r\n";
 }
 
-void Response::setStatusType(StatusType value) {
-  status_type = value;
-}
-
-void Response::setRequestType(RequestType value) {
-  request_type = value;
-}
-
-void Response::setContent(ContentType type, unsigned length) {
-  content_length = "Content-Length: " + std::to_string(length) + "\r\n";
-  content_type = type;
-}
-
-std::string Response::getRequestPath() const {
-  return request_path;
-}
-
-int Response::client() const {
-  return client_;
-}
-
-} // namespace yuri
+} // namespace yuri::web

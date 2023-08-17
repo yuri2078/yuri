@@ -5,7 +5,6 @@
 #include <unordered_map>
 #include <thread>
 #include <functional>
-#include "httptype.h"
 #include "response.h"
 
 namespace yuri {
