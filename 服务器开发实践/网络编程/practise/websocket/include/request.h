@@ -2,20 +2,18 @@
 #define REQUEST_H
 
 #include <string>
+#include "type.h"
 
 namespace yuri::web {
 
 class Request {
 public:
-  enum Type {
-    GET,
-    POST
-  };
 
   // 传入请求头字符串
   Request(const std::string &header);
 
-  Type type() const;
+  RequestType requestType() const;
+  FileType fileType() const;
   const std::string &path() const;
   const std::string &host() const;
   const std::string &contentLength() const;
@@ -29,7 +27,7 @@ public:
   std::string showInfo() const;
 
 private:
-  Type type_;                 // 请求类型
+  RequestType type_;          // 请求类型
   std::string path_;          // 请求路径
   std::string host_;          // 请求地址
   std::string content_length; // 请求体长度
@@ -39,8 +37,9 @@ private:
   std::string referer_;       // 引荐页url
   std::string cookie_;        // 用户cookie
   std::string body_;          // 请求体
+  FileType file_type;         // 请求文件类型
 
-  Type getType(const std::string &); // 通过字符串获取请求类型
+  RequestType getType(const std::string &); // 通过字符串获取请求类型
   std::string getInfo(const std::string &, const std::string &);
   std::string getPath(const std::string &);
 };

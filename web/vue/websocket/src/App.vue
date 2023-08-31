@@ -1,29 +1,38 @@
 <template>
   <el-card class="login-card">
-    <el-form :model="form" ref="loginForm" :rules="rules" label-width="80px" class="login-form">
+    <el-form
+      :model="form"
+      ref="loginForm"
+      :rules="rules"
+      label-width="80px"
+      class="login-form"
+    >
       <el-form-item label="用户名" prop="username">
         <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" placeholder="请输入密码" show-password></el-input>
+        <el-input
+          v-model="form.password"
+          placeholder="请输入密码"
+          show-password
+        ></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="login">登录</el-button>
         <el-button type="primary" @click="cpp">测试</el-button>
       </el-form-item>
     </el-form>
-  </el-card>
-  
-  <el-card id="cpp">
-    {{ val }}
+    <el-card id="cp">
+      {{ val }}
+    </el-card>
   </el-card>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { ElForm, ElFormItem, ElInput, ElButton, ElCard } from 'element-plus';
-import axios from 'axios'
-import { ElNotification } from 'element-plus'
+import { defineComponent, ref } from "vue";
+import { ElForm, ElFormItem, ElInput, ElButton, ElCard } from "element-plus";
+import axios from "axios";
+import { ElNotification } from "element-plus";
 
 export default defineComponent({
   components: {
@@ -35,43 +44,39 @@ export default defineComponent({
   },
   setup() {
     const form = ref({
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
 
-    const val = ref()
+    const val = ref();
 
     const rules = {
-      username: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
-      ],
-      password: [
-        { required: true, message: '请输入密码', trigger: 'blur' },
-      ],
+      username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+      password: [{ required: true, message: "请输入密码", trigger: "blur" }],
     };
 
     const cpp = async () => {
       try {
         let get = await axios.post("http://localhost:2078", {
-          username: 'yuri',
-          password: 'yuri'
+          username: "yuri",
+          password: "yuri",
         });
         val.value = get.data;
       } catch (error: any) {
-        ElNotification.error(error)
+        ElNotification.error(error);
       }
-    }
+    };
 
     const login = () => {
       // 登录逻辑
     };
-    
+
     return {
       form,
       rules,
       login,
       cpp,
-      val
+      val,
     };
   },
 });
@@ -88,7 +93,7 @@ export default defineComponent({
   margin-top: 20px;
 }
 
-#cpp {
+#cp {
   margin-top: 30px;
   margin: 30px 23%;
   width: 50%;

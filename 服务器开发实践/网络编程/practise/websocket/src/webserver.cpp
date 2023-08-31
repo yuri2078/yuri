@@ -1,6 +1,7 @@
 #include "../include/webserver.h"
 #include "response.h"
 #include "request.h"
+#include "type.h"
 #include <memory>
 #include <sstream>
 #include <fstream>
@@ -130,16 +131,23 @@ void WebServer::recv(const int client) {
       using namespace yuri::web;
       std::shared_ptr<Request> request = std::make_shared<Request>(buff);
       info << request->showInfo();
-      if (request->type() == Request::GET) {
+      if (request->requestType() == RequestType::GET) {
         std::string file;
         if (request->path() == "/") {
           file = readFile("../dist/index.html");
         } else {
           file = readFile("../dist" + request->path());
         }
-        std::string response = Response::response(Response::html, file.size());
+        ContentType content = Response::getContentType(request->fileType());
+        std::string response = Response::response(content, file.size());
         writeToClient(client, response);
         writeToClient(client, file);
+      } else {
+        std::string msg = "yuri is yes";
+        info << buff;
+        std::string response = Response::response(ContentType::text, msg.size());
+        writeToClient(client, response);
+        writeToClient(client, msg);
       }
       
     } else {

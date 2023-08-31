@@ -1,9 +1,26 @@
 #include "../include/response.h"
+#include "type.h"
 
 namespace yuri::web {
 
-std::string Response::response(const Type type, const unsigned int lenght, const Status status) {
+std::string Response::response(const ContentType type, const unsigned int lenght, const Status status) {
   return getTypeString(status) + getTypeString(type) + getTypeString(lenght) + "Connection: close\r\n\r\n";
+}
+
+ContentType Response::getContentType(const FileType type) {
+  switch (type) {
+  case FileType::font:
+    return ContentType::text;
+  case FileType::script:
+    return ContentType::js;
+  case FileType::style:
+    return ContentType::css;
+  case FileType::image:
+    return ContentType::icon;
+  case FileType::document:
+    return ContentType::html;
+  default: return ContentType::text;
+  }
 }
 
 std::string Response::getTypeString(const Status status) {
@@ -35,17 +52,17 @@ std::string Response::getTypeString(const Status status) {
   }
 }
 
-std::string Response::getTypeString(const Type type) {
+std::string Response::getTypeString(const ContentType type) {
   switch (type) {
-  case Type::html:
+  case ContentType::html:
     return "Content-Type: text/html\r\n";
-  case Type::text:
+  case ContentType::text:
     return "Content-Type: text/plain\r\n";
-  case Type::css:
+  case ContentType::css:
     return "Content-Type: text/css\r\n";
-  case Type::js:
+  case ContentType::js:
     return "Content-Type: application/javascript\r\n";
-  case Type::icon:
+  case ContentType::icon:
     return "Content-Type: image/x-icon\r\n";
   default:
     return "";
