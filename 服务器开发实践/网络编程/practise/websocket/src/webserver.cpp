@@ -16,6 +16,17 @@ WebServer::WebServer(const sock_t port, const std::string ip) :
   } else {
     addr.setAddress(ip);
   }
+  getMapping("/", [this](int client) {
+    std::string file(readFile("../dist/index.html"));
+    result(client, web::Status::OK, web::ContentType::html, file);
+  });
+
+  getMapping("/favicon.ico", [this](int client) {
+    std::string file(readFile("../dist/favicon.ico"));
+    result(client, web::Status::OK, web::ContentType::icon, file);
+  });
+
+
   addr.setPort(port);
 }
 
@@ -116,40 +127,35 @@ int WebServer::recv_(const int client, char *buf, sock_t size) {
 void WebServer::recv(const int client) {
   while (true) {
     char buff[1024]{};
-    static auto readFile = [](const std::string &file_name) ->std::string {
-      std::ifstream file(file_name, std::ios::binary);
-      if (!file) {
-        error << "未找到文件 -> " << file_name;
-        return "";
-      }
-      std::ostringstream buffer;
-      buffer << file.rdbuf();
-      file.close();
-      return buffer.str();
-    };
     if (recv_(client, buff, 1024) > 0) {
       using namespace yuri::web;
       std::shared_ptr<Request> request = std::make_shared<Request>(buff);
       info << request->showInfo();
-      if (request->requestType() == RequestType::GET) {
-        std::string file;
-        if (request->path() == "/") {
-          file = readFile("../dist/index.html");
-        } else {
-          file = readFile("../dist" + request->path());
-        }
-        ContentType content = Response::getContentType(request->fileType());
-        std::string response = Response::response(content, file.size());
-        writeToClient(client, response);
-        writeToClient(client, file);
-      } else {
-        std::string msg = "yuri is yes";
-        info << buff;
-        std::string response = Response::response(ContentType::text, msg.size());
-        writeToClient(client, response);
-        writeToClient(client, msg);
+      if (request->fileType() == web::FileType::script || request->fileType() == web::FileType::style) {
+        getMapping(request->path(), [this, request](int client) {
+          std::string file(readFile("../dist" + request->path()));
+          web::ContentType type = Response::getContentType(request->fileType());
+          result(client, web::Status::OK, type, file);
+        });
       }
+      if (request->requestType() == RequestType::GET) {
+        auto fun = get_func.find(request->path());
+        if (fun != get_func.end()) {
+          get_func[request->path()](client);
+        } else {
+          result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
+        }
+      } else {
+        auto fun = post_func.find(request->path());
+        if (fun != post_func.end()) {
+          post_func[request->path()](client);
+        } else {
+          result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
+        }
+      }
+
       
+
     } else {
       return;
     }
@@ -160,10 +166,25 @@ void WebServer::init() {
 
 }
 
+void WebServer::result(int client, web::Status status, web::ContentType type, std::string msg) {
+  std::string response(web::Response::response(type, msg.length()));
+  writeToClient(client, response);
+  writeToClient(client, msg);
+}
 
+void WebServer::getMapping(std::string path, std::function<void(int client)> func) {
+  get_func[path] = func;
+}
 
-
-
-
-
+std::string WebServer::readFile(const std::string &file_name) {
+  std::ifstream file(file_name, std::ios::binary);
+  if (!file) {
+    error << "未找到文件 -> " << file_name;
+    return "";
+  }
+  std::ostringstream buffer;
+  buffer << file.rdbuf();
+  file.close();
+  return buffer.str();
+}
 } // namespace yuri
