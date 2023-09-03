@@ -64,6 +64,8 @@ std::string Response::getTypeString(const ContentType type) {
     return "Content-Type: application/javascript\r\n";
   case ContentType::icon:
     return "Content-Type: image/x-icon\r\n";
+  case ContentType::picture:
+    return "Content-Type: image/png\r\n";
   default:
     return "";
   }

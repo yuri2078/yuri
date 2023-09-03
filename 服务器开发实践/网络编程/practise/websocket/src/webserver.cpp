@@ -26,7 +26,10 @@ WebServer::WebServer(const sock_t port, const std::string ip) :
     result(client, web::Status::OK, web::ContentType::icon, file);
   });
 
-
+  getMapping("/yuri.png", [this](int client) {
+    std::string file(readFile("/home/yuri/Pictures/yuri/wallhaven-1pd1o9_3840x2160.png"));
+    result(client, web::Status::OK, web::ContentType::picture, file);
+  });
   addr.setPort(port);
 }
 
@@ -43,7 +46,6 @@ WebServer::~WebServer() {
     ::close(iter->first);
   }
 }
-
 
 bool WebServer::listen() {
   // 创建socket
@@ -126,11 +128,11 @@ int WebServer::recv_(const int client, char *buf, sock_t size) {
 // 接受数据
 void WebServer::recv(const int client) {
   while (true) {
-    char buff[1024]{};
+    char buff[999999]{};
     if (recv_(client, buff, 1024) > 0) {
       using namespace yuri::web;
       std::shared_ptr<Request> request = std::make_shared<Request>(buff);
-      info << request->showInfo();
+      info << request->showInfo() << "\n" << buff;
       if (request->fileType() == web::FileType::script || request->fileType() == web::FileType::style) {
         getMapping(request->path(), [this, request](int client) {
           std::string file(readFile("../dist" + request->path()));
@@ -138,6 +140,7 @@ void WebServer::recv(const int client) {
           result(client, web::Status::OK, type, file);
         });
       }
+
       if (request->requestType() == RequestType::GET) {
         auto fun = get_func.find(request->path());
         if (fun != get_func.end()) {
@@ -145,6 +148,7 @@ void WebServer::recv(const int client) {
         } else {
           result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
         }
+
       } else {
         auto fun = post_func.find(request->path());
         if (fun != post_func.end()) {
@@ -153,8 +157,6 @@ void WebServer::recv(const int client) {
           result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
         }
       }
-
-      
 
     } else {
       return;
