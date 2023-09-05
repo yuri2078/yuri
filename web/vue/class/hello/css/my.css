@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.van-row {
+    margin-top: 2px;
+}
+
+#main-table {
+    width: 90%;
+    height: auto;
+    font-size: 22px;
+    max-width: 600px;
+}
+
+#main-table h1 {
+    text-align: center;
+    font-size: 26px;
+}
+
+.stu-tag{
+    text-align: center;
+    background-color: #e67300;
+    padding: 5px 0px;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.stu-info{
+    text-align: left;
+    background-color: #ffb366;
+    padding: 5px 0px;
+    padding-left: 40px;
+    border-radius: 0px 5px 5px 0px;
+}
+
