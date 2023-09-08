@@ -90,4 +90,5 @@
         // "-stdlib=libc++",
         "-std=c++20"
     ],
+    "cmake.sourceDirectory": "/home/yuri/yuri/opencv/learn",
 }

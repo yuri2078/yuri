@@ -148,7 +148,6 @@ void WebServer::recv(const int client) {
         } else {
           result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
         }
-
       } else {
         auto fun = post_func.find(request->path());
         if (fun != post_func.end()) {
