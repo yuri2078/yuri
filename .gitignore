@@ -9,3 +9,5 @@ cmake-build-debug/
 build*/
 .cache/
 devel/
+*.so
+*.exe
