@@ -17,6 +17,7 @@
       <h3>书籍信息</h3>
       <h5>图书名称：{{ book }}</h5>
       <h5>出版厂商：{{ publisher }}</h5>
+      {{ yuri }}
     </div>
     <script>
       const { createApp, ref } = Vue;
@@ -26,7 +27,7 @@
         data() {
           return {
             book,
-            publisher
+            publisher, 
           };
         },
       };

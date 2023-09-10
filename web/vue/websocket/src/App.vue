@@ -2,7 +2,7 @@
   <el-upload
     class="upload-demo"
     drag
-    action="http://localhost:2078"
+    action="http://192.168.1.164:2078/file"
     multiple
   >
     <el-icon class="el-icon--upload"><upload-filled /></el-icon>
