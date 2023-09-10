@@ -4,7 +4,11 @@
 namespace yuri::web {
 
 std::string Response::response(const ContentType type, const unsigned int lenght, const Status status) {
-  return getTypeString(status) + getTypeString(type) + getTypeString(lenght) + "Connection: close\r\n\r\n";
+  return getTypeString(status) + getTypeString(type) + getTypeString(lenght)
+         + "Access-Control-Allow-Origin: *\r\n"
+         + "Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n"
+         + "Access-Control-Allow-Headers: Content-Type, Authorization\r\n"
+         + "Connection: close\r\n\r\n";
 }
 
 ContentType Response::getContentType(const FileType type) {
@@ -72,6 +76,9 @@ std::string Response::getTypeString(const ContentType type) {
 }
 
 std::string Response::getTypeString(const unsigned length) {
+  if (length == 0) {
+    return "";
+  }
   return "Content-Length: " + std::to_string(length) + "\r\n";
 }
 

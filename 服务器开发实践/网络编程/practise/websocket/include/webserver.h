@@ -10,7 +10,7 @@
 #include "request.h"
 #include "type.h"
 
-namespace yuri {
+namespace yuri::web {
 
 class WebServer {
   using sock_t = unsigned short int;
@@ -27,6 +27,8 @@ private:
 
   // 向指定client服务端 发送状态为status 类型为type 的msg消息
   void result(int client, web::Status status, web::ContentType type, std::string msg);
+
+  void handleRequest(int client , std::shared_ptr<web::Request> request);
 
 public:
   WebServer(const sock_t port, const std::string ip = "any");
@@ -45,8 +47,13 @@ public:
   std::string readFile(const std::string &file_name);
 
   // 注册路径处理 get
-  void getMapping(std::string path, std::function<void(int client)> func);
+  void getMapping(std::string path, std::function<void(int client, std::shared_ptr<web::Request> request)> func);
 
+  // 注册路径处理 post
+  void postMapping(std::string path, std::function<void(int client, std::shared_ptr<web::Request> request)> func);
+
+  // 注册处理 options
+  void optMapping(std::string path, std::function<void(int client, std::shared_ptr<web::Request> request)> func);
   
 
 private:
@@ -54,8 +61,9 @@ private:
   Sockaddr addr;                                // 地址
   std::unordered_map<int, Sockaddr> users;      // 用户
   std::unordered_map<int, std::thread> threads; // 线程
-  std::unordered_map<std::string, std::function<void(int client)>> get_func; // 路径处理函数
-  std::unordered_map<std::string, std::function<void(int client)>> post_func; // 路径处理函数
+  std::unordered_map<std::string, std::function<void(int, std::shared_ptr<web::Request>)>> get_func; // 路径处理函数
+  std::unordered_map<std::string, std::function<void(int, std::shared_ptr<web::Request>)>> post_func; // 路径处理函数
+  std::unordered_map<std::string, std::function<void(int, std::shared_ptr<web::Request>)>> opt_func;// 路径处理函数
 };
 
 } // namespace yuri
