@@ -14,17 +14,61 @@
     <div id="app">
       <div id="main-table">
         <h1>个人基本信息</h1>
-        <van-row><van-col class="stu-tag" span="8">学院</van-col><van-col class="stu-info" span="16" >{{ student.学院 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">专业</van-col><van-col class="stu-info" span="16" >{{ student.专业 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">学号</van-col><van-col class="stu-info" span="16" >{{ student.学号 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">姓名</van-col><van-col class="stu-info" span="16" >{{ student.姓名 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">性别</van-col><van-col class="stu-info" span="16" >{{ student.性别 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">身高</van-col><van-col class="stu-info" span="16" >{{ student.身高 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">体重</van-col><van-col class="stu-info" span="16" >{{ student.体重 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">生日</van-col><van-col class="stu-info" span="16" >{{ student.生日 }}</van-col></van-row>
-        <van-row><van-col class="stu-tag" span="8">爱好</van-col><van-col class="stu-info" span="16" >{{ student.爱好 }}</van-col></van-row>
+        <van-row
+          ><van-col class="stu-tag" span="8">学院</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.学院 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">专业</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.专业 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">学号</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.学号 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">姓名</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.姓名 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">性别</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.性别 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">身高</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.身高 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">体重</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.体重 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">生日</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.生日 }}</van-col
+          ></van-row
+        >
+        <van-row
+          ><van-col class="stu-tag" span="8">爱好</van-col
+          ><van-col class="stu-info" span="16"
+            >{{ student.爱好 }}</van-col
+          ></van-row
+        >
       </div>
-      
     </div>
     <script>
       const { createApp, ref } = Vue;
@@ -46,7 +90,6 @@
             student,
           };
         },
-        
       };
       const app = Vue.createApp(App);
       app.use(vant);
