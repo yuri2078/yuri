@@ -82,13 +82,13 @@ int WebServer::accept() {
     error << strerror(errno);
     return -1;
   }
-  // struct timeval timeout;
-  // timeout.tv_sec = 5;
-  // timeout.tv_usec = 0;
-  // if (setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
-  //   perror("setsockopt");
-  //   return 1;
-  // }
+  struct timeval timeout;
+  timeout.tv_sec = 5;
+  timeout.tv_usec = 0;
+  if (setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
+    perror("setsockopt");
+    return 1;
+  }
 
   users[client] = client_addr; // 添加进map
   info << "客户端 -> " << client << " 已经连接 ! ";
@@ -202,7 +202,7 @@ void WebServer::init() {
 
   optMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
     info << request->showInfo();
-    std::string str = "Access-Control-Allow-Origin: *\r\n "
+    std::string str = "Access-Control-Allow-Origin: *\r\n"
                       "Access-Control-Allow-Methods: *\r\n"
                       "Access-Control-Allow-Headers: *\r\n";
     result(client, Status::OK, ContentType::text, str);
