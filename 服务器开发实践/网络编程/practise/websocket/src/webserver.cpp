@@ -83,19 +83,9 @@ int WebServer::accept() {
   users[client].setStatus(SocketState::客户端);
   client_addr.showInfo();
   // 创建新线程接受信息
-  try {
-    threads[client] = std::thread([this, client]() {
-      try {
-        this->recv(client);
-      } catch (std::exception &e) {
-        error << e.what();
-      }
-      
-    });
-  } catch (std::exception &e) {
-    error << e.what();
-  }
-  
+  threads[client] = std::thread([this, client]() {
+    this->recv(client);
+  });
   return client;
 }
 
@@ -194,9 +184,16 @@ void WebServer::init() {
   addStaticFile("/assets/index-eca29ec9.css", ContentType::css);
   postMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
     // info  << request->showInfo();
-
-    unsigned long int size = std::stoi(request->contentLength()), all = 0;
+    unsigned long int size = 0, all = 0;
+    try {
+      size = std::stoll(request->contentLength()), all = 0;
+    } catch (std::exception &e) {
+      error << e.what();
+      result(client, Status::BadRequest, ContentType::text, "文件过大!");
+      return;
+    }
     std::stringstream sstr;
+    info << "源文件大小 -> " << size;
     while (all < size) {
       char buff[1024]{};
       int ret = recv_(client, buff, 1023);
@@ -210,14 +207,14 @@ void WebServer::init() {
       sstr.write(buff, ret);
     }
     std::string str(sstr.str());
-    int begin = str.find("\r\n\r\n") + 4;
-    int end = str.rfind("--" + request->boundary());
+    unsigned long int begin = str.find("\r\n\r\n") + 4;
+    unsigned long int end = str.rfind("--" + request->boundary());
     std::string head = str.substr(0, str.find("\r\n\r\n"));
-    int pos = head.find("filename=\"") + 10;
+    unsigned long int pos = head.find("filename=\"") + 10;
     std::string file_name = head.substr(pos ,head.rfind("\"") - pos);
     std::fstream file(file_name, std::ios::out | std::ios::binary);
     file.write(str.data() + begin, end - begin - 2);
-    info << "file -> " << file_name << " " << end - begin - 2 << " 字节";
+    info << "file -> " << file_name << " " << end - begin - 2;
     file.close();
     result(client, Status::OK, ContentType::text, "发送成功!");
   });

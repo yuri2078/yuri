@@ -22,7 +22,7 @@ private:
   // 接受数据
   void recv(const int client);
 
-  // 初始化处理函数
+  // 初始化处理函数 对路径进行注册
   void init();
 
   // 向指定client服务端 发送状态为status 类型为type 的msg消息
