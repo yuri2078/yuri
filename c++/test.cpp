@@ -1,14 +1,8 @@
 #include <yuri.h>
-#include <unordered_set>
+#include <limits>
 
 int main() {
-  std::string s("aabccd");
-  std::unordered_multiset<char> set(s.begin(), s.end());
-  auto iter = set.find('a');
-  set.erase(iter);
-  for (char c : set) {
-    info << c;
-  }
-  
+  info << std::numeric_limits<long unsigned int>::max();
+  info << std::numeric_limits<unsigned long int>::max();
   return 0;
 }

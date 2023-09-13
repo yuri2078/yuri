@@ -147,7 +147,6 @@ public:
   }
 };
 
-
 class Log {
 public:
   Log(bool) {
@@ -161,9 +160,9 @@ public:
 
   void sendMsg() {
     std::time_t currentTime_t = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::tm* localTime = std::localtime(&currentTime_t);
+    std::tm *localTime = std::localtime(&currentTime_t);
     std::cout << "[" << std::put_time(localTime, "%H:%M:%S");
-    std::cout << " " << __FILE__ << ":"  <<  __LINE__ << "] ";
+    std::cout << " " << __FILE__ << ":" << __LINE__ << "] ";
   }
 
   template <typename T>
