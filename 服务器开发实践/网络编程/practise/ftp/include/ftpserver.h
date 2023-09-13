@@ -10,7 +10,7 @@
 namespace yuri::web {
 
 class FtpServer {
-  using sock_t = unsigned short int;
+  using sock_t = unsigned long int;
 
 private:
   // 从指定fd中接受数据

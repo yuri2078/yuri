@@ -5,8 +5,12 @@ int main(int argc, char *argv[])
 {
   yuri::web::WebServer webserver(2078);
   if(webserver.listen()) {
-    while(true) {
-      webserver.accept();
+    while (true) {
+      try {
+        webserver.accept();
+      } catch (std::exception &e) {
+        error << e.what();
+      }
     }
   } else {
     return 1;

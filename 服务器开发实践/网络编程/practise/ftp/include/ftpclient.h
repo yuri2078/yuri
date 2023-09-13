@@ -6,7 +6,7 @@
 
 namespace yuri::web {
 class FtpClient {
-  using sock_t = unsigned short int;
+  using sock_t = unsigned long int;
 
 public:
   FtpClient(const std::string& ip,const sock_t port);

@@ -40,6 +40,7 @@ bool FtpClient::writeToServer(const std::string &msg) {
   }
 
   sock_t size = msg.size();
+  info << "写入 -> " << size;
   if (::send(fd, &size, sizeof(sock_t), 0) <= 0) {
     error << "写入数据长度失败!";
     error << strerror(errno);
@@ -63,6 +64,7 @@ bool FtpClient::sendFile(const std::string &file_name) {
   std::ostringstream buffer;
   buffer << file.rdbuf();
   file.close();
+  info << "写入文件大小 -> " << buffer.str().size();
   return writeToServer(buffer.str());
 }
 

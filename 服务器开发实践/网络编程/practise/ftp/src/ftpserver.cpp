@@ -126,13 +126,18 @@ void FtpServer::recv(const int client) {
       while (size > 0) {
         char buff[1024]{};
         int ret = recv_(client, buff, 1023);
+        if (ret == 0) {
+          error << "接收到0";
+          exit(1);
+        }
         size -= ret;
-        msg << buff;
+        msg.write(buff, ret);
       }
+      info << "本次获取 -> " << msg.str().size();
       
       if (msg.str().size() > 100) {
         info << "本次接收是文件，正在写入!";
-        std::fstream file("2.png", std::ios::out | std::ios::binary);
+        std::fstream file("2.jpg", std::ios::out | std::ios::binary);
         file << msg.rdbuf();
         file.close();
       } else {

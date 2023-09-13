@@ -6,7 +6,6 @@
 namespace yuri::web {
 
 Request::Request(const std::string &header) {
-  info << "文件大小 -> " << header.size();
   host_ = getInfo(header, "Host");
   content_length = getInfo(header, "Content-Length");
   accept_ = getInfo(header, "Accept");
@@ -17,6 +16,9 @@ Request::Request(const std::string &header) {
   boundary_ = getInfo(header, "boundary");
   access_control_request_methodod = getInfo(header, "Access-Control-Request-Method");
   type_ = getType(header);
+  if (!boundary_.empty() && header.find(boundary_) != header.rfind(boundary_)) {
+    is_error = "错误接收文件消息!";
+  }
   // info << "消息体位置 -> " << header.find(header.find(boundary_) + 1);
 }
 

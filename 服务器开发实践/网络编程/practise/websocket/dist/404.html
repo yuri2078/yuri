@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - 页面未找到</title>
+    <style>
+      body {
+        background-color: #f0f0f0; /* 背景色 */
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* 防止页面滚动 */
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h1 {
+        font-size: 4rem;
+        color: #333;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .magical-girl-quote {
+        font-style: italic;
+        font-size: 1.5rem;
+        color: #ff69b4; /* 粉色，魔法少女小圆的代表色 */
+        margin-top: 20px;
+      }
+
+      .stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .star {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff69b4;
+        clip-path: polygon(
+          50% 0%,
+          61.8% 38.2%,
+          100% 38.2%,
+          69.1% 61.8%,
+          80.3% 100%,
+          50% 75%,
+          19.7% 100%,
+          30.9% 61.8%,
+          0% 61.8%,
+          38.2% 38.2%
+        );
+        animation: falling 5s linear infinite;
+      }
+
+      @keyframes falling {
+        to {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>404 - 页面未找到</h1>
+      <p>很抱歉，您访问的页面不存在</p>
+      <p class="magical-girl-quote">魔法和奇迹是存在的</p>
+    </div>
+    <div class="stars">
+      <!-- 生成五角星的JS -->
+      <script>
+        function createStar() {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = `${Math.random() * 100}%`;
+          star.style.animationDuration = `${Math.random() * 2 + 3}s`;
+          return star;
+        }
+
+        const starContainer = document.querySelector(".stars");
+        for (let i = 0; i < 30; i++) {
+          starContainer.appendChild(createStar());
+        }
+      </script>
+    </div>
+  </body>
+</html>

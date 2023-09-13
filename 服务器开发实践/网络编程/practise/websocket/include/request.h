@@ -26,7 +26,7 @@ public:
   const std::string &AccessControlRequestMethod() const;
 
   std::string showInfo() const;
-
+  std::string is_error; // 错误日志
 private:
   std::string type_;          // 请求类型
   std::string path_;          // 请求路径
@@ -40,7 +40,9 @@ private:
   std::string body_;          // 请求体
   std::string boundary_;      // 消息分割边界
   std::string access_control_request_methodod; // 请求类型
-  FileType file_type;         // 请求文件类型
+  FileType file_type;                          // 请求文件类型
+
+  
 
   std::string getType(const std::string &); // 通过字符串获取请求类型
   std::string getInfo(const std::string &, const std::string &);

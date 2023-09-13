@@ -6,6 +6,7 @@
 #include <memory>
 #include <sstream>
 #include <fstream>
+#include <string_view>
 
 namespace yuri::web {
 
@@ -17,20 +18,7 @@ WebServer::WebServer(const sock_t port, const std::string ip) :
   } else {
     addr.setAddress(ip);
   }
-  getMapping("/", [this](int client,  std::shared_ptr<web::Request> request) {
-    std::string file(readFile("../dist/index.html"));
-    result(client, web::Status::OK, web::ContentType::html, file);
-  });
 
-  getMapping("/favicon.ico", [this](int client,  std::shared_ptr<web::Request> request) {
-    std::string file(readFile("../dist/favicon.ico"));
-    result(client, web::Status::OK, web::ContentType::icon, file);
-  });
-
-  getMapping("/yuri.png", [this](int client,  std::shared_ptr<web::Request> request) {
-    std::string file(readFile("/home/yuri/Pictures/yuri/wallhaven-1pd1o9_3840x2160.png"));
-    result(client, web::Status::OK, web::ContentType::picture, file);
-  });
   addr.setPort(port);
 }
 
@@ -95,16 +83,26 @@ int WebServer::accept() {
   users[client].setStatus(SocketState::客户端);
   client_addr.showInfo();
   // 创建新线程接受信息
-  threads[client] = std::thread([this, client]() {
-    this->recv(client);
-  });
+  try {
+    threads[client] = std::thread([this, client]() {
+      try {
+        this->recv(client);
+      } catch (std::exception &e) {
+        error << e.what();
+      }
+      
+    });
+  } catch (std::exception &e) {
+    error << e.what();
+  }
+  
   return client;
 }
 
 // 向指定client 发送信息
 bool WebServer::writeToClient(const int client, const std::string msg) {
   if (users.find(client) == users.end() || users[client].getStatus() == SocketState::未连接) {
-    error << "没有该用户,或者该用户已经断开连接!";
+    error << client << " 没有该用户,或者该用户已经断开连接!";
     return false;
   }
 
@@ -132,23 +130,21 @@ void WebServer::handleRequest(int client, std::shared_ptr<web::Request> request)
   if (func != funcs.end()) {
     funcs[request->path()](client, request);
   } else {
-    result(client, web::Status::NotFound, ContentType::text, "没找到捏!");
+    std::string file(readFile("../dist/404.html"));
+    result(client, web::Status::NotFound, ContentType::html, file);
   }
 }
 
 int WebServer::recv_(const int client, char *buf, sock_t size) {
   int ret = ::recv(client, buf, size, 0);
   if (ret == 0) {
-    info << std::format("{} 断开连接!", client);
-    users[client].setStatus(SocketState::未连接);
+    // info << std::format("{} 断开连接!", client);
     return 0;
   }
   if (ret < 0) {
-    error << "读取报文出错!";
-    error << strerror(errno);
-    return 0;
+    error << client << " -> " << strerror(errno);
+    return -1;
   }
-
   return ret;
 }
 
@@ -158,17 +154,11 @@ void WebServer::recv(const int client) {
     char buff[1024]{};
     if (recv_(client, buff, 1024) > 0) {
       std::shared_ptr<Request> request = std::make_shared<Request>(buff);
-      info << buff;
-      if (request->fileType() == web::FileType::script || request->fileType() == web::FileType::style) {
-        getMapping(request->path(), [this](int client, std::shared_ptr<web::Request> request) {
-          std::string file(readFile("../dist" + request->path()));
-          web::ContentType type = Response::getContentType(request->fileType());
-          result(client, web::Status::OK, type, file);
-        });
+      if (!request->is_error.empty()) {
+        result(client, Status::BadRequest, ContentType::text, "错误！");
+        return;
       }
-
       handleRequest(client, request);
-
     } else {
       return;
     }
@@ -176,32 +166,63 @@ void WebServer::recv(const int client) {
 }
 
 void WebServer::init() {
+  getMapping("/", [this](int client,  std::shared_ptr<web::Request> request) {
+    std::string file(readFile("../dist/index.html"));
+    result(client, web::Status::OK, web::ContentType::html, file);
+  });
+
+  getMapping("/favicon.ico", [this](int client,  std::shared_ptr<web::Request> request) {
+    std::string file(readFile("../dist/favicon.ico"));
+    result(client, web::Status::OK, web::ContentType::icon, file);
+  });
+
+  getMapping("/yuri.png", [this](int client,  std::shared_ptr<web::Request> request) {
+    std::string file(readFile("/home/yuri/Pictures/yuri/wallhaven-1pd1o9_3840x2160.png"));
+    result(client, web::Status::OK, web::ContentType::picture, file);
+  });
+  auto addStaticFile = [this](const std::string &path, ContentType type) {
+    getMapping(path, [this, path, type](int client, std::shared_ptr<web::Request> request) {
+      std::string file(readFile("../dist" + request->path()));
+      result(client, web::Status::OK, type, file);
+    });
+  };
+  addStaticFile("/assets/index-05e92bac.js", ContentType::js);
+  addStaticFile("/assets/index-68236867.js", ContentType::js);
+  addStaticFile("/assets/index-a8f88f24.js", ContentType::js);
+  addStaticFile("/assets/index-d4dcadde.js", ContentType::js);
+  addStaticFile("/assets/index-bc1a93f6.css", ContentType::css);
+  addStaticFile("/assets/index-eca29ec9.css", ContentType::css);
   postMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
     // info  << request->showInfo();
-    int size = std::stoi(request->contentLength()), all = 0;
-    std::vector<char> vec(size);
-    while (all < size) {
-      int ret = ::recv(client, vec.data() + all, size - all, 0);
-      all += ret;
-      info << "本次 -> " << ret << " 共 -> " << all;
-    }
 
-    std::string str(std::make_move_iterator(vec.begin()), std::make_move_iterator(vec.end()));
-    info << "获取的文件长度 -> " << str.size();
+    unsigned long int size = std::stoi(request->contentLength()), all = 0;
+    std::stringstream sstr;
+    while (all < size) {
+      char buff[1024]{};
+      int ret = recv_(client, buff, 1023);
+      // info << "本次获取 -> " << ret << " 共 -> " << all;
+      if (ret <= 0) {
+        result(client, Status::BadRequest, ContentType::text, "获取文件失败!");
+        error << "获取失败!";
+        return;
+      };
+      all += ret;
+      sstr.write(buff, ret);
+    }
+    std::string str(sstr.str());
     int begin = str.find("\r\n\r\n") + 4;
     int end = str.rfind("--" + request->boundary());
     std::string head = str.substr(0, str.find("\r\n\r\n"));
     int pos = head.find("filename=\"") + 10;
     std::string file_name = head.substr(pos ,head.rfind("\"") - pos);
-    info << "file -> " << file_name;
     std::fstream file(file_name, std::ios::out | std::ios::binary);
-    file.write(str.data() + begin, end - begin);
+    file.write(str.data() + begin, end - begin - 2);
+    info << "file -> " << file_name << " " << end - begin - 2 << " 字节";
     file.close();
-    result(client, Status::OK, ContentType::text, "0");
+    result(client, Status::OK, ContentType::text, "发送成功!");
   });
 
   optMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
-    info << request->showInfo();
     std::string str = "Access-Control-Allow-Origin: *\r\n"
                       "Access-Control-Allow-Methods: *\r\n"
                       "Access-Control-Allow-Headers: *\r\n";

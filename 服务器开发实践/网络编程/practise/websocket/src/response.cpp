@@ -59,17 +59,17 @@ std::string Response::getTypeString(const Status status) {
 std::string Response::getTypeString(const ContentType type) {
   switch (type) {
   case ContentType::html:
-    return "Content-Type: text/html\r\n";
+    return "Content-Type: text/html;charset=UTF-8\r\n";
   case ContentType::text:
-    return "Content-Type: text/plain\r\n";
+    return "Content-Type: text/plain;charset=UTF-8\r\n";
   case ContentType::css:
-    return "Content-Type: text/css\r\n";
+    return "Content-Type: text/css;charset=UTF-8\r\n";
   case ContentType::js:
-    return "Content-Type: application/javascript\r\n";
+    return "Content-Type: application/javascript;charset=UTF-8\r\n";
   case ContentType::icon:
-    return "Content-Type: image/x-icon\r\n";
+    return "Content-Type: image/x-icon;charset=UTF-8\r\n";
   case ContentType::picture:
-    return "Content-Type: image/png\r\n";
+    return "Content-Type: image/png;charset=UTF-8\r\n";
   default:
     return "";
   }
