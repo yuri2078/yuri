@@ -90,6 +90,6 @@
         // "-stdlib=libc++",
         "-std=c++20"
     ],
-    "cmake.sourceDirectory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/ftp",
     "liveServer.settings.port": 5501,
+    "cmake.sourceDirectory": "/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket",
 }
