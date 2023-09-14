@@ -2,7 +2,7 @@
   <el-upload
     class="upload-demo"
     drag
-    action="http://localhost:2078/file"
+    action="http://192.168.1.164:2078/file"
     multiple
   >
     <el-icon class="el-icon--upload"><upload-filled /></el-icon>
@@ -15,8 +15,17 @@
       </div>
     </template>
   </el-upload>
+  <div>
+    <a href="http://192.168.1.164:2078/download" download>
+    <el-button type="success" :icon="Check" circle /></a>
+
+  </div>
 </template>
 
 <script setup lang="ts">
-import { UploadFilled } from '@element-plus/icons-vue'
+import { UploadFilled, Check } from '@element-plus/icons-vue'
+
+const download = () => {
+
+}
 </script>

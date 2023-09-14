@@ -23,7 +23,23 @@ enum ContentType {
   css,
   js,
   text,
-  picture
+  json,
+  jpg,
+  png,
+  gif,
+  zip,
+  xml,
+  jpeg,
+  pdf,
+  doc,
+  docx,
+  tar,
+  gz,
+  md,
+  tar_gz,
+  c,
+  cpp,
+  stream
 };
 
 enum RequestType {

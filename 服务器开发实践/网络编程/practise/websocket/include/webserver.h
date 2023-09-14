@@ -28,6 +28,8 @@ private:
   // 向指定client服务端 发送状态为status 类型为type 的msg消息
   void result(int client, web::Status status, web::ContentType type, std::string msg);
 
+  bool sendFile(int client, const std::string& file_name);
+
   // 路径处理
   void handleRequest(int client , std::shared_ptr<web::Request> request);
 

@@ -70,13 +70,6 @@ int WebServer::accept() {
     error << strerror(errno);
     return -1;
   }
-  struct timeval timeout;
-  timeout.tv_sec = 5;
-  timeout.tv_usec = 0;
-  if (setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
-    perror("setsockopt");
-    return 1;
-  }
 
   users[client] = client_addr; // 添加进map
   info << "客户端 -> " << client << " 已经连接 ! ";
@@ -91,15 +84,9 @@ int WebServer::accept() {
 
 // 向指定client 发送信息
 bool WebServer::writeToClient(const int client, const std::string msg) {
-  if (users.find(client) == users.end() || users[client].getStatus() == SocketState::未连接) {
-    error << client << " 没有该用户,或者该用户已经断开连接!";
-    return false;
-  }
-
   int ret = ::send(client, msg.c_str(), msg.size(), 0);
   if (ret <= 0) {
-    error << "发送失败!";
-    error << strerror(errno);
+    error << client << " -> " << strerror(errno);
     return false;
   }
   return true;
@@ -148,6 +135,7 @@ void WebServer::recv(const int client) {
         result(client, Status::BadRequest, ContentType::text, "错误！");
         return;
       }
+      info << buff;
       handleRequest(client, request);
     } else {
       return;
@@ -168,7 +156,7 @@ void WebServer::init() {
 
   getMapping("/yuri.png", [this](int client,  std::shared_ptr<web::Request> request) {
     std::string file(readFile("/home/yuri/Pictures/yuri/wallhaven-1pd1o9_3840x2160.png"));
-    result(client, web::Status::OK, web::ContentType::picture, file);
+    result(client, web::Status::OK, web::ContentType::png, file);
   });
   auto addStaticFile = [this](const std::string &path, ContentType type) {
     getMapping(path, [this, path, type](int client, std::shared_ptr<web::Request> request) {
@@ -177,11 +165,15 @@ void WebServer::init() {
     });
   };
   addStaticFile("/assets/index-05e92bac.js", ContentType::js);
+  addStaticFile("/assets/index-4a224b10.js", ContentType::js);
+  addStaticFile("/assets/index-662bc092.js", ContentType::js);
   addStaticFile("/assets/index-68236867.js", ContentType::js);
   addStaticFile("/assets/index-a8f88f24.js", ContentType::js);
-  addStaticFile("/assets/index-d4dcadde.js", ContentType::js);
   addStaticFile("/assets/index-bc1a93f6.css", ContentType::css);
+  addStaticFile("/assets/index-d4dcadde.js", ContentType::js);
+  addStaticFile("/assets/index-e5880139.js", ContentType::js);
   addStaticFile("/assets/index-eca29ec9.css", ContentType::css);
+  
   postMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
     // info  << request->showInfo();
     unsigned long int size = 0, all = 0;
@@ -192,6 +184,7 @@ void WebServer::init() {
       result(client, Status::BadRequest, ContentType::text, "文件过大!");
       return;
     }
+
     std::stringstream sstr;
     info << "源文件大小 -> " << size;
     while (all < size) {
@@ -225,6 +218,24 @@ void WebServer::init() {
                       "Access-Control-Allow-Headers: *\r\n";
     result(client, Status::OK, ContentType::text, str);
   });
+
+  getMapping("/download", [this](int client, std::shared_ptr<web::Request> request) {
+    // info << request->showInfo();
+    std::string file_name("test.zip");
+    std::ifstream file(file_name, std::ios::binary);
+    if (!file || !file.is_open()) {
+      result(client, Status::BadRequest, ContentType::text, "文件打开失败!");
+      return;
+    }
+    file.seekg(0, std::ios::end); // 将文件指针移动到文件末尾
+    unsigned long int size = file.tellg(); // 获取文件指针的位置，即文件大小
+    file.close();
+    std::string responseHeader = Response::response(file_name, size, ContentType::zip);
+    writeToClient(client, responseHeader);
+    if (!sendFile(client, file_name)) {
+      result(client, Status::BadRequest, ContentType::text, "文件传送失败!");
+    }
+  });
 }
 
 void WebServer::result(int client, web::Status status, web::ContentType type, std::string msg) {
@@ -233,6 +244,23 @@ void WebServer::result(int client, web::Status status, web::ContentType type, st
   if (!msg.empty()) {
     writeToClient(client, msg);
   }
+}
+
+bool WebServer::sendFile(int client, const std::string &file_name) {
+  const int buffer_size = 65535;
+  char buffer[buffer_size] {};
+  std::ifstream file(file_name, std::ios::binary);
+  // 逐块读取文件内容
+  info << "开始发送!";
+  while (!file.eof()) {
+    file.read(buffer, buffer_size);
+    unsigned long int ret = file.gcount(); // 获取实际读取的字节数
+    ::send(client, buffer, ret, 0);
+    info << ret;
+  }
+  file.close();
+  info << "发送成功!";
+  return true;
 }
 
 void WebServer::getMapping(std::string path, std::function<void(int client,  std::shared_ptr<web::Request> request)> func) {

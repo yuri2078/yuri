@@ -1,14 +1,23 @@
 #include "../include/response.h"
 #include "type.h"
+#include <format>
 
 namespace yuri::web {
 
-std::string Response::response(const ContentType type, const unsigned int lenght, const Status status) {
+std::string Response::response(const ContentType type, const unsigned long int lenght, const Status status) {
   return getTypeString(status) + getTypeString(type) + getTypeString(lenght)
          + "Access-Control-Allow-Origin: *\r\n"
          + "Access-Control-Allow-Methods: GET, POST, OPTIONS\r\n"
          + "Access-Control-Allow-Headers: Content-Type, Authorization\r\n"
          + "Connection: close\r\n\r\n";
+}
+
+std::string Response::response(std::string_view file_name, const unsigned long int size, ContentType type) {
+  return std::format("{}{}Content-Disposition: attachment; filename=\"{}\"\r\n{}\r\n",
+    getTypeString(Status::OK),
+    getTypeString(type),
+    file_name,
+    getTypeString(size));
 }
 
 ContentType Response::getContentType(const FileType type) {
@@ -57,7 +66,7 @@ std::string Response::getTypeString(const Status status) {
 }
 
 std::string Response::getTypeString(const ContentType type) {
-  switch (type) {
+switch (type) {
   case ContentType::html:
     return "Content-Type: text/html;charset=UTF-8\r\n";
   case ContentType::text:
@@ -66,16 +75,43 @@ std::string Response::getTypeString(const ContentType type) {
     return "Content-Type: text/css;charset=UTF-8\r\n";
   case ContentType::js:
     return "Content-Type: application/javascript;charset=UTF-8\r\n";
+  case ContentType::json:
+    return "Content-Type: application/json;charset=UTF-8\r\n";
+  case ContentType::xml:
+    return "Content-Type: application/xml;charset=UTF-8\r\n";
   case ContentType::icon:
-    return "Content-Type: image/x-icon;charset=UTF-8\r\n";
-  case ContentType::picture:
-    return "Content-Type: image/png;charset=UTF-8\r\n";
+    return "Content-Type: image/x-icon\r\n";
+  case ContentType::png:
+    return "Content-Type: image/png\r\n";
+  case ContentType::jpeg:
+    return "Content-Type: image/jpeg\r\n";
+  case ContentType::gif:
+    return "Content-Type: image/gif\r\n";
+  case ContentType::pdf:
+    return "Content-Type: application/pdf\r\n";
+  case ContentType::zip:
+    return "Content-Type: application/zip\r\n";
+  case ContentType::doc:
+    return "Content-Type: application/msword\r\n";
+  case ContentType::docx:
+    return "Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document\r\n";
+  case ContentType::md:
+    return "Content-Type: text/markdown;charset=UTF-8\r\n";
+  case ContentType::tar:
+    return "Content-Type: application/x-tar\r\n";
+  case ContentType::tar_gz:
+    return "Content-Type: application/gzip\r\n";
+  case ContentType::c:
+    return "Content-Type: text/x-c;charset=UTF-8\r\n";
+  case ContentType::stream:
+    return "Content-Type: application/octet-stream\r\n";
   default:
     return "";
-  }
 }
 
-std::string Response::getTypeString(const unsigned length) {
+}
+
+std::string Response::getTypeString(const unsigned long int length) {
   if (length == 0) {
     return "";
   }
