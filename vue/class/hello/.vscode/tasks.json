@@ -1,0 +1,27 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "cppbuild", //设置任务名称
+            "command": "clang++", //设置编译器
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-Wall",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.out" //设置生成的可执行文件名字
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$msCompile"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}

@@ -11,6 +11,5 @@
 **/devel/
 **/*.so
 **/*.exe
-**/
 **/*.qmake.stash
 **/*.o

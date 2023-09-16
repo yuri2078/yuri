@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.van-row {
+    margin-top: 2px;
+}
+
+.main-table {
+    width: 90%;
+    height: auto;
+    font-size: 22px;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 34px;
+    margin: 20px;
+}
+
+#picture {
+    width: 90%;
+    max-width: 500px;
+}
+
+#picture .van-image{
+    border: 2px solid gray;
+}
+
+.stu-tag{
+    text-align: center;
+    background-color: #e67300;
+    padding: 5px 0px;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.stu-info{
+    text-align: left;
+    background-color: #ffb366;
+    padding: 5px 0px;
+    padding-left: 20px;
+    border-radius: 0px 5px 5px 0px;
+}
