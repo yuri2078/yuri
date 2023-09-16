@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/loginWindow.dir/loginWindow_autogen/mocs_compilation.cpp.o CMakeFiles/loginWindow.dir/main.cpp.o CMakeFiles/loginWindow.dir/loginwindow.cpp.o -o loginWindow  /usr/lib/libQt6Widgets.so.6.3.1 /usr/lib/libQt6Gui.so.6.3.1 /usr/lib/libQt6Core.so.6.3.1 /usr/lib/libGLX.so /usr/lib/libOpenGL.so 

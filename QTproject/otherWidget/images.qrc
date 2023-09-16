@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>imgaes/1.gif</file>
-        <file>imgaes/2.jpg</file>
-    </qresource>
-</RCC>

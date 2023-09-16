@@ -1,9 +1,0 @@
-syntax = "proto2";
-
-package apollo.cyber.demo_cpp;
-
-message Radar {
-    required string name  = 1;
-    required int64 age  = 2;
-    optional int64  length  = 3;
-}
