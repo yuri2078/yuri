@@ -84,7 +84,31 @@ int WebServer::accept() {
 
 // 向指定client 发送信息
 bool WebServer::writeToClient(const int client, const std::string msg) {
-  int ret = ::send(client, msg.c_str(), msg.size(), 0);
+  int ret = 0;
+  try {
+    ret = ::send(client, msg.c_str(), msg.size(), 0);
+  } catch (std::exception &e) {
+    error << e.what();
+    error << "发生异常!!!";
+    ret = -1;
+  }
+
+  if (ret <= 0) {
+    error << client << " -> " << strerror(errno);
+    return false;
+  }
+  return true;
+}
+
+bool WebServer::writeToClient(const int client, std::string_view msg, unsigned long int size) {
+  int ret = 0;
+  try {
+    ret = ::send(client, msg.data(), size, 0);
+  } catch (std::exception &e) {
+    error << e.what();
+    error << "发生异常!!!";
+    ret = -1;
+  }
   if (ret <= 0) {
     error << client << " -> " << strerror(errno);
     return false;
@@ -175,7 +199,7 @@ void WebServer::init() {
   addStaticFile("/assets/index-eca29ec9.css", ContentType::css);
   
   postMapping("/file", [this](int client, std::shared_ptr<web::Request> request) {
-    // info  << request->showInfo();
+    // info  << request->showInfo();/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/build/test.zip
     unsigned long int size = 0, all = 0;
     try {
       size = std::stoll(request->contentLength()), all = 0;
@@ -221,7 +245,7 @@ void WebServer::init() {
 
   getMapping("/download", [this](int client, std::shared_ptr<web::Request> request) {
     // info << request->showInfo();
-    std::string file_name("test.zip");
+    std::string file_name("/home/yuri/yuri/服务器开发实践/网络编程/practise/websocket/build/test.zip");
     std::ifstream file(file_name, std::ios::binary);
     if (!file || !file.is_open()) {
       result(client, Status::BadRequest, ContentType::text, "文件打开失败!");
@@ -233,7 +257,8 @@ void WebServer::init() {
     std::string responseHeader = Response::response(file_name, size, ContentType::zip);
     writeToClient(client, responseHeader);
     if (!sendFile(client, file_name)) {
-      result(client, Status::BadRequest, ContentType::text, "文件传送失败!");
+      // result(client, Status::BadRequest, ContentType::text, "文件传送失败!");
+      error << "发生了错误!!";
     }
   });
 }
@@ -248,15 +273,18 @@ void WebServer::result(int client, web::Status status, web::ContentType type, st
 
 bool WebServer::sendFile(int client, const std::string &file_name) {
   const int buffer_size = 65535;
-  char buffer[buffer_size] {};
+  char buffer[buffer_size];
   std::ifstream file(file_name, std::ios::binary);
   // 逐块读取文件内容
   info << "开始发送!";
   while (!file.eof()) {
+    
     file.read(buffer, buffer_size);
     unsigned long int ret = file.gcount(); // 获取实际读取的字节数
-    ::send(client, buffer, ret, 0);
-    info << ret;
+    if (!writeToClient(client, buffer, ret)) {
+      file.close();
+      return false;
+    }
   }
   file.close();
   info << "发送成功!";

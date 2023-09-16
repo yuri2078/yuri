@@ -46,6 +46,9 @@ public:
   // 向指定client 发送信息
   bool writeToClient(const int client, const std::string msg);
 
+  // 向指定client 发送信息
+  bool writeToClient(const int client, std::string_view msg, unsigned long int size);
+
   // 获取文件
   std::string readFile(const std::string &file_name);
 
